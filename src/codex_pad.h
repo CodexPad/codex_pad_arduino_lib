@@ -39,7 +39,7 @@ class CodexPad {
   }
 
  protected:
-  std::optional<std::vector<uint8_t>> FetchInputs();
+  std::vector<uint8_t> FetchInputs();
 
  private:
   void OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify);

@@ -1,11 +1,20 @@
 #include "codex_pad.h"
 
+#include "esp_arduino_version.h"
+
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 3, 0) && ESP_ARDUINO_VERSION <= ESP_ARDUINO_VERSION_VAL(3, 3, 2)
+// clang-format off
+#error "This library is incompatible with ESP-Arduino versions 3.3.0 to 3.3.2 (inclusive) due to known bugs. Please use version 3.3.3 or later, or downgrade to a version before 3.3.0."
+#error "此库与 ESP-Arduino 版本 3.3.0 到 3.3.2（包含）不兼容，因为存在已知错误。请使用 3.3.3 或更高版本，或降级到 3.3.0 之前的版本。"
+// clang-format on
+#endif
+
 namespace {
 const BLEUUID kGapServiceUuid(static_cast<uint16_t>(0x1800));
 const BLEUUID kGapDeviceNameUuid(static_cast<uint16_t>(0x2A00));
 
-const BLEUUID kPadServiceUuid(static_cast<uint16_t>(0xFFE0));
-const BLEUUID kPadStatesCharacteristicUuid(static_cast<uint16_t>(0xFF01));
+const BLEUUID kInputsServiceUuid(static_cast<uint16_t>(0xFFA0));
+const BLEUUID kInputsCharacteristicUuid(static_cast<uint16_t>(0xFFA1));
 
 const BLEUUID kBatteryServiceUuid(static_cast<uint16_t>(0x180F));
 const BLEUUID kBatteryLevelCharacteristicUuid(static_cast<uint16_t>(0x2A19));
@@ -28,7 +37,7 @@ void CodexPad::Init() {
 }
 
 bool CodexPad::Connect(const std::string& mac_address) {
-  log_i("Connect %s", mac_address.c_str());
+  // log_i("Connect %s", mac_address.c_str());
   if (ble_client_ == nullptr) {
     return false;
   }
@@ -36,7 +45,7 @@ bool CodexPad::Connect(const std::string& mac_address) {
   ble_client_->disconnect();
   const auto ret = ble_client_->connect(BLEAddress(mac_address.c_str()));
   if (!ret) {
-    log_e("connect failed");
+    // log_e("connect failed");
     return ret;
   }
 
@@ -57,8 +66,8 @@ bool CodexPad::Connect(const std::string& mac_address) {
     goto Failed;
   }
 
-  if (auto service = ble_client_->getService(kPadServiceUuid); service != nullptr) {
-    if (auto characteristic = service->getCharacteristic(kPadStatesCharacteristicUuid); characteristic != nullptr) {
+  if (auto service = ble_client_->getService(kInputsServiceUuid); service != nullptr) {
+    if (auto characteristic = service->getCharacteristic(kInputsCharacteristicUuid); characteristic != nullptr) {
       if (characteristic->canNotify()) {
         characteristic->registerForNotify(
             std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4), true);
@@ -97,15 +106,14 @@ void CodexPad::set_tx_power(const CodexPad::TxPower tx_power) {
   }
 }
 
-std::optional<std::vector<uint8_t>> CodexPad::FetchInputs() {
+std::vector<uint8_t> CodexPad::FetchInputs() {
   std::lock_guard<std::mutex> l(mutex_);
-  if (state_.empty()) {
-    return std::nullopt;
-  }
   return std::move(state_);
 }
 
 void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify) {
   std::lock_guard<std::mutex> l(mutex_);
-  state_ = std::vector<uint8_t>(data, data + length);
+  if (characteristic != nullptr && characteristic->getUUID().equals(kInputsCharacteristicUuid)) {
+    state_ = std::vector<uint8_t>(data, data + length);
+  }
 }

@@ -7,8 +7,7 @@
 bool CodexPadC10::Connect(const std::string& mac_address) {
   if (CodexPad::Connect(mac_address)) {
     if (model_number() != "C10") {
-      printf("device is %s not C10, please check\n", device_name().c_str());
-      log_e("device is %s not C10, please check", device_name().c_str());
+      printf("FATAL: The Model number of remote device is %s not C10, please check\n", device_name().c_str());
       abort();
       return false;
     }
@@ -21,8 +20,8 @@ void CodexPadC10::Update() {
   prev_inputs_ = current_inputs_;
   auto new_inputs = FetchInputs();
 
-  if (new_inputs) {
-    current_inputs_ = std::move(*new_inputs);
+  if (!new_inputs.empty()) {
+    current_inputs_ = std::move(new_inputs);
   }
 }
 
