@@ -24,7 +24,14 @@ const BLEUUID kModelNumberCharacteristicUuid(static_cast<uint16_t>(0x2A24));
 const BLEUUID kSerialNumberCharacteristicUuid(static_cast<uint16_t>(0x2A25));
 const BLEUUID kFirmwareRevisionCharacteristicUuid(static_cast<uint16_t>(0x2A26));
 const BLEUUID kManufacturerNameCharacteristicUuid(static_cast<uint16_t>(0x2A29));
+
+bool HasAxisValueChangedSignificantly(const int16_t prev_value, const int16_t current_value, const uint8_t threshold) {
+  return prev_value != current_value && (current_value == 0 || current_value == 255 || std::abs(current_value - prev_value) >= threshold);
+}
 }  // namespace
+
+CodexPad::CodexPad() {
+}
 
 void CodexPad::Init() {
   if (ble_client_ != nullptr) {
@@ -90,6 +97,15 @@ Failed:
   return false;
 }
 
+void CodexPad::Update() {
+  prev_inputs_ = current_inputs_;
+  auto new_inputs = FetchInputs();
+
+  if (new_inputs) {
+    current_inputs_ = std::move(*new_inputs);
+  }
+}
+
 bool CodexPad::is_connected() {
   if (ble_client_ == nullptr) {
     return false;
@@ -106,14 +122,65 @@ void CodexPad::set_tx_power(const CodexPad::TxPower tx_power) {
   }
 }
 
-std::vector<uint8_t> CodexPad::FetchInputs() {
+bool CodexPad::pressed(const Button button) const {
+  return (prev_inputs_.button_states & static_cast<uint32_t>(button)) == 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
+}
+
+bool CodexPad::released(const Button button) const {
+  return (prev_inputs_.button_states & static_cast<uint32_t>(button)) != 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) == 0;
+}
+
+bool CodexPad::holding(const Button button) const {
+  return (prev_inputs_.button_states & static_cast<uint32_t>(button)) != 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
+}
+
+bool CodexPad::button_state(const Button button) const {
+  return (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
+}
+
+uint32_t CodexPad::button_states() const {
+  return current_inputs_.button_states;
+}
+
+uint8_t CodexPad::axis_value(const Axis axis) const {
+  return current_inputs_.axis_values[axis];
+}
+
+std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
+  std::array<uint8_t, kAxisValueNum> axis_values = {0x80, 0x80, 0x80, 0x80};
+  for (size_t i = 0; i < kAxisValueNum; i++) {
+    axis_values[i] = current_inputs_.axis_values[i];
+  }
+  return axis_values;
+}
+
+bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) const {
+  return HasAxisValueChangedSignificantly(current_inputs_.axis_values[axis], prev_inputs_.axis_values[axis], threshold);
+}
+
+std::optional<CodexPad::Inputs> CodexPad::FetchInputs() {
   std::lock_guard<std::mutex> l(mutex_);
-  return std::move(state_);
+  if (inputs_queue_.empty()) {
+    return {};
+  }
+  auto inputs = std::move(inputs_queue_.front());
+  inputs_queue_.pop();
+  return inputs;
 }
 
 void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify) {
-  std::lock_guard<std::mutex> l(mutex_);
   if (characteristic != nullptr && characteristic->getUUID().equals(kInputsCharacteristicUuid)) {
-    state_ = std::vector<uint8_t>(data, data + length);
+    if (length != sizeof(Inputs)) {
+      printf("WARNING: length != sizeof(Inputs)\n");
+      return;
+    }
+
+    std::lock_guard<std::mutex> l(mutex_);
+    if (inputs_queue_.size() > kInputsQueueMax) {
+      inputs_queue_.pop();
+    }
+    Inputs inputs;
+    memcpy(&inputs, data, sizeof(inputs));
+    inputs_queue_.emplace(std::move(inputs));
   }
 }
