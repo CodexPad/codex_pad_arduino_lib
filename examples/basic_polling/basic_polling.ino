@@ -1,9 +1,14 @@
 /**
- * CodexPad 轮询输入状态
- * CodexPad Inputs Polling Example
- *
- * 本示例演示如何使用CodexPad进行轮询输入状态
- * This example demonstrates how to perform polling input status with CodexPad
+ * @~English
+ * @file basic_polling.ino
+ * @example basic_polling.ino
+ * @brief CodexPad basic polling example
+ */
+/**
+ * @~Chinese
+ * @file basic_polling.ino
+ * @example basic_polling.ino
+ * @brief CodexPad基本轮询示例
  */
 
 #include "codex_pad.h"
@@ -61,9 +66,9 @@ void loop() {
     s_print_time = millis();
 
     printf(
-        "Up:%u, Down:%u, Left:%u, Right:%u, SquareX:%u, TriangleY:%u, CrossA:%u, CircleB:%u, L1:%u, L2:%u, L3:%u, R1:%u, R2:%u, "
+        "Up:%u, Down:%u, Left:%u, Right:%u, Square(X):%u, Triangle(Y):%u, Cross(A):%u, Circle(B):%u, L1:%u, L2:%u, L3:%u, R1:%u, R2:%u, "
         "R3:%u, Select:%u, "
-        "Start:%u, Home:%u, LS(X:%3u, Y:%3u), RS(X:%3u, Y:%3u)\n",
+        "Start:%u, Home:%u, L(X:%3u, Y:%3u), R(X:%3u, Y:%3u)\n",
 
         // 获取各个按钮的状态，button_state()返回bool类型，true表示按下，false表示弹起
         // Get button states, button_state() returns bool type, true means pressed, false means released

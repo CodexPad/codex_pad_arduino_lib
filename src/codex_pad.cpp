@@ -99,10 +99,13 @@ Failed:
 
 void CodexPad::Update() {
   prev_inputs_ = current_inputs_;
-  auto new_inputs = FetchInputs();
-
-  if (new_inputs) {
-    current_inputs_ = std::move(*new_inputs);
+  {
+    std::lock_guard<std::mutex> l(mutex_);
+    if (inputs_queue_.empty()) {
+      return;
+    }
+    current_inputs_ = std::move(inputs_queue_.front());
+    inputs_queue_.pop();
   }
 }
 
@@ -156,16 +159,6 @@ std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
 
 bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) const {
   return HasAxisValueChangedSignificantly(current_inputs_.axis_values[axis], prev_inputs_.axis_values[axis], threshold);
-}
-
-std::optional<CodexPad::Inputs> CodexPad::FetchInputs() {
-  std::lock_guard<std::mutex> l(mutex_);
-  if (inputs_queue_.empty()) {
-    return {};
-  }
-  auto inputs = std::move(inputs_queue_.front());
-  inputs_queue_.pop();
-  return inputs;
 }
 
 void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify) {

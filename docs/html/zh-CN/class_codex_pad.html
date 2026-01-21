@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CodexPad Arduino 库: CodexPad类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;1.0.3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.13.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_codex_pad.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="class_codex_pad-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">CodexPad类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>CodexPad主类  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:add2a85d4d2df117adb74c05604e86354" id="r_add2a85d4d2df117adb74c05604e86354"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add2a85d4d2df117adb74c05604e86354">TxPower</a> : int8_t { <br />
+&#160;&#160;<a class="el" href="#add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e">kMinus16dBm</a> = -16
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d">kMinus12dBm</a> = -12
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a">kMinus8dBm</a> = -8
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e">kMinus5dBm</a> = -5
+, <br />
+&#160;&#160;<a class="el" href="#add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32">kMinus3dBm</a> = -3
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82">kMinus1dBm</a> = -1
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">k0dBm</a> = 0
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb">k1dBm</a> = 1
+, <br />
+&#160;&#160;<a class="el" href="#add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37">k2dBm</a> = 2
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c">k3dBm</a> = 3
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0">k4dBm</a> = 4
+, <a class="el" href="#add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f">k5dBm</a> = 5
+, <br />
+&#160;&#160;<a class="el" href="#add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a">k6dBm</a> = 6
+<br />
+ }</td></tr>
+<tr class="separator:add2a85d4d2df117adb74c05604e86354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2afe87b7e691d4df4d9aadb204d6ad" id="r_a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> : uint32_t { <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">kUp</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 0
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6">kDown</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 1
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82">kLeft</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 2
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a">kRight</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 3
+, <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1">kSquareX</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 4
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494">kTriangleY</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 5
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f">kCrossA</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 6
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa">kCircleB</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 7
+, <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84">kL1</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 8
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9">kL2</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 9
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a">kL3</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 10
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b">kR1</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 11
+, <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870">kR2</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 12
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55">kR3</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 13
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b">kSelect</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 14
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8">kStart</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 15
+, <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd">kHome</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 16
+<br />
+ }</td></tr>
+<tr class="separator:a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cd7b0da32cb23953ce3703cf23a8e0" id="r_a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> : size_t { <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">kLeftStickX</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">kLeftStickY</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">kRightStickX</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">kRightStickY</a>
+ }</td></tr>
+<tr class="separator:a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aa3900f0c5e4f1b9a9b43749346915e5b" id="r_aa3900f0c5e4f1b9a9b43749346915e5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad</a> ()</td></tr>
+<tr class="memdesc:aa3900f0c5e4f1b9a9b43749346915e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:aa3900f0c5e4f1b9a9b43749346915e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389b16dbbd64e2dfd2dbcc6821322116" id="r_a389b16dbbd64e2dfd2dbcc6821322116"><td class="memItemLeft" align="right" valign="top"><a id="a389b16dbbd64e2dfd2dbcc6821322116" name="a389b16dbbd64e2dfd2dbcc6821322116"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~CodexPad</b> ()=default</td></tr>
+<tr class="memdesc:a389b16dbbd64e2dfd2dbcc6821322116"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数 <br /></td></tr>
+<tr class="separator:a389b16dbbd64e2dfd2dbcc6821322116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9688edc73671e22fcdc7d5a5dd854d0" id="r_ad9688edc73671e22fcdc7d5a5dd854d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9688edc73671e22fcdc7d5a5dd854d0">Init</a> ()</td></tr>
+<tr class="memdesc:ad9688edc73671e22fcdc7d5a5dd854d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化  <br /></td></tr>
+<tr class="separator:ad9688edc73671e22fcdc7d5a5dd854d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87564020b13f25a2af5d2ca72cfe165c" id="r_a87564020b13f25a2af5d2ca72cfe165c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87564020b13f25a2af5d2ca72cfe165c">Connect</a> (const std::string &amp;mac_address)</td></tr>
+<tr class="memdesc:a87564020b13f25a2af5d2ca72cfe165c"><td class="mdescLeft">&#160;</td><td class="mdescRight">连接  <br /></td></tr>
+<tr class="separator:a87564020b13f25a2af5d2ca72cfe165c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46edc79a0e38e9fbc0e513d035cf0eb" id="r_ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae46edc79a0e38e9fbc0e513d035cf0eb">Update</a> ()</td></tr>
+<tr class="memdesc:ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新，需要在Loop中不断调用  <br /></td></tr>
+<tr class="separator:ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811b8cce8a285f991e18bbbdc8745285" id="r_a811b8cce8a285f991e18bbbdc8745285"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a811b8cce8a285f991e18bbbdc8745285">is_connected</a> ()</td></tr>
+<tr class="memdesc:a811b8cce8a285f991e18bbbdc8745285"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否连接  <br /></td></tr>
+<tr class="separator:a811b8cce8a285f991e18bbbdc8745285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4173e628d96f24e342363e6093ee1082" id="r_a4173e628d96f24e342363e6093ee1082"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4173e628d96f24e342363e6093ee1082">set_tx_power</a> (const <a class="el" href="#add2a85d4d2df117adb74c05604e86354">TxPower</a> power)</td></tr>
+<tr class="memdesc:a4173e628d96f24e342363e6093ee1082"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置发射功率，连接状态下调用，立即生效于当前连接，下次连接生效  <br /></td></tr>
+<tr class="separator:a4173e628d96f24e342363e6093ee1082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f29952491fb7a2d7a278d12894c40b" id="r_a20f29952491fb7a2d7a278d12894c40b"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20f29952491fb7a2d7a278d12894c40b">device_name</a> () const</td></tr>
+<tr class="memdesc:a20f29952491fb7a2d7a278d12894c40b"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取CodexPad的型号  <br /></td></tr>
+<tr class="separator:a20f29952491fb7a2d7a278d12894c40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa5e3ec0d64ec6831af96b5720083c3" id="r_aafa5e3ec0d64ec6831af96b5720083c3"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafa5e3ec0d64ec6831af96b5720083c3">model_number</a> () const</td></tr>
+<tr class="memdesc:aafa5e3ec0d64ec6831af96b5720083c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取CodexPad的型号  <br /></td></tr>
+<tr class="separator:aafa5e3ec0d64ec6831af96b5720083c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc521644c01a45334e9d7c4afff6e3d" id="r_a2cc521644c01a45334e9d7c4afff6e3d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cc521644c01a45334e9d7c4afff6e3d">pressed</a> (const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button) const</td></tr>
+<tr class="memdesc:a2cc521644c01a45334e9d7c4afff6e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询按键是否被按下  <br /></td></tr>
+<tr class="separator:a2cc521644c01a45334e9d7c4afff6e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6321fe07bf29f0233e7840925ff10fa" id="r_ac6321fe07bf29f0233e7840925ff10fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6321fe07bf29f0233e7840925ff10fa">released</a> (const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button) const</td></tr>
+<tr class="memdesc:ac6321fe07bf29f0233e7840925ff10fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询按键是否被释放  <br /></td></tr>
+<tr class="separator:ac6321fe07bf29f0233e7840925ff10fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d8841efbc17966feec5db6dbe247c4" id="r_af9d8841efbc17966feec5db6dbe247c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9d8841efbc17966feec5db6dbe247c4">holding</a> (const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button) const</td></tr>
+<tr class="memdesc:af9d8841efbc17966feec5db6dbe247c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询按键是否被持续按下  <br /></td></tr>
+<tr class="separator:af9d8841efbc17966feec5db6dbe247c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af865f995e67eaf8b61a003958f535c5e" id="r_af865f995e67eaf8b61a003958f535c5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af865f995e67eaf8b61a003958f535c5e">button_state</a> (const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button) const</td></tr>
+<tr class="memdesc:af865f995e67eaf8b61a003958f535c5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询按键是否被按下或持续按下  <br /></td></tr>
+<tr class="separator:af865f995e67eaf8b61a003958f535c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a083307fb1a6ac11894cbb40be48ed5d0" id="r_a083307fb1a6ac11894cbb40be48ed5d0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> () const</td></tr>
+<tr class="memdesc:a083307fb1a6ac11894cbb40be48ed5d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">以位掩码形式获取所有按键的当前状态  <br /></td></tr>
+<tr class="separator:a083307fb1a6ac11894cbb40be48ed5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd8e836a7d6a6945aaa8bdc30cdbca7" id="r_a7bd8e836a7d6a6945aaa8bdc30cdbca7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bd8e836a7d6a6945aaa8bdc30cdbca7">axis_value</a> (const <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> axis) const</td></tr>
+<tr class="memdesc:a7bd8e836a7d6a6945aaa8bdc30cdbca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取轴值  <br /></td></tr>
+<tr class="separator:a7bd8e836a7d6a6945aaa8bdc30cdbca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43f40b07f3491c349726b267d9ec530" id="r_ad43f40b07f3491c349726b267d9ec530"><td class="memItemLeft" align="right" valign="top">std::array&lt; uint8_t, <a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad43f40b07f3491c349726b267d9ec530">axis_values</a> () const</td></tr>
+<tr class="memdesc:ad43f40b07f3491c349726b267d9ec530"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取所有模拟轴的当前值  <br /></td></tr>
+<tr class="separator:ad43f40b07f3491c349726b267d9ec530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96196750b082f04f0fc5e95cf0374f5a" id="r_a96196750b082f04f0fc5e95cf0374f5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96196750b082f04f0fc5e95cf0374f5a">HasAxisValueChanged</a> (const <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> axis, const uint8_t threshold) const</td></tr>
+<tr class="memdesc:a96196750b082f04f0fc5e95cf0374f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询轴值是否发生变化  <br /></td></tr>
+<tr class="separator:a96196750b082f04f0fc5e95cf0374f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:a3f7424f32c819a7e589d1a797ac0965d" id="r_a3f7424f32c819a7e589d1a797ac0965d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a> = 4</td></tr>
+<tr class="memdesc:a3f7424f32c819a7e589d1a797ac0965d"><td class="mdescLeft">&#160;</td><td class="mdescRight">轴值数量  <br /></td></tr>
+<tr class="separator:a3f7424f32c819a7e589d1a797ac0965d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>CodexPad主类 </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="basic_polling_8ino-example.html#_a0">basic_polling.ino</a> , 以及 <a class="el" href="inputs_detection_8ino-example.html#_a0">inputs_detection.ino</a>.</dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a25cd7b0da32cb23953ce3703cf23a8e0" name="a25cd7b0da32cb23953ce3703cf23a8e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25cd7b0da32cb23953ce3703cf23a8e0">&#9670;&#160;</a></span>Axis</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">CodexPad::Axis</a> : size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d" name="a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d"></a>kLeftStickX&#160;</td><td class="fielddoc"><p>左摇杆X轴 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad" name="a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad"></a>kLeftStickY&#160;</td><td class="fielddoc"><p>左摇杆Y轴 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690" name="a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690"></a>kRightStickX&#160;</td><td class="fielddoc"><p>右摇杆X轴 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a" name="a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a"></a>kRightStickY&#160;</td><td class="fielddoc"><p>右摇杆Y轴 </p>
+</td></tr>
+</table>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00367">367</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4b2afe87b7e691d4df4d9aadb204d6ad" name="a4b2afe87b7e691d4df4d9aadb204d6ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ad">&#9670;&#160;</a></span>Button</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">CodexPad::Button</a> : uint32_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6" name="a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6"></a>kUp&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 0&#160;</td><td class="fielddoc"><p>上 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6" name="a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6"></a>kDown&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 1&#160;</td><td class="fielddoc"><p>下 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82" name="a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82"></a>kLeft&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 2&#160;</td><td class="fielddoc"><p>左 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a" name="a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a"></a>kRight&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 3&#160;</td><td class="fielddoc"><p>右 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1" name="a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1"></a>kSquareX&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 4&#160;</td><td class="fielddoc"><p>圆形或者X </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494" name="a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494"></a>kTriangleY&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 5&#160;</td><td class="fielddoc"><p>三角形或者Y </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f" name="a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f"></a>kCrossA&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 6&#160;</td><td class="fielddoc"><p>叉或者A </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa" name="a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa"></a>kCircleB&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 7&#160;</td><td class="fielddoc"><p>圆形或者B </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84" name="a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84"></a>kL1&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 8&#160;</td><td class="fielddoc"><p>L1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9" name="a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9"></a>kL2&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 9&#160;</td><td class="fielddoc"><p>L2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a" name="a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a"></a>kL3&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 10&#160;</td><td class="fielddoc"><p>L3 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b" name="a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b"></a>kR1&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 11&#160;</td><td class="fielddoc"><p>R1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870" name="a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870"></a>kR2&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 12&#160;</td><td class="fielddoc"><p>R2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55" name="a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55"></a>kR3&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 13&#160;</td><td class="fielddoc"><p>R3 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b" name="a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b"></a>kSelect&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 14&#160;</td><td class="fielddoc"><p>选择 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8" name="a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8"></a>kStart&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 15&#160;</td><td class="fielddoc"><p>开始 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd" name="a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd"></a>kHome&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 16&#160;</td><td class="fielddoc"><p>首页 </p>
+</td></tr>
+</table>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00185">185</a> 行定义.</p>
+
+</div>
+</div>
+<a id="add2a85d4d2df117adb74c05604e86354" name="add2a85d4d2df117adb74c05604e86354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add2a85d4d2df117adb74c05604e86354">&#9670;&#160;</a></span>TxPower</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#add2a85d4d2df117adb74c05604e86354">CodexPad::TxPower</a> : int8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e" name="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e"></a>kMinus16dBm&#160;</td><td class="fieldinit">-16&#160;</td><td class="fielddoc"><p>-16dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d" name="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d"></a>kMinus12dBm&#160;</td><td class="fieldinit">-12&#160;</td><td class="fielddoc"><p>-12dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a" name="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a"></a>kMinus8dBm&#160;</td><td class="fieldinit">-8&#160;</td><td class="fielddoc"><p>-8dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e" name="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e"></a>kMinus5dBm&#160;</td><td class="fieldinit">-5&#160;</td><td class="fielddoc"><p>-5dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32" name="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32"></a>kMinus3dBm&#160;</td><td class="fieldinit">-3&#160;</td><td class="fielddoc"><p>-3dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82" name="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82"></a>kMinus1dBm&#160;</td><td class="fieldinit">-1&#160;</td><td class="fielddoc"><p>-1dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b" name="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"></a>k0dBm&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"><p>0dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb" name="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb"></a>k1dBm&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"><p>1dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37" name="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37"></a>k2dBm&#160;</td><td class="fieldinit">2&#160;</td><td class="fielddoc"><p>2dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c" name="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c"></a>k3dBm&#160;</td><td class="fieldinit">3&#160;</td><td class="fielddoc"><p>3dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0" name="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0"></a>k4dBm&#160;</td><td class="fieldinit">4&#160;</td><td class="fielddoc"><p>4dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f" name="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f"></a>k5dBm&#160;</td><td class="fieldinit">5&#160;</td><td class="fielddoc"><p>5dBm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a" name="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a"></a>k6dBm&#160;</td><td class="fieldinit">6&#160;</td><td class="fielddoc"><p>6dBm </p>
+</td></tr>
+</table>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aa3900f0c5e4f1b9a9b43749346915e5b" name="aa3900f0c5e4f1b9a9b43749346915e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3900f0c5e4f1b9a9b43749346915e5b">&#9670;&#160;</a></span>CodexPad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CodexPad::CodexPad </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a7bd8e836a7d6a6945aaa8bdc30cdbca7" name="a7bd8e836a7d6a6945aaa8bdc30cdbca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bd8e836a7d6a6945aaa8bdc30cdbca7">&#9670;&#160;</a></span>axis_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t CodexPad::axis_value </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a></td>          <td class="paramname"><span class="paramname"><em>axis</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取轴值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">axis</td><td>轴 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>轴值，范围 0~255 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00148">148</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad43f40b07f3491c349726b267d9ec530" name="ad43f40b07f3491c349726b267d9ec530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43f40b07f3491c349726b267d9ec530">&#9670;&#160;</a></span>axis_values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; uint8_t, <a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">CodexPad::kAxisValueNum</a> &gt; CodexPad::axis_values </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取所有模拟轴的当前值 </p>
+<dl class="section return"><dt>返回</dt><dd>长度为 <a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a> (4个元素) 的轴值数组，每个元素代表特定轴的位置，范围 0-255。数组索引与 <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> 枚举对应关系：<ul>
+<li>索引 0：左摇杆X轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">Axis::kLeftStickX</a>)</li>
+<li>索引 1：左摇杆Y轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">Axis::kLeftStickY</a>)</li>
+<li>索引 2：右摇杆X轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">Axis::kRightStickX</a>)</li>
+<li>索引 3：右摇杆Y轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">Axis::kRightStickY</a>)</li>
+</ul>
+</dd></dl>
+<p>典型中心位置值为 128 (0x80)。</p>
+<p>示例： </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> axes = codex_pad.axis_values();</div>
+<div class="line"><span class="keyword">const</span> uint8_t left_stick_x = axes[<a class="code hl_enumvalue" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::Axis::kLeftStickX</a>]; <span class="comment">// 获取左摇杆X轴值</span></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d"><div class="ttname"><a href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">左摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00376">codex_pad.h:376</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00152">152</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af865f995e67eaf8b61a003958f535c5e" name="af865f995e67eaf8b61a003958f535c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af865f995e67eaf8b61a003958f535c5e">&#9670;&#160;</a></span>button_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::button_state </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查询按键是否被按下或持续按下 </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>按键被按下或持续按下 </td></tr>
+    <tr><td class="paramname">false</td><td>按键没有被按下或持续按下 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a083307fb1a6ac11894cbb40be48ed5d0" name="a083307fb1a6ac11894cbb40be48ed5d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083307fb1a6ac11894cbb40be48ed5d0">&#9670;&#160;</a></span>button_states()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t CodexPad::button_states </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>以位掩码形式获取所有按键的当前状态 </p>
+<dl class="section return"><dt>返回</dt><dd>一个32位无符号整数，每一位（bit）表示 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 枚举中对应按键的状态（1为按下，0为未按下）。 位的分配从最低有效位（LSB，第0位）开始，依次对应 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 中的各个值。 可使用位与操作 (&amp;) 配合具体的 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 枚举值来检查特定按键状态。 示例： <div class="fragment"><div class="line"><span class="keyword">const</span> uint32_t <a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> = codex_pad.button_states();</div>
+<div class="line"><span class="keywordflow">if</span> ((<a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> &amp; <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::Button::kUp</a>)) != 0) {</div>
+<div class="line">  <span class="comment">// 方向上按键被按下</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_codex_pad_html_a083307fb1a6ac11894cbb40be48ed5d0"><div class="ttname"><a href="#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a></div><div class="ttdeci">uint32_t button_states() const</div><div class="ttdoc">以位掩码形式获取所有按键的当前状态</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00144">codex_pad.cpp:144</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">上</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00194">codex_pad.h:194</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00144">144</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a87564020b13f25a2af5d2ca72cfe165c" name="a87564020b13f25a2af5d2ca72cfe165c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87564020b13f25a2af5d2ca72cfe165c">&#9670;&#160;</a></span>Connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::Connect </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>mac_address</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>连接 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mac_address</td><td>CodexPad的MAC地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>连接成功 </td></tr>
+    <tr><td class="paramname">false</td><td>连接失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a20f29952491fb7a2d7a278d12894c40b" name="a20f29952491fb7a2d7a278d12894c40b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f29952491fb7a2d7a278d12894c40b">&#9670;&#160;</a></span>device_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CodexPad::device_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取CodexPad的型号 </p>
+<dl class="section return"><dt>返回</dt><dd>CodexPad的型号 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00501">501</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a96196750b082f04f0fc5e95cf0374f5a" name="a96196750b082f04f0fc5e95cf0374f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96196750b082f04f0fc5e95cf0374f5a">&#9670;&#160;</a></span>HasAxisValueChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::HasAxisValueChanged </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a></td>          <td class="paramname"><span class="paramname"><em>axis</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>threshold</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查询轴值是否发生变化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">axis</td><td>轴 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">threshold</td><td>阈值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>轴值发生变化 </td></tr>
+    <tr><td class="paramname">false</td><td>轴值未发生变化 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00160">160</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af9d8841efbc17966feec5db6dbe247c4" name="af9d8841efbc17966feec5db6dbe247c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9d8841efbc17966feec5db6dbe247c4">&#9670;&#160;</a></span>holding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::holding </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查询按键是否被持续按下 </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>按键被持续按下 </td></tr>
+    <tr><td class="paramname">false</td><td>按键没有被持续按下 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00136">136</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad9688edc73671e22fcdc7d5a5dd854d0" name="ad9688edc73671e22fcdc7d5a5dd854d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9688edc73671e22fcdc7d5a5dd854d0">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CodexPad::Init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化 </p>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a811b8cce8a285f991e18bbbdc8745285" name="a811b8cce8a285f991e18bbbdc8745285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a811b8cce8a285f991e18bbbdc8745285">&#9670;&#160;</a></span>is_connected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::is_connected </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>是否连接 </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>已连接 </td></tr>
+    <tr><td class="paramname">false</td><td>未连接 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00112">112</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aafa5e3ec0d64ec6831af96b5720083c3" name="aafa5e3ec0d64ec6831af96b5720083c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa5e3ec0d64ec6831af96b5720083c3">&#9670;&#160;</a></span>model_number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CodexPad::model_number </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取CodexPad的型号 </p>
+<dl class="section return"><dt>返回</dt><dd>CodexPad的型号 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00515">515</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2cc521644c01a45334e9d7c4afff6e3d" name="a2cc521644c01a45334e9d7c4afff6e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cc521644c01a45334e9d7c4afff6e3d">&#9670;&#160;</a></span>pressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::pressed </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查询按键是否被按下 </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>按键被按下 </td></tr>
+    <tr><td class="paramname">false</td><td>按键没有被按下 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00128">128</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac6321fe07bf29f0233e7840925ff10fa" name="ac6321fe07bf29f0233e7840925ff10fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6321fe07bf29f0233e7840925ff10fa">&#9670;&#160;</a></span>released()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::released </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查询按键是否被释放 </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>按键被释放 </td></tr>
+    <tr><td class="paramname">false</td><td>按键没有被释放 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00132">132</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4173e628d96f24e342363e6093ee1082" name="a4173e628d96f24e342363e6093ee1082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4173e628d96f24e342363e6093ee1082">&#9670;&#160;</a></span>set_tx_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CodexPad::set_tx_power </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#add2a85d4d2df117adb74c05604e86354">TxPower</a></td>          <td class="paramname"><span class="paramname"><em>power</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置发射功率，连接状态下调用，立即生效于当前连接，下次连接生效 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">power</td><td>发射功率 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00120">120</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae46edc79a0e38e9fbc0e513d035cf0eb" name="ae46edc79a0e38e9fbc0e513d035cf0eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46edc79a0e38e9fbc0e513d035cf0eb">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CodexPad::Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更新，需要在Loop中不断调用 </p>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00100">100</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a3f7424f32c819a7e589d1a797ac0965d" name="a3f7424f32c819a7e589d1a797ac0965d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7424f32c819a7e589d1a797ac0965d">&#9670;&#160;</a></span>kAxisValueNum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CodexPad::kAxisValueNum = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>轴值数量 </p>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/<a class="el" href="codex__pad_8h_source.html">codex_pad.h</a></li>
+<li>src/<a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_codex_pad.html">CodexPad</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.0 </li>
+  </ul>
+</div>
+</body>
+</html>

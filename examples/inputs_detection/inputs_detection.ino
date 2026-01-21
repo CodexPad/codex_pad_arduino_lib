@@ -1,9 +1,14 @@
 /**
- * CodexPad 输入状态检测
- * CodexPad State Detection Example
- *
- * 本示例演示如何使用CodexPad手柄进行状态变化检测
- * This example demonstrates how to perform state change detection with CodexPad
+ * @~English
+ * @file inputs_detection.ino
+ * @example inputs_detection.ino
+ * @brief CodexPad input status detection example
+ */
+/**
+ * @~Chinese
+ * @file inputs_detection.ino
+ * @example inputs_detection.ino
+ * @brief CodexPad 输入状态检测示例
  */
 
 #include "codex_pad.h"
@@ -30,16 +35,16 @@ std::string ButtonToString(CodexPad::Button button) {
       return "Right";  // 右按钮 | RIGHT button
     }
     case CodexPad::Button::kSquareX: {
-      return "SquareX";  // 方形 或者 X 按钮 | SQUARE or X button
+      return "Square(X)";  // 方形 或者 X 按钮 | SQUARE or X button
     }
     case CodexPad::Button::kTriangleY: {
-      return "TriangleY";  // 三角 或者 Y 按钮 | TRIANGLE or Y button
+      return "Triangle(Y)";  // 三角 或者 Y 按钮 | TRIANGLE or Y button
     }
     case CodexPad::Button::kCrossA: {
-      return "CrossA";  // 叉型 或者 A 按钮 | CROSS or A button
+      return "Cross(A)";  // 叉型 或者 A 按钮 | CROSS or A button
     }
     case CodexPad::Button::kCircleB: {
-      return "CircleB";  // 圆形 或者 B 按钮 | CIRCLE or B button
+      return "Circle(B)";  // 圆形 或者 B 按钮 | CIRCLE or B button
     }
     case CodexPad::Button::kL1: {
       return "L1";  // L1按钮 | L1 button

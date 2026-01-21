@@ -47,7 +47,7 @@
 
 ### 安装 CodexPad 库
 
-- 请前往 GitHub Releases 页面（[https://github.com/CodexPad/codex_pad_arduino_lib/releases](https://github.com/CodexPad/codex_pad_arduino_lib/releases)）下载最新的zip文件。
+- 下载链接：<https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v1.0.3.zip>
 - 在 Arduino IDE 中，通过**项目** → **加载库** → **添加 .ZIP 库...** 来安装此文件。
 
 ### 编译并上传示例程序
@@ -65,8 +65,12 @@
 
 ### 输入状态检测示例
 
-- **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **state_detection** 找到该示例。
+- **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **inputs_detection** 找到该示例。
 - **运行结果**：示例运行后会自动连接对应的手柄，连接成功后开发板串口将不再持续打印所有数据，而是**仅在按键状态发生变化时（如按键被按下或释放）输出对应的事件信息**。
+
+## API说明
+
+详情链接：<https://codexpad.github.io/codex_pad_arduino_lib/html/zh-CN/annotated.html>
 
 ## 许可证
 
