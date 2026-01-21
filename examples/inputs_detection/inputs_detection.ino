@@ -179,7 +179,7 @@ void loop() {
       g_codex_pad.HasAxisValueChanged(CodexPad::Axis::kRightStickY, kAxisValueChangeThreshold)) {
     // 打印摇杆轴的当前值（0-255）
     // Print current joystick axis values (0-255)
-    printf("Left stick axis values: [X: %" PRIu8 "], [Y: %" PRIu8 "], Right stick axis values: [X: %" PRIu8 "], [Y: %" PRIu8 "]\n",
+    printf("L(%3" PRIu8 ", %3" PRIu8 "), R(%3" PRIu8 ", %3" PRIu8 ")\n",
            g_codex_pad.axis_value(CodexPad::Axis::kLeftStickX),   // 左摇杆X轴当前值 | Left stick X axis current value
            g_codex_pad.axis_value(CodexPad::Axis::kLeftStickY),   // 左摇杆Y轴当前值 | Left stick Y axis current value
            g_codex_pad.axis_value(CodexPad::Axis::kRightStickX),  // 右摇杆X轴当前值 | Right stick X axis current value

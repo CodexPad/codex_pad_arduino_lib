@@ -69,9 +69,11 @@ bool CodexPad::Connect(const uint32_t timeout_ms) {
   }
 
   ble_client_ = BLEDevice::createClient();
-
-  const auto ret = ble_client_->connect(*address_, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : pdMS_TO_TICKS(timeout_ms));
-
+#ifdef BLE_ADDR_PUBLIC
+  const auto ret = ble_client_->connect(*address_, BLE_ADDR_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+#else
+  const auto ret = ble_client_->connect(*address_, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+#endif
   device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid).c_str();
 
   const auto device_info_service = ble_client_->getService(kDeviceInfoServiceUuid);

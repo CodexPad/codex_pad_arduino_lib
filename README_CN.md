@@ -4,12 +4,25 @@
 
 ## 概述
 
-本库为**CodexPad**系列手柄提供的 **Arduino 平台专用库**，支持**ESP32**/**ESP32-S3**/**ESP32-C3**等开发板通过蓝牙连接并读取CodexPad手柄的所有按键与摇杆输入状态。关于 CodexPad 产品的详细信息，请查阅以下产品文档。
+本库为**CodexPad**系列手柄提供的 **Arduino 平台专用库**，支持ESP32系列开发板通过蓝牙连接并读取CodexPad手柄的所有按键与摇杆输入状态。关于 CodexPad 产品的详细信息，请查阅以下产品文档。
 
 | CodexPad型号 | 链接 |
 | :--- | :--- |
 | CodexPad-C10 | <https://github.com/CodexPad/codex_pad_c10> |
 | CodexPad-S10 | |
+
+## 支持的MCU型号
+
+| 支持的MCU型号 |
+| :--- |
+| ESP32 |
+| ESP32-S2 |
+| ESP32-S3 |
+| ESP32-C3 |
+| ESP32-C5 |
+| ESP32-C6 |
+| ESP32-H2 |
+| ESP32-P4 |
 
 ## 特性
 
