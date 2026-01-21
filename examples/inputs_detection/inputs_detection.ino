@@ -84,13 +84,12 @@ void setup() {
   Serial.begin(115200);
   printf("Init\n");
 
-  g_codex_pad.Init();
-
+  g_codex_pad.Init("E4:66:E5:A2:24:5D");
   printf("Begin connecting\n");
 
   // 连接到指定MAC地址的手柄
   // Connect to the CodexPad with specified MAC address
-  const auto ret = g_codex_pad.Connect("E4:66:E5:A2:24:5D");
+  const auto ret = g_codex_pad.Connect();
 
   // 检查连接结果
   // Check connection result
@@ -121,6 +120,12 @@ void loop() {
   // This method processes all received Bluetooth packets, delays will cause data loss and response lag
   // For real-time control applications, high-frequency calls are essential to ensure prompt response to gamepad input
   g_codex_pad.Update();
+
+  if (!g_codex_pad.is_connected()) {
+    printf("disconnected, reconnecting...\n");
+    const auto ret = g_codex_pad.Connect();
+    printf("connected, ret: %d\n", ret);
+  }
 
   // 检测所有按钮的状态变化
   // 使用pressed(), released(), holding()方法检测按钮的不同状态

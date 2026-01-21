@@ -28,33 +28,49 @@ const BLEUUID kManufacturerNameCharacteristicUuid(static_cast<uint16_t>(0x2A29))
 bool HasAxisValueChangedSignificantly(const int16_t prev_value, const int16_t current_value, const uint8_t threshold) {
   return prev_value != current_value && (current_value == 0 || current_value == 255 || std::abs(current_value - prev_value) >= threshold);
 }
+
 }  // namespace
 
 CodexPad::CodexPad() {
 }
 
-void CodexPad::Init() {
+CodexPad::~CodexPad() {
   if (ble_client_ != nullptr) {
+    ble_client_->disconnect();
+    delete ble_client_;
+  }
+
+  if (address_ != nullptr) {
+    delete address_;
+  }
+}
+
+void CodexPad::Init(const std::string& mac_address) {
+  if (address_ != nullptr) {
     return;
   }
+  address_ = new BLEAddress(mac_address.c_str());
   if (!BLEDevice::getInitialized()) {
     BLEDevice::init("");
   }
-  ble_client_ = BLEDevice::createClient();
 }
 
-bool CodexPad::Connect(const std::string& mac_address) {
-  // log_i("Connect %s", mac_address.c_str());
-  if (ble_client_ == nullptr) {
+bool CodexPad::Connect(const uint32_t timeout_ms) {
+  if (ble_client_ != nullptr) {
+    ble_client_->disconnect();
+    delete ble_client_;
+    ble_client_ = nullptr;
+  }
+
+  if (address_ == nullptr) {
+    printf("FATAL: must call Init first\n");
+    abort();
     return false;
   }
 
-  ble_client_->disconnect();
-  const auto ret = ble_client_->connect(BLEAddress(mac_address.c_str()));
-  if (!ret) {
-    // log_e("connect failed");
-    return ret;
-  }
+  ble_client_ = BLEDevice::createClient();
+
+  const auto ret = ble_client_->connect(*address_, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : pdMS_TO_TICKS(timeout_ms));
 
   device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid).c_str();
 
@@ -99,22 +115,23 @@ Failed:
 
 void CodexPad::Update() {
   prev_inputs_ = current_inputs_;
-  {
+  do {
     std::lock_guard<std::mutex> l(mutex_);
     if (inputs_queue_.empty()) {
-      return;
+      break;
     }
     current_inputs_ = std::move(inputs_queue_.front());
     inputs_queue_.pop();
-  }
-}
+  } while (false);
 
-bool CodexPad::is_connected() {
   if (ble_client_ == nullptr) {
-    return false;
+    return;
   }
-
-  return ble_client_->isConnected();
+  const auto current_connection_state = ble_client_->isConnected();
+  if (connection_state_ != current_connection_state) {
+    connection_state_ = current_connection_state;
+    // TODO:
+  }
 }
 
 void CodexPad::set_tx_power(const CodexPad::TxPower tx_power) {

@@ -2,6 +2,7 @@
 
 #include <BLEDevice.h>
 
+#include <functional>
 #include <mutex>
 #include <optional>
 #include <queue>
@@ -424,34 +425,35 @@ class CodexPad {
    * @~Chinese
    * @brief 析构函数
    */
-  ~CodexPad() = default;
+  ~CodexPad();
 
   /**
    * @~English
+   * @param[in] mac_address MAC address of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated
    * @brief Initialize
    */
   /**
    * @~Chinese
+   * @param[in] mac_address CodexPad的MAC地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔
    * @brief 初始化
    */
-  void Init();
+  void Init(const std::string& mac_address);
 
   /**
    * @~English
    * @brief Connect
-   * @param[in] mac_address MAC address of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated
+   * @param[in] timeout_ms Timeout in milliseconds
    * @retval true if connected successfully
    * @retval false if connection failed
-   */
+   * */
   /**
    * @~Chinese
    * @brief 连接
-   * @param[in] mac_address CodexPad的MAC地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔
+   * @param[in] timeout_ms 超时时间，单位毫秒
    * @retval true 连接成功
    * @retval false 连接失败
    */
-  bool Connect(const std::string& mac_address);
-
+  bool Connect(const uint32_t timeout_ms = UINT32_MAX);
   /**
    * @~English
    * @brief Update, need to be called in Loop
@@ -474,7 +476,9 @@ class CodexPad {
    * @retval true 已连接
    * @retval false 未连接
    */
-  bool is_connected();
+  inline bool is_connected() const {
+    return connection_state_;
+  }
 
   /**
    * @~English
@@ -682,7 +686,8 @@ class CodexPad {
 
   void OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify);
 
-  std::mutex mutex_;
+  mutable std::mutex mutex_;
+  BLEAddress* address_ = nullptr;
   BLEClient* ble_client_ = nullptr;
   std::string device_name_;
   std::string model_number_;
@@ -690,4 +695,5 @@ class CodexPad {
   Inputs prev_inputs_;
   Inputs current_inputs_;
   std::queue<Inputs> inputs_queue_;
+  bool connection_state_ = false;
 };
