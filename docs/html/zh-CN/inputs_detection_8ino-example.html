@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;1.0.4</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;1.0.5</span>
    </div>
   </td>
  </tr>
@@ -118,6 +118,7 @@ $(function(){initNavTree('inputs_detection_8ino-example.html',''); initResizable
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="class_codex_pad.html">CodexPad</a> g_codex_pad;</div>
+<div class="line"><span class="keyword">const</span> std::string kMacAddress(<span class="stringliteral">&quot;E4:66:E5:A2:24:5D&quot;</span>);</div>
 <div class="line"><span class="comment"></span> </div>
 <div class="line"><span class="comment">/**</span></div>
 <div class="line"><span class="comment"> * 将按钮枚举转换为可读的字符串名称</span></div>
@@ -187,12 +188,12 @@ $(function(){initNavTree('inputs_detection_8ino-example.html',''); initResizable
 <div class="line">  Serial.begin(115200);</div>
 <div class="line">  printf(<span class="stringliteral">&quot;Init\n&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  g_codex_pad.Init(<span class="stringliteral">&quot;E4:66:E5:A2:24:5D&quot;</span>);</div>
+<div class="line">  g_codex_pad.Init();</div>
 <div class="line">  printf(<span class="stringliteral">&quot;Begin connecting\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// 连接到指定MAC地址的手柄</span></div>
 <div class="line">  <span class="comment">// Connect to the CodexPad with specified MAC address</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect();</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect(kMacAddress);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// 检查连接结果</span></div>
 <div class="line">  <span class="comment">// Check connection result</span></div>
@@ -226,7 +227,7 @@ $(function(){initNavTree('inputs_detection_8ino-example.html',''); initResizable
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">if</span> (!g_codex_pad.is_connected()) {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;disconnected, reconnecting...\n&quot;</span>);</div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect();</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect(kMacAddress);</div>
 <div class="line">    printf(<span class="stringliteral">&quot;connected, ret: %d\n&quot;</span>, ret);</div>
 <div class="line">  }</div>
 <div class="line"> </div>

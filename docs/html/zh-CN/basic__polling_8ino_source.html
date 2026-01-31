@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;1.0.4</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;1.0.5</span>
    </div>
   </td>
  </tr>
@@ -116,97 +116,98 @@ $(function(){initNavTree('basic__polling_8ino_source.html',''); initResizable(tr
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><a class="code hl_class" href="class_codex_pad.html">CodexPad</a> g_codex_pad;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}  <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> setup() {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="comment">// 初始化串口通信，波特率115200</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="comment">// Initialize serial communication, baud rate 115200</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  Serial.begin(115200);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  printf(<span class="stringliteral">&quot;Init\n&quot;</span>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  g_codex_pad.Init(<span class="stringliteral">&quot;E4:66:E5:A2:24:5D&quot;</span>);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  printf(<span class="stringliteral">&quot;Begin connecting\n&quot;</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="comment">// 连接到指定MAC地址的手柄</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="comment">// Connect to the CodexPad with specified MAC address</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="comment">// 检查连接结果</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="comment">// Check connection result</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordflow">if</span> (ret) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    printf(<span class="stringliteral">&quot;Connected\n&quot;</span>);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    printf(<span class="stringliteral">&quot;Connect failed\n&quot;</span>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 连接失败，进入无限循环</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// Connection failed, enter infinite loop</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="comment">// 设置发射功率为0dBm</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="comment">// 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="comment">// Set transmission power to 0dBm</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="comment">// Transmission power affects communication range and power consumption:</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="comment">// Higher power provides longer range but consumes more battery</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="comment">// Choose appropriate power level based on your application to balance range and battery life</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  g_codex_pad.set_tx_power(<a class="code hl_enumvalue" href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> loop() {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="comment">// 重要：Update()方法必须在循环中尽可能频繁地调用，不能添加延时</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="comment">// 该方法负责处理所有接收到的蓝牙数据包，延时会导致数据丢失和响应延迟</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="comment">// 对于实时控制应用，必须保持高频率调用以确保及时响应手柄输入</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="comment">// Important: Update() method must be called as frequently as possible in the loop, no delays should be added</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="comment">// This method processes all received Bluetooth packets, delays will cause data loss and response lag</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="comment">// For real-time control applications, high-frequency calls are essential to ensure prompt response to gamepad input</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  g_codex_pad.Update();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordflow">if</span> (!g_codex_pad.is_connected()) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    printf(<span class="stringliteral">&quot;disconnected, reconnecting...\n&quot;</span>);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    printf(<span class="stringliteral">&quot;connected, ret: %d\n&quot;</span>, ret);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keyword">static</span> uint32_t s_print_time = 0;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordflow">if</span> (s_print_time == 0 || s_print_time + 30 &lt; millis()) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    s_print_time = millis();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    printf(</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="stringliteral">&quot;Up:%u, Down:%u, Left:%u, Right:%u, Square(X):%u, Triangle(Y):%u, Cross(A):%u, Circle(B):%u, L1:%u, L2:%u, L3:%u, R1:%u, R2:%u, &quot;</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="stringliteral">&quot;R3:%u, Select:%u, &quot;</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="stringliteral">&quot;Start:%u, Home:%u, L(X:%3u, Y:%3u), R(X:%3u, Y:%3u)\n&quot;</span>,</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// 获取各个按钮的状态，button_state()返回bool类型，true表示按下，false表示弹起</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// Get button states, button_state() returns bool type, true means pressed, false means released</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::Button::kUp</a>),</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6">CodexPad::Button::kDown</a>),</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82">CodexPad::Button::kLeft</a>),</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a">CodexPad::Button::kRight</a>),</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1">CodexPad::Button::kSquareX</a>),</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494">CodexPad::Button::kTriangleY</a>),</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f">CodexPad::Button::kCrossA</a>),</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa">CodexPad::Button::kCircleB</a>),</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84">CodexPad::Button::kL1</a>),</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9">CodexPad::Button::kL2</a>),</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a">CodexPad::Button::kL3</a>),</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b">CodexPad::Button::kR1</a>),</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870">CodexPad::Button::kR2</a>),</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55">CodexPad::Button::kR3</a>),</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b">CodexPad::Button::kSelect</a>),</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8">CodexPad::Button::kStart</a>),</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd">CodexPad::Button::kHome</a>),</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment">// 获取摇杆轴数据，axis_value()返回0~255的数值</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment">// 中间位置约为128，数值范围表示摇杆的偏移程度</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// Get joystick axis data, axis_value() returns value from 0 to 255</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">// Center position is around 128, values represent stick deflection</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::Axis::kLeftStickX</a>),</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">CodexPad::Axis::kLeftStickY</a>),</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">CodexPad::Axis::kRightStickX</a>),</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">CodexPad::Axis::kRightStickY</a>));</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  }</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">const</span> std::string kMacAddress(<span class="stringliteral">&quot;E4:66:E5:A2:24:5D&quot;</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}  <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">void</span> setup() {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="comment">// 初始化串口通信，波特率115200</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="comment">// Initialize serial communication, baud rate 115200</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  Serial.begin(115200);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  printf(<span class="stringliteral">&quot;Init\n&quot;</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  g_codex_pad.Init();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  printf(<span class="stringliteral">&quot;Begin connecting\n&quot;</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="comment">// 连接到指定MAC地址的手柄</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="comment">// Connect to the CodexPad with specified MAC address</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect(kMacAddress);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="comment">// 检查连接结果</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="comment">// Check connection result</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordflow">if</span> (ret) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    printf(<span class="stringliteral">&quot;Connected\n&quot;</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    printf(<span class="stringliteral">&quot;Connect failed\n&quot;</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// 连接失败，进入无限循环</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Connection failed, enter infinite loop</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// 设置发射功率为0dBm</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="comment">// 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="comment">// 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="comment">// Set transmission power to 0dBm</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="comment">// Transmission power affects communication range and power consumption:</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="comment">// Higher power provides longer range but consumes more battery</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="comment">// Choose appropriate power level based on your application to balance range and battery life</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  g_codex_pad.set_tx_power(<a class="code hl_enumvalue" href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> loop() {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="comment">// 重要：Update()方法必须在循环中尽可能频繁地调用，不能添加延时</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="comment">// 该方法负责处理所有接收到的蓝牙数据包，延时会导致数据丢失和响应延迟</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="comment">// 对于实时控制应用，必须保持高频率调用以确保及时响应手柄输入</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="comment">// Important: Update() method must be called as frequently as possible in the loop, no delays should be added</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="comment">// This method processes all received Bluetooth packets, delays will cause data loss and response lag</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="comment">// For real-time control applications, high-frequency calls are essential to ensure prompt response to gamepad input</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  g_codex_pad.Update();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordflow">if</span> (!g_codex_pad.is_connected()) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    printf(<span class="stringliteral">&quot;disconnected, reconnecting...\n&quot;</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">const</span> <span class="keyword">auto</span> ret = g_codex_pad.Connect(kMacAddress);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    printf(<span class="stringliteral">&quot;connected, ret: %d\n&quot;</span>, ret);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keyword">static</span> uint32_t s_print_time = 0;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">if</span> (s_print_time == 0 || s_print_time + 30 &lt; millis()) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    s_print_time = millis();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    printf(</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="stringliteral">&quot;Up:%u, Down:%u, Left:%u, Right:%u, Square(X):%u, Triangle(Y):%u, Cross(A):%u, Circle(B):%u, L1:%u, L2:%u, L3:%u, R1:%u, R2:%u, &quot;</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="stringliteral">&quot;R3:%u, Select:%u, &quot;</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="stringliteral">&quot;Start:%u, Home:%u, L(X:%3u, Y:%3u), R(X:%3u, Y:%3u)\n&quot;</span>,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// 获取各个按钮的状态，button_state()返回bool类型，true表示按下，false表示弹起</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// Get button states, button_state() returns bool type, true means pressed, false means released</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::Button::kUp</a>),</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6">CodexPad::Button::kDown</a>),</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82">CodexPad::Button::kLeft</a>),</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a">CodexPad::Button::kRight</a>),</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1">CodexPad::Button::kSquareX</a>),</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494">CodexPad::Button::kTriangleY</a>),</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f">CodexPad::Button::kCrossA</a>),</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa">CodexPad::Button::kCircleB</a>),</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84">CodexPad::Button::kL1</a>),</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9">CodexPad::Button::kL2</a>),</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a">CodexPad::Button::kL3</a>),</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b">CodexPad::Button::kR1</a>),</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870">CodexPad::Button::kR2</a>),</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55">CodexPad::Button::kR3</a>),</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b">CodexPad::Button::kSelect</a>),</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8">CodexPad::Button::kStart</a>),</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        g_codex_pad.button_state(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd">CodexPad::Button::kHome</a>),</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment">// 获取摇杆轴数据，axis_value()返回0~255的数值</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// 中间位置约为128，数值范围表示摇杆的偏移程度</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">// Get joystick axis data, axis_value() returns value from 0 to 255</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="comment">// Center position is around 128, values represent stick deflection</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::Axis::kLeftStickX</a>),</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">CodexPad::Axis::kLeftStickY</a>),</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">CodexPad::Axis::kRightStickX</a>),</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">CodexPad::Axis::kRightStickY</a>));</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
 <div class="ttc" id="aclass_codex_pad_html"><div class="ttname"><a href="class_codex_pad.html">CodexPad</a></div><div class="ttdoc">CodexPad主类</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00022">codex_pad.h:22</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">CodexPad::kLeftStickY</a></div><div class="ttdeci">@ kLeftStickY</div><div class="ttdoc">左摇杆Y轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00387">codex_pad.h:387</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">CodexPad::kRightStickY</a></div><div class="ttdeci">@ kRightStickY</div><div class="ttdoc">右摇杆Y轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00407">codex_pad.h:407</a></div></div>

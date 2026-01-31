@@ -51,4 +51,4 @@ var menudata={children:[
 {text:"File List",url:"files.html"}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"CodexPad_v1.0.4.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.4.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.4.zip"}]}]}
+{text:"CodexPad_v1.0.5.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip"}]}]}

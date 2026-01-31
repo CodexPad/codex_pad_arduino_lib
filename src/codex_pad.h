@@ -429,19 +429,18 @@ class CodexPad {
 
   /**
    * @~English
-   * @param[in] mac_address MAC address of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated
    * @brief Initialize
    */
   /**
    * @~Chinese
-   * @param[in] mac_address CodexPad的MAC地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔
    * @brief 初始化
    */
-  void Init(const std::string& mac_address);
+  void Init();
 
   /**
    * @~English
    * @brief Connect
+   * @param[in] mac_address MAC address of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated
    * @param[in] timeout_ms Timeout in milliseconds
    * @retval true if connected successfully
    * @retval false if connection failed
@@ -450,10 +449,11 @@ class CodexPad {
    * @~Chinese
    * @brief 连接
    * @param[in] timeout_ms 超时时间，单位毫秒
+   * @param[in] mac_address CodexPad的MAC地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔
    * @retval true 连接成功
    * @retval false 连接失败
    */
-  bool Connect(const uint32_t timeout_ms = UINT32_MAX);
+  bool Connect(const std::string& mac_address, const uint32_t timeout_ms = UINT32_MAX);
   /**
    * @~English
    * @brief Update, need to be called in Loop
@@ -687,7 +687,7 @@ class CodexPad {
   void OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify);
 
   mutable std::mutex mutex_;
-  BLEAddress* address_ = nullptr;
+  BLEAddress address_;
   BLEClient* ble_client_ = nullptr;
   std::string device_name_;
   std::string model_number_;

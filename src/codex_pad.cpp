@@ -31,7 +31,7 @@ bool HasAxisValueChangedSignificantly(const int16_t prev_value, const int16_t cu
 
 }  // namespace
 
-CodexPad::CodexPad() {
+CodexPad::CodexPad() : address_("00:00:00:00:00:00") {
 }
 
 CodexPad::~CodexPad() {
@@ -39,40 +39,29 @@ CodexPad::~CodexPad() {
     ble_client_->disconnect();
     delete ble_client_;
   }
-
-  if (address_ != nullptr) {
-    delete address_;
-  }
 }
 
-void CodexPad::Init(const std::string& mac_address) {
-  if (address_ != nullptr) {
-    return;
-  }
-  address_ = new BLEAddress(mac_address.c_str());
+void CodexPad::Init() {
   if (!BLEDevice::getInitialized()) {
     BLEDevice::init("");
   }
 }
 
-bool CodexPad::Connect(const uint32_t timeout_ms) {
+bool CodexPad::Connect(const std::string& mac_address, const uint32_t timeout_ms) {
   if (ble_client_ != nullptr) {
     ble_client_->disconnect();
     delete ble_client_;
     ble_client_ = nullptr;
+    connection_state_ = false;
   }
 
-  if (address_ == nullptr) {
-    printf("FATAL: must call Init first\n");
-    abort();
-    return false;
-  }
+  address_ = BLEAddress(mac_address.c_str());
 
   ble_client_ = BLEDevice::createClient();
 #ifdef BLE_ADDR_PUBLIC
-  const auto ret = ble_client_->connect(*address_, BLE_ADDR_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+  const auto ret = ble_client_->connect(address_, BLE_ADDR_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
 #else
-  const auto ret = ble_client_->connect(*address_, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+  const auto ret = ble_client_->connect(address_, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
 #endif
   device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid).c_str();
 
@@ -106,11 +95,14 @@ bool CodexPad::Connect(const uint32_t timeout_ms) {
     goto Failed;
   }
 
+  connection_state_ = ble_client_->isConnected();
   return ret;
 
 Failed:
   if (ble_client_ != nullptr) {
     ble_client_->disconnect();
+    delete ble_client_;
+    ble_client_ = nullptr;
   }
   return false;
 }
@@ -127,8 +119,10 @@ void CodexPad::Update() {
   } while (false);
 
   if (ble_client_ == nullptr) {
+    connection_state_ = false;
     return;
   }
+
   const auto current_connection_state = ble_client_->isConnected();
   if (connection_state_ != current_connection_state) {
     connection_state_ = current_connection_state;

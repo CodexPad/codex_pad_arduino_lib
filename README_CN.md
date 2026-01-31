@@ -60,7 +60,7 @@
 
 ### 安装 CodexPad 库
 
-- 下载链接：<https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v1.0.3.zip>
+- 下载链接：<https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v1.0.5.zip>
 - 在 Arduino IDE 中，通过**项目** → **加载库** → **添加 .ZIP 库...** 来安装此文件。
 
 ### 编译并上传示例程序

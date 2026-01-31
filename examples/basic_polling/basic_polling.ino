@@ -15,6 +15,7 @@
 
 namespace {
 CodexPad g_codex_pad;
+const std::string kMacAddress("E4:66:E5:A2:24:5D");
 }  // namespace
 
 void setup() {
@@ -23,13 +24,13 @@ void setup() {
   Serial.begin(115200);
   printf("Init\n");
 
-  g_codex_pad.Init("E4:66:E5:A2:24:5D");
+  g_codex_pad.Init();
 
   printf("Begin connecting\n");
 
   // 连接到指定MAC地址的手柄
   // Connect to the CodexPad with specified MAC address
-  const auto ret = g_codex_pad.Connect();
+  const auto ret = g_codex_pad.Connect(kMacAddress);
 
   // 检查连接结果
   // Check connection result
@@ -63,7 +64,7 @@ void loop() {
 
   if (!g_codex_pad.is_connected()) {
     printf("disconnected, reconnecting...\n");
-    const auto ret = g_codex_pad.Connect();
+    const auto ret = g_codex_pad.Connect(kMacAddress);
     printf("connected, ret: %d\n", ret);
   }
 
