@@ -1,5 +1,8 @@
 #include "codex_pad.h"
 
+#include <memory>
+
+#include "WString.h"
 #include "esp_arduino_version.h"
 
 #if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 3, 0) && ESP_ARDUINO_VERSION <= ESP_ARDUINO_VERSION_VAL(3, 3, 2)
@@ -31,7 +34,7 @@ bool HasAxisValueChangedSignificantly(const int16_t prev_value, const int16_t cu
 
 }  // namespace
 
-CodexPad::CodexPad() : address_("00:00:00:00:00:00") {
+CodexPad::CodexPad() {
 }
 
 CodexPad::~CodexPad() {
@@ -48,66 +51,84 @@ void CodexPad::Init() {
 }
 
 bool CodexPad::Connect(const std::string& mac_address, const uint32_t timeout_ms) {
-  if (ble_client_ != nullptr) {
-    ble_client_->disconnect();
-    delete ble_client_;
-    ble_client_ = nullptr;
-    connection_state_ = false;
-  }
+  return Connect(BLEAddress(mac_address.c_str()), timeout_ms);
+}
 
-  address_ = BLEAddress(mac_address.c_str());
-
-  ble_client_ = BLEDevice::createClient();
-#ifdef BLE_ADDR_PUBLIC
-  const auto ret = ble_client_->connect(address_, BLE_ADDR_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
+  auto scanner = BLEDevice::getScan();
+  scanner->setActiveScan(true);  // active scan uses more power, but get results faster
+  scanner->setInterval(1000);
+  scanner->setWindow(999);  // less or equal setInterval value
+#if ESP_ARDUINO_VERSION_MAJOR <= 2
+  auto scan_results = scanner->start(1, false);
+  auto result = &scan_results;
 #else
-  const auto ret = ble_client_->connect(address_, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+  auto result = scanner->start(1, false);
 #endif
-  device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid).c_str();
+  int32_t rssi = INT16_MIN;
+  std::unique_ptr<BLEAddress> mac_address;
 
-  const auto device_info_service = ble_client_->getService(kDeviceInfoServiceUuid);
-  if (device_info_service != nullptr) {
-    if (auto characteristic = device_info_service->getCharacteristic(kModelNumberCharacteristicUuid); characteristic != nullptr) {
-      model_number_ = characteristic->readValue().c_str();
-    }
-    if (auto characteristic = device_info_service->getCharacteristic(kFirmwareRevisionCharacteristicUuid); characteristic != nullptr) {
-      const auto firmware_revision = characteristic->readValue();
-      for (uint8_t i = 0; i < sizeof(device_firmware_version_); i++) {
-        device_firmware_version_[i] = firmware_revision[i];
+#pragma pack(push, 1)
+  struct alignas(1) ManufacturerData {
+    uint16_t company_id = 0xFFFF;
+    uint8_t header[8] = {'C', 'o', 'd', 'e', 'x', 'P', 'a', 'd'};
+    uint8_t version_major = 0;
+    uint8_t version_minor = 0;
+    uint8_t version_patch = 0;
+    uint32_t button_state = 0;
+  };
+#pragma pack(pop)
+
+  if (result != nullptr) {
+    for (size_t i = 0; i < result->getCount(); i++) {
+      auto device = result->getDevice(i);
+      if (device.haveName() &&
+#if ESP_ARDUINO_VERSION_MAJOR <= 2
+          String(device.getName().c_str()).startsWith("CodexPad-")
+#else
+          device.getName().startsWith("CodexPad-")
+#endif
+          && device.haveRSSI() && device.haveManufacturerData()) {
+        const auto manufacturer_data = device.getManufacturerData();
+        if (manufacturer_data.length() >= sizeof(ManufacturerData)) {
+          const auto data = reinterpret_cast<const ManufacturerData*>(manufacturer_data.c_str());
+          if (data->company_id == 0xFFFF && memcmp(data->header, "CodexPad", 8) == 0 && data->button_state == button_mask &&
+              device.getRSSI() > rssi) {
+            rssi = device.getRSSI();
+#if __cplusplus >= 201402L
+            mac_address = std::make_unique<BLEAddress>(device.getAddress());
+#else
+            mac_address = std::unique_ptr<BLEAddress>(new BLEAddress(device.getAddress()));
+#endif
+          }
+        }
       }
     }
-  } else {
-    goto Failed;
   }
 
-  if (auto service = ble_client_->getService(kInputsServiceUuid); service != nullptr) {
-    if (auto characteristic = service->getCharacteristic(kInputsCharacteristicUuid); characteristic != nullptr) {
-      if (characteristic->canNotify()) {
-        characteristic->registerForNotify(
-            std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4), true);
-      } else {
-        goto Failed;
-      }
-    } else {
-      goto Failed;
-    }
-  } else {
-    goto Failed;
-  }
+  scanner->clearResults();
 
-  connection_state_ = ble_client_->isConnected();
-  return ret;
-
-Failed:
-  if (ble_client_ != nullptr) {
-    ble_client_->disconnect();
-    delete ble_client_;
-    ble_client_ = nullptr;
-  }
-  return false;
+  return mac_address ? Connect(*mac_address, 2000) : false;
 }
 
 void CodexPad::Update() {
+  if (ble_client_ == nullptr) {
+    return;
+  }
+
+  const auto current_connection_state = ble_client_->isConnected();
+  if (connected_ != current_connection_state) {
+    connected_ = current_connection_state;
+    if (!connected_) {
+      Reset();
+      return;
+    }
+  }
+
+  if (!connected_) {
+    return;
+  }
+
   prev_inputs_ = current_inputs_;
   do {
     std::lock_guard<std::mutex> l(mutex_);
@@ -117,17 +138,6 @@ void CodexPad::Update() {
     current_inputs_ = std::move(inputs_queue_.front());
     inputs_queue_.pop();
   } while (false);
-
-  if (ble_client_ == nullptr) {
-    connection_state_ = false;
-    return;
-  }
-
-  const auto current_connection_state = ble_client_->isConnected();
-  if (connection_state_ != current_connection_state) {
-    connection_state_ = current_connection_state;
-    // TODO:
-  }
 }
 
 void CodexPad::set_tx_power(const CodexPad::TxPower tx_power) {
@@ -159,7 +169,7 @@ uint32_t CodexPad::button_states() const {
 }
 
 uint8_t CodexPad::axis_value(const Axis axis) const {
-  return current_inputs_.axis_values[axis];
+  return current_inputs_.axis_values[static_cast<size_t>(axis)];
 }
 
 std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
@@ -171,7 +181,71 @@ std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
 }
 
 bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) const {
-  return HasAxisValueChangedSignificantly(current_inputs_.axis_values[axis], prev_inputs_.axis_values[axis], threshold);
+  return HasAxisValueChangedSignificantly(
+      current_inputs_.axis_values[static_cast<size_t>(axis)], prev_inputs_.axis_values[static_cast<size_t>(axis)], threshold);
+}
+
+bool CodexPad::Connect(const BLEAddress& address, [[maybe_unused]] const uint32_t timeout_ms) {
+  Reset();
+  BLERemoteService* device_info_service = nullptr;
+  ble_client_ = BLEDevice::createClient();
+
+#if ESP_ARDUINO_VERSION_MAJOR <= 2
+  const auto ret = ble_client_->connect(address, BLE_ADDR_TYPE_PUBLIC);
+#else
+#ifdef BLE_ADDR_PUBLIC
+  const auto ret = ble_client_->connect(address, BLE_ADDR_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+#else
+  const auto ret = ble_client_->connect(address, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
+#endif
+#endif
+
+  if (!ret) {
+    goto Failed;
+  }
+
+  device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid).c_str();
+  device_info_service = ble_client_->getService(kDeviceInfoServiceUuid);
+  if (device_info_service != nullptr) {
+    if (auto characteristic = device_info_service->getCharacteristic(kModelNumberCharacteristicUuid); characteristic != nullptr) {
+      model_number_ = characteristic->readValue().c_str();
+    }
+    if (auto characteristic = device_info_service->getCharacteristic(kFirmwareRevisionCharacteristicUuid); characteristic != nullptr) {
+      const auto firmware_revision = characteristic->readValue();
+      for (uint8_t i = 0; i < sizeof(device_firmware_version_); i++) {
+        device_firmware_version_[i] = firmware_revision[i];
+      }
+    }
+  } else {
+    goto Failed;
+  }
+
+  if (auto service = ble_client_->getService(kInputsServiceUuid); service != nullptr) {
+    if (auto characteristic = service->getCharacteristic(kInputsCharacteristicUuid); characteristic != nullptr) {
+      if (characteristic->canNotify()) {
+        characteristic->registerForNotify(
+            std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4), true);
+      } else {
+        goto Failed;
+      }
+    } else {
+      goto Failed;
+    }
+  } else {
+    goto Failed;
+  }
+
+  connected_ = ble_client_->isConnected();
+  return ret;
+
+Failed:
+  if (ble_client_ != nullptr) {
+    ble_client_->disconnect();
+    delete ble_client_;
+    ble_client_ = nullptr;
+  }
+  connected_ = false;
+  return false;
 }
 
 void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify) {
@@ -189,4 +263,21 @@ void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, 
     memcpy(&inputs, data, sizeof(inputs));
     inputs_queue_.emplace(std::move(inputs));
   }
+}
+
+void CodexPad::Reset() {
+  if (ble_client_ != nullptr) {
+    ble_client_->disconnect();
+    delete ble_client_;
+    ble_client_ = nullptr;
+  }
+
+  device_name_.clear();
+  model_number_.clear();
+  memset(device_firmware_version_, 0, sizeof(device_firmware_version_));
+  connected_ = false;
+  prev_inputs_ = {};
+  current_inputs_ = {};
+  std::lock_guard<std::mutex> l(mutex_);
+  inputs_queue_ = {};
 }

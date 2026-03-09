@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;1.0.5</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;2.0.0</span>
    </div>
   </td>
  </tr>
@@ -99,6 +99,7 @@ $(function(){initNavTree('class_codex_pad.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
 <a href="#pub-static-attribs">静态 Public 属性</a> &#124;
 <a href="class_codex_pad-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">CodexPad类 参考</div></div>
@@ -132,35 +133,35 @@ Public 类型</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:add2a85d4d2df117adb74c05604e86354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b2afe87b7e691d4df4d9aadb204d6ad" id="r_a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> : uint32_t { <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">kUp</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 0
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6">kDown</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 1
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82">kLeft</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 2
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a">kRight</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 3
+<tr class="memitem:a4b2afe87b7e691d4df4d9aadb204d6ad" id="r_a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> : uint32_t { <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">kUp</a> = uint32_t{1} &lt;&lt; 0
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e">kDown</a> = uint32_t{1} &lt;&lt; 1
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28">kLeft</a> = uint32_t{1} &lt;&lt; 2
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9">kRight</a> = uint32_t{1} &lt;&lt; 3
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1">kSquareX</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 4
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494">kTriangleY</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 5
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f">kCrossA</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 6
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa">kCircleB</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 7
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b">kSquareX</a> = uint32_t{1} &lt;&lt; 4
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">kTriangleY</a> = uint32_t{1} &lt;&lt; 5
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">kCrossA</a> = uint32_t{1} &lt;&lt; 6
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48">kCircleB</a> = uint32_t{1} &lt;&lt; 7
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84">kL1</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 8
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9">kL2</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 9
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a">kL3</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 10
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b">kR1</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 11
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510">kL1</a> = uint32_t{1} &lt;&lt; 8
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a">kL2</a> = uint32_t{1} &lt;&lt; 9
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3">kL3</a> = uint32_t{1} &lt;&lt; 10
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4">kR1</a> = uint32_t{1} &lt;&lt; 11
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870">kR2</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 12
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55">kR3</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 13
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b">kSelect</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 14
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8">kStart</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 15
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d">kR2</a> = uint32_t{1} &lt;&lt; 12
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f">kR3</a> = uint32_t{1} &lt;&lt; 13
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0">kSelect</a> = uint32_t{1} &lt;&lt; 14
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">kStart</a> = uint32_t{1} &lt;&lt; 15
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd">kHome</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 16
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2">kHome</a> = uint32_t{1} &lt;&lt; 16
 <br />
  }</td></tr>
 <tr class="separator:a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25cd7b0da32cb23953ce3703cf23a8e0" id="r_a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> : size_t { <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">kLeftStickX</a>
-, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">kLeftStickY</a>
-, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">kRightStickX</a>
-, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">kRightStickY</a>
+<tr class="memitem:a25cd7b0da32cb23953ce3703cf23a8e0" id="r_a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> : size_t { <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">kLeftStickX</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880">kLeftStickY</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99">kRightStickX</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6">kRightStickY</a>
  }</td></tr>
 <tr class="separator:a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -178,6 +179,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:ac8b9cbf4496abfed8f20eaa294d50071" id="r_ac8b9cbf4496abfed8f20eaa294d50071"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8b9cbf4496abfed8f20eaa294d50071">Connect</a> (const std::string &amp;mac_address, const uint32_t timeout_ms=UINT32_MAX)</td></tr>
 <tr class="memdesc:ac8b9cbf4496abfed8f20eaa294d50071"><td class="mdescLeft">&#160;</td><td class="mdescRight">连接  <br /></td></tr>
 <tr class="separator:ac8b9cbf4496abfed8f20eaa294d50071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192ddc1f5996b2db723d167829aced6f" id="r_a192ddc1f5996b2db723d167829aced6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192ddc1f5996b2db723d167829aced6f">ScanAndConnect</a> (const uint32_t button_mask)</td></tr>
+<tr class="memdesc:a192ddc1f5996b2db723d167829aced6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">扫描附近的 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 设备，并自动连接到一个按键状态与指定掩码匹配的设备。  <br /></td></tr>
+<tr class="separator:a192ddc1f5996b2db723d167829aced6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46edc79a0e38e9fbc0e513d035cf0eb" id="r_ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae46edc79a0e38e9fbc0e513d035cf0eb">Update</a> ()</td></tr>
 <tr class="memdesc:ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新，需要在Loop中不断调用  <br /></td></tr>
 <tr class="separator:ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,15 +222,27 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a96196750b082f04f0fc5e95cf0374f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">查询轴值是否发生变化  <br /></td></tr>
 <tr class="separator:a96196750b082f04f0fc5e95cf0374f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a997aa53899537c03097771d0876e6a02" id="r_a997aa53899537c03097771d0876e6a02"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a997aa53899537c03097771d0876e6a02">ButtonMask</a> ()</td></tr>
+<tr class="separator:a997aa53899537c03097771d0876e6a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a4fd5f267ca580c5da3a5b19ad44a4" id="r_a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="memTemplParams" colspan="2">template&lt;typename FirstButton, typename... RestButtons&gt; </td></tr>
+<tr class="memitem:a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="memTemplItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a57a4fd5f267ca580c5da3a5b19ad44a4">ButtonMask</a> (FirstButton first, RestButtons... rest)</td></tr>
+<tr class="memdesc:a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">将多个按键标识符组合成一个32位的按钮掩码。  <br /></td></tr>
+<tr class="separator:a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静态 Public 属性</h2></td></tr>
 <tr class="memitem:a3f7424f32c819a7e589d1a797ac0965d" id="r_a3f7424f32c819a7e589d1a797ac0965d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a> = 4</td></tr>
 <tr class="memdesc:a3f7424f32c819a7e589d1a797ac0965d"><td class="mdescLeft">&#160;</td><td class="mdescRight">轴值数量  <br /></td></tr>
 <tr class="separator:a3f7424f32c819a7e589d1a797ac0965d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b17edc141e27c50b1756c8d6146f1d" id="r_a96b17edc141e27c50b1756c8d6146f1d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96b17edc141e27c50b1756c8d6146f1d">kAxisCenter</a> = 0x80</td></tr>
+<tr class="memdesc:a96b17edc141e27c50b1756c8d6146f1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">轴中心值  <br /></td></tr>
+<tr class="separator:a96b17edc141e27c50b1756c8d6146f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>CodexPad主类 </p>
-<dl class="section examples"><dt>示例</dt><dd><a class="el" href="basic_polling_8ino-example.html#_a0">basic_polling.ino</a> , 以及 <a class="el" href="inputs_detection_8ino-example.html#_a0">inputs_detection.ino</a>.</dd>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="basic_polling_8ino-example.html#_a0">basic_polling.ino</a>, <a class="el" href="inputs_detection_8ino-example.html#_a0">inputs_detection.ino</a> , 以及 <a class="el" href="scan_and_connect_8ino-example.html#_a0">scan_and_connect.ino</a>.</dd>
 </dl>
 
 <p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00022">22</a> 行定义.</p>
@@ -236,24 +252,32 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">CodexPad::Axis</a> : size_t</td>
+          <td class="memname">enum class <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">CodexPad::Axis</a> : size_t</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d" name="a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d"></a>kLeftStickX&#160;</td><td class="fielddoc"><p>左摇杆X轴 </p>
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a" name="a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a"></a>kLeftStickX&#160;</td><td class="fielddoc"><p>左摇杆X轴 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad" name="a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad"></a>kLeftStickY&#160;</td><td class="fielddoc"><p>左摇杆Y轴 </p>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880" name="a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880"></a>kLeftStickY&#160;</td><td class="fielddoc"><p>左摇杆Y轴 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690" name="a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690"></a>kRightStickX&#160;</td><td class="fielddoc"><p>右摇杆X轴 </p>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99" name="a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99"></a>kRightStickX&#160;</td><td class="fielddoc"><p>右摇杆X轴 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a" name="a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a"></a>kRightStickY&#160;</td><td class="fielddoc"><p>右摇杆Y轴 </p>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6" name="a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6"></a>kRightStickY&#160;</td><td class="fielddoc"><p>右摇杆Y轴 </p>
 </td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00368">368</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00485">485</a> 行定义.</p>
 
 </div>
 </div>
@@ -262,50 +286,58 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">CodexPad::Button</a> : uint32_t</td>
+          <td class="memname">enum class <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">CodexPad::Button</a> : uint32_t</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6" name="a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6"></a>kUp&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 0&#160;</td><td class="fielddoc"><p>上 </p>
+<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5" name="a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5"></a>kUp&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 0&#160;</td><td class="fielddoc"><p>上 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6" name="a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6"></a>kDown&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 1&#160;</td><td class="fielddoc"><p>下 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e" name="a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e"></a>kDown&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 1&#160;</td><td class="fielddoc"><p>下 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82" name="a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82"></a>kLeft&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 2&#160;</td><td class="fielddoc"><p>左 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28" name="a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28"></a>kLeft&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 2&#160;</td><td class="fielddoc"><p>左 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a" name="a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a"></a>kRight&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 3&#160;</td><td class="fielddoc"><p>右 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9" name="a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9"></a>kRight&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 3&#160;</td><td class="fielddoc"><p>右 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1" name="a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1"></a>kSquareX&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 4&#160;</td><td class="fielddoc"><p>圆形或者X </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b" name="a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b"></a>kSquareX&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 4&#160;</td><td class="fielddoc"><p>方形或者X </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494" name="a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494"></a>kTriangleY&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 5&#160;</td><td class="fielddoc"><p>三角形或者Y </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837" name="a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837"></a>kTriangleY&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 5&#160;</td><td class="fielddoc"><p>三角形或者Y </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f" name="a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f"></a>kCrossA&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 6&#160;</td><td class="fielddoc"><p>叉或者A </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25" name="a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25"></a>kCrossA&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 6&#160;</td><td class="fielddoc"><p>叉或者A </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa" name="a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa"></a>kCircleB&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 7&#160;</td><td class="fielddoc"><p>圆形或者B </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48" name="a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48"></a>kCircleB&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 7&#160;</td><td class="fielddoc"><p>圆形或者B </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84" name="a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84"></a>kL1&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 8&#160;</td><td class="fielddoc"><p>L1 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510" name="a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510"></a>kL1&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 8&#160;</td><td class="fielddoc"><p>L1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9" name="a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9"></a>kL2&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 9&#160;</td><td class="fielddoc"><p>L2 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a" name="a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a"></a>kL2&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 9&#160;</td><td class="fielddoc"><p>L2 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a" name="a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a"></a>kL3&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 10&#160;</td><td class="fielddoc"><p>L3 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3" name="a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3"></a>kL3&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 10&#160;</td><td class="fielddoc"><p>L3 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b" name="a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b"></a>kR1&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 11&#160;</td><td class="fielddoc"><p>R1 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4" name="a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4"></a>kR1&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 11&#160;</td><td class="fielddoc"><p>R1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870" name="a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870"></a>kR2&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 12&#160;</td><td class="fielddoc"><p>R2 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d" name="a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d"></a>kR2&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 12&#160;</td><td class="fielddoc"><p>R2 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55" name="a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55"></a>kR3&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 13&#160;</td><td class="fielddoc"><p>R3 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f" name="a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f"></a>kR3&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 13&#160;</td><td class="fielddoc"><p>R3 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b" name="a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b"></a>kSelect&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 14&#160;</td><td class="fielddoc"><p>选择 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0" name="a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0"></a>kSelect&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 14&#160;</td><td class="fielddoc"><p>选择 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8" name="a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8"></a>kStart&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 15&#160;</td><td class="fielddoc"><p>开始 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d" name="a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d"></a>kStart&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 15&#160;</td><td class="fielddoc"><p>开始 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd" name="a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd"></a>kHome&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 16&#160;</td><td class="fielddoc"><p>首页 </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2" name="a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2"></a>kHome&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 16&#160;</td><td class="fielddoc"><p>首页 </p>
 </td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00186">186</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00303">303</a> 行定义.</p>
 
 </div>
 </div>
@@ -329,35 +361,35 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e" name="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e"></a>kMinus16dBm&#160;</td><td class="fieldinit">-16&#160;</td><td class="fielddoc"><p>-16dBm </p>
+<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e" name="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e"></a>kMinus16dBm&#160;</td><td class="fieldinit">-16&#160;</td><td class="fielddoc"><p>-16 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d" name="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d"></a>kMinus12dBm&#160;</td><td class="fieldinit">-12&#160;</td><td class="fielddoc"><p>-12dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d" name="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d"></a>kMinus12dBm&#160;</td><td class="fieldinit">-12&#160;</td><td class="fielddoc"><p>-12 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a" name="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a"></a>kMinus8dBm&#160;</td><td class="fieldinit">-8&#160;</td><td class="fielddoc"><p>-8dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a" name="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a"></a>kMinus8dBm&#160;</td><td class="fieldinit">-8&#160;</td><td class="fielddoc"><p>-8 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e" name="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e"></a>kMinus5dBm&#160;</td><td class="fieldinit">-5&#160;</td><td class="fielddoc"><p>-5dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e" name="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e"></a>kMinus5dBm&#160;</td><td class="fieldinit">-5&#160;</td><td class="fielddoc"><p>-5 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32" name="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32"></a>kMinus3dBm&#160;</td><td class="fieldinit">-3&#160;</td><td class="fielddoc"><p>-3dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32" name="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32"></a>kMinus3dBm&#160;</td><td class="fieldinit">-3&#160;</td><td class="fielddoc"><p>-3 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82" name="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82"></a>kMinus1dBm&#160;</td><td class="fieldinit">-1&#160;</td><td class="fielddoc"><p>-1dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82" name="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82"></a>kMinus1dBm&#160;</td><td class="fieldinit">-1&#160;</td><td class="fielddoc"><p>-1 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b" name="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"></a>k0dBm&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"><p>0dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b" name="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"></a>k0dBm&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"><p>0 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb" name="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb"></a>k1dBm&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"><p>1dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb" name="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb"></a>k1dBm&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"><p>1 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37" name="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37"></a>k2dBm&#160;</td><td class="fieldinit">2&#160;</td><td class="fielddoc"><p>2dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37" name="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37"></a>k2dBm&#160;</td><td class="fieldinit">2&#160;</td><td class="fielddoc"><p>2 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c" name="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c"></a>k3dBm&#160;</td><td class="fieldinit">3&#160;</td><td class="fielddoc"><p>3dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c" name="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c"></a>k3dBm&#160;</td><td class="fieldinit">3&#160;</td><td class="fielddoc"><p>3 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0" name="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0"></a>k4dBm&#160;</td><td class="fieldinit">4&#160;</td><td class="fielddoc"><p>4dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0" name="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0"></a>k4dBm&#160;</td><td class="fieldinit">4&#160;</td><td class="fielddoc"><p>4 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f" name="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f"></a>k5dBm&#160;</td><td class="fieldinit">5&#160;</td><td class="fielddoc"><p>5dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f" name="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f"></a>k5dBm&#160;</td><td class="fieldinit">5&#160;</td><td class="fielddoc"><p>5 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a" name="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a"></a>k6dBm&#160;</td><td class="fieldinit">6&#160;</td><td class="fielddoc"><p>6dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a" name="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a"></a>k6dBm&#160;</td><td class="fieldinit">6&#160;</td><td class="fielddoc"><p>6 dBm </p>
 </td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00044">44</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00161">161</a> 行定义.</p>
 
 </div>
 </div>
@@ -379,7 +411,7 @@ Public 成员函数</h2></td></tr>
 
 <p>构造函数 </p>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00034">34</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00037">37</a> 行定义.</p>
 
 </div>
 </div>
@@ -400,7 +432,7 @@ Public 成员函数</h2></td></tr>
 
 <p>析构函数 </p>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00037">37</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00040">40</a> 行定义.</p>
 
 </div>
 </div>
@@ -429,7 +461,7 @@ Public 成员函数</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>轴值，范围 0~255 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00161">161</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00171">171</a> 行定义.</p>
 
 </div>
 </div>
@@ -450,18 +482,18 @@ Public 成员函数</h2></td></tr>
 
 <p>获取所有模拟轴的当前值 </p>
 <dl class="section return"><dt>返回</dt><dd>长度为 <a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a> (4个元素) 的轴值数组，每个元素代表特定轴的位置，范围 0-255。数组索引与 <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> 枚举对应关系：<ul>
-<li>索引 0：左摇杆X轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">Axis::kLeftStickX</a>)</li>
-<li>索引 1：左摇杆Y轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">Axis::kLeftStickY</a>)</li>
-<li>索引 2：右摇杆X轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">Axis::kRightStickX</a>)</li>
-<li>索引 3：右摇杆Y轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">Axis::kRightStickY</a>)</li>
+<li>索引 0：左摇杆X轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">Axis::kLeftStickX</a>)</li>
+<li>索引 1：左摇杆Y轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880">Axis::kLeftStickY</a>)</li>
+<li>索引 2：右摇杆X轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99">Axis::kRightStickX</a>)</li>
+<li>索引 3：右摇杆Y轴 (<a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6">Axis::kRightStickY</a>)</li>
 </ul>
 </dd></dl>
 <p>典型中心位置值为 128 (0x80)。</p>
 <p>示例： </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> axes = codex_pad.axis_values();</div>
-<div class="line"><span class="keyword">const</span> uint8_t left_stick_x = axes[<a class="code hl_enumvalue" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::Axis::kLeftStickX</a>]; <span class="comment">// 获取左摇杆X轴值</span></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d"><div class="ttname"><a href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">左摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00377">codex_pad.h:377</a></div></div>
+<div class="line"><span class="keyword">const</span> uint8_t left_stick_x = axes[<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">CodexPad::Axis::kLeftStickX</a>)]; <span class="comment">// 获取左摇杆X轴值</span></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a"><div class="ttname"><a href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">CodexPad::Axis::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">左摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00494">codex_pad.h:494</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00165">165</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00175">175</a> 行定义.</p>
 
 </div>
 </div>
@@ -489,7 +521,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00153">153</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00163">163</a> 行定义.</p>
 
 </div>
 </div>
@@ -510,14 +542,96 @@ Public 成员函数</h2></td></tr>
 
 <p>以位掩码形式获取所有按键的当前状态 </p>
 <dl class="section return"><dt>返回</dt><dd>一个32位无符号整数，每一位（bit）表示 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 枚举中对应按键的状态（1为按下，0为未按下）。 位的分配从最低有效位（LSB，第0位）开始，依次对应 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 中的各个值。 可使用位与操作 (&amp;) 配合具体的 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 枚举值来检查特定按键状态。 示例： <div class="fragment"><div class="line"><span class="keyword">const</span> uint32_t <a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> = codex_pad.button_states();</div>
-<div class="line"><span class="keywordflow">if</span> ((<a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> &amp; <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::Button::kUp</a>)) != 0) {</div>
+<div class="line"><span class="keywordflow">if</span> ((<a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> &amp; <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a>)) != 0) {</div>
 <div class="line">  <span class="comment">// 方向上按键被按下</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_codex_pad_html_a083307fb1a6ac11894cbb40be48ed5d0"><div class="ttname"><a href="#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a></div><div class="ttdeci">uint32_t button_states() const</div><div class="ttdoc">以位掩码形式获取所有按键的当前状态</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00157">codex_pad.cpp:157</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">上</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00195">codex_pad.h:195</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a083307fb1a6ac11894cbb40be48ed5d0"><div class="ttname"><a href="#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a></div><div class="ttdeci">uint32_t button_states() const</div><div class="ttdoc">以位掩码形式获取所有按键的当前状态</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00167">codex_pad.cpp:167</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">上</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00312">codex_pad.h:312</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00157">157</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00167">167</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a997aa53899537c03097771d0876e6a02" name="a997aa53899537c03097771d0876e6a02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a997aa53899537c03097771d0876e6a02">&#9670;&#160;</a></span>ButtonMask() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint32_t CodexPad::ButtonMask </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a57a4fd5f267ca580c5da3a5b19ad44a4" name="a57a4fd5f267ca580c5da3a5b19ad44a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a4fd5f267ca580c5da3a5b19ad44a4">&#9670;&#160;</a></span>ButtonMask() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FirstButton, typename... RestButtons&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint32_t CodexPad::ButtonMask </td>
+          <td>(</td>
+          <td class="paramtype">FirstButton</td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RestButtons...</td>          <td class="paramname"><span class="paramname"><em>rest</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>将多个按键标识符组合成一个32位的按钮掩码。 </p>
+<p>这是一个工具函数，用于创建一个表示特定按键组合（例如 Start + A）的位掩码。 生成的掩码可作为参数用于 <a class="el" href="#a192ddc1f5996b2db723d167829aced6f">ScanAndConnect</a> 等方法，或用于与 <a class="el" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> 返回的组合状态进行比较。 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">button</td><td>一个或多个来自 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 枚举的按键标识符。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>一个32位无符号整数，其中与输入的 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 值对应的位被设为1。 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个 <code>constexpr</code> 函数，允许掩码在编译时计算。 示例 - 为 Start 和 Cross/A 按键创建掩码： <div class="fragment"><div class="line"><span class="comment">// 创建一个表示 Start 和 Cross/A 按键被同时按下的掩码。</span></div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> kStartAMask = CodexPad::ButtonMask(<a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>, <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 使用该掩码来扫描并连接到正按住这些按键的设备。</span></div>
+<div class="line">codex_pad.ScanAndConnect(kStartAMask);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 或者，用该掩码检查当前的组合按键状态。</span></div>
+<div class="line"><span class="keywordflow">if</span> ((codex_pad.button_states() &amp; kStartAMask) == kStartAMask) {</div>
+<div class="line">    <span class="comment">// Start 和 Cross/A 按键当前均被按下。</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a></div><div class="ttdeci">@ kStart</div><div class="ttdoc">开始</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00462">codex_pad.h:462</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a></div><div class="ttdeci">@ kCrossA</div><div class="ttdoc">叉或者A</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00372">codex_pad.h:372</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00095">95</a> 行定义.</p>
 
 </div>
 </div>
@@ -556,7 +670,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00050">50</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00053">53</a> 行定义.</p>
 
 </div>
 </div>
@@ -586,7 +700,7 @@ Public 成员函数</h2></td></tr>
 <p>获取CodexPad的型号 </p>
 <dl class="section return"><dt>返回</dt><dd>CodexPad的型号 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00505">505</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00675">675</a> 行定义.</p>
 
 </div>
 </div>
@@ -625,7 +739,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00173">173</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00183">183</a> 行定义.</p>
 
 </div>
 </div>
@@ -653,7 +767,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00149">149</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00159">159</a> 行定义.</p>
 
 </div>
 </div>
@@ -674,7 +788,7 @@ Public 成员函数</h2></td></tr>
 
 <p>初始化 </p>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00044">44</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00047">47</a> 行定义.</p>
 
 </div>
 </div>
@@ -710,7 +824,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00479">479</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00649">649</a> 行定义.</p>
 
 </div>
 </div>
@@ -740,7 +854,7 @@ Public 成员函数</h2></td></tr>
 <p>获取CodexPad的型号 </p>
 <dl class="section return"><dt>返回</dt><dd>CodexPad的型号 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00519">519</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00689">689</a> 行定义.</p>
 
 </div>
 </div>
@@ -768,7 +882,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00141">141</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00151">151</a> 行定义.</p>
 
 </div>
 </div>
@@ -796,7 +910,55 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00145">145</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00155">155</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a192ddc1f5996b2db723d167829aced6f" name="a192ddc1f5996b2db723d167829aced6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192ddc1f5996b2db723d167829aced6f">&#9670;&#160;</a></span>ScanAndConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::ScanAndConnect </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t</td>          <td class="paramname"><span class="paramname"><em>button_mask</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>扫描附近的 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 设备，并自动连接到一个按键状态与指定掩码匹配的设备。 </p>
+<p>此方法会主动扫描蓝牙设备。当发现一个或多个 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 设备，其当前按键状态与提供的 <code>button_mask</code> 完全匹配时，它将尝试建立连接。 如果附近有多个设备都符合按键掩码，则会选择信号最强（RSSI 值最大）的设备进行连接。 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">button_mask</td><td>用于匹配目标设备按键状态的32位按钮掩码。 使用 <code>ButtonMask()</code> 函数来组合多个 <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> 枚举值。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>连接成功（找到了符合按键掩码的设备并成功连接）。 </td></tr>
+    <tr><td class="paramname">false</td><td>连接失败（未找到匹配设备或连接尝试失败）。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>这是一个阻塞式调用。它会持续扫描，直到找到匹配的设备、连接建立或达到内部超时时间。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>**请勿**在按钮掩码中包含 <code><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2" title="首页">Button::kHome</a></code>。按住 Home 键会触发设备重启，这将中断连接过程。 示例： <div class="fragment"><div class="line"><a class="code hl_function" href="#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad</a> pad;</div>
+<div class="line">pad.<a class="code hl_function" href="#ad9688edc73671e22fcdc7d5a5dd854d0">Init</a>();</div>
+<div class="line"><span class="comment">// 持续尝试连接到 Start 和 Cross/A 按键被同时按下的设备。</span></div>
+<div class="line"><span class="keywordflow">while</span> (!pad.<a class="code hl_function" href="#a192ddc1f5996b2db723d167829aced6f">ScanAndConnect</a>(CodexPad::ButtonMask(<a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>, <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>))) {</div>
+<div class="line">  <span class="comment">// 可选：在尝试之间添加短暂延时或其他操作。</span></div>
+<div class="line">  delay(100);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 循环退出，意味着连接成功。</span></div>
+<div class="line">Serial.println(<span class="stringliteral">&quot;CodexPad 连接成功！&quot;</span>);</div>
+<div class="ttc" id="aclass_codex_pad_html_a192ddc1f5996b2db723d167829aced6f"><div class="ttname"><a href="#a192ddc1f5996b2db723d167829aced6f">CodexPad::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(const uint32_t button_mask)</div><div class="ttdoc">扫描附近的 CodexPad 设备，并自动连接到一个按键状态与指定掩码匹配的设备。</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00057">codex_pad.cpp:57</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_aa3900f0c5e4f1b9a9b43749346915e5b"><div class="ttname"><a href="#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad::CodexPad</a></div><div class="ttdeci">CodexPad()</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00037">codex_pad.cpp:37</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_ad9688edc73671e22fcdc7d5a5dd854d0"><div class="ttname"><a href="#ad9688edc73671e22fcdc7d5a5dd854d0">CodexPad::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">初始化</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00047">codex_pad.cpp:47</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00057">57</a> 行定义.</p>
 
 </div>
 </div>
@@ -823,7 +985,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00133">133</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00143">143</a> 行定义.</p>
 
 </div>
 </div>
@@ -844,11 +1006,37 @@ Public 成员函数</h2></td></tr>
 
 <p>更新，需要在Loop中不断调用 </p>
 
-<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00110">110</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a> 第 <a class="el" href="codex__pad_8cpp_source.html#l00114">114</a> 行定义.</p>
 
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
+<a id="a96b17edc141e27c50b1756c8d6146f1d" name="a96b17edc141e27c50b1756c8d6146f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b17edc141e27c50b1756c8d6146f1d">&#9670;&#160;</a></span>kAxisCenter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t CodexPad::kAxisCenter = 0x80</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>轴中心值 </p>
+
+<p class="definition">在文件 <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a> 第 <a class="el" href="codex__pad_8h_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
 <a id="a3f7424f32c819a7e589d1a797ac0965d" name="a3f7424f32c819a7e589d1a797ac0965d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f7424f32c819a7e589d1a797ac0965d">&#9670;&#160;</a></span>kAxisValueNum</h2>
 

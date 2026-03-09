@@ -32,8 +32,7 @@ var NAVTREE =
         [ "全部", "functions.html", null ],
         [ "函数", "functions_func.html", null ],
         [ "变量", "functions_vars.html", null ],
-        [ "枚举", "functions_enum.html", null ],
-        [ "枚举值", "functions_eval.html", null ]
+        [ "枚举", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "文件", "files.html", [
@@ -41,7 +40,7 @@ var NAVTREE =
     ] ],
     [ "示例", "examples.html", "examples" ],
     [ "下载", "usergroup0.html", [
-      [ "CodexPad_v1.0.5.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip", "^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip", null ]
+      [ "CodexPad_v2.0.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.0.0.zip", "^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.0.0.zip", null ]
     ] ]
   ] ]
 ];

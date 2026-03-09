@@ -1,29 +1,29 @@
 var class_codex_pad =
 [
     [ "Axis", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0", [
-      [ "kLeftStickX", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d", null ],
-      [ "kLeftStickY", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad", null ],
-      [ "kRightStickX", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690", null ],
-      [ "kRightStickY", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a", null ]
+      [ "kLeftStickX", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a", null ],
+      [ "kLeftStickY", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880", null ],
+      [ "kRightStickX", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99", null ],
+      [ "kRightStickY", "class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6", null ]
     ] ],
     [ "Button", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ad", [
-      [ "kUp", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6", null ],
-      [ "kDown", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6", null ],
-      [ "kLeft", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82", null ],
-      [ "kRight", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a", null ],
-      [ "kSquareX", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1", null ],
-      [ "kTriangleY", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494", null ],
-      [ "kCrossA", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f", null ],
-      [ "kCircleB", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa", null ],
-      [ "kL1", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84", null ],
-      [ "kL2", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9", null ],
-      [ "kL3", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a", null ],
-      [ "kR1", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b", null ],
-      [ "kR2", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870", null ],
-      [ "kR3", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55", null ],
-      [ "kSelect", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b", null ],
-      [ "kStart", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8", null ],
-      [ "kHome", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd", null ]
+      [ "kUp", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5", null ],
+      [ "kDown", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e", null ],
+      [ "kLeft", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28", null ],
+      [ "kRight", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9", null ],
+      [ "kSquareX", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b", null ],
+      [ "kTriangleY", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837", null ],
+      [ "kCrossA", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25", null ],
+      [ "kCircleB", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48", null ],
+      [ "kL1", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510", null ],
+      [ "kL2", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a", null ],
+      [ "kL3", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3", null ],
+      [ "kR1", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4", null ],
+      [ "kR2", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d", null ],
+      [ "kR3", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f", null ],
+      [ "kSelect", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0", null ],
+      [ "kStart", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d", null ],
+      [ "kHome", "class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2", null ]
     ] ],
     [ "TxPower", "class_codex_pad.html#add2a85d4d2df117adb74c05604e86354", [
       [ "kMinus16dBm", "class_codex_pad.html#add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e", null ],
@@ -55,6 +55,7 @@ var class_codex_pad =
     [ "model_number", "class_codex_pad.html#aafa5e3ec0d64ec6831af96b5720083c3", null ],
     [ "pressed", "class_codex_pad.html#a2cc521644c01a45334e9d7c4afff6e3d", null ],
     [ "released", "class_codex_pad.html#ac6321fe07bf29f0233e7840925ff10fa", null ],
+    [ "ScanAndConnect", "class_codex_pad.html#a192ddc1f5996b2db723d167829aced6f", null ],
     [ "set_tx_power", "class_codex_pad.html#a4173e628d96f24e342363e6093ee1082", null ],
     [ "Update", "class_codex_pad.html#ae46edc79a0e38e9fbc0e513d035cf0eb", null ]
 ];

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;1.0.5</span>
+   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;2.0.0</span>
    </div>
   </td>
  </tr>
@@ -99,6 +99,7 @@ $(function(){initNavTree('class_codex_pad.html',''); initResizable(true); });
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_codex_pad-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CodexPad Class Reference</div></div>
@@ -132,35 +133,35 @@ Public Types</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:add2a85d4d2df117adb74c05604e86354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b2afe87b7e691d4df4d9aadb204d6ad" id="r_a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> : uint32_t { <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">kUp</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 0
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6">kDown</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 1
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82">kLeft</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 2
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a">kRight</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 3
+<tr class="memitem:a4b2afe87b7e691d4df4d9aadb204d6ad" id="r_a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> : uint32_t { <br />
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">kUp</a> = uint32_t{1} &lt;&lt; 0
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e">kDown</a> = uint32_t{1} &lt;&lt; 1
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28">kLeft</a> = uint32_t{1} &lt;&lt; 2
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9">kRight</a> = uint32_t{1} &lt;&lt; 3
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1">kSquareX</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 4
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494">kTriangleY</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 5
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f">kCrossA</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 6
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa">kCircleB</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 7
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b">kSquareX</a> = uint32_t{1} &lt;&lt; 4
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">kTriangleY</a> = uint32_t{1} &lt;&lt; 5
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">kCrossA</a> = uint32_t{1} &lt;&lt; 6
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48">kCircleB</a> = uint32_t{1} &lt;&lt; 7
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84">kL1</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 8
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9">kL2</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 9
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a">kL3</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 10
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b">kR1</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 11
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510">kL1</a> = uint32_t{1} &lt;&lt; 8
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a">kL2</a> = uint32_t{1} &lt;&lt; 9
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3">kL3</a> = uint32_t{1} &lt;&lt; 10
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4">kR1</a> = uint32_t{1} &lt;&lt; 11
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870">kR2</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 12
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55">kR3</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 13
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b">kSelect</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 14
-, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8">kStart</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 15
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d">kR2</a> = uint32_t{1} &lt;&lt; 12
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f">kR3</a> = uint32_t{1} &lt;&lt; 13
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0">kSelect</a> = uint32_t{1} &lt;&lt; 14
+, <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">kStart</a> = uint32_t{1} &lt;&lt; 15
 , <br />
-&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd">kHome</a> = static_cast&lt;uint32_t&gt;(1) &lt;&lt; 16
+&#160;&#160;<a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2">kHome</a> = uint32_t{1} &lt;&lt; 16
 <br />
  }</td></tr>
 <tr class="separator:a4b2afe87b7e691d4df4d9aadb204d6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25cd7b0da32cb23953ce3703cf23a8e0" id="r_a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> : size_t { <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">kLeftStickX</a>
-, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad">kLeftStickY</a>
-, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690">kRightStickX</a>
-, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a">kRightStickY</a>
+<tr class="memitem:a25cd7b0da32cb23953ce3703cf23a8e0" id="r_a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> : size_t { <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">kLeftStickX</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880">kLeftStickY</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99">kRightStickX</a>
+, <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6">kRightStickY</a>
  }</td></tr>
 <tr class="separator:a25cd7b0da32cb23953ce3703cf23a8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -178,6 +179,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8b9cbf4496abfed8f20eaa294d50071" id="r_ac8b9cbf4496abfed8f20eaa294d50071"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8b9cbf4496abfed8f20eaa294d50071">Connect</a> (const std::string &amp;mac_address, const uint32_t timeout_ms=UINT32_MAX)</td></tr>
 <tr class="memdesc:ac8b9cbf4496abfed8f20eaa294d50071"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect.  <br /></td></tr>
 <tr class="separator:ac8b9cbf4496abfed8f20eaa294d50071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192ddc1f5996b2db723d167829aced6f" id="r_a192ddc1f5996b2db723d167829aced6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192ddc1f5996b2db723d167829aced6f">ScanAndConnect</a> (const uint32_t button_mask)</td></tr>
+<tr class="memdesc:a192ddc1f5996b2db723d167829aced6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans for nearby <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a> devices and automatically connects to a device whose button state matches the specified mask.  <br /></td></tr>
+<tr class="separator:a192ddc1f5996b2db723d167829aced6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46edc79a0e38e9fbc0e513d035cf0eb" id="r_ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae46edc79a0e38e9fbc0e513d035cf0eb">Update</a> ()</td></tr>
 <tr class="memdesc:ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update, need to be called in Loop.  <br /></td></tr>
 <tr class="separator:ae46edc79a0e38e9fbc0e513d035cf0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,15 +222,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a96196750b082f04f0fc5e95cf0374f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if an axis value has changed  <br /></td></tr>
 <tr class="separator:a96196750b082f04f0fc5e95cf0374f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a997aa53899537c03097771d0876e6a02" id="r_a997aa53899537c03097771d0876e6a02"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a997aa53899537c03097771d0876e6a02">ButtonMask</a> ()</td></tr>
+<tr class="separator:a997aa53899537c03097771d0876e6a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a4fd5f267ca580c5da3a5b19ad44a4" id="r_a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="memTemplParams" colspan="2">template&lt;typename FirstButton, typename... RestButtons&gt; </td></tr>
+<tr class="memitem:a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="memTemplItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a57a4fd5f267ca580c5da3a5b19ad44a4">ButtonMask</a> (FirstButton first, RestButtons... rest)</td></tr>
+<tr class="memdesc:a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines multiple button identifiers into a single 32-bit button mask.  <br /></td></tr>
+<tr class="separator:a57a4fd5f267ca580c5da3a5b19ad44a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a3f7424f32c819a7e589d1a797ac0965d" id="r_a3f7424f32c819a7e589d1a797ac0965d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a> = 4</td></tr>
 <tr class="memdesc:a3f7424f32c819a7e589d1a797ac0965d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of axis values.  <br /></td></tr>
 <tr class="separator:a3f7424f32c819a7e589d1a797ac0965d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b17edc141e27c50b1756c8d6146f1d" id="r_a96b17edc141e27c50b1756c8d6146f1d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96b17edc141e27c50b1756c8d6146f1d">kAxisCenter</a> = 0x80</td></tr>
+<tr class="memdesc:a96b17edc141e27c50b1756c8d6146f1d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> center value.  <br /></td></tr>
+<tr class="separator:a96b17edc141e27c50b1756c8d6146f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a> main class. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="basic_polling_8ino-example.html#_a0">basic_polling.ino</a>, and <a class="el" href="inputs_detection_8ino-example.html#_a0">inputs_detection.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="basic_polling_8ino-example.html#_a0">basic_polling.ino</a>, <a class="el" href="inputs_detection_8ino-example.html#_a0">inputs_detection.ino</a>, and <a class="el" href="scan_and_connect_8ino-example.html#_a0">scan_and_connect.ino</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00022">22</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
@@ -236,24 +252,32 @@ Static Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">CodexPad::Axis</a> : size_t</td>
+          <td class="memname">enum class <a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">CodexPad::Axis</a> : size_t</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d" name="a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d"></a>kLeftStickX&#160;</td><td class="fielddoc"><p>Left stick X axis. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a" name="a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a"></a>kLeftStickX&#160;</td><td class="fielddoc"><p>Left stick X axis. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad" name="a25cd7b0da32cb23953ce3703cf23a8e0a096000ff93f751a702c2f4510302d0ad"></a>kLeftStickY&#160;</td><td class="fielddoc"><p>Left stick Y axis. </p>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880" name="a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880"></a>kLeftStickY&#160;</td><td class="fielddoc"><p>Left stick Y axis. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690" name="a25cd7b0da32cb23953ce3703cf23a8e0a7df9c8fc4d74f70ae1f0bc413e770690"></a>kRightStickX&#160;</td><td class="fielddoc"><p>Right stick X axis. </p>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99" name="a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99"></a>kRightStickX&#160;</td><td class="fielddoc"><p>Right stick X axis. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a" name="a25cd7b0da32cb23953ce3703cf23a8e0a1a0e52d7bca4b538aefa4539d710d10a"></a>kRightStickY&#160;</td><td class="fielddoc"><p>Right stick Y axis. </p>
+<tr><td class="fieldname"><a id="a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6" name="a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6"></a>kRightStickY&#160;</td><td class="fielddoc"><p>Right stick Y axis. </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00368">368</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00485">485</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -262,50 +286,58 @@ Static Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">CodexPad::Button</a> : uint32_t</td>
+          <td class="memname">enum class <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">CodexPad::Button</a> : uint32_t</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6" name="a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6"></a>kUp&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 0&#160;</td><td class="fielddoc"><p>Up. </p>
+<tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5" name="a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5"></a>kUp&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 0&#160;</td><td class="fielddoc"><p>Up. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6" name="a4b2afe87b7e691d4df4d9aadb204d6ada0ff7c06d90db7d11913c87b019e45ce6"></a>kDown&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 1&#160;</td><td class="fielddoc"><p>Down. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e" name="a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e"></a>kDown&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 1&#160;</td><td class="fielddoc"><p>Down. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82" name="a4b2afe87b7e691d4df4d9aadb204d6ada3b30d34e33e126b47fa67e13bc737a82"></a>kLeft&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 2&#160;</td><td class="fielddoc"><p>Left. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28" name="a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28"></a>kLeft&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 2&#160;</td><td class="fielddoc"><p>Left. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a" name="a4b2afe87b7e691d4df4d9aadb204d6ada87bb73f5f9d620bafdca4e1d90fea11a"></a>kRight&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 3&#160;</td><td class="fielddoc"><p>Right. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9" name="a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9"></a>kRight&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 3&#160;</td><td class="fielddoc"><p>Right. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1" name="a4b2afe87b7e691d4df4d9aadb204d6ada126b61e0ea3da1cc1a9b9d538ce39be1"></a>kSquareX&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 4&#160;</td><td class="fielddoc"><p>Circle or X. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b" name="a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b"></a>kSquareX&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 4&#160;</td><td class="fielddoc"><p>Square or X. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494" name="a4b2afe87b7e691d4df4d9aadb204d6ada0ba91898bbb23354205507e1e5506494"></a>kTriangleY&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 5&#160;</td><td class="fielddoc"><p>Triangle or Y. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837" name="a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837"></a>kTriangleY&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 5&#160;</td><td class="fielddoc"><p>Triangle or Y. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f" name="a4b2afe87b7e691d4df4d9aadb204d6ada68d7170ffecf4aa66a8dab281e50373f"></a>kCrossA&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 6&#160;</td><td class="fielddoc"><p>Cross or A. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25" name="a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25"></a>kCrossA&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 6&#160;</td><td class="fielddoc"><p>Cross or A. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa" name="a4b2afe87b7e691d4df4d9aadb204d6ada28f9ec549bbe79f2649fc81ecfb747aa"></a>kCircleB&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 7&#160;</td><td class="fielddoc"><p>Circle or B. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48" name="a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48"></a>kCircleB&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 7&#160;</td><td class="fielddoc"><p>Circle or B. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84" name="a4b2afe87b7e691d4df4d9aadb204d6ada78f79939b720b081ab2987fdf4fc5c84"></a>kL1&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 8&#160;</td><td class="fielddoc"><p>L1. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510" name="a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510"></a>kL1&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 8&#160;</td><td class="fielddoc"><p>L1. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9" name="a4b2afe87b7e691d4df4d9aadb204d6ada085f1e1dfa685baec6d72757b5e457a9"></a>kL2&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 9&#160;</td><td class="fielddoc"><p>L2. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a" name="a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a"></a>kL2&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 9&#160;</td><td class="fielddoc"><p>L2. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a" name="a4b2afe87b7e691d4df4d9aadb204d6ada10f342ddfce57905601999252f5df09a"></a>kL3&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 10&#160;</td><td class="fielddoc"><p>L3. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3" name="a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3"></a>kL3&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 10&#160;</td><td class="fielddoc"><p>L3. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b" name="a4b2afe87b7e691d4df4d9aadb204d6ada0845690c24ad18055c30645af376eb0b"></a>kR1&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 11&#160;</td><td class="fielddoc"><p>R1. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4" name="a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4"></a>kR1&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 11&#160;</td><td class="fielddoc"><p>R1. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870" name="a4b2afe87b7e691d4df4d9aadb204d6ada94fa8078743618fc47107f1398e2b870"></a>kR2&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 12&#160;</td><td class="fielddoc"><p>R2. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d" name="a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d"></a>kR2&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 12&#160;</td><td class="fielddoc"><p>R2. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55" name="a4b2afe87b7e691d4df4d9aadb204d6ada18cc882061caeb4aa32b81547d207a55"></a>kR3&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 13&#160;</td><td class="fielddoc"><p>R3. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f" name="a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f"></a>kR3&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 13&#160;</td><td class="fielddoc"><p>R3. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b" name="a4b2afe87b7e691d4df4d9aadb204d6ada40f8e6d3e3f7bea859f734badbde793b"></a>kSelect&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 14&#160;</td><td class="fielddoc"><p>Select. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0" name="a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0"></a>kSelect&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 14&#160;</td><td class="fielddoc"><p>Select. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8" name="a4b2afe87b7e691d4df4d9aadb204d6ada9d2673dbe66d02aec0ad58701a979cc8"></a>kStart&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 15&#160;</td><td class="fielddoc"><p>Start. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d" name="a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d"></a>kStart&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 15&#160;</td><td class="fielddoc"><p>Start. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd" name="a4b2afe87b7e691d4df4d9aadb204d6ada512fa00fd6d7f4630cf817320eb96ffd"></a>kHome&#160;</td><td class="fieldinit">static_cast&lt;uint32_t&gt;(1) &lt;&lt; 16&#160;</td><td class="fielddoc"><p>Home. </p>
+<tr><td class="fieldname"><a id="a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2" name="a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2"></a>kHome&#160;</td><td class="fieldinit">uint32_t{1} &lt;&lt; 16&#160;</td><td class="fielddoc"><p>Home. </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00186">186</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00303">303</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -329,35 +361,35 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e" name="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e"></a>kMinus16dBm&#160;</td><td class="fieldinit">-16&#160;</td><td class="fielddoc"><p>-16dBm </p>
+<tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e" name="add2a85d4d2df117adb74c05604e86354a5003aead705bc208dc985745fe92110e"></a>kMinus16dBm&#160;</td><td class="fieldinit">-16&#160;</td><td class="fielddoc"><p>-16 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d" name="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d"></a>kMinus12dBm&#160;</td><td class="fieldinit">-12&#160;</td><td class="fielddoc"><p>-12dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d" name="add2a85d4d2df117adb74c05604e86354a9380869be38107999bc10702ef56423d"></a>kMinus12dBm&#160;</td><td class="fieldinit">-12&#160;</td><td class="fielddoc"><p>-12 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a" name="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a"></a>kMinus8dBm&#160;</td><td class="fieldinit">-8&#160;</td><td class="fielddoc"><p>-8dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a" name="add2a85d4d2df117adb74c05604e86354a235ca8d6b15e3096de03c9a3e75d501a"></a>kMinus8dBm&#160;</td><td class="fieldinit">-8&#160;</td><td class="fielddoc"><p>-8 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e" name="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e"></a>kMinus5dBm&#160;</td><td class="fieldinit">-5&#160;</td><td class="fielddoc"><p>-5dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e" name="add2a85d4d2df117adb74c05604e86354a9ff344c6d25c47750d68c50ab256e51e"></a>kMinus5dBm&#160;</td><td class="fieldinit">-5&#160;</td><td class="fielddoc"><p>-5 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32" name="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32"></a>kMinus3dBm&#160;</td><td class="fieldinit">-3&#160;</td><td class="fielddoc"><p>-3dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32" name="add2a85d4d2df117adb74c05604e86354a0fc3a22bd0fdac96bf5171e0f408ef32"></a>kMinus3dBm&#160;</td><td class="fieldinit">-3&#160;</td><td class="fielddoc"><p>-3 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82" name="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82"></a>kMinus1dBm&#160;</td><td class="fieldinit">-1&#160;</td><td class="fielddoc"><p>-1dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82" name="add2a85d4d2df117adb74c05604e86354ac596e099b5b560dad8a0f2a27e1b0b82"></a>kMinus1dBm&#160;</td><td class="fieldinit">-1&#160;</td><td class="fielddoc"><p>-1 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b" name="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"></a>k0dBm&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"><p>0dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b" name="add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"></a>k0dBm&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"><p>0 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb" name="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb"></a>k1dBm&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"><p>1dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb" name="add2a85d4d2df117adb74c05604e86354a5b0490aa74951a576f3de0cd32d428bb"></a>k1dBm&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"><p>1 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37" name="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37"></a>k2dBm&#160;</td><td class="fieldinit">2&#160;</td><td class="fielddoc"><p>2dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37" name="add2a85d4d2df117adb74c05604e86354a895b8dd3a623d2780b70a03e57671a37"></a>k2dBm&#160;</td><td class="fieldinit">2&#160;</td><td class="fielddoc"><p>2 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c" name="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c"></a>k3dBm&#160;</td><td class="fieldinit">3&#160;</td><td class="fielddoc"><p>3dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c" name="add2a85d4d2df117adb74c05604e86354a5f55dfa1a35afded5bb1983c7103e73c"></a>k3dBm&#160;</td><td class="fieldinit">3&#160;</td><td class="fielddoc"><p>3 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0" name="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0"></a>k4dBm&#160;</td><td class="fieldinit">4&#160;</td><td class="fielddoc"><p>4dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0" name="add2a85d4d2df117adb74c05604e86354af864320b2d1ff83fe82364bf22a9b6c0"></a>k4dBm&#160;</td><td class="fieldinit">4&#160;</td><td class="fielddoc"><p>4 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f" name="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f"></a>k5dBm&#160;</td><td class="fieldinit">5&#160;</td><td class="fielddoc"><p>5dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f" name="add2a85d4d2df117adb74c05604e86354a01da52d1ff01db649975506268458b9f"></a>k5dBm&#160;</td><td class="fieldinit">5&#160;</td><td class="fielddoc"><p>5 dBm </p>
 </td></tr>
-<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a" name="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a"></a>k6dBm&#160;</td><td class="fieldinit">6&#160;</td><td class="fielddoc"><p>6dBm </p>
+<tr><td class="fieldname"><a id="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a" name="add2a85d4d2df117adb74c05604e86354ae0ded1ce83bc5e47bc18a9692d58f94a"></a>k6dBm&#160;</td><td class="fieldinit">6&#160;</td><td class="fielddoc"><p>6 dBm </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00044">44</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00161">161</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -379,7 +411,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00034">34</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00037">37</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -400,7 +432,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00037">37</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00040">40</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -429,7 +461,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> value, range 0~255 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00161">161</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00171">171</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -458,10 +490,10 @@ Static Public Attributes</h2></td></tr>
 </dd></dl>
 <p>Typical center position value is 128 (0x80).</p>
 <p>Example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> axes = codex_pad.axis_values();</div>
-<div class="line"><span class="keyword">const</span> uint8_t left_stick_x = axes[<a class="code hl_enumvalue" href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::Axis::kLeftStickX</a>]; <span class="comment">// Get the value of the left stick X axis</span></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d"><div class="ttname"><a href="#a25cd7b0da32cb23953ce3703cf23a8e0a4f7b25c58478f7eae6232397c355435d">CodexPad::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">Left stick X axis.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00377">codex_pad.h:377</a></div></div>
+<div class="line"><span class="keyword">const</span> uint8_t left_stick_x = axes[<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(<a class="code hl_enumvalue" href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">CodexPad::Axis::kLeftStickX</a>)]; <span class="comment">// Get the value of the left stick X axis</span></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a"><div class="ttname"><a href="#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">CodexPad::Axis::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">Left stick X axis.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00494">codex_pad.h:494</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00165">165</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00175">175</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -489,7 +521,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00153">153</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00163">163</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -510,14 +542,96 @@ Static Public Attributes</h2></td></tr>
 
 <p>Get all button states, return a 32-bit unsigned integer where each bit represents the state of a specific button. </p>
 <dl class="section return"><dt>Returns</dt><dd>A 32-bit unsigned integer where each bit represents the state of a specific button The bits are from the least significant bit (LSB, bit 0) to the most significant bit (MSB, bit 31). You can use bit-and (&amp;) operator to check specific button states. Example: <div class="fragment"><div class="line"><span class="keyword">const</span> uint32_t <a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> = codex_pad.button_states();</div>
-<div class="line"><span class="keywordflow">if</span> ((<a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> &amp; <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::Button::kUp</a>) != 0) {</div>
+<div class="line"><span class="keywordflow">if</span> ((<a class="code hl_function" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a> &amp; <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a>) != 0) {</div>
 <div class="line">  <span class="comment">// Up button is pressed</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_codex_pad_html_a083307fb1a6ac11894cbb40be48ed5d0"><div class="ttname"><a href="#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a></div><div class="ttdeci">uint32_t button_states() const</div><div class="ttdoc">Get all button states, return a 32-bit unsigned integer where each bit represents the state of a spec...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00157">codex_pad.cpp:157</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6adaec07aa516e49acede68f52a0b11613b6">CodexPad::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">Up.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00195">codex_pad.h:195</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a083307fb1a6ac11894cbb40be48ed5d0"><div class="ttname"><a href="#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a></div><div class="ttdeci">uint32_t button_states() const</div><div class="ttdoc">Get all button states, return a 32-bit unsigned integer where each bit represents the state of a spec...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00167">codex_pad.cpp:167</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">Up.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00312">codex_pad.h:312</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00157">157</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00167">167</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a997aa53899537c03097771d0876e6a02" name="a997aa53899537c03097771d0876e6a02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a997aa53899537c03097771d0876e6a02">&#9670;&#160;</a></span>ButtonMask() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint32_t CodexPad::ButtonMask </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00045">45</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+
+</div>
+</div>
+<a id="a57a4fd5f267ca580c5da3a5b19ad44a4" name="a57a4fd5f267ca580c5da3a5b19ad44a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a4fd5f267ca580c5da3a5b19ad44a4">&#9670;&#160;</a></span>ButtonMask() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FirstButton, typename... RestButtons&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint32_t CodexPad::ButtonMask </td>
+          <td>(</td>
+          <td class="paramtype">FirstButton</td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RestButtons...</td>          <td class="paramname"><span class="paramname"><em>rest</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines multiple button identifiers into a single 32-bit button mask. </p>
+<p>This is a convenience function for creating a bitmask that represents a combination of specific buttons (e.g., Start + A). The resulting mask can be used as a parameter for methods like <a class="el" href="#a192ddc1f5996b2db723d167829aced6f">ScanAndConnect</a>, or for checking against the combined state returned by <a class="el" href="#a083307fb1a6ac11894cbb40be48ed5d0">button_states</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">button</td><td>One or more button identifiers from the <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> enumeration. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A 32-bit unsigned integer where the bits corresponding to the input <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> values are set to 1. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This is a <code>constexpr</code> function, allowing the mask to be computed at compile time. Example - Creating a mask for the Start and Cross/A buttons: <div class="fragment"><div class="line"><span class="comment">// Create a mask representing the Start and Cross/A buttons held simultaneously.</span></div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> kStartAMask = CodexPad::ButtonMask(<a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>, <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Use the mask to scan and connect to a device holding these buttons.</span></div>
+<div class="line">codex_pad.ScanAndConnect(kStartAMask);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Alternatively, check the current combined button state against the mask.</span></div>
+<div class="line"><span class="keywordflow">if</span> ((codex_pad.button_states() &amp; kStartAMask) == kStartAMask) {</div>
+<div class="line">    <span class="comment">// Both Start and Cross/A are currently pressed.</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a></div><div class="ttdeci">@ kStart</div><div class="ttdoc">Start.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00462">codex_pad.h:462</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25"><div class="ttname"><a href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a></div><div class="ttdeci">@ kCrossA</div><div class="ttdoc">Cross or A.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00372">codex_pad.h:372</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00095">95</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -556,7 +670,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00050">50</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00053">53</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -586,7 +700,7 @@ Static Public Attributes</h2></td></tr>
 <p>Get model number of the <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Model number of the <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00505">505</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00675">675</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -625,7 +739,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00173">173</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00183">183</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -653,7 +767,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00149">149</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00159">159</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -674,7 +788,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Initialize. </p>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00044">44</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00047">47</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -710,7 +824,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00479">479</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00649">649</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -740,7 +854,7 @@ Static Public Attributes</h2></td></tr>
 <p>Get model number of the <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Model number of the <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00519">519</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00689">689</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
 
 </div>
 </div>
@@ -768,7 +882,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00141">141</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00151">151</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -796,7 +910,55 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00145">145</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00155">155</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a192ddc1f5996b2db723d167829aced6f" name="a192ddc1f5996b2db723d167829aced6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192ddc1f5996b2db723d167829aced6f">&#9670;&#160;</a></span>ScanAndConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CodexPad::ScanAndConnect </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t</td>          <td class="paramname"><span class="paramname"><em>button_mask</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scans for nearby <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a> devices and automatically connects to a device whose button state matches the specified mask. </p>
+<p>This method actively scans for Bluetooth devices. When it discovers one or more <a class="el" href="class_codex_pad.html" title="CodexPad main class.">CodexPad</a> devices whose current button states exactly match the provided <code>button_mask</code>, it will attempt to establish a connection. If multiple nearby devices match the button mask, the device with the strongest signal (highest RSSI) will be selected for connection. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">button_mask</td><td>A 32-bit button mask used to match the target device's button states. Use the <code>ButtonMask()</code> function to combine multiple <a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>Connection successful (a device matching the button mask was found and connected). </td></tr>
+    <tr><td class="paramname">false</td><td>Connection failed (no matching device found or connection attempt failed). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This is a blocking call. It will continuously scan until a matching device is found, a connection is established, or the internal timeout is reached. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd><b>DO NOT</b> include <code><a class="el" href="#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2" title="Home.">Button::kHome</a></code> in the button mask. Holding the Home button triggers a device reboot, which will interrupt the connection process. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad</a> pad;</div>
+<div class="line">pad.<a class="code hl_function" href="#ad9688edc73671e22fcdc7d5a5dd854d0">Init</a>();</div>
+<div class="line"><span class="comment">// Continuously try to connect to a device where the Start and Cross/A buttons are pressed.</span></div>
+<div class="line"><span class="keywordflow">while</span> (!pad.<a class="code hl_function" href="#a192ddc1f5996b2db723d167829aced6f">ScanAndConnect</a>(CodexPad::ButtonMask(<a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>, <a class="code hl_enumvalue" href="#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>))) {</div>
+<div class="line">  <span class="comment">// Optional: Add a small delay or other operations between attempts.</span></div>
+<div class="line">  delay(100);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// Once the loop exits, connection is successful.</span></div>
+<div class="line">Serial.println(<span class="stringliteral">&quot;CodexPad connected!&quot;</span>);</div>
+<div class="ttc" id="aclass_codex_pad_html_a192ddc1f5996b2db723d167829aced6f"><div class="ttname"><a href="#a192ddc1f5996b2db723d167829aced6f">CodexPad::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(const uint32_t button_mask)</div><div class="ttdoc">Scans for nearby CodexPad devices and automatically connects to a device whose button state matches t...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00057">codex_pad.cpp:57</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_aa3900f0c5e4f1b9a9b43749346915e5b"><div class="ttname"><a href="#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad::CodexPad</a></div><div class="ttdeci">CodexPad()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00037">codex_pad.cpp:37</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_ad9688edc73671e22fcdc7d5a5dd854d0"><div class="ttname"><a href="#ad9688edc73671e22fcdc7d5a5dd854d0">CodexPad::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">Initialize.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00047">codex_pad.cpp:47</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00057">57</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -823,7 +985,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00133">133</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00143">143</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
@@ -844,11 +1006,37 @@ Static Public Attributes</h2></td></tr>
 
 <p>Update, need to be called in Loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00110">110</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="codex__pad_8cpp_source.html#l00114">114</a> of file <a class="el" href="codex__pad_8cpp_source.html">codex_pad.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a96b17edc141e27c50b1756c8d6146f1d" name="a96b17edc141e27c50b1756c8d6146f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b17edc141e27c50b1756c8d6146f1d">&#9670;&#160;</a></span>kAxisCenter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t CodexPad::kAxisCenter = 0x80</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> center value. </p>
+
+<p class="definition">Definition at line <a class="el" href="codex__pad_8h_source.html#l00042">42</a> of file <a class="el" href="codex__pad_8h_source.html">codex_pad.h</a>.</p>
+
+</div>
+</div>
 <a id="a3f7424f32c819a7e589d1a797ac0965d" name="a3f7424f32c819a7e589d1a797ac0965d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f7424f32c819a7e589d1a797ac0965d">&#9670;&#160;</a></span>kAxisValueNum</h2>
 

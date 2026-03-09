@@ -28,27 +28,12 @@ var menudata={children:[
 {text:"Class List",url:"annotated.html"},
 {text:"Class Index",url:"classes.html"},
 {text:"Class Members",url:"functions.html",children:[
-{text:"All",url:"functions.html",children:[
-{text:"a",url:"functions.html#index_a"},
-{text:"b",url:"functions.html#index_b"},
-{text:"c",url:"functions.html#index_c"},
-{text:"d",url:"functions.html#index_d"},
-{text:"h",url:"functions.html#index_h"},
-{text:"i",url:"functions.html#index_i"},
-{text:"k",url:"functions.html#index_k"},
-{text:"m",url:"functions.html#index_m"},
-{text:"p",url:"functions.html#index_p"},
-{text:"r",url:"functions.html#index_r"},
-{text:"s",url:"functions.html#index_s"},
-{text:"t",url:"functions.html#index_t"},
-{text:"u",url:"functions.html#index_u"},
-{text:"~",url:"functions.html#index__7E"}]},
+{text:"All",url:"functions.html"},
 {text:"Functions",url:"functions_func.html"},
 {text:"Variables",url:"functions_vars.html"},
-{text:"Enumerations",url:"functions_enum.html"},
-{text:"Enumerator",url:"functions_eval.html"}]}]},
+{text:"Enumerations",url:"functions_enum.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"CodexPad_v1.0.5.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip"}]}]}
+{text:"CodexPad_v2.0.0.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.0.0.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.0.0.zip"}]}]}

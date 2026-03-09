@@ -28,27 +28,12 @@ var menudata={children:[
 {text:"类列表",url:"annotated.html"},
 {text:"类索引",url:"classes.html"},
 {text:"类成员",url:"functions.html",children:[
-{text:"全部",url:"functions.html",children:[
-{text:"a",url:"functions.html#index_a"},
-{text:"b",url:"functions.html#index_b"},
-{text:"c",url:"functions.html#index_c"},
-{text:"d",url:"functions.html#index_d"},
-{text:"h",url:"functions.html#index_h"},
-{text:"i",url:"functions.html#index_i"},
-{text:"k",url:"functions.html#index_k"},
-{text:"m",url:"functions.html#index_m"},
-{text:"p",url:"functions.html#index_p"},
-{text:"r",url:"functions.html#index_r"},
-{text:"s",url:"functions.html#index_s"},
-{text:"t",url:"functions.html#index_t"},
-{text:"u",url:"functions.html#index_u"},
-{text:"~",url:"functions.html#index__7E"}]},
+{text:"全部",url:"functions.html"},
 {text:"函数",url:"functions_func.html"},
 {text:"变量",url:"functions_vars.html"},
-{text:"枚举",url:"functions_enum.html"},
-{text:"枚举值",url:"functions_eval.html"}]}]},
+{text:"枚举",url:"functions_enum.html"}]}]},
 {text:"文件",url:"files.html",children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"},
 {text:"下载",url:"usergroup0.html",children:[
-{text:"CodexPad_v1.0.5.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v1.0.5.zip"}]}]}
+{text:"CodexPad_v2.0.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.0.0.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.0.0.zip"}]}]}
