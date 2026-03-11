@@ -1,13 +1,37 @@
 #pragma once
 
-#include <BLEDevice.h>
-
 #include <functional>
 #include <mutex>
 #include <optional>
 #include <queue>
 #include <string>
 #include <vector>
+
+#if defined(__cplusplus) && __cplusplus >= 201703L && defined(__has_include)
+// 如果支持 __has_include，则检查 "NimBLEDevice.h" 是否存在
+// If __has_include is supported, check for the existence of "NimBLEDevice.h"
+#if !__has_include("NimBLEDevice.h")
+#error "NimBLEDevice.h not found. CodexPad requires the NimBLE-Arduino library."
+#error "Please install the latest version of NimBLE-Arduino via Arduino Library Manager or PlatformIO's lib_deps."
+#error ""
+#error "未找到 NimBLEDevice.h 文件。CodexPad 依赖于 NimBLE-Arduino 库。"
+#error "请通过 Arduino 库管理器或 PlatformIO 的 lib_deps 安装最新版本的 NimBLE-Arduino 库。"
+#endif
+#else
+/*
+ * 对于不支持 __has_include 的旧编译器，我们无法在编译前可靠地检查头文件是否存在。
+ * 此处放置一个强提醒，如果因为缺少此头文件导致编译错误，解决方法是相同的。
+ * For older compilers that do not support __has_include, we cannot reliably check for the header before compilation.
+ * A strong reminder is placed here. If a compilation error occurs due to this missing header, the solution is the same.
+ */
+#warning "CodexPad depends on NimBLE-Arduino. Ensure 'NimBLEDevice.h' is in your include path."
+#warning "If you encounter errors about missing 'NimBLEDevice.h', please install the latest NimBLE-Arduino library."
+#warning ""
+#warning "CodexPad 依赖于 NimBLE-Arduino 库。请确保 'NimBLEDevice.h' 在您的头文件包含路径中。"
+#warning "如果遇到找不到 'NimBLEDevice.h' 的错误，请安装最新版本的 NimBLE-Arduino 库。"
+#endif
+
+#include "NimBLEDevice.h"
 
 /**
  * @~English
@@ -42,9 +66,7 @@ class CodexPad {
   static constexpr uint8_t kAxisCenter = 0x80;
 
 #if __cplusplus < 201402L
-  static constexpr uint32_t ButtonMask() {
-    return 0;
-  }
+  static constexpr uint32_t ButtonMask() { return 0; }
 
   /**
    * @~English
@@ -557,7 +579,8 @@ class CodexPad {
   /**
    * @~English
    * @brief Connect
-   * @param[in] mac_address MAC address of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated
+   * @param[in] bluetooth_device_address The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or
+   * uppercase letter, colon separated
    * @param[in] timeout_ms Timeout in milliseconds
    * @retval true if connected successfully
    * @retval false if connection failed
@@ -565,12 +588,12 @@ class CodexPad {
   /**
    * @~Chinese
    * @brief 连接
+   * @param[in] bluetooth_device_address CodexPad的蓝牙设备地址（BD_ADDR），格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔
    * @param[in] timeout_ms 超时时间，单位毫秒
-   * @param[in] mac_address CodexPad的MAC地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母, 半角冒号分隔
    * @retval true 连接成功
    * @retval false 连接失败
    */
-  bool Connect(const std::string& mac_address, const uint32_t timeout_ms = UINT32_MAX);
+  bool Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms = 5000);
 
   /**
    * @~English
@@ -626,6 +649,16 @@ class CodexPad {
 
   /**
    * @~English
+   * @brief Disconnect
+   */
+  /**
+   * @~Chinese
+   * @brief 断开连接
+   */
+  void Disconnect() { Reset(); }
+
+  /**
+   * @~English
    * @brief Update, need to be called in Loop
    */
   /**
@@ -646,21 +679,23 @@ class CodexPad {
    * @retval true 已连接
    * @retval false 未连接
    */
-  inline bool is_connected() const {
-    return connected_;
-  }
+  bool is_connected() const;
 
   /**
    * @~English
    * @brief Set transmission power, only effective when connected, immediately effective for current connection, effective for next connection
    * @param[in] power Transmission power
+   * @retval true Success
+   * @retval false Fail
    */
   /**
    * @~Chinese
    * @brief 设置发射功率，连接状态下调用，立即生效于当前连接，下次连接生效
    * @param[in] power 发射功率
+   * @retval true 成功
+   * @retval false 失败
    */
-  void set_tx_power(const TxPower power);
+  bool set_remote_tx_power(const TxPower power);
 
   /**
    * @~English
@@ -672,9 +707,7 @@ class CodexPad {
    * @brief 获取CodexPad的型号
    * @return CodexPad的型号
    */
-  inline const std::string& device_name() const {
-    return device_name_;
-  }
+  inline const std::string& remote_device_name() const { return remote_device_name_; }
 
   /**
    * @~English
@@ -686,9 +719,19 @@ class CodexPad {
    * @brief 获取CodexPad的型号
    * @return CodexPad的型号
    */
-  inline const std::string& model_number() const {
-    return model_number_;
-  }
+  inline const std::string& remote_model_number() const { return remote_model_number_; }
+
+  /**
+   * @~English
+   * @brief Get firmware version of the CodexPad
+   * @return Firmware version of the CodexPad
+   */
+  /**
+   * @~Chinese
+   * @brief 获取CodexPad的固件版本
+   * @return CodexPad的固件版本
+   */
+  inline const std::array<uint8_t, 3> remote_firmware_version() const { return remote_firmware_version_; }
 
   /**
    * @~English
@@ -845,28 +888,41 @@ class CodexPad {
    */
   bool HasAxisValueChanged(const Axis axis, const uint8_t threshold) const;
 
+  /**
+   * @~English
+   * @brief Get the BLE client object
+   * @details This function returns a pointer to the internal BLE client object. The caller should not try and release/delete it.
+   * @return BLE client object
+   */
+  /**
+   * @~Chinese
+   * @brief 获取 BLE 客户端对象
+   * @details 此函数返回内部 BLE 客户端对象的指针。调用者不应尝试释放/删除它。
+   * @return BLE 客户端对象
+   */
+  NimBLEClient* ble_client() const { return ble_client_; }
+
  private:
   static constexpr size_t kButtonNum = 32;
   static constexpr size_t kInputsQueueMax = 10;
-
-#pragma pack(push, 1)
-  struct alignas(1) Inputs {
+  static constexpr size_t kInputsBytes = 8;
+  struct Inputs {
     uint32_t button_states = 0;
     uint8_t axis_values[kAxisValueNum] = {kAxisCenter, kAxisCenter, kAxisCenter, kAxisCenter};
   };
-#pragma pack(pop)
 
-  bool Connect(const BLEAddress& address, const uint32_t timeout_ms = UINT32_MAX);
-  void OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify);
+  static_assert(sizeof(Inputs) == kInputsBytes);
+
+  bool Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms);
+  void OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length, const bool is_notify);
   void Reset();
 
   mutable std::mutex mutex_;
-  BLEClient* ble_client_ = nullptr;
-  std::string device_name_;
-  std::string model_number_;
-  uint8_t device_firmware_version_[3] = {0};
+  NimBLEClient* ble_client_ = nullptr;
+  std::string remote_device_name_;
+  std::string remote_model_number_;
+  std::array<uint8_t, 3> remote_firmware_version_ = {0, 0, 0};
   Inputs prev_inputs_;
   Inputs current_inputs_;
   std::queue<Inputs> inputs_queue_;
-  bool connected_ = false;
 };

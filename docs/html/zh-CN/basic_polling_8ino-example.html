@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;2.1.0</span>
    </div>
   </td>
  </tr>
@@ -100,7 +100,7 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 </div><!--header-->
 <div class="contents">
 <p>演示通过基本轮询方式定期查询并打印 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 所有按钮状态与摇杆值。</p>
-<p>演示通过基本轮询方式定期查询并打印 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 所有按钮状态与摇杆值。 本示例通过 MAC 地址连接到指定的 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 设备，并实现了一个简单的轮询循环。 每隔 30 毫秒，它会查询并打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0-255）。 它展示了 <code>button_state()</code> 用于离散按钮查询和 <code>axis_value()</code> 用于连续摇杆读取的基本用法。 </p><dl class="section note"><dt>注解</dt><dd>本示例使用简单的定时机制（<code>millis()</code>）以固定间隔打印，适用于状态监控或日志记录。 对于实时控制应用，请确保尽可能频繁地调用 <code>Update()</code> 且无阻塞延时。 </dd></dl>
+<p>演示通过基本轮询方式定期查询并打印 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 所有按钮状态与摇杆值。 本示例通过Bluetooth Device Address连接到指定的 <a class="el" href="class_codex_pad.html" title="CodexPad主类">CodexPad</a> 设备，并实现了一个简单的轮询循环。 每隔 30 毫秒，它会查询并打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0-255）。 它展示了 <code>button_state()</code> 用于离散按钮查询和 <code>axis_value()</code> 用于连续摇杆读取的基本用法。 </p><dl class="section note"><dt>注解</dt><dd>本示例使用简单的定时机制（<code>millis()</code>）以固定间隔打印，适用于状态监控或日志记录。 对于实时控制应用，请确保尽可能频繁地调用 <code>Update()</code> 且无阻塞延时。 </dd></dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="class_codex_pad.html#af865f995e67eaf8b61a003958f535c5e" title="查询按键是否被按下或持续按下">CodexPad::button_state</a> </dd>
 <dd>
 <a class="el" href="class_codex_pad.html#a7bd8e836a7d6a6945aaa8bdc30cdbca7" title="获取轴值">CodexPad::axis_value</a> </dd>
@@ -111,7 +111,7 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line"><span class="comment"> * @file basic_polling.ino</span></div>
 <div class="line"><span class="comment"> * @example basic_polling.ino</span></div>
 <div class="line"><span class="comment"> * @brief Demonstrates the basic polling method to periodically query and print all CodexPad button states and joystick values.</span></div>
-<div class="line"><span class="comment"> * @details This example establishes a connection to a specific CodexPad device (by MAC address) and implements a simple polling loop.</span></div>
+<div class="line"><span class="comment"> * @details This example establishes a connection to a specific CodexPad device (by Bluetooth Device Address) and implements a simple polling loop.</span></div>
 <div class="line"><span class="comment"> *          Every 30 milliseconds, it queries and prints the current state (pressed/released) of all buttons and the raw analog values (0-255) of both</span></div>
 <div class="line"><span class="comment"> * joysticks. It showcases the fundamental usage of `button_state()` for discrete button queries and `axis_value()` for continuous joystick readings.</span></div>
 <div class="line"><span class="comment"> *          @note This example uses a simple timing mechanism (`millis()`) to print at a fixed interval, which is suitable for monitoring or logging.</span></div>
@@ -125,7 +125,7 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line"><span class="comment"> * @file basic_polling.ino</span></div>
 <div class="line"><span class="comment"> * @example basic_polling.ino</span></div>
 <div class="line"><span class="comment"> * @brief 演示通过基本轮询方式定期查询并打印 CodexPad 所有按钮状态与摇杆值。</span></div>
-<div class="line"><span class="comment"> * @details 本示例通过 MAC 地址连接到指定的 CodexPad 设备，并实现了一个简单的轮询循环。</span></div>
+<div class="line"><span class="comment"> * @details 本示例通过Bluetooth Device Address连接到指定的 CodexPad 设备，并实现了一个简单的轮询循环。</span></div>
 <div class="line"><span class="comment"> *          每隔 30 毫秒，它会查询并打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0-255）。</span></div>
 <div class="line"><span class="comment"> *          它展示了 `button_state()` 用于离散按钮查询和 `axis_value()` 用于连续摇杆读取的基本用法。</span></div>
 <div class="line"><span class="comment"> *          @note 本示例使用简单的定时机制（`millis()`）以固定间隔打印，适用于状态监控或日志记录。</span></div>
@@ -138,8 +138,43 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line"><span class="preprocessor">#include &quot;codex_pad.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>{</div>
+<div class="line"><span class="keyword">const</span> std::string kBluetoothDeviceAddress = <span class="stringliteral">&quot;E4:66:E5:A2:24:5D&quot;</span>;</div>
+<div class="line"> </div>
 <div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="class_codex_pad.html">CodexPad</a> g_codex_pad;</div>
-<div class="line"><span class="keyword">const</span> std::string kMacAddress(<span class="stringliteral">&quot;E4:66:E5:A2:24:5D&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> Connect() {</div>
+<div class="line">  printf(<span class="stringliteral">&quot;Start to connect %s\n&quot;</span>, kBluetoothDeviceAddress.c_str());</div>
+<div class="line">  <span class="comment">// Connect to the CodexPad with specified Bluetooth device address</span></div>
+<div class="line">  <span class="comment">// 连接到指定蓝牙设备地址的手柄</span></div>
+<div class="line">  <span class="keywordflow">while</span> (!g_codex_pad.<a id="a1" name="a1"></a><a class="code hl_function" href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">Connect</a>(kBluetoothDeviceAddress, 5000)) {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Retry to connect %s\n&quot;</span>, kBluetoothDeviceAddress.c_str());</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  printf(<span class="stringliteral">&quot;Remote device name: %s\n&quot;</span>, g_codex_pad.<a id="a2" name="a2"></a><a class="code hl_function" href="class_codex_pad.html#a4c7d8a8d0f85b3c6302bdd6b2facf0fc">remote_device_name</a>().c_str());</div>
+<div class="line">  printf(<span class="stringliteral">&quot;Remote model number: %s\n&quot;</span>, g_codex_pad.<a id="a3" name="a3"></a><a class="code hl_function" href="class_codex_pad.html#a15902d1331eaa5ed4f4af550b2693aab">remote_model_number</a>().c_str());</div>
+<div class="line">  printf(<span class="stringliteral">&quot;Remote firmware revision: %u.%u.%u\n&quot;</span>,</div>
+<div class="line">         g_codex_pad.<a id="a4" name="a4"></a><a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[0],</div>
+<div class="line">         g_codex_pad.<a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[1],</div>
+<div class="line">         g_codex_pad.<a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[2]);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ble_client = g_codex_pad.<a id="a5" name="a5"></a><a class="code hl_function" href="class_codex_pad.html#a5616405270e9eb6f4be3079b611ea2ec">ble_client</a>(); ble_client != <span class="keyword">nullptr</span>) {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Remote Bluetooth Device Address: %s\n&quot;</span>, ble_client-&gt;getPeerAddress().toString().c_str());</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Remote Bluetooth Device Address: unknown\n&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line">  <span class="comment">// Set transmission power to 0dBm</span></div>
+<div class="line">  <span class="comment">// Transmission power affects communication range and power consumption:</span></div>
+<div class="line">  <span class="comment">// Higher power provides longer range but consumes more battery</span></div>
+<div class="line">  <span class="comment">// Choose appropriate power level based on your application to balance range and battery life</span></div>
+<div class="line">  <span class="comment">// 设置发射功率为0dBm</span></div>
+<div class="line">  <span class="comment">// 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大</span></div>
+<div class="line">  <span class="comment">// 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命</span></div>
+<div class="line">  <span class="keywordflow">if</span> (g_codex_pad.<a id="a6" name="a6"></a><a class="code hl_function" href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">set_remote_tx_power</a>(<a class="code hl_enumvalue" href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a>)) {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Set remote tx power to 0dBm successfully\n&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  printf(<span class="stringliteral">&quot;Connected\n&quot;</span>);</div>
+<div class="line">}</div>
 <div class="line">}  <span class="comment">// namespace</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
@@ -148,23 +183,7 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line">  printf(<span class="stringliteral">&quot;Init\n&quot;</span>);</div>
 <div class="line">  g_codex_pad.Init();</div>
 <div class="line"> </div>
-<div class="line">  printf(<span class="stringliteral">&quot;Begin connecting\n&quot;</span>);</div>
-<div class="line">  <span class="comment">// Connect to the CodexPad with specified MAC address</span></div>
-<div class="line">  <span class="comment">// 连接到指定MAC地址的手柄</span></div>
-<div class="line">  <span class="keywordflow">while</span> (!g_codex_pad.Connect(kMacAddress)) {</div>
-<div class="line">    printf(<span class="stringliteral">&quot;Retry connect\n&quot;</span>);</div>
-<div class="line">  }</div>
-<div class="line"> </div>
-<div class="line">  printf(<span class="stringliteral">&quot;Connected\n&quot;</span>);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Set transmission power to 0dBm</span></div>
-<div class="line">  <span class="comment">// Transmission power affects communication range and power consumption:</span></div>
-<div class="line">  <span class="comment">// Higher power provides longer range but consumes more battery</span></div>
-<div class="line">  <span class="comment">// Choose appropriate power level based on your application to balance range and battery life</span></div>
-<div class="line">  <span class="comment">// 设置发射功率为0dBm</span></div>
-<div class="line">  <span class="comment">// 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大</span></div>
-<div class="line">  <span class="comment">// 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命</span></div>
-<div class="line">  g_codex_pad.set_tx_power(<a class="code hl_enumvalue" href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a>);</div>
+<div class="line">  Connect();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
@@ -177,14 +196,9 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line">  g_codex_pad.Update();</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">if</span> (!g_codex_pad.is_connected()) {</div>
-<div class="line">    printf(<span class="stringliteral">&quot;Disconnected, begin reconnecting\n&quot;</span>);</div>
-<div class="line">    <span class="comment">// Connect to the CodexPad with specified MAC address</span></div>
-<div class="line">    <span class="comment">// 连接到指定MAC地址的手柄</span></div>
-<div class="line">    <span class="keywordflow">while</span> (!g_codex_pad.Connect(kMacAddress)) {</div>
-<div class="line">      printf(<span class="stringliteral">&quot;Retry reconnect\n&quot;</span>);</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    printf(<span class="stringliteral">&quot;Reconnected\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Disconnected, start to reconnect\n&quot;</span>);</div>
+<div class="line">    Connect();</div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">static</span> uint32_t s_print_time = 0;</div>
@@ -226,29 +240,35 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line">        g_codex_pad.axis_value(<a class="code hl_enumvalue" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6">CodexPad::Axis::kRightStickY</a>));</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_codex_pad_html"><div class="ttname"><a href="class_codex_pad.html">CodexPad</a></div><div class="ttdoc">CodexPad主类</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00022">codex_pad.h:22</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">CodexPad::Axis::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">左摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00494">codex_pad.h:494</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6">CodexPad::Axis::kRightStickY</a></div><div class="ttdeci">@ kRightStickY</div><div class="ttdoc">右摇杆Y轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00524">codex_pad.h:524</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880">CodexPad::Axis::kLeftStickY</a></div><div class="ttdeci">@ kLeftStickY</div><div class="ttdoc">左摇杆Y轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00504">codex_pad.h:504</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99">CodexPad::Axis::kRightStickX</a></div><div class="ttdeci">@ kRightStickX</div><div class="ttdoc">右摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00514">codex_pad.h:514</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0">CodexPad::Button::kSelect</a></div><div class="ttdeci">@ kSelect</div><div class="ttdoc">选择</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00452">codex_pad.h:452</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a></div><div class="ttdeci">@ kStart</div><div class="ttdoc">开始</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00462">codex_pad.h:462</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a">CodexPad::Button::kL2</a></div><div class="ttdeci">@ kL2</div><div class="ttdoc">L2</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00402">codex_pad.h:402</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510">CodexPad::Button::kL1</a></div><div class="ttdeci">@ kL1</div><div class="ttdoc">L1</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00392">codex_pad.h:392</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a></div><div class="ttdeci">@ kCrossA</div><div class="ttdoc">叉或者A</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00372">codex_pad.h:372</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28">CodexPad::Button::kLeft</a></div><div class="ttdeci">@ kLeft</div><div class="ttdoc">左</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00332">codex_pad.h:332</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9">CodexPad::Button::kRight</a></div><div class="ttdeci">@ kRight</div><div class="ttdoc">右</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00342">codex_pad.h:342</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2">CodexPad::Button::kHome</a></div><div class="ttdeci">@ kHome</div><div class="ttdoc">首页</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00472">codex_pad.h:472</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3">CodexPad::Button::kL3</a></div><div class="ttdeci">@ kL3</div><div class="ttdoc">L3</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00412">codex_pad.h:412</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e">CodexPad::Button::kDown</a></div><div class="ttdeci">@ kDown</div><div class="ttdoc">下</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00322">codex_pad.h:322</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b">CodexPad::Button::kSquareX</a></div><div class="ttdeci">@ kSquareX</div><div class="ttdoc">方形或者X</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00352">codex_pad.h:352</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f">CodexPad::Button::kR3</a></div><div class="ttdeci">@ kR3</div><div class="ttdoc">R3</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00442">codex_pad.h:442</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d">CodexPad::Button::kR2</a></div><div class="ttdeci">@ kR2</div><div class="ttdoc">R2</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00432">codex_pad.h:432</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">上</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00312">codex_pad.h:312</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48">CodexPad::Button::kCircleB</a></div><div class="ttdeci">@ kCircleB</div><div class="ttdoc">圆形或者B</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00382">codex_pad.h:382</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4">CodexPad::Button::kR1</a></div><div class="ttdeci">@ kR1</div><div class="ttdoc">R1</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00422">codex_pad.h:422</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">CodexPad::Button::kTriangleY</a></div><div class="ttdeci">@ kTriangleY</div><div class="ttdoc">三角形或者Y</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00362">codex_pad.h:362</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"><div class="ttname"><a href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a></div><div class="ttdeci">@ k0dBm</div><div class="ttdoc">0 dBm</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00230">codex_pad.h:230</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html"><div class="ttname"><a href="class_codex_pad.html">CodexPad</a></div><div class="ttdoc">CodexPad主类</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00046">codex_pad.h:46</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a060b78e6e6fd244434fcda8a85048642"><div class="ttname"><a href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">CodexPad::remote_firmware_version</a></div><div class="ttdeci">const std::array&lt; uint8_t, 3 &gt; remote_firmware_version() const</div><div class="ttdoc">获取CodexPad的固件版本</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00734">codex_pad.h:734</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a15902d1331eaa5ed4f4af550b2693aab"><div class="ttname"><a href="class_codex_pad.html#a15902d1331eaa5ed4f4af550b2693aab">CodexPad::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00722">codex_pad.h:722</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a604866afe54eddb18859ee5657f7a29a">CodexPad::Axis::kLeftStickX</a></div><div class="ttdeci">@ kLeftStickX</div><div class="ttdoc">左摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00516">codex_pad.h:516</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a6bceb15acc0b7470c5a1483eb39129a6">CodexPad::Axis::kRightStickY</a></div><div class="ttdeci">@ kRightStickY</div><div class="ttdoc">右摇杆Y轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00546">codex_pad.h:546</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a751d793756612664c990e0ea6ae48880">CodexPad::Axis::kLeftStickY</a></div><div class="ttdeci">@ kLeftStickY</div><div class="ttdoc">左摇杆Y轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00526">codex_pad.h:526</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0a968cad1db699f941ff463a0d122c3e99">CodexPad::Axis::kRightStickX</a></div><div class="ttdeci">@ kRightStickX</div><div class="ttdoc">右摇杆X轴</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00536">codex_pad.h:536</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4270ab7daacb30add44c298a798fe64b"><div class="ttname"><a href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">CodexPad::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;bluetooth_device_address, const uint32_t timeout_ms=5000)</div><div class="ttdoc">连接</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00038">codex_pad.cpp:38</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0">CodexPad::Button::kSelect</a></div><div class="ttdeci">@ kSelect</div><div class="ttdoc">选择</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00474">codex_pad.h:474</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a></div><div class="ttdeci">@ kStart</div><div class="ttdoc">开始</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00484">codex_pad.h:484</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a">CodexPad::Button::kL2</a></div><div class="ttdeci">@ kL2</div><div class="ttdoc">L2</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00424">codex_pad.h:424</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510">CodexPad::Button::kL1</a></div><div class="ttdeci">@ kL1</div><div class="ttdoc">L1</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00414">codex_pad.h:414</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a></div><div class="ttdeci">@ kCrossA</div><div class="ttdoc">叉或者A</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00394">codex_pad.h:394</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28">CodexPad::Button::kLeft</a></div><div class="ttdeci">@ kLeft</div><div class="ttdoc">左</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00354">codex_pad.h:354</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9">CodexPad::Button::kRight</a></div><div class="ttdeci">@ kRight</div><div class="ttdoc">右</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00364">codex_pad.h:364</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2">CodexPad::Button::kHome</a></div><div class="ttdeci">@ kHome</div><div class="ttdoc">首页</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00494">codex_pad.h:494</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3">CodexPad::Button::kL3</a></div><div class="ttdeci">@ kL3</div><div class="ttdoc">L3</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00434">codex_pad.h:434</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e">CodexPad::Button::kDown</a></div><div class="ttdeci">@ kDown</div><div class="ttdoc">下</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00344">codex_pad.h:344</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b">CodexPad::Button::kSquareX</a></div><div class="ttdeci">@ kSquareX</div><div class="ttdoc">方形或者X</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00374">codex_pad.h:374</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f">CodexPad::Button::kR3</a></div><div class="ttdeci">@ kR3</div><div class="ttdoc">R3</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00464">codex_pad.h:464</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d">CodexPad::Button::kR2</a></div><div class="ttdeci">@ kR2</div><div class="ttdoc">R2</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00454">codex_pad.h:454</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a></div><div class="ttdeci">@ kUp</div><div class="ttdoc">上</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00334">codex_pad.h:334</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48">CodexPad::Button::kCircleB</a></div><div class="ttdeci">@ kCircleB</div><div class="ttdoc">圆形或者B</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00404">codex_pad.h:404</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4">CodexPad::Button::kR1</a></div><div class="ttdeci">@ kR1</div><div class="ttdoc">R1</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00444">codex_pad.h:444</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">CodexPad::Button::kTriangleY</a></div><div class="ttdeci">@ kTriangleY</div><div class="ttdoc">三角形或者Y</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00384">codex_pad.h:384</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a4c7d8a8d0f85b3c6302bdd6b2facf0fc"><div class="ttname"><a href="class_codex_pad.html#a4c7d8a8d0f85b3c6302bdd6b2facf0fc">CodexPad::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00710">codex_pad.h:710</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a5616405270e9eb6f4be3079b611ea2ec"><div class="ttname"><a href="class_codex_pad.html#a5616405270e9eb6f4be3079b611ea2ec">CodexPad::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00903">codex_pad.h:903</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_ab3468c41c92e45374a320ea23783dd9c"><div class="ttname"><a href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(const TxPower power)</div><div class="ttdoc">设置发射功率，连接状态下调用，立即生效于当前连接，下次连接生效</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8cpp_source.html#l00125">codex_pad.cpp:125</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"><div class="ttname"><a href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a></div><div class="ttdeci">@ k0dBm</div><div class="ttdoc">0 dBm</div><div class="ttdef"><b>定义</b> <a href="codex__pad_8h_source.html#l00252">codex_pad.h:252</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

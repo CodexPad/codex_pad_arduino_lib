@@ -3,7 +3,7 @@
  * @file basic_polling.ino
  * @example basic_polling.ino
  * @brief Demonstrates the basic polling method to periodically query and print all CodexPad button states and joystick values.
- * @details This example establishes a connection to a specific CodexPad device (by MAC address) and implements a simple polling loop.
+ * @details This example establishes a connection to a specific CodexPad device (by Bluetooth Device Address) and implements a simple polling loop.
  *          Every 30 milliseconds, it queries and prints the current state (pressed/released) of all buttons and the raw analog values (0-255) of both
  * joysticks. It showcases the fundamental usage of `button_state()` for discrete button queries and `axis_value()` for continuous joystick readings.
  *          @note This example uses a simple timing mechanism (`millis()`) to print at a fixed interval, which is suitable for monitoring or logging.
@@ -17,7 +17,7 @@
  * @file basic_polling.ino
  * @example basic_polling.ino
  * @brief 演示通过基本轮询方式定期查询并打印 CodexPad 所有按钮状态与摇杆值。
- * @details 本示例通过 MAC 地址连接到指定的 CodexPad 设备，并实现了一个简单的轮询循环。
+ * @details 本示例通过Bluetooth Device Address连接到指定的 CodexPad 设备，并实现了一个简单的轮询循环。
  *          每隔 30 毫秒，它会查询并打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0-255）。
  *          它展示了 `button_state()` 用于离散按钮查询和 `axis_value()` 用于连续摇杆读取的基本用法。
  *          @note 本示例使用简单的定时机制（`millis()`）以固定间隔打印，适用于状态监控或日志记录。
@@ -30,8 +30,43 @@
 #include "codex_pad.h"
 
 namespace {
+const std::string kBluetoothDeviceAddress = "E4:66:E5:A2:24:5D";
+
 CodexPad g_codex_pad;
-const std::string kMacAddress("E4:66:E5:A2:24:5D");
+
+void Connect() {
+  printf("Start to connect %s\n", kBluetoothDeviceAddress.c_str());
+  // Connect to the CodexPad with specified Bluetooth device address
+  // 连接到指定蓝牙设备地址的手柄
+  while (!g_codex_pad.Connect(kBluetoothDeviceAddress, 5000)) {
+    printf("Retry to connect %s\n", kBluetoothDeviceAddress.c_str());
+  }
+
+  printf("Remote device name: %s\n", g_codex_pad.remote_device_name().c_str());
+  printf("Remote model number: %s\n", g_codex_pad.remote_model_number().c_str());
+  printf("Remote firmware revision: %u.%u.%u\n",
+         g_codex_pad.remote_firmware_version()[0],
+         g_codex_pad.remote_firmware_version()[1],
+         g_codex_pad.remote_firmware_version()[2]);
+
+  if (const auto ble_client = g_codex_pad.ble_client(); ble_client != nullptr) {
+    printf("Remote Bluetooth Device Address: %s\n", ble_client->getPeerAddress().toString().c_str());
+  } else {
+    printf("Remote Bluetooth Device Address: unknown\n");
+  }
+  // Set transmission power to 0dBm
+  // Transmission power affects communication range and power consumption:
+  // Higher power provides longer range but consumes more battery
+  // Choose appropriate power level based on your application to balance range and battery life
+  // 设置发射功率为0dBm
+  // 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大
+  // 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命
+  if (g_codex_pad.set_remote_tx_power(CodexPad::TxPower::k0dBm)) {
+    printf("Set remote tx power to 0dBm successfully\n");
+  }
+
+  printf("Connected\n");
+}
 }  // namespace
 
 void setup() {
@@ -40,23 +75,7 @@ void setup() {
   printf("Init\n");
   g_codex_pad.Init();
 
-  printf("Begin connecting\n");
-  // Connect to the CodexPad with specified MAC address
-  // 连接到指定MAC地址的手柄
-  while (!g_codex_pad.Connect(kMacAddress)) {
-    printf("Retry connect\n");
-  }
-
-  printf("Connected\n");
-
-  // Set transmission power to 0dBm
-  // Transmission power affects communication range and power consumption:
-  // Higher power provides longer range but consumes more battery
-  // Choose appropriate power level based on your application to balance range and battery life
-  // 设置发射功率为0dBm
-  // 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大
-  // 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命
-  g_codex_pad.set_tx_power(CodexPad::TxPower::k0dBm);
+  Connect();
 }
 
 void loop() {
@@ -69,14 +88,9 @@ void loop() {
   g_codex_pad.Update();
 
   if (!g_codex_pad.is_connected()) {
-    printf("Disconnected, begin reconnecting\n");
-    // Connect to the CodexPad with specified MAC address
-    // 连接到指定MAC地址的手柄
-    while (!g_codex_pad.Connect(kMacAddress)) {
-      printf("Retry reconnect\n");
-    }
-
-    printf("Reconnected\n");
+    printf("Disconnected, start to reconnect\n");
+    Connect();
+    return;
   }
 
   static uint32_t s_print_time = 0;

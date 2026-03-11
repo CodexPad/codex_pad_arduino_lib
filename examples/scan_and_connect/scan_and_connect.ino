@@ -114,21 +114,26 @@ std::string ButtonToString(CodexPad::Button button) {
     }
   }
 }
-}  // namespace
 
-void setup() {
-  Serial.begin(115200);
-
-  printf("Init\n");
-  g_codex_pad.Init();
-
-  printf("Begin Scanning and Connecting\n");
+void Connect() {
+  printf("Start to scan and connect, button mask: 0x%08X\n", kExpectedButtonMask);
 
   while (!g_codex_pad.ScanAndConnect(kExpectedButtonMask)) {
-    printf("Retry scan and connect\n");
+    printf("Retry to scan and connect, button mask: 0x%08X\n", kExpectedButtonMask);
   }
 
-  printf("Connected\n");
+  printf("Remote device name: %s\n", g_codex_pad.remote_device_name().c_str());
+  printf("Remote model number: %s\n", g_codex_pad.remote_model_number().c_str());
+  printf("Remote firmware revision: %u.%u.%u\n",
+         g_codex_pad.remote_firmware_version()[0],
+         g_codex_pad.remote_firmware_version()[1],
+         g_codex_pad.remote_firmware_version()[2]);
+
+  if (const auto ble_client = g_codex_pad.ble_client(); ble_client != nullptr) {
+    printf("Remote Bluetooth Device Address: %s\n", ble_client->getPeerAddress().toString().c_str());
+  } else {
+    printf("Remote Bluetooth Device Address: unknown\n");
+  }
 
   // Set transmission power to 0dBm
   // Transmission power affects communication range and power consumption:
@@ -137,7 +142,21 @@ void setup() {
   // 设置发射功率为0dBm
   // 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大
   // 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命
-  g_codex_pad.set_tx_power(CodexPad::TxPower::k0dBm);
+  if (g_codex_pad.set_remote_tx_power(CodexPad::TxPower::k0dBm)) {
+    printf("Set remote tx power to 0dBm successfully\n");
+  }
+
+  printf("Connected\n");
+}
+}  // namespace
+
+void setup() {
+  Serial.begin(115200);
+
+  printf("Init\n");
+  g_codex_pad.Init();
+
+  Connect();
 }
 
 void loop() {
@@ -150,14 +169,8 @@ void loop() {
   g_codex_pad.Update();
 
   if (!g_codex_pad.is_connected()) {
-    printf("Disconnected, begin reconnecting\n");
-
-    while (!g_codex_pad.ScanAndConnect(kExpectedButtonMask)) {
-      printf("Retry scan and connect\n");
-    }
-
-    printf("Connected\n");
-    g_codex_pad.set_tx_power(CodexPad::TxPower::k0dBm);
+    printf("Disconnected, start to reconnect\n");
+    Connect();
     return;
   }
 
@@ -165,23 +178,23 @@ void loop() {
   // Use pressed(), released(), holding() methods to detect different button states
   // 检测所有按钮的状态变化
   // 使用pressed(), released(), holding()方法检测按钮的不同状态
-  for (auto button : {CodexPad::Button::kUp,
-                      CodexPad::Button::kDown,
-                      CodexPad::Button::kLeft,
-                      CodexPad::Button::kRight,
-                      CodexPad::Button::kSquareX,
-                      CodexPad::Button::kTriangleY,
-                      CodexPad::Button::kCrossA,
-                      CodexPad::Button::kCircleB,
-                      CodexPad::Button::kL1,
-                      CodexPad::Button::kL2,
-                      CodexPad::Button::kL3,
-                      CodexPad::Button::kR1,
-                      CodexPad::Button::kR2,
-                      CodexPad::Button::kR3,
-                      CodexPad::Button::kSelect,
-                      CodexPad::Button::kStart,
-                      CodexPad::Button::kHome}) {
+  for (const auto button : {CodexPad::Button::kUp,
+                            CodexPad::Button::kDown,
+                            CodexPad::Button::kLeft,
+                            CodexPad::Button::kRight,
+                            CodexPad::Button::kSquareX,
+                            CodexPad::Button::kTriangleY,
+                            CodexPad::Button::kCrossA,
+                            CodexPad::Button::kCircleB,
+                            CodexPad::Button::kL1,
+                            CodexPad::Button::kL2,
+                            CodexPad::Button::kL3,
+                            CodexPad::Button::kR1,
+                            CodexPad::Button::kR2,
+                            CodexPad::Button::kR3,
+                            CodexPad::Button::kSelect,
+                            CodexPad::Button::kStart,
+                            CodexPad::Button::kHome}) {
     // Check if button was just pressed (transition from released to pressed)
     // 检测按钮是否刚刚按下（从弹起变为按下）
     if (g_codex_pad.pressed(button)) {

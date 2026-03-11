@@ -3,73 +3,73 @@
 #include <memory>
 
 #include "WString.h"
-#include "esp_arduino_version.h"
-
-#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 3, 0) && ESP_ARDUINO_VERSION <= ESP_ARDUINO_VERSION_VAL(3, 3, 2)
-// clang-format off
-#error "This library is incompatible with ESP-Arduino versions 3.3.0 to 3.3.2 (inclusive) due to known bugs. Please use version 3.3.3 or later, or downgrade to a version before 3.3.0."
-#error "此库与 ESP-Arduino 版本 3.3.0 到 3.3.2（包含）不兼容，因为存在已知错误。请使用 3.3.3 或更高版本，或降级到 3.3.0 之前的版本。"
-// clang-format on
-#endif
 
 namespace {
-const BLEUUID kGapServiceUuid(static_cast<uint16_t>(0x1800));
-const BLEUUID kGapDeviceNameUuid(static_cast<uint16_t>(0x2A00));
+constexpr uint16_t kGapServiceUuid{0x1800};
+constexpr uint16_t kGapDeviceNameUuid{0x2A00};
 
-const BLEUUID kInputsServiceUuid(static_cast<uint16_t>(0xFFA0));
-const BLEUUID kInputsCharacteristicUuid(static_cast<uint16_t>(0xFFA1));
+constexpr uint16_t kInputsServiceUuid{0xFFA0};
+constexpr uint16_t kInputsCharacteristicUuid{0xFFA1};
 
-const BLEUUID kBatteryServiceUuid(static_cast<uint16_t>(0x180F));
-const BLEUUID kBatteryLevelCharacteristicUuid(static_cast<uint16_t>(0x2A19));
+constexpr uint16_t kBatteryServiceUuid{0x180F};
+constexpr uint16_t kBatteryLevelCharacteristicUuid{0x2A19};
 
-const BLEUUID kDeviceInfoServiceUuid(static_cast<uint16_t>(0x180A));
-const BLEUUID kModelNumberCharacteristicUuid(static_cast<uint16_t>(0x2A24));
-const BLEUUID kSerialNumberCharacteristicUuid(static_cast<uint16_t>(0x2A25));
-const BLEUUID kFirmwareRevisionCharacteristicUuid(static_cast<uint16_t>(0x2A26));
-const BLEUUID kManufacturerNameCharacteristicUuid(static_cast<uint16_t>(0x2A29));
+constexpr uint16_t kDeviceInfoServiceUuid{0x180A};
+constexpr uint16_t kModelNumberCharacteristicUuid{0x2A24};
+constexpr uint16_t kSerialNumberCharacteristicUuid{0x2A25};
+constexpr uint16_t kFirmwareRevisionCharacteristicUuid{0x2A26};
+constexpr uint16_t kManufacturerNameCharacteristicUuid{0x2A29};
 
 bool HasAxisValueChangedSignificantly(const int16_t prev_value, const int16_t current_value, const uint8_t threshold) {
   return prev_value != current_value && (current_value == 0 || current_value == 255 || std::abs(current_value - prev_value) >= threshold);
 }
-
 }  // namespace
 
-CodexPad::CodexPad() {
-}
+CodexPad::CodexPad() {}
 
-CodexPad::~CodexPad() {
-  if (ble_client_ != nullptr) {
-    ble_client_->disconnect();
-    delete ble_client_;
-  }
-}
+CodexPad::~CodexPad() { Reset(); }
 
 void CodexPad::Init() {
-  if (!BLEDevice::getInitialized()) {
-    BLEDevice::init("");
+  if (!NimBLEDevice::isInitialized()) {
+    NimBLEDevice::init("CodexPadClient");
   }
 }
 
-bool CodexPad::Connect(const std::string& mac_address, const uint32_t timeout_ms) {
-  return Connect(BLEAddress(mac_address.c_str()), timeout_ms);
+bool CodexPad::Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms) {
+  // check mac address is valid
+  if (bluetooth_device_address.length() != 17 || bluetooth_device_address[2] != ':' || bluetooth_device_address[5] != ':' ||
+      bluetooth_device_address[8] != ':' || bluetooth_device_address[11] != ':' || bluetooth_device_address[14] != ':') {
+    abort();
+    return false;
+  }
+
+  return Connect(NimBLEAddress(bluetooth_device_address, 0), false, timeout_ms);
 }
 
 bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
-  auto scanner = BLEDevice::getScan();
+  auto scanner = NimBLEDevice::getScan();
   scanner->setActiveScan(true);  // active scan uses more power, but get results faster
   scanner->setInterval(1000);
   scanner->setWindow(999);  // less or equal setInterval value
-#if ESP_ARDUINO_VERSION_MAJOR <= 2
-  auto scan_results = scanner->start(1, false);
-  auto result = &scan_results;
-#else
-  auto result = scanner->start(1, false);
-#endif
-  int32_t rssi = INT16_MIN;
-  std::unique_ptr<BLEAddress> mac_address;
+
+  if (!scanner->start(1000)) {
+    scanner->stop();
+    scanner->clearResults();
+    // printf("Scan failed\n");
+    return false;
+  }
+
+  while (scanner->isScanning()) {
+    delay(100);
+  }
+
+  // printf("Scan done, device count: %d\n", scanner->getResults().getCount());
+
+  int8_t rssi = INT8_MIN;
+  NimBLEAddress address;
 
 #pragma pack(push, 1)
-  struct alignas(1) ManufacturerData {
+  struct ManufacturerData {
     uint16_t company_id = 0xFFFF;
     uint8_t header[8] = {'C', 'o', 'd', 'e', 'x', 'P', 'a', 'd'};
     uint8_t version_major = 0;
@@ -79,28 +79,16 @@ bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
   };
 #pragma pack(pop)
 
-  if (result != nullptr) {
-    for (size_t i = 0; i < result->getCount(); i++) {
-      auto device = result->getDevice(i);
-      if (device.haveName() &&
-#if ESP_ARDUINO_VERSION_MAJOR <= 2
-          String(device.getName().c_str()).startsWith("CodexPad-")
-#else
-          device.getName().startsWith("CodexPad-")
-#endif
-          && device.haveRSSI() && device.haveManufacturerData()) {
-        const auto manufacturer_data = device.getManufacturerData();
-        if (manufacturer_data.length() >= sizeof(ManufacturerData)) {
-          const auto data = reinterpret_cast<const ManufacturerData*>(manufacturer_data.c_str());
-          if (data->company_id == 0xFFFF && memcmp(data->header, "CodexPad", 8) == 0 && data->button_state == button_mask &&
-              device.getRSSI() > rssi) {
-            rssi = device.getRSSI();
-#if __cplusplus >= 201402L
-            mac_address = std::make_unique<BLEAddress>(device.getAddress());
-#else
-            mac_address = std::unique_ptr<BLEAddress>(new BLEAddress(device.getAddress()));
-#endif
-          }
+  for (const auto device : scanner->getResults()) {
+    if (device->haveName() && String(device->getName().c_str()).startsWith("CodexPad-") && device->haveManufacturerData()) {
+      // printf("Name: %s\n", device->getName().c_str());
+      const auto manufacturer_data = device->getManufacturerData();
+      if (manufacturer_data.length() >= sizeof(ManufacturerData)) {
+        const auto data = reinterpret_cast<const ManufacturerData*>(manufacturer_data.c_str());
+        if (data->company_id == 0xFFFF && memcmp(data->header, "CodexPad", 8) == 0 && data->button_state == button_mask && device->getRSSI() > rssi) {
+          rssi = device->getRSSI();
+          address = device->getAddress();
+          // printf("Found device, rssi: %d, address: %s\n", rssi, address.toString().c_str());
         }
       }
     }
@@ -108,7 +96,7 @@ bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
 
   scanner->clearResults();
 
-  return mac_address ? Connect(*mac_address, 2000) : false;
+  return address.isNull() ? false : Connect(address, 2000);
 }
 
 void CodexPad::Update() {
@@ -116,16 +104,8 @@ void CodexPad::Update() {
     return;
   }
 
-  const auto current_connection_state = ble_client_->isConnected();
-  if (connected_ != current_connection_state) {
-    connected_ = current_connection_state;
-    if (!connected_) {
-      Reset();
-      return;
-    }
-  }
-
-  if (!connected_) {
+  if (!ble_client_->isConnected()) {
+    Reset();
     return;
   }
 
@@ -140,12 +120,28 @@ void CodexPad::Update() {
   } while (false);
 }
 
-void CodexPad::set_tx_power(const CodexPad::TxPower tx_power) {
-  if (ble_client_ != nullptr) {
-    ble_client_->getService(BLEUUID(static_cast<uint16_t>(0x1804)))
-        ->getCharacteristic(BLEUUID(static_cast<uint16_t>(0x2A07)))
-        ->writeValue(static_cast<uint8_t>(tx_power));
+bool CodexPad::is_connected() const { return ble_client_ != nullptr && ble_client_->isConnected(); }
+
+bool CodexPad::set_remote_tx_power(const CodexPad::TxPower tx_power) {
+  if (ble_client_ == nullptr) {
+    return false;
   }
+
+  if (!ble_client_->isConnected()) {
+    return false;
+  }
+
+  auto remote_service = ble_client_->getService(uint16_t{0x1804});
+  if (remote_service == nullptr) {
+    return false;
+  }
+
+  auto remote_characteristic = remote_service->getCharacteristic(uint16_t{0x2A07});
+  if (remote_characteristic == nullptr) {
+    return false;
+  }
+
+  return remote_characteristic->writeValue(static_cast<uint8_t>(tx_power));
 }
 
 bool CodexPad::pressed(const Button button) const {
@@ -160,20 +156,14 @@ bool CodexPad::holding(const Button button) const {
   return (prev_inputs_.button_states & static_cast<uint32_t>(button)) != 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
 }
 
-bool CodexPad::button_state(const Button button) const {
-  return (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
-}
+bool CodexPad::button_state(const Button button) const { return (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0; }
 
-uint32_t CodexPad::button_states() const {
-  return current_inputs_.button_states;
-}
+uint32_t CodexPad::button_states() const { return current_inputs_.button_states; }
 
-uint8_t CodexPad::axis_value(const Axis axis) const {
-  return current_inputs_.axis_values[static_cast<size_t>(axis)];
-}
+uint8_t CodexPad::axis_value(const Axis axis) const { return current_inputs_.axis_values[static_cast<size_t>(axis)]; }
 
 std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
-  std::array<uint8_t, kAxisValueNum> axis_values = {0x80, 0x80, 0x80, 0x80};
+  std::array<uint8_t, kAxisValueNum> axis_values = {kAxisCenter, kAxisCenter, kAxisCenter, kAxisCenter};
   for (size_t i = 0; i < kAxisValueNum; i++) {
     axis_values[i] = current_inputs_.axis_values[i];
   }
@@ -185,71 +175,56 @@ bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) con
       current_inputs_.axis_values[static_cast<size_t>(axis)], prev_inputs_.axis_values[static_cast<size_t>(axis)], threshold);
 }
 
-bool CodexPad::Connect(const BLEAddress& address, [[maybe_unused]] const uint32_t timeout_ms) {
+bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms) {
   Reset();
-  BLERemoteService* device_info_service = nullptr;
-  ble_client_ = BLEDevice::createClient();
+  assert(ble_client_ == nullptr);
+  ble_client_ = NimBLEDevice::createClient(address);
+  ble_client_->setConnectTimeout(timeout_ms);
+  auto ret = ble_client_->connect(true, async_connect, true);
 
-#if ESP_ARDUINO_VERSION_MAJOR <= 2
-  const auto ret = ble_client_->connect(address, BLE_ADDR_TYPE_PUBLIC);
-#else
-#ifdef BLE_ADDR_PUBLIC
-  const auto ret = ble_client_->connect(address, BLE_ADDR_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
-#else
-  const auto ret = ble_client_->connect(address, BLE_ADDR_TYPE_PUBLIC, timeout_ms == UINT32_MAX ? portMAX_DELAY : timeout_ms);
-#endif
-#endif
-
-  if (!ret) {
-    goto Failed;
+  if (!ret || !ble_client_->isConnected()) {
+    goto FAILED;
   }
 
-  device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid).c_str();
-  device_info_service = ble_client_->getService(kDeviceInfoServiceUuid);
-  if (device_info_service != nullptr) {
-    if (auto characteristic = device_info_service->getCharacteristic(kModelNumberCharacteristicUuid); characteristic != nullptr) {
-      model_number_ = characteristic->readValue().c_str();
+  remote_device_name_ = ble_client_->getValue(kGapServiceUuid, kGapDeviceNameUuid);
+  remote_model_number_ = ble_client_->getValue(kDeviceInfoServiceUuid, kModelNumberCharacteristicUuid);
+  {
+    auto firmware_revision = ble_client_->getValue(kDeviceInfoServiceUuid, kFirmwareRevisionCharacteristicUuid);
+    if (firmware_revision.length() == sizeof(remote_firmware_version_)) {
+      memcpy(remote_firmware_version_.data(), firmware_revision.data(), firmware_revision.length());
     }
-    if (auto characteristic = device_info_service->getCharacteristic(kFirmwareRevisionCharacteristicUuid); characteristic != nullptr) {
-      const auto firmware_revision = characteristic->readValue();
-      for (uint8_t i = 0; i < sizeof(device_firmware_version_); i++) {
-        device_firmware_version_[i] = firmware_revision[i];
-      }
-    }
-  } else {
-    goto Failed;
   }
 
-  if (auto service = ble_client_->getService(kInputsServiceUuid); service != nullptr) {
-    if (auto characteristic = service->getCharacteristic(kInputsCharacteristicUuid); characteristic != nullptr) {
-      if (characteristic->canNotify()) {
-        characteristic->registerForNotify(
-            std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4), true);
-      } else {
-        goto Failed;
-      }
-    } else {
-      goto Failed;
+  {
+    auto remote_service = ble_client_->getService(kInputsServiceUuid);
+    if (remote_service == nullptr) {
+      goto FAILED;
     }
-  } else {
-    goto Failed;
+
+    auto remote_characteristic = remote_service->getCharacteristic(kInputsCharacteristicUuid);
+    if (remote_characteristic == nullptr) {
+      goto FAILED;
+    }
+
+    if (!remote_characteristic->canNotify()) {
+      goto FAILED;
+    }
+
+    if (!remote_characteristic->subscribe(
+            true, std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4))) {
+      goto FAILED;
+    }
   }
 
-  connected_ = ble_client_->isConnected();
   return ret;
 
-Failed:
-  if (ble_client_ != nullptr) {
-    ble_client_->disconnect();
-    delete ble_client_;
-    ble_client_ = nullptr;
-  }
-  connected_ = false;
+FAILED:
+  Reset();
   return false;
 }
 
-void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool is_notify) {
-  if (characteristic != nullptr && characteristic->getUUID().equals(kInputsCharacteristicUuid)) {
+void CodexPad::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length, const bool is_notify) {
+  if (remote_characteristic != nullptr && remote_characteristic->getUUID().equals(kInputsCharacteristicUuid)) {
     if (length != sizeof(Inputs)) {
       printf("WARNING: length != sizeof(Inputs)\n");
       return;
@@ -267,15 +242,15 @@ void CodexPad::OnNotify(BLERemoteCharacteristic* characteristic, uint8_t* data, 
 
 void CodexPad::Reset() {
   if (ble_client_ != nullptr) {
+    ble_client_->cancelConnect();
     ble_client_->disconnect();
-    delete ble_client_;
+    NimBLEDevice::deleteClient(ble_client_);
     ble_client_ = nullptr;
   }
 
-  device_name_.clear();
-  model_number_.clear();
-  memset(device_firmware_version_, 0, sizeof(device_firmware_version_));
-  connected_ = false;
+  remote_device_name_.clear();
+  remote_model_number_.clear();
+  remote_firmware_version_.fill(0);
   prev_inputs_ = {};
   current_inputs_ = {};
   std::lock_guard<std::mutex> l(mutex_);

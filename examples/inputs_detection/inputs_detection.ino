@@ -3,7 +3,7 @@
  * @file inputs_detection.ino
  * @example inputs_detection.ino
  * @brief Demonstrates how to detect real-time button states and joystick movements of a connected CodexPad.
- * @details This example establishes a connection to a specific CodexPad device (by MAC address) and continuously monitors all user inputs.
+ * @details This example establishes a connection to a specific CodexPad device (by Bluetooth Device Address) and continuously monitors all user inputs.
  *          It showcases the detection of three distinct button states: **pressed** (momentary press), **released** (momentary release), and
  * **holding** (sustained press). It also monitors the analog joystick axes and prints their values when a significant change beyond a set threshold
  * is detected, filtering out minor jitter.
@@ -21,7 +21,7 @@
  * @file inputs_detection.ino
  * @example inputs_detection.ino
  * @brief 演示如何检测已连接的 CodexPad 设备的实时按钮状态与摇杆移动。
- * @details 本示例通过 MAC 地址连接到指定的 CodexPad 设备，并持续监控所有用户输入。
+ * @details 本示例通过Bluetooth Device Address连接到指定的 CodexPad 设备，并持续监控所有用户输入。
  *          它展示了三种不同的按钮状态检测： **按下** (瞬间按下)、 **释放** (瞬间释放)和 **持续按住** 。
  *          同时，它监控模拟摇杆轴，当检测到超过设定阈值的显著变化时打印其值，从而过滤微小抖动。
  *          @note 必须在主循环中尽可能频繁地调用 `Update()` 方法，且不得添加延时，以确保实时响应性并防止数据包丢失。
@@ -36,8 +36,9 @@
 #include "codex_pad.h"
 
 namespace {
+const std::string kBluetoothDeviceAddress = "E4:66:E5:A2:24:5D";
+
 CodexPad g_codex_pad;
-const std::string kMacAddress("E4:66:E5:A2:24:5D");
 
 /**
  * Convert button constant to readable string name
@@ -101,6 +102,40 @@ std::string ButtonToString(CodexPad::Button button) {
     }
   }
 }
+
+void Connect() {
+  printf("Start to connect %s\n", kBluetoothDeviceAddress.c_str());
+  // Connect to the CodexPad with specified Bluetooth device address
+  // 连接到指定蓝牙设备地址的手柄
+  while (!g_codex_pad.Connect(kBluetoothDeviceAddress, 5000)) {
+    printf("Retry to connect %s\n", kBluetoothDeviceAddress.c_str());
+  }
+
+  printf("Remote device name: %s\n", g_codex_pad.remote_device_name().c_str());
+  printf("Remote model number: %s\n", g_codex_pad.remote_model_number().c_str());
+  printf("Remote firmware revision: %u.%u.%u\n",
+         g_codex_pad.remote_firmware_version()[0],
+         g_codex_pad.remote_firmware_version()[1],
+         g_codex_pad.remote_firmware_version()[2]);
+
+  if (const auto ble_client = g_codex_pad.ble_client(); ble_client != nullptr) {
+    printf("Remote Bluetooth Device Address: %s\n", ble_client->getPeerAddress().toString().c_str());
+  } else {
+    printf("Remote Bluetooth Device Address: unknown\n");
+  }
+  // Set transmission power to 0dBm
+  // Transmission power affects communication range and power consumption:
+  // Higher power provides longer range but consumes more battery
+  // Choose appropriate power level based on your application to balance range and battery life
+  // 设置发射功率为0dBm
+  // 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大
+  // 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命
+  if (g_codex_pad.set_remote_tx_power(CodexPad::TxPower::k0dBm)) {
+    printf("Set remote tx power to 0dBm successfully\n");
+  }
+
+  printf("Connected\n");
+}
 }  // namespace
 
 void setup() {
@@ -109,23 +144,7 @@ void setup() {
   printf("Init\n");
   g_codex_pad.Init();
 
-  printf("Begin connecting\n");
-  // Connect to the CodexPad with specified MAC address
-  // 连接到指定MAC地址的手柄
-  while (!g_codex_pad.Connect(kMacAddress)) {
-    printf("Retry connect\n");
-  }
-
-  printf("Connected\n");
-
-  // Set transmission power to 0dBm
-  // Transmission power affects communication range and power consumption:
-  // Higher power provides longer range but consumes more battery
-  // Choose appropriate power level based on your application to balance range and battery life
-  // 设置发射功率为0dBm
-  // 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大
-  // 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命
-  g_codex_pad.set_tx_power(CodexPad::TxPower::k0dBm);
+  Connect();
 }
 
 void loop() {
@@ -138,14 +157,9 @@ void loop() {
   g_codex_pad.Update();
 
   if (!g_codex_pad.is_connected()) {
-    printf("Disconnected, begin reconnecting\n");
-    // Connect to the CodexPad with specified MAC address
-    // 连接到指定MAC地址的手柄
-    while (!g_codex_pad.Connect(kMacAddress)) {
-      printf("Retry reconnect\n");
-    }
-
-    printf("Reconnected\n");
+    printf("Disconnected, start to reconnect\n");
+    Connect();
+    return;
   }
 
   // Detect state changes for all buttons
