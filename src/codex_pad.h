@@ -65,111 +65,6 @@ class CodexPad {
    */
   static constexpr uint8_t kAxisCenter = 0x80;
 
-#if __cplusplus < 201402L
-  static constexpr uint32_t ButtonMask() { return 0; }
-
-  /**
-   * @~English
-   * @brief Combines multiple button identifiers into a single 32-bit button mask.
-   * @details This is a convenience function for creating a bitmask that represents a combination of specific buttons (e.g., Start + A).
-   *          The resulting mask can be used as a parameter for methods like @ref ScanAndConnect, or for checking against the combined state
-   *          returned by @ref button_states.
-   * @param[in] button One or more button identifiers from the @ref Button enumeration.
-   * @return A 32-bit unsigned integer where the bits corresponding to the input @ref Button values are set to 1.
-   * @note This is a `constexpr` function, allowing the mask to be computed at compile time.
-   * Example - Creating a mask for the Start and Cross/A buttons:
-   * @code
-   *   // Create a mask representing the Start and Cross/A buttons held simultaneously.
-   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
-   *
-   *   // Use the mask to scan and connect to a device holding these buttons.
-   *   codex_pad.ScanAndConnect(kStartAMask);
-   *
-   *   // Alternatively, check the current combined button state against the mask.
-   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
-   *       // Both Start and Cross/A are currently pressed.
-   *   }
-   * @endcode
-   */
-  /**
-   * @~Chinese
-   * @brief 将多个按键标识符组合成一个32位的按钮掩码。
-   * @details 这是一个工具函数，用于创建一个表示特定按键组合（例如 Start + A）的位掩码。
-   *          生成的掩码可作为参数用于 @ref ScanAndConnect 等方法，或用于与 @ref button_states 返回的组合状态进行比较。
-   * @param[in] button 一个或多个来自 @ref Button 枚举的按键标识符。
-   * @return 一个32位无符号整数，其中与输入的 @ref Button 值对应的位被设为1。
-   * @note 这是一个 `constexpr` 函数，允许掩码在编译时计算。
-   * 示例 - 为 Start 和 Cross/A 按键创建掩码：
-   * @code
-   *   // 创建一个表示 Start 和 Cross/A 按键被同时按下的掩码。
-   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
-   *
-   *   // 使用该掩码来扫描并连接到正按住这些按键的设备。
-   *   codex_pad.ScanAndConnect(kStartAMask);
-   *
-   *   // 或者，用该掩码检查当前的组合按键状态。
-   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
-   *       // Start 和 Cross/A 按键当前均被按下。
-   *   }
-   * @endcode
-   */
-  template <typename FirstButton, typename... RestButtons>
-  static constexpr uint32_t ButtonMask(FirstButton first, RestButtons... rest) {
-    return static_cast<uint32_t>(first) | ButtonMask(rest...);
-  }
-#else
-
-  /**
-   * @~English
-   * @brief Combines multiple button identifiers into a single 32-bit button mask.
-   * @details This is a convenience function for creating a bitmask that represents a combination of specific buttons (e.g., Start + A).
-   *          The resulting mask can be used as a parameter for methods like @ref ScanAndConnect, or for checking against the combined state
-   *          returned by @ref button_states.
-   * @param[in] button One or more button identifiers from the @ref Button enumeration.
-   * @return A 32-bit unsigned integer where the bits corresponding to the input @ref Button values are set to 1.
-   * @note This is a `constexpr` function, allowing the mask to be computed at compile time.
-   * Example - Creating a mask for the Start and Cross/A buttons:
-   * @code
-   *   // Create a mask representing the Start and Cross/A buttons held simultaneously.
-   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
-   *
-   *   // Use the mask to scan and connect to a device holding these buttons.
-   *   codex_pad.ScanAndConnect(kStartAMask);
-   *
-   *   // Alternatively, check the current combined button state against the mask.
-   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
-   *       // Both Start and Cross/A are currently pressed.
-   *   }
-   * @endcode
-   */
-  /**
-   * @~Chinese
-   * @brief 将多个按键标识符组合成一个32位的按钮掩码。
-   * @details 这是一个工具函数，用于创建一个表示特定按键组合（例如 Start + A）的位掩码。
-   *          生成的掩码可作为参数用于 @ref ScanAndConnect 等方法，或用于与 @ref button_states 返回的组合状态进行比较。
-   * @param[in] button 一个或多个来自 @ref Button 枚举的按键标识符。
-   * @return 一个32位无符号整数，其中与输入的 @ref Button 值对应的位被设为1。
-   * @note 这是一个 `constexpr` 函数，允许掩码在编译时计算。
-   * 示例 - 为 Start 和 Cross/A 按键创建掩码：
-   * @code
-   *   // 创建一个表示 Start 和 Cross/A 按键被同时按下的掩码。
-   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
-   *
-   *   // 使用该掩码来扫描并连接到正按住这些按键的设备。
-   *   codex_pad.ScanAndConnect(kStartAMask);
-   *
-   *   // 或者，用该掩码检查当前的组合按键状态。
-   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
-   *       // Start 和 Cross/A 按键当前均被按下。
-   *   }
-   * @endcode
-   */
-  template <typename... Button>
-  static constexpr uint32_t ButtonMask(Button... button) {
-    return (static_cast<uint32_t>(button) | ... | uint32_t{0});
-  }
-#endif
-
   /**
    * @~English
    * @enum CodexPad::TxPower
@@ -545,6 +440,111 @@ class CodexPad {
      */
     kRightStickY,
   };
+
+#if __cplusplus < 201402L
+  static constexpr uint32_t ButtonMask() { return 0; }
+
+  /**
+   * @~English
+   * @brief Combines multiple button identifiers into a single 32-bit button mask.
+   * @details This is a convenience function for creating a bitmask that represents a combination of specific buttons (e.g., Start + A).
+   *          The resulting mask can be used as a parameter for methods like @ref ScanAndConnect, or for checking against the combined state
+   *          returned by @ref button_states.
+   * @param[in] button One or more button identifiers from the @ref Button enumeration.
+   * @return A 32-bit unsigned integer where the bits corresponding to the input @ref Button values are set to 1.
+   * @note This is a `constexpr` function, allowing the mask to be computed at compile time.
+   * Example - Creating a mask for the Start and Cross/A buttons:
+   * @code
+   *   // Create a mask representing the Start and Cross/A buttons held simultaneously.
+   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
+   *
+   *   // Use the mask to scan and connect to a device holding these buttons.
+   *   codex_pad.ScanAndConnect(kStartAMask);
+   *
+   *   // Alternatively, check the current combined button state against the mask.
+   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
+   *       // Both Start and Cross/A are currently pressed.
+   *   }
+   * @endcode
+   */
+  /**
+   * @~Chinese
+   * @brief 将多个按键标识符组合成一个32位的按钮掩码。
+   * @details 这是一个工具函数，用于创建一个表示特定按键组合（例如 Start + A）的位掩码。
+   *          生成的掩码可作为参数用于 @ref ScanAndConnect 等方法，或用于与 @ref button_states 返回的组合状态进行比较。
+   * @param[in] button 一个或多个来自 @ref Button 枚举的按键标识符。
+   * @return 一个32位无符号整数，其中与输入的 @ref Button 值对应的位被设为1。
+   * @note 这是一个 `constexpr` 函数，允许掩码在编译时计算。
+   * 示例 - 为 Start 和 Cross/A 按键创建掩码：
+   * @code
+   *   // 创建一个表示 Start 和 Cross/A 按键被同时按下的掩码。
+   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
+   *
+   *   // 使用该掩码来扫描并连接到正按住这些按键的设备。
+   *   codex_pad.ScanAndConnect(kStartAMask);
+   *
+   *   // 或者，用该掩码检查当前的组合按键状态。
+   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
+   *       // Start 和 Cross/A 按键当前均被按下。
+   *   }
+   * @endcode
+   */
+  template <typename FirstButton, typename... RestButtons>
+  static constexpr uint32_t ButtonMask(FirstButton first, RestButtons... rest) {
+    return static_cast<uint32_t>(first) | ButtonMask(rest...);
+  }
+#else
+
+  /**
+   * @~English
+   * @brief Combines multiple button identifiers into a single 32-bit button mask.
+   * @details This is a convenience function for creating a bitmask that represents a combination of specific buttons (e.g., Start + A).
+   *          The resulting mask can be used as a parameter for methods like @ref ScanAndConnect, or for checking against the combined state
+   *          returned by @ref button_states.
+   * @param[in] button One or more button identifiers from the @ref Button enumeration.
+   * @return A 32-bit unsigned integer where the bits corresponding to the input @ref Button values are set to 1.
+   * @note This is a `constexpr` function, allowing the mask to be computed at compile time.
+   * Example - Creating a mask for the Start and Cross/A buttons:
+   * @code
+   *   // Create a mask representing the Start and Cross/A buttons held simultaneously.
+   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
+   *
+   *   // Use the mask to scan and connect to a device holding these buttons.
+   *   codex_pad.ScanAndConnect(kStartAMask);
+   *
+   *   // Alternatively, check the current combined button state against the mask.
+   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
+   *       // Both Start and Cross/A are currently pressed.
+   *   }
+   * @endcode
+   */
+  /**
+   * @~Chinese
+   * @brief 将多个按键标识符组合成一个32位的按钮掩码。
+   * @details 这是一个工具函数，用于创建一个表示特定按键组合（例如 Start + A）的位掩码。
+   *          生成的掩码可作为参数用于 @ref ScanAndConnect 等方法，或用于与 @ref button_states 返回的组合状态进行比较。
+   * @param[in] button 一个或多个来自 @ref Button 枚举的按键标识符。
+   * @return 一个32位无符号整数，其中与输入的 @ref Button 值对应的位被设为1。
+   * @note 这是一个 `constexpr` 函数，允许掩码在编译时计算。
+   * 示例 - 为 Start 和 Cross/A 按键创建掩码：
+   * @code
+   *   // 创建一个表示 Start 和 Cross/A 按键被同时按下的掩码。
+   *   constexpr auto kStartAMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA);
+   *
+   *   // 使用该掩码来扫描并连接到正按住这些按键的设备。
+   *   codex_pad.ScanAndConnect(kStartAMask);
+   *
+   *   // 或者，用该掩码检查当前的组合按键状态。
+   *   if ((codex_pad.button_states() & kStartAMask) == kStartAMask) {
+   *       // Start 和 Cross/A 按键当前均被按下。
+   *   }
+   * @endcode
+   */
+  template <typename... Button>
+  static constexpr uint32_t ButtonMask(Button... button) {
+    return (static_cast<uint32_t>(button) | ... | uint32_t{0});
+  }
+#endif
 
   /**
    * @~English

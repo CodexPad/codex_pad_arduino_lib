@@ -30,6 +30,8 @@
 #include "codex_pad.h"
 
 namespace {
+// Replace with your CodexPad device's Bluetooth device address
+// 替换为你的 CodexPad 的 Bluetooth device address
 const std::string kBluetoothDeviceAddress = "E4:66:E5:A2:24:5D";
 
 CodexPad g_codex_pad;
@@ -54,6 +56,7 @@ void Connect() {
   } else {
     printf("Remote Bluetooth Device Address: unknown\n");
   }
+
   // Set transmission power to 0dBm
   // Transmission power affects communication range and power consumption:
   // Higher power provides longer range but consumes more battery

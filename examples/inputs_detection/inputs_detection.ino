@@ -3,8 +3,8 @@
  * @file inputs_detection.ino
  * @example inputs_detection.ino
  * @brief Demonstrates how to detect real-time button states and joystick movements of a connected CodexPad.
- * @details This example establishes a connection to a specific CodexPad device (by Bluetooth Device Address) and continuously monitors all user inputs.
- *          It showcases the detection of three distinct button states: **pressed** (momentary press), **released** (momentary release), and
+ * @details This example establishes a connection to a specific CodexPad device (by Bluetooth Device Address) and continuously monitors all user
+ * inputs. It showcases the detection of three distinct button states: **pressed** (momentary press), **released** (momentary release), and
  * **holding** (sustained press). It also monitors the analog joystick axes and prints their values when a significant change beyond a set threshold
  * is detected, filtering out minor jitter.
  *          @note The `Update()` method must be called as frequently as possible within the main loop without delays to ensure real-time
@@ -36,6 +36,8 @@
 #include "codex_pad.h"
 
 namespace {
+// Replace with your CodexPad device's Bluetooth device address
+// 替换为你的 CodexPad 的 Bluetooth device address
 const std::string kBluetoothDeviceAddress = "E4:66:E5:A2:24:5D";
 
 CodexPad g_codex_pad;
@@ -123,6 +125,7 @@ void Connect() {
   } else {
     printf("Remote Bluetooth Device Address: unknown\n");
   }
+
   // Set transmission power to 0dBm
   // Transmission power affects communication range and power consumption:
   // Higher power provides longer range but consumes more battery

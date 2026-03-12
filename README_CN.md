@@ -11,9 +11,9 @@
 | CodexPad-C10 | <https://github.com/CodexPad/codex_pad_c10> |
 | CodexPad-S10 | <https://github.com/CodexPad/codex_pad_s10> |
 
-## 支持的MCU型号
+## 支持的硬件平台
 
-| 支持的MCU型号 |
+| 支持的硬件平台 |
 | :--- |
 | ESP32 |
 | ESP32-S2 |
@@ -28,11 +28,9 @@
 
 - **灵活的双模式连接**：
 
-  - **Bluetooth Device Address(BD_ADDR)直连**：通过已知的**Bluetooth Device Address(BD_ADDR)**，快速与指定手柄建立稳定连接。
+  - **Bluetooth Device Address直连**：通过已知的**Bluetooth Device Address**，快速与指定手柄建立稳定连接。
 
-  - **按键掩码扫描连接**：无需提前知道**Bluetooth Device Address(BD_ADDR)**。通过扫描并匹配目标手柄上被按住的、由用户代码自定义的按键组合（即“按钮掩码”），自动连接信号最强（RSSI最大）的设备，实现快速、灵活的配对。
-
-- **Bluetooth Device Address(BD_ADDR)连接**：通过已知的CodexPad的**Bluetooth Device Address(BD_ADDR)**，快速建立与指定CodexPad的稳定连接。
+  - **按键掩码扫描连接**：无需提前知道**Bluetooth Device Address**。通过扫描并匹配目标手柄上被按住的、由用户代码自定义的按键组合（即“按钮掩码”），自动连接信号最强（RSSI最大）的设备，实现快速、灵活的配对。
 
 - **实时按键事件检测**：可实时读取所有按键的输入状态，并区分**按下**、**释放**和**长按**三种事件。
 
@@ -87,38 +85,21 @@
 
 ## 示例说明
 
-本库提供了多个示例程序，分别演示了不同的连接方式与数据读取方法。您可以根据您的应用场景选择合适的示例。
-
-### 1. 扫描连接示例 (`scan_and_connect`)
-
-- **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **scan_and_connect** 找到该示例。
-- **核心功能**：此示例演示了如何通过匹配特定**按键组合**来扫描并自动连接附近的 CodexPad 设备，**无需预先知道CodexPad的Bluetooth Device Address(BD_ADDR)**。
-- **工作原理**：您需要在代码中预先定义一个“按钮掩码”（例如，同时按下 Start 键和 A 键）。程序启动后，会持续扫描周边设备。当操作者**在目标手柄上按住预设的按键组合**时，程序会自动连接信号最强（RSSI 最大）的该设备。
-- **适用场景**：适用于需要快速、灵活地连接特定手柄，或无法/不便预先获取手柄的 **Bluetooth Device Address(BD_ADDR)** 的场景。
-- **重要警告**：按钮掩码中**绝对禁止**包含 `Home` 键，因为长按 Home 键会导致手柄重启，从而中断连接。
-
-### 2. 输入状态检测示例 (`inputs_detection`)
-
-- **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **inputs_detection** 找到该示例。
-- **核心功能**：此示例演示了如何**实时检测**已连接手柄的精确输入事件与摇杆变化。
-- **工作原理**：通过**已知的Bluetooth Device Address(BD_ADDR)**连接指定手柄后，程序在主循环中高频调用 `Update()` 方法。它能检测到三种清晰的按钮事件：**按下**、**释放**、**持续按住**。对于摇杆，它设有变化阈值，仅在摇杆偏移量发生**显著变化**时才打印其坐标，有效过滤微小抖动。
-- **适用场景**：适用于需要对手柄操作做出实时、精确响应的应用，如游戏控制、机器人遥控等。
-
-### 3. 基础轮询示例 (`basic_polling`)
+### 基础轮询示例 (`basic_polling`)
 
 - **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **basic_polling** 找到该示例。
-- **核心功能**：此示例演示了基础的**定时轮询**方法，用于周期性地查询并打印手柄所有输入部件的当前状态。
-- **工作原理**：同样通过**已知的Bluetooth Device Address(BD_ADDR)**。程序每隔 30 毫秒打印一次所有按钮的当前状态（按下/弹起）和两个摇杆的原始模拟值（0-255），并将结果完整打印到串口。
-- **适用场景**：适用于需要持续监控手柄所有状态进行调试、数据记录或状态显示的应用程序，逻辑简单直观。
+- **示例说明**：通过Bluetooth Device Address与CodexPad蓝牙连接，实时查询、打印其所有按钮状态与摇杆数值。
 
-### 示例对比与选择指南
+### 输入状态检测示例 (`inputs_detection`)
 
-| 特性 | 扫描连接示例 (`scan_and_connect`) | 输入状态检测示例 (`inputs_detection`) | 基础轮询示例 (`basic_polling`) |
-| :--- | :--- | :--- | :--- |
-| **连接方式** | 扫描并匹配按键掩码，**无需Bluetooth Device Address(BD_ADDR)** | 需预先指定目标的**Bluetooth Device Address(BD_ADDR)** | 需预先指定目标的**Bluetooth Device Address(BD_ADDR)** |
-| **数据输出** | 连接成功后，实时检测并输出**事件变化** | 实时检测并输出**事件变化** | 定时输出**所有部件的完整状态快照** |
-| **实时性** | 高 (事件驱动) | 高 (事件驱动) | 中 (定时轮询) |
-| **适用场景** | 快速配对、多设备选择 | 游戏、实时交互控制 | 状态监控、数据记录、调试 |
+- **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **inputs_detection** 找到该示例。
+- **示例说明**：通过Bluetooth Device Address与CodexPad蓝牙连接，检测到按钮状态与摇杆数值变化后打印。
+
+### 扫描连接示例 (`scan_and_connect`)
+
+- **示例位置**：在 Arduino IDE 中，通过 **文件** → **示例** → **CodexPad** → **scan_and_connect** 找到该示例。
+- **核心功能**：通过匹配特定的自定义的**按键**或者**按键组合**来扫描并自动连接附近的 CodexPad 设备，检测摇杆和按键变化并打印。
+- **重要警告**：按钮掩码中**绝对禁止**包含 `Home` 键，因为长按 Home 键会导致手柄重启，从而中断连接。
 
 ## API说明
 
