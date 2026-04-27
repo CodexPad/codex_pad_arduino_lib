@@ -12,4 +12,4 @@ jobs:
         uses: arduino/arduino-lint-action@v2 # 第二步：运行本Action
         with:
           compliance: strict
-          library-manager: submit
+          library-manager: update
