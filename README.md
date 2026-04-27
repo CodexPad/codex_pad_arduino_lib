@@ -90,7 +90,7 @@ Power on the controller. After powering on, the controller will automatically en
 
 - Scan and Connect Example (`scan_and_connect`)
 
-  - **Example Location**: In Arduino IDE, find this example via File → Examples → CodexPad → scan_and_connect.
+  - **Example Location**: In Arduino IDE, find this example via **File** → **Examples** → **CodexPad** → **scan_and_connect**.
 
   - **Core Functionality**: Scans for and automatically connects to nearby CodexPad devices by matching a specific, user-defined **button** or **button combination**, then detects and prints joystick and button changes.
 
