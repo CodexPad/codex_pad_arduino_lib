@@ -1,5 +1,7 @@
 #include "codex_pad.h"
 
+#include <Arduino.h>
+
 #include <memory>
 
 #include "WString.h"
