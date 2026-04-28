@@ -74,6 +74,38 @@ Please refer to the method provided in the product manual to obtain your control
 
 Power on the controller. After powering on, the controller will automatically enter the **pairing mode** where it is discoverable via Bluetooth. At this time, the controller's indicator light should be in a **slow blinking state (approximately once per second)**.
 
+### Install CodexPad Library
+
+1. **Open Arduino IDE Library Manager**
+   - Menu: **Tools** → **Manage Libraries...**
+   - Keyboard shortcut: `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (Mac)
+
+2. **Search and Install**
+   - In the search box, type: `CodexPad`
+   - Locate the CodexPad library
+   - **Ensure the latest version is selected** in the version dropdown
+   - Click the **INSTALL** button
+
+   ![Search for CodexPad in Library Manager](assets/images/en/install_codexpad_library.png)
+
+3. **Install Dependencies**
+   - When the dependency dialog appears, select **INSTALL ALL**
+
+   ![Confirm dependency installation dialog](assets/images/en/install_dependencies_dialog.png)
+
+> **⚠️ Important Version Note**  
+> The screenshots in this guide may show older versions. **Always install the latest versions** of both:
+>
+> - `CodexPad` library
+> - `NimBLE-Arduino` dependency
+>
+> If you skipped the dependency installation, install the latest `NimBLE-Arduino` manually:
+>
+> 1. Open the Library Manager again
+> 2. Search for `NimBLE-Arduino`
+> 3. **Select the latest version** from the dropdown
+> 4. Install it
+
 ## Example Descriptions
 
 - Basic Polling Example (`basic_polling`)

@@ -77,30 +77,43 @@
 ### 安装 ESP32 开发板管理器
 
 1. 在 Arduino IDE 中，打开**工具** > **开发板** > **开发板管理器...**。
-2. 在搜索框中输入 `esp32`，找到并安装 **ESP32 by Espressif Systems**。推荐选择 **3.3.7** 或 **3.3.7-cn** 版本。
+2. 在搜索框中输入 `esp32`，找到并安装 **ESP32 by Espressif Systems**。
 3. 安装完成后，在**工具** > **开发板**列表中选择您使用的具体 ESP32 开发板型号（如 `ESP32 Dev Module`）。
 4. 通过 USB 数据线将开发板连接至电脑，并在**工具** > **端口**菜单中选择正确的串行端口。
 
-### 安装必要的依赖库
+### 安装CodexPad库
 
-> **⚠️ 重要提示**： 本库依赖于 **NimBLE-Arduino** 库来实现蓝牙功能。在安装和使用 CodexPad 库之前，**必须先完成此依赖库的安装**。
+1. **打开 Arduino IDE 库管理器**
+   - 菜单栏：**工具** → **管理库...**
+   - 快捷键：`Ctrl+Shift+I`（Windows/Linux）或 `Cmd+Shift+I`（Mac）
 
-- **库名称**：NimBLE-Arduino
-- **最低版本要求**：>= 2.3.9
-- **安装方法**：
-    1. 打开 Arduino IDE。
-    2. 点击 **工具** -> **管理库...**，打开库管理器。
-    3. 在搜索框中输入 **`NimBLE-Arduino`**。
-    4. 在搜索结果中找到由 **`h2zero`** 维护的 **`NimBLE-Arduino`** 库（**NimBLE-Arduino** by h2zero）（**通常它会是搜索结果中的第一个**）。
-    5. 点击“安装”按钮，选择不低于 **`2.3.9`** 的最新版本进行安装。
+2. **搜索并安装**
+   - 在搜索框中输入：`CodexPad`
+   - 找到 CodexPad 库
+   - **确保在下拉菜单中选择最新版本**
+   - 点击 **安装** 按钮
 
-### 安装 CodexPad 库
+    ![在库管理中搜索 CodexPad](assets/images/zh-CN/install_codexpad_library.png)
 
-1. **下载库文件**
+    > **📌 注意：** 截图仅供参考。请务必安装最新可用版本。
 
-    **下载链接**：[codex_pad_mpy_lib-x.x.x.zip](../../../codex_pad_arduino_lib/archive/refs/tags/v2.1.4.zip)
+3. **安装依赖库**
+   - 当出现依赖库安装对话框时，选择 **全部安装**
 
-2. 在 Arduino IDE 中，通过**项目** → **加载库** → **添加 .ZIP 库...** 来安装此文件。
+    ![安装依赖确认对话框](assets/images/zh-CN/install_dependencies_dialog.png)
+
+> **⚠️ 重要版本说明**  
+> 本文档中的截图可能显示较旧版本。**请始终安装以下两者的最新版本**：
+>
+> - `CodexPad` 库
+> - `NimBLE-Arduino` 依赖库
+>
+> 如果您跳过了依赖库安装，请手动安装最新版 `NimBLE-Arduino`：
+>
+> 1. 再次打开库管理器
+> 2. 搜索 `NimBLE-Arduino`
+> 3. 在下拉菜单中**选择最新版本**
+> 4. 点击安装
 
 ## 示例说明
 
