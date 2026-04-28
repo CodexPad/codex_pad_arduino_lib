@@ -1,7 +1,3 @@
 BasedOnStyle: Google
 
 ColumnLimit: 150
-
-BinPackArguments: false
-
-BinPackParameters: false

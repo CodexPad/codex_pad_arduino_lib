@@ -126,7 +126,7 @@ Power on the controller. After powering on, the controller will automatically en
 
   - **Core Functionality**: Scans for and automatically connects to nearby CodexPad devices by matching a specific, user-defined **button** or **button combination**, then detects and prints joystick and button changes.
 
-  - **Important Warning**: The button mask must absolutely not include the `Home` key, as holding the `Home` key will cause the controller to reboot, thereby interrupting the connection.
+  - **Important Note**: Do not use the `Home` key alone in the button mask. Holding the `Home` key will cause the controller to shut down, thereby interrupting the connection. If you need to use the Home key, use it in combination with other buttons (e.g., `Home` + `Cross`).
 
 ## API Reference
 

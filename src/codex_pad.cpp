@@ -71,13 +71,14 @@ bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
   NimBLEAddress address;
 
 #pragma pack(push, 1)
-  struct ManufacturerData {
+  struct ManufacturerSpecificData {
     uint16_t company_id = 0xFFFF;
     uint8_t header[8] = {'C', 'o', 'd', 'e', 'x', 'P', 'a', 'd'};
     uint8_t version_major = 0;
     uint8_t version_minor = 0;
     uint8_t version_patch = 0;
     uint32_t button_state = 0;
+    uint8_t button_states_duration_seconds = 0;
   };
 #pragma pack(pop)
 
@@ -85,9 +86,14 @@ bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
     if (device->haveName() && String(device->getName().c_str()).startsWith("CodexPad-") && device->haveManufacturerData()) {
       // printf("Name: %s\n", device->getName().c_str());
       const auto manufacturer_data = device->getManufacturerData();
-      if (manufacturer_data.length() >= sizeof(ManufacturerData)) {
-        const auto data = reinterpret_cast<const ManufacturerData*>(manufacturer_data.c_str());
-        if (data->company_id == 0xFFFF && memcmp(data->header, "CodexPad", 8) == 0 && data->button_state == button_mask && device->getRSSI() > rssi) {
+      if (manufacturer_data.length() >= sizeof(ManufacturerSpecificData)) {
+        const auto data = reinterpret_cast<const ManufacturerSpecificData*>(manufacturer_data.c_str());
+        if (data->company_id == 0xFFFF                                                 // company id
+            && memcmp(data->header, "CodexPad", 8) == 0                                // header
+            && data->button_state == button_mask                                       // button mask
+            && device->getRSSI() > rssi                                                // rssi
+            && (data->version_major < 2 || data->button_states_duration_seconds >= 1)  // button states duration
+        ) {
           rssi = device->getRSSI();
           address = device->getAddress();
           // printf("Found device, rssi: %d, address: %s\n", rssi, address.toString().c_str());
@@ -173,8 +179,8 @@ std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
 }
 
 bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) const {
-  return HasAxisValueChangedSignificantly(
-      current_inputs_.axis_values[static_cast<size_t>(axis)], prev_inputs_.axis_values[static_cast<size_t>(axis)], threshold);
+  return HasAxisValueChangedSignificantly(current_inputs_.axis_values[static_cast<size_t>(axis)], prev_inputs_.axis_values[static_cast<size_t>(axis)],
+                                          threshold);
 }
 
 bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms) {
