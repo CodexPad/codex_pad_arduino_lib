@@ -8,8 +8,8 @@
 
 | CodexPad型号 | 详情 |
 | :--- | :--- |
-| CodexPad-C10 | [产品详情](../../../codex_pad_c10/blob/main/README_CN.md#codexpad-c10) |
-| CodexPad-S10 | [产品详情](../../../codex_pad_s10/blob/main/README_CN.md#codexpad-s10) |
+| CodexPad-C10 | [产品详情](../../../codex_pad_c10/blob/main/README.zh-CN.md#codexpad-c10) |
+| CodexPad-S10 | [产品详情](../../../codex_pad_s10/blob/main/README.zh-CN.md#codexpad-s10) |
 
 ## 支持的硬件平台
 
