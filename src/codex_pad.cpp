@@ -179,7 +179,7 @@ std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
 }
 
 bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) const {
-  return HasAxisValueChangedSignificantly(current_inputs_.axis_values[static_cast<size_t>(axis)], prev_inputs_.axis_values[static_cast<size_t>(axis)],
+  return HasAxisValueChangedSignificantly(prev_inputs_.axis_values[static_cast<size_t>(axis)], current_inputs_.axis_values[static_cast<size_t>(axis)],
                                           threshold);
 }
 
