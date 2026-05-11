@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;2.1.9</span>
+   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;2.2.1</span>
    </div>
   </td>
  </tr>
@@ -140,20 +140,21 @@ CodexPad::ButtonMask</dd></dl>
 <div class="line"><span class="comment">// 你可以设置一个按钮掩码，当扫描到目标设备并检测到其按键状态与该掩码匹配时，自动进行连接。</span></div>
 <div class="line"><span class="comment">// 例如，可以设置为当设备上某个特定按键被按下，或多个指定按键被同时按下时才建立连接。</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// 【Important Warning】DO NOT use `Button::kHome` (Home button) to set the button mask. Pressing and holding the Home button will trigger a device</span></div>
-<div class="line"><span class="comment">// reboot, which will interrupt the connection process or put the device into an unexpected state.</span></div>
-<div class="line"><span class="comment">// 【重要警告】请勿使用 `Button::kHome` (Home键) 来设置按钮掩码。因为按住Home键会触发设备重启，这将导致连接过程中断或设备进入不可预期的状态。</span></div>
+<div class="line"><span class="comment">// 【Important Warning】DO NOT use `Button::kHome` (Home button) alone to set the button mask. Pressing and holding the Home button will trigger a</span></div>
+<div class="line"><span class="comment">// device shutdown. If you need to use the Home button, it is recommended to use it in combination with other buttons (e.g., Home + Cross).</span></div>
+<div class="line"><span class="comment">// 【重要警告】请勿单独使用 `Button::kHome` (Home键) 来设置按钮掩码。因为按住Home键会触发设备关机。如需使用Home键，建议采用组合按键方式（例如 Home +</span></div>
+<div class="line"><span class="comment">// Cross）。</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Example: The button mask to match - Only the Start button</span></div>
-<div class="line"><span class="comment">// 示例：需要匹配的按钮掩码 - 仅Start按钮</span></div>
+<div class="line"><span class="comment">// Example 1: The button mask to match - Only the Start button</span></div>
+<div class="line"><span class="comment">// 示例 1：需要匹配的按钮掩码 - 仅Start按钮</span></div>
 <div class="line"><span class="comment">// constexpr auto kExpectedButtonMask = CodexPad::ButtonMask(CodexPad::Button::kStart);</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Example: The button mask to match - Start and CrossA buttons</span></div>
-<div class="line"><span class="comment">// 示例：需要匹配的按钮掩码 - Start 和 CrossA 按钮</span></div>
+<div class="line"><span class="comment">// Example 2: The button mask to match - Start and CrossA buttons</span></div>
+<div class="line"><span class="comment">// 示例 2：需要匹配的按钮掩码 - Start 和 CrossA 按钮</span></div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> kExpectedButtonMask = CodexPad::ButtonMask(<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>);</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Example: The button mask to match - Start, CrossA, and SquareX buttons</span></div>
-<div class="line"><span class="comment">// 示例：需要匹配的按钮掩码 - Start、CrossA 和 SquareX 按钮</span></div>
+<div class="line"><span class="comment">// Example 3: The button mask to match - Start, CrossA, and SquareX buttons</span></div>
+<div class="line"><span class="comment">// 示例 3：需要匹配的按钮掩码 - Start、CrossA 和 SquareX 按钮</span></div>
 <div class="line"><span class="comment">// constexpr auto kExpectedButtonMask = CodexPad::ButtonMask(CodexPad::Button::kStart, CodexPad::Button::kCrossA, CodexPad::Button::kSquareX);</span></div>
 <div class="line"> </div>
 <div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="class_codex_pad.html">CodexPad</a> g_codex_pad;</div>
@@ -230,9 +231,7 @@ CodexPad::ButtonMask</dd></dl>
 <div class="line"> </div>
 <div class="line">  printf(<span class="stringliteral">&quot;Remote device name: %s\n&quot;</span>, g_codex_pad.<a id="a2" name="a2"></a><a class="code hl_function" href="class_codex_pad.html#a4c7d8a8d0f85b3c6302bdd6b2facf0fc">remote_device_name</a>().c_str());</div>
 <div class="line">  printf(<span class="stringliteral">&quot;Remote model number: %s\n&quot;</span>, g_codex_pad.<a id="a3" name="a3"></a><a class="code hl_function" href="class_codex_pad.html#a15902d1331eaa5ed4f4af550b2693aab">remote_model_number</a>().c_str());</div>
-<div class="line">  printf(<span class="stringliteral">&quot;Remote firmware revision: %u.%u.%u\n&quot;</span>,</div>
-<div class="line">         g_codex_pad.<a id="a4" name="a4"></a><a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[0],</div>
-<div class="line">         g_codex_pad.<a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[1],</div>
+<div class="line">  printf(<span class="stringliteral">&quot;Remote firmware revision: %u.%u.%u\n&quot;</span>, g_codex_pad.<a id="a4" name="a4"></a><a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[0], g_codex_pad.<a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[1],</div>
 <div class="line">         g_codex_pad.<a class="code hl_function" href="class_codex_pad.html#a060b78e6e6fd244434fcda8a85048642">remote_firmware_version</a>()[2]);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ble_client = g_codex_pad.<a id="a5" name="a5"></a><a class="code hl_function" href="class_codex_pad.html#a5616405270e9eb6f4be3079b611ea2ec">ble_client</a>(); ble_client != <span class="keyword">nullptr</span>) {</div>
@@ -284,23 +283,10 @@ CodexPad::ButtonMask</dd></dl>
 <div class="line">  <span class="comment">// Use pressed(), released(), holding() methods to detect different button states</span></div>
 <div class="line">  <span class="comment">// 检测所有按钮的状态变化</span></div>
 <div class="line">  <span class="comment">// 使用pressed(), released(), holding()方法检测按钮的不同状态</span></div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> button : {<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e">CodexPad::Button::kDown</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28">CodexPad::Button::kLeft</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9">CodexPad::Button::kRight</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b">CodexPad::Button::kSquareX</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">CodexPad::Button::kTriangleY</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48">CodexPad::Button::kCircleB</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510">CodexPad::Button::kL1</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a">CodexPad::Button::kL2</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3">CodexPad::Button::kL3</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4">CodexPad::Button::kR1</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d">CodexPad::Button::kR2</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f">CodexPad::Button::kR3</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0">CodexPad::Button::kSelect</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>,</div>
-<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2">CodexPad::Button::kHome</a>}) {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> button : {<a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada8a9e8c8811f2a710615e133456229ee5">CodexPad::Button::kUp</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3bc2ec3237c6d119b0b5c4225122a07e">CodexPad::Button::kDown</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2d5fde1d924910a2a01ecd8e70a87c28">CodexPad::Button::kLeft</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada2dd2b017192f8a09367d48c7648213c9">CodexPad::Button::kRight</a>,</div>
+<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada41720e053591676510d11366e19a376b">CodexPad::Button::kSquareX</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">CodexPad::Button::kTriangleY</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada242412f236cd429121026df493e07a25">CodexPad::Button::kCrossA</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adacd94ac9592692bc9a94a98cf549bbf48">CodexPad::Button::kCircleB</a>,</div>
+<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada17dfd658b280414d471dea3e8bf4a510">CodexPad::Button::kL1</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada156fe1d78bb72d3412ac145bd941879a">CodexPad::Button::kL2</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada3b5c23249a4affa2c7364d1e3b1526e3">CodexPad::Button::kL3</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adad7789ca4b871d5ecec2849d713364fa4">CodexPad::Button::kR1</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada86fba42a90b505b3eb3313111d35af9d">CodexPad::Button::kR2</a>,</div>
+<div class="line">                            <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada66fb91bc349a0f95477af0a93627040f">CodexPad::Button::kR3</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada0f74d4695fd4cccbe4380a5fcf6f8cc0">CodexPad::Button::kSelect</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada127f8e8149d57253ad94c9d2c752113d">CodexPad::Button::kStart</a>, <a class="code hl_enumvalue" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ada34c76ad4cd38f56b6c8ef7dbd79376e2">CodexPad::Button::kHome</a>}) {</div>
 <div class="line">    <span class="comment">// Check if button was just pressed (transition from released to pressed)</span></div>
 <div class="line">    <span class="comment">// 检测按钮是否刚刚按下（从弹起变为按下）</span></div>
 <div class="line">    <span class="keywordflow">if</span> (g_codex_pad.pressed(button)) {</div>
@@ -370,7 +356,7 @@ CodexPad::ButtonMask</dd></dl>
 <div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6adaec0bab670b27a73eaf00792487320837">CodexPad::Button::kTriangleY</a></div><div class="ttdeci">@ kTriangleY</div><div class="ttdoc">Triangle or Y.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00279">codex_pad.h:279</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_a4c7d8a8d0f85b3c6302bdd6b2facf0fc"><div class="ttname"><a href="class_codex_pad.html#a4c7d8a8d0f85b3c6302bdd6b2facf0fc">CodexPad::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const</div><div class="ttdoc">Get model number of the CodexPad.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00710">codex_pad.h:710</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_a5616405270e9eb6f4be3079b611ea2ec"><div class="ttname"><a href="class_codex_pad.html#a5616405270e9eb6f4be3079b611ea2ec">CodexPad::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const</div><div class="ttdoc">Get the BLE client object.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00903">codex_pad.h:903</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_ab3468c41c92e45374a320ea23783dd9c"><div class="ttname"><a href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(const TxPower power)</div><div class="ttdoc">Set transmission power, only effective when connected, immediately effective for current connection,...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00127">codex_pad.cpp:127</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_ab3468c41c92e45374a320ea23783dd9c"><div class="ttname"><a href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(const TxPower power)</div><div class="ttdoc">Set transmission power, only effective when connected, immediately effective for current connection,...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00133">codex_pad.cpp:133</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"><div class="ttname"><a href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a></div><div class="ttdeci">@ k0dBm</div><div class="ttdoc">0 dBm</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00147">codex_pad.h:147</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
