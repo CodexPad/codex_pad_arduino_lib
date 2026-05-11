@@ -32,7 +32,7 @@ This library is the **dedicated Arduino platform library** for the **CodexPad** 
 
   - **Button Mask Scan Connection**: Connect without knowing the Bluetooth Device Address in advance. By scanning for and matching a specific combination of buttons held down on the target controller (defined as a "button mask" in your code), the library automatically connects to the device with the strongest signal (highest RSSI), enabling fast and flexible pairing.
 
-- **Real-time Button Event Detection**: Reads the input status of all buttons in real time, distinguishing between Press, Release, and Long Press events.
+- **Real-time Button Event Detection**: Reads the input status of all buttons in real time, distinguishing between **Pressed**, **Released**, and **Holding** events.
 
 - **High-Precision Joystick Data**: Retrieves analog values for the X and Y axes of the left and right joysticks, ranging from 0 to 255, providing precise control input.
 
