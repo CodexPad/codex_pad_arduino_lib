@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['ble_5fclient_0',['ble_client',['../class_codex_pad.html#a5616405270e9eb6f4be3079b611ea2ec',1,'CodexPad']]],
-  ['button_5fstate_1',['button_state',['../class_codex_pad.html#af865f995e67eaf8b61a003958f535c5e',1,'CodexPad']]],
-  ['button_5fstates_2',['button_states',['../class_codex_pad.html#a083307fb1a6ac11894cbb40be48ed5d0',1,'CodexPad']]],
-  ['buttonmask_3',['ButtonMask',['../class_codex_pad.html#a57a4fd5f267ca580c5da3a5b19ad44a4',1,'CodexPad']]]
+  ['codexpad_0',['CodexPad',['../class_codex_pad.html#a37dcdea7d4246977d3731128fe3d56e1',1,'CodexPad']]],
+  ['connect_1',['Connect',['../class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780',1,'CodexPad']]]
 ];

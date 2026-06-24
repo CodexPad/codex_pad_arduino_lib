@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pressed_0',['pressed',['../class_codex_pad.html#a2cc521644c01a45334e9d7c4afff6e3d',1,'CodexPad']]]
+  ['txpower_0',['TxPower',['../class_codex_pad.html#add2a85d4d2df117adb74c05604e86354',1,'CodexPad']]]
 ];

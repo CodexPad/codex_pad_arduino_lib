@@ -30,10 +30,9 @@ var menudata={children:[
 {text:"Class Members",url:"functions.html",children:[
 {text:"All",url:"functions.html"},
 {text:"Functions",url:"functions_func.html"},
-{text:"Variables",url:"functions_vars.html"},
 {text:"Enumerations",url:"functions_enum.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"CodexPad_v2.2.1.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.2.1.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.2.1.zip"}]}]}
+{text:"CodexPad_v3.0.0.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip"}]}]}

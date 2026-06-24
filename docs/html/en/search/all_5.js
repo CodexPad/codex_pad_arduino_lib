@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['init_0',['Init',['../class_codex_pad.html#ad9688edc73671e22fcdc7d5a5dd854d0',1,'CodexPad']]],
-  ['inputs_5fdetection_2eino_1',['inputs_detection.ino',['../inputs__detection_8ino.html',1,'']]],
-  ['is_5fconnected_2',['is_connected',['../class_codex_pad.html#abedfa1ef2c7d3f8ca163a59bc1ef764c',1,'CodexPad']]]
+  ['remote_5fdevice_5fname_0',['remote_device_name',['../class_codex_pad.html#a7944e98376efef3a8674c34ac7ea6694',1,'CodexPad']]],
+  ['remote_5ffirmware_5fversion_1',['remote_firmware_version',['../class_codex_pad.html#a4f6f2a0a84e061ac1143c136a8b0b962',1,'CodexPad']]],
+  ['remote_5fmodel_5fnumber_2',['remote_model_number',['../class_codex_pad.html#a5aa668bc50e04ba10ff32cc3f20e4b0d',1,'CodexPad']]]
 ];

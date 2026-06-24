@@ -1,12 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "abcdhikprstu~",
+  0: "bcdikrstu~",
   1: "c",
   2: "bis",
-  3: "abcdhiprsu~",
-  4: "k",
-  5: "abt",
-  6: "k"
+  3: "bcdirsu~",
+  4: "t",
+  5: "k"
 };
 
 var indexSectionNames =
@@ -15,9 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables",
-  5: "enums",
-  6: "enumvalues"
+  4: "enums",
+  5: "enumvalues"
 };
 
 var indexSectionLabels =
@@ -26,8 +24,7 @@ var indexSectionLabels =
   1: "类",
   2: "文件",
   3: "函数",
-  4: "变量",
-  5: "枚举",
-  6: "枚举值"
+  4: "枚举",
+  5: "枚举值"
 };
 

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;2.2.1</span>
+   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;3.0.0</span>
    </div>
   </td>
  </tr>
@@ -122,125 +122,125 @@ $(function(){initNavTree('codex__pad_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">constexpr</span> uint16_t kSerialNumberCharacteristicUuid{0x2A25};</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">constexpr</span> uint16_t kFirmwareRevisionCharacteristicUuid{0x2A26};</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">constexpr</span> uint16_t kManufacturerNameCharacteristicUuid{0x2A29};</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">bool</span> HasAxisValueChangedSignificantly(<span class="keyword">const</span> int16_t prev_value, <span class="keyword">const</span> int16_t current_value, <span class="keyword">const</span> uint8_t threshold) {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keywordflow">return</span> prev_value != current_value &amp;&amp; (current_value == 0 || current_value == 255 || std::abs(current_value - prev_value) &gt;= threshold);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}  <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}  <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a37dcdea7d4246977d3731128fe3d56e1">   26</a></span><a class="code hl_function" href="class_codex_pad.html#a37dcdea7d4246977d3731128fe3d56e1">CodexPad::CodexPad</a>() noexcept {}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a00f7e633f836a4f63cd426e95e6f93a6">   28</a></span><a class="code hl_function" href="class_codex_pad.html#a00f7e633f836a4f63cd426e95e6f93a6">CodexPad::~CodexPad</a>() { Reset(); }</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_codex_pad.html#aa3900f0c5e4f1b9a9b43749346915e5b">   30</a></span><a class="code hl_function" href="class_codex_pad.html#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad::CodexPad</a>() {}</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a903bc8ee07301914b7cceed3db80f422">   32</a></span><a class="code hl_function" href="class_codex_pad.html#a903bc8ee07301914b7cceed3db80f422">CodexPad::~CodexPad</a>() { Reset(); }</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_codex_pad.html#ad9688edc73671e22fcdc7d5a5dd854d0">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_codex_pad.html#ad9688edc73671e22fcdc7d5a5dd854d0">CodexPad::Init</a>() {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordflow">if</span> (!NimBLEDevice::isInitialized()) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    NimBLEDevice::init(<span class="stringliteral">&quot;CodexPadClient&quot;</span>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  }</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a6272051c8665fba0b7026219bcbf926c">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_codex_pad.html#a6272051c8665fba0b7026219bcbf926c">CodexPad::Init</a>() noexcept {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordflow">if</span> (!NimBLEDevice::isInitialized()) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    NimBLEDevice::init(<span class="stringliteral">&quot;CodexPadClient&quot;</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">   40</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">CodexPad::Connect</a>(<span class="keyword">const</span> std::string&amp; bluetooth_device_address, <span class="keyword">const</span> uint32_t timeout_ms) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="comment">// check mac address is valid</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordflow">if</span> (bluetooth_device_address.length() != 17 || bluetooth_device_address[2] != <span class="charliteral">&#39;:&#39;</span> || bluetooth_device_address[5] != <span class="charliteral">&#39;:&#39;</span> ||</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      bluetooth_device_address[8] != <span class="charliteral">&#39;:&#39;</span> || bluetooth_device_address[11] != <span class="charliteral">&#39;:&#39;</span> || bluetooth_device_address[14] != <span class="charliteral">&#39;:&#39;</span>) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    abort();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">Connect</a>(NimBLEAddress(bluetooth_device_address, 0), <span class="keyword">false</span>, timeout_ms);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780">   36</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780">CodexPad::Connect</a>(<span class="keyword">const</span> std::string&amp; bluetooth_device_address, <span class="keyword">const</span> uint32_t timeout_ms) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="comment">// check mac address is valid</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordflow">if</span> (bluetooth_device_address.length() != 17 || bluetooth_device_address[2] != <span class="charliteral">&#39;:&#39;</span> || bluetooth_device_address[5] != <span class="charliteral">&#39;:&#39;</span> ||</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      bluetooth_device_address[8] != <span class="charliteral">&#39;:&#39;</span> || bluetooth_device_address[11] != <span class="charliteral">&#39;:&#39;</span> || bluetooth_device_address[14] != <span class="charliteral">&#39;:&#39;</span>) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    abort();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780">Connect</a>(NimBLEAddress(bluetooth_device_address, 0), <span class="keyword">false</span>, timeout_ms);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a192ddc1f5996b2db723d167829aced6f">   51</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a192ddc1f5996b2db723d167829aced6f">CodexPad::ScanAndConnect</a>(<span class="keyword">const</span> uint32_t button_mask) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">auto</span> scanner = NimBLEDevice::getScan();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  scanner-&gt;setActiveScan(<span class="keyword">true</span>);  <span class="comment">// active scan uses more power, but get results faster</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  scanner-&gt;setInterval(1000);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  scanner-&gt;setWindow(999);  <span class="comment">// less or equal setInterval value</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordflow">if</span> (!scanner-&gt;start(1000)) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    scanner-&gt;stop();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    scanner-&gt;clearResults();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// printf(&quot;Scan failed\n&quot;);</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_codex_pad.html#aebd69c1a6b8d633a75b350e94df582f3">   47</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#aebd69c1a6b8d633a75b350e94df582f3">CodexPad::ScanAndConnect</a>(<span class="keyword">const</span> gamepad::input::Button buttons) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">auto</span> scanner = NimBLEDevice::getScan();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  scanner-&gt;setActiveScan(<span class="keyword">true</span>);  <span class="comment">// active scan uses more power, but get results faster</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  scanner-&gt;setInterval(1000);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  scanner-&gt;setWindow(999);  <span class="comment">// less or equal setInterval value</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordflow">if</span> (!scanner-&gt;start(1000)) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    scanner-&gt;stop();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    scanner-&gt;clearResults();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// printf(&quot;Scan failed\n&quot;);</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordflow">while</span> (scanner-&gt;isScanning()) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    delay(100);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  }</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordflow">while</span> (scanner-&gt;isScanning()) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    delay(100);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="comment">// printf(&quot;Scan done, device count: %d\n&quot;, scanner-&gt;getResults().getCount());</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  int8_t rssi = INT8_MIN;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  NimBLEAddress address;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#pragma pack(push, 1)</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">struct </span>ManufacturerSpecificData {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    uint16_t company_id = 0xFFFF;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    uint8_t header[8] = {<span class="charliteral">&#39;C&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;x&#39;</span>, <span class="charliteral">&#39;P&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;d&#39;</span>};</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    uint8_t version_major = 0;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    uint8_t version_minor = 0;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    uint8_t version_patch = 0;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    uint32_t <a class="code hl_function" href="class_codex_pad.html#af865f995e67eaf8b61a003958f535c5e">button_state</a> = 0;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    uint8_t button_states_duration_seconds = 0;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  };</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#pragma pack(pop)</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> device : scanner-&gt;getResults()) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (device-&gt;haveName() &amp;&amp; String(device-&gt;getName().c_str()).startsWith(<span class="stringliteral">&quot;CodexPad-&quot;</span>) &amp;&amp; device-&gt;haveManufacturerData()) {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      <span class="comment">// printf(&quot;Name: %s\n&quot;, device-&gt;getName().c_str());</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      <span class="keyword">const</span> <span class="keyword">auto</span> manufacturer_data = device-&gt;getManufacturerData();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="keywordflow">if</span> (manufacturer_data.length() &gt;= <span class="keyword">sizeof</span>(ManufacturerSpecificData)) {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keyword">const</span> <span class="keyword">auto</span> data = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>ManufacturerSpecificData*<span class="keyword">&gt;</span>(manufacturer_data.c_str());</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (data-&gt;company_id == 0xFFFF                                                 <span class="comment">// company id</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            &amp;&amp; memcmp(data-&gt;header, <span class="stringliteral">&quot;CodexPad&quot;</span>, 8) == 0                                <span class="comment">// header</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            &amp;&amp; data-&gt;button_state == button_mask                                       <span class="comment">// button mask</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            &amp;&amp; device-&gt;getRSSI() &gt; rssi                                                <span class="comment">// rssi</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            &amp;&amp; (data-&gt;version_major &lt; 2 || data-&gt;button_states_duration_seconds &gt;= 1)  <span class="comment">// button states duration</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        ) {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>          rssi = device-&gt;getRSSI();</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>          address = device-&gt;getAddress();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>          <span class="comment">// printf(&quot;Found device, rssi: %d, address: %s\n&quot;, rssi, address.toString().c_str());</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  scanner-&gt;clearResults();</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordflow">return</span> address.isNull() ? false : <a class="code hl_function" href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">Connect</a>(address, 2000);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="comment">// printf(&quot;Scan done, device count: %d\n&quot;, scanner-&gt;getResults().getCount());</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  int8_t rssi = INT8_MIN;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  NimBLEAddress address;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#pragma pack(push, 1)</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keyword">struct </span>ManufacturerSpecificData {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    uint16_t company_id = 0xFFFF;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    uint8_t header[8] = {<span class="charliteral">&#39;C&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;x&#39;</span>, <span class="charliteral">&#39;P&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;d&#39;</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    uint8_t version_major = 0;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    uint8_t version_minor = 0;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    uint8_t version_patch = 0;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    uint32_t button_state = 0;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    uint8_t button_states_duration_seconds = 0;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  };</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#pragma pack(pop)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> device : scanner-&gt;getResults()) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (device-&gt;haveName() &amp;&amp; String(device-&gt;getName().c_str()).startsWith(<span class="stringliteral">&quot;CodexPad-&quot;</span>) &amp;&amp; device-&gt;haveManufacturerData()) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      <span class="comment">// printf(&quot;Name: %s\n&quot;, device-&gt;getName().c_str());</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      <span class="keyword">const</span> <span class="keyword">auto</span> manufacturer_data = device-&gt;getManufacturerData();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>      <span class="keywordflow">if</span> (manufacturer_data.length() &gt;= <span class="keyword">sizeof</span>(ManufacturerSpecificData)) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keyword">const</span> <span class="keyword">auto</span> data = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>ManufacturerSpecificData*<span class="keyword">&gt;</span>(manufacturer_data.c_str());</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">if</span> (data-&gt;company_id == 0xFFFF                                                 <span class="comment">// company id</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            &amp;&amp; memcmp(data-&gt;header, <span class="stringliteral">&quot;CodexPad&quot;</span>, 8) == 0                                <span class="comment">// header</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            &amp;&amp; data-&gt;button_state == <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(buttons)                    <span class="comment">// button mask</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            &amp;&amp; device-&gt;getRSSI() &gt; rssi                                                <span class="comment">// rssi</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            &amp;&amp; (data-&gt;version_major &lt; 2 || data-&gt;button_states_duration_seconds &gt;= 1)  <span class="comment">// button states duration</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        ) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          rssi = device-&gt;getRSSI();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>          address = device-&gt;getAddress();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>          <span class="comment">// printf(&quot;Found device, rssi: %d, address: %s\n&quot;, rssi, address.toString().c_str());</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  scanner-&gt;clearResults();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keywordflow">return</span> address.isNull() ? false : <a class="code hl_function" href="class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780">Connect</a>(address, 2000);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
 </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="class_codex_pad.html#ae46edc79a0e38e9fbc0e513d035cf0eb">  110</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_codex_pad.html#ae46edc79a0e38e9fbc0e513d035cf0eb">CodexPad::Update</a>() {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keywordflow">if</span> (ble_client_ == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keywordflow">if</span> (!ble_client_-&gt;isConnected()) {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    Reset();</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  }</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  prev_inputs_ = current_inputs_;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordflow">do</span> {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    std::lock_guard&lt;std::mutex&gt; l(mutex_);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (inputs_queue_.empty()) {</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    current_inputs_ = std::move(inputs_queue_.front());</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    inputs_queue_.pop();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  } <span class="keywordflow">while</span> (<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a539b79e6f5073ebebec51b2fedc8fe5a">  106</a></span><span class="keyword">const</span> gamepad::input::Tracker&amp; <a class="code hl_function" href="class_codex_pad.html#a539b79e6f5073ebebec51b2fedc8fe5a">CodexPad::Update</a>() noexcept {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordflow">if</span> (ble_client_ == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">return</span> input_tracker_;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keywordflow">if</span> (!ble_client_-&gt;isConnected()) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    Reset();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">return</span> input_tracker_;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  input_tracker_.Tick();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keywordflow">do</span> {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    std::lock_guard&lt;std::mutex&gt; l(mutex_);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (inputs_queue_.empty()) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    input_tracker_.Update(inputs_queue_.front());</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    inputs_queue_.pop();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  } <span class="keywordflow">while</span> (<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="keywordflow">return</span> input_tracker_;</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
 </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="class_codex_pad.html#abedfa1ef2c7d3f8ca163a59bc1ef764c">  131</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#abedfa1ef2c7d3f8ca163a59bc1ef764c">CodexPad::is_connected</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ble_client_ != <span class="keyword">nullptr</span> &amp;&amp; ble_client_-&gt;isConnected(); }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a445d190577d3dca675578faa22a38428">  131</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a445d190577d3dca675578faa22a38428">CodexPad::is_connected</a>() const noexcept { <span class="keywordflow">return</span> ble_client_ != <span class="keyword">nullptr</span> &amp;&amp; ble_client_-&gt;isConnected(); }</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 <div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">  133</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">CodexPad::set_remote_tx_power</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354">CodexPad::TxPower</a> tx_power) {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="class_codex_pad.html#aa6500b221c537c93c8f7f218297d946b">  133</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#aa6500b221c537c93c8f7f218297d946b">CodexPad::set_remote_tx_power</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354">CodexPad::TxPower</a> tx_power) <span class="keyword">noexcept</span> {</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  <span class="keywordflow">if</span> (ble_client_ == <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  }</div>
@@ -263,149 +263,95 @@ $(function(){initNavTree('codex__pad_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>}</div>
 </div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a2cc521644c01a45334e9d7c4afff6e3d">  155</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a2cc521644c01a45334e9d7c4afff6e3d">CodexPad::pressed</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="keywordflow">return</span> (prev_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) == 0 &amp;&amp; (current_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) != 0;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
-</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="class_codex_pad.html#ac6321fe07bf29f0233e7840925ff10fa">  159</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#ac6321fe07bf29f0233e7840925ff10fa">CodexPad::released</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="keywordflow">return</span> (prev_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) != 0 &amp;&amp; (current_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) == 0;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>}</div>
-</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="foldopen" id="foldopen00163" data-start="{" data-end="}">
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="class_codex_pad.html#af9d8841efbc17966feec5db6dbe247c4">  163</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#af9d8841efbc17966feec5db6dbe247c4">CodexPad::holding</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="keywordflow">return</span> (prev_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) != 0 &amp;&amp; (current_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) != 0;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>}</div>
-</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="class_codex_pad.html#af865f995e67eaf8b61a003958f535c5e">  167</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#af865f995e67eaf8b61a003958f535c5e">CodexPad::button_state</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ad">Button</a> button)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (current_inputs_.button_states &amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(button)) != 0; }</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a083307fb1a6ac11894cbb40be48ed5d0">  169</a></span>uint32_t <a class="code hl_function" href="class_codex_pad.html#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> current_inputs_.button_states; }</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a7bd8e836a7d6a6945aaa8bdc30cdbca7">  171</a></span>uint8_t <a class="code hl_function" href="class_codex_pad.html#a7bd8e836a7d6a6945aaa8bdc30cdbca7">CodexPad::axis_value</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> axis)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> current_inputs_.axis_values[<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(axis)]; }</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="foldopen" id="foldopen00173" data-start="{" data-end="}">
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="class_codex_pad.html#ad43f40b07f3491c349726b267d9ec530">  173</a></span>std::array&lt;uint8_t, CodexPad::kAxisValueNum&gt; <a class="code hl_function" href="class_codex_pad.html#ad43f40b07f3491c349726b267d9ec530">CodexPad::axis_values</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  std::array&lt;uint8_t, kAxisValueNum&gt; <a class="code hl_function" href="class_codex_pad.html#ad43f40b07f3491c349726b267d9ec530">axis_values</a> = {<a class="code hl_variable" href="class_codex_pad.html#a96b17edc141e27c50b1756c8d6146f1d">kAxisCenter</a>, <a class="code hl_variable" href="class_codex_pad.html#a96b17edc141e27c50b1756c8d6146f1d">kAxisCenter</a>, <a class="code hl_variable" href="class_codex_pad.html#a96b17edc141e27c50b1756c8d6146f1d">kAxisCenter</a>, <a class="code hl_variable" href="class_codex_pad.html#a96b17edc141e27c50b1756c8d6146f1d">kAxisCenter</a>};</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_variable" href="class_codex_pad.html#a3f7424f32c819a7e589d1a797ac0965d">kAxisValueNum</a>; i++) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <a class="code hl_function" href="class_codex_pad.html#ad43f40b07f3491c349726b267d9ec530">axis_values</a>[i] = current_inputs_.axis_values[i];</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_codex_pad.html#ad43f40b07f3491c349726b267d9ec530">axis_values</a>;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>}</div>
-</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780">CodexPad::Connect</a>(<span class="keyword">const</span> NimBLEAddress&amp; address, <span class="keywordtype">bool</span> async_connect, <span class="keyword">const</span> uint32_t timeout_ms) {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  Reset();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  assert(ble_client_ == <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  ble_client_ = NimBLEDevice::createClient(address);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  ble_client_-&gt;setConnectTimeout(timeout_ms);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="keyword">auto</span> ret = ble_client_-&gt;connect(<span class="keyword">true</span>, async_connect, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keywordflow">if</span> (!ret || !ble_client_-&gt;isConnected()) {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  }</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  remote_device_name_ = ble_client_-&gt;getValue(kGapServiceUuid, kGapDeviceNameUuid);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  remote_model_number_ = ble_client_-&gt;getValue(kDeviceInfoServiceUuid, kModelNumberCharacteristicUuid);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keyword">auto</span> firmware_revision = ble_client_-&gt;getValue(kDeviceInfoServiceUuid, kFirmwareRevisionCharacteristicUuid);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">if</span> (firmware_revision.length() == remote_firmware_version_.size()) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      memcpy(remote_firmware_version_.data(), firmware_revision.data(), firmware_revision.length());</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  }</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keyword">auto</span> remote_service = ble_client_-&gt;getService(kInputsServiceUuid);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">if</span> (remote_service == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>      <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    }</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="foldopen" id="foldopen00181" data-start="{" data-end="}">
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="class_codex_pad.html#a96196750b082f04f0fc5e95cf0374f5a">  181</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a96196750b082f04f0fc5e95cf0374f5a">CodexPad::HasAxisValueChanged</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0">Axis</a> axis, <span class="keyword">const</span> uint8_t threshold)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="keywordflow">return</span> HasAxisValueChangedSignificantly(prev_inputs_.axis_values[<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(axis)], current_inputs_.axis_values[<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(axis)],</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                                          threshold);</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
-</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">auto</span> remote_characteristic = remote_service-&gt;getCharacteristic(kInputsCharacteristicUuid);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordflow">if</span> (remote_characteristic == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">CodexPad::Connect</a>(<span class="keyword">const</span> NimBLEAddress&amp; address, <span class="keywordtype">bool</span> async_connect, <span class="keyword">const</span> uint32_t timeout_ms) {</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  Reset();</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  assert(ble_client_ == <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  ble_client_ = NimBLEDevice::createClient(address);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  ble_client_-&gt;setConnectTimeout(timeout_ms);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="keyword">auto</span> ret = ble_client_-&gt;connect(<span class="keyword">true</span>, async_connect, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keywordflow">if</span> (!ret || !ble_client_-&gt;isConnected()) {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">if</span> (!remote_characteristic-&gt;canNotify()) {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>      <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    }</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">if</span> (!remote_characteristic-&gt;subscribe(</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keyword">true</span>, std::bind(&amp;CodexPad::OnNotify, <span class="keyword">this</span>, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3,</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                            std::placeholders::_4))) {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>      <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  }</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  remote_device_name_ = ble_client_-&gt;getValue(kGapServiceUuid, kGapDeviceNameUuid);</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  remote_model_number_ = ble_client_-&gt;getValue(kDeviceInfoServiceUuid, kModelNumberCharacteristicUuid);</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  {</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keyword">auto</span> firmware_revision = ble_client_-&gt;getValue(kDeviceInfoServiceUuid, kFirmwareRevisionCharacteristicUuid);</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">if</span> (firmware_revision.length() == <span class="keyword">sizeof</span>(remote_firmware_version_)) {</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>      memcpy(remote_firmware_version_.data(), firmware_revision.data(), firmware_revision.length());</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keyword">auto</span> remote_service = ble_client_-&gt;getService(kInputsServiceUuid);</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">if</span> (remote_service == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>      <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>FAILED:</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  Reset();</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keywordtype">void</span> CodexPad::OnNotify(<span class="keyword">const</span> NimBLERemoteCharacteristic* remote_characteristic, <span class="keyword">const</span> uint8_t* data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> length,</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                        <span class="keyword">const</span> <span class="keywordtype">bool</span> is_notify) {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="keywordflow">if</span> (remote_characteristic != <span class="keyword">nullptr</span> &amp;&amp; remote_characteristic-&gt;getUUID().equals(kInputsCharacteristicUuid)) {</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">if</span> (length != <span class="keyword">sizeof</span>(gamepad::input::State)) {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>      printf(<span class="stringliteral">&quot;WARNING: length != sizeof(Inputs)\n&quot;</span>);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>      <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keyword">auto</span> remote_characteristic = remote_service-&gt;getCharacteristic(kInputsCharacteristicUuid);</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordflow">if</span> (remote_characteristic == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      <span class="keywordflow">goto</span> FAILED;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    std::lock_guard&lt;std::mutex&gt; l(mutex_);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordflow">if</span> (inputs_queue_.size() &gt; kInputsQueueMax) {</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      inputs_queue_.pop();</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">if</span> (!remote_characteristic-&gt;canNotify()) {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>      <span class="keywordflow">goto</span> FAILED;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    }</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">if</span> (!remote_characteristic-&gt;subscribe(</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <span class="keyword">true</span>, std::bind(&amp;CodexPad::OnNotify, <span class="keyword">this</span>, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4))) {</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>      <span class="keywordflow">goto</span> FAILED;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    }</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  }</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>FAILED:</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  Reset();</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>}</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="keywordtype">void</span> CodexPad::OnNotify(<span class="keyword">const</span> NimBLERemoteCharacteristic* remote_characteristic, <span class="keyword">const</span> uint8_t* data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> length, <span class="keyword">const</span> <span class="keywordtype">bool</span> is_notify) {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>  <span class="keywordflow">if</span> (remote_characteristic != <span class="keyword">nullptr</span> &amp;&amp; remote_characteristic-&gt;getUUID().equals(kInputsCharacteristicUuid)) {</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordflow">if</span> (length != <span class="keyword">sizeof</span>(Inputs)) {</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>      printf(<span class="stringliteral">&quot;WARNING: length != sizeof(Inputs)\n&quot;</span>);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    }</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    std::lock_guard&lt;std::mutex&gt; l(mutex_);</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">if</span> (inputs_queue_.size() &gt; kInputsQueueMax) {</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      inputs_queue_.pop();</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    Inputs inputs;</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    memcpy(&amp;inputs, data, <span class="keyword">sizeof</span>(inputs));</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    inputs_queue_.emplace(std::move(inputs));</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>  }</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>}</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keywordtype">void</span> CodexPad::Reset() {</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>  <span class="keywordflow">if</span> (ble_client_ != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    ble_client_-&gt;cancelConnect();</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    ble_client_-&gt;disconnect();</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    NimBLEDevice::deleteClient(ble_client_);</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    ble_client_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  }</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>  remote_device_name_.clear();</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  remote_model_number_.clear();</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  remote_firmware_version_.fill(0);</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>  prev_inputs_ = {};</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>  current_inputs_ = {};</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>  std::lock_guard&lt;std::mutex&gt; l(mutex_);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>  inputs_queue_ = {};</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>}</div>
-<div class="ttc" id="aclass_codex_pad_html_a083307fb1a6ac11894cbb40be48ed5d0"><div class="ttname"><a href="class_codex_pad.html#a083307fb1a6ac11894cbb40be48ed5d0">CodexPad::button_states</a></div><div class="ttdeci">uint32_t button_states() const</div><div class="ttdoc">Get all button states, return a 32-bit unsigned integer where each bit represents the state of a spec...</div><div class="ttdef"><b>Definition</b> <a href="#l00169">codex_pad.cpp:169</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a192ddc1f5996b2db723d167829aced6f"><div class="ttname"><a href="class_codex_pad.html#a192ddc1f5996b2db723d167829aced6f">CodexPad::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(const uint32_t button_mask)</div><div class="ttdoc">Scans for nearby CodexPad devices and automatically connects to a device whose button state matches t...</div><div class="ttdef"><b>Definition</b> <a href="#l00051">codex_pad.cpp:51</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a25cd7b0da32cb23953ce3703cf23a8e0"><div class="ttname"><a href="class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0">CodexPad::Axis</a></div><div class="ttdeci">Axis</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00402">codex_pad.h:402</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a2cc521644c01a45334e9d7c4afff6e3d"><div class="ttname"><a href="class_codex_pad.html#a2cc521644c01a45334e9d7c4afff6e3d">CodexPad::pressed</a></div><div class="ttdeci">bool pressed(const Button button) const</div><div class="ttdoc">check if a button is pressed</div><div class="ttdef"><b>Definition</b> <a href="#l00155">codex_pad.cpp:155</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a3f7424f32c819a7e589d1a797ac0965d"><div class="ttname"><a href="class_codex_pad.html#a3f7424f32c819a7e589d1a797ac0965d">CodexPad::kAxisValueNum</a></div><div class="ttdeci">static constexpr size_t kAxisValueNum</div><div class="ttdoc">Number of axis values.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00056">codex_pad.h:56</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4270ab7daacb30add44c298a798fe64b"><div class="ttname"><a href="class_codex_pad.html#a4270ab7daacb30add44c298a798fe64b">CodexPad::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;bluetooth_device_address, const uint32_t timeout_ms=5000)</div><div class="ttdoc">Connect.</div><div class="ttdef"><b>Definition</b> <a href="#l00040">codex_pad.cpp:40</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a4b2afe87b7e691d4df4d9aadb204d6ad"><div class="ttname"><a href="class_codex_pad.html#a4b2afe87b7e691d4df4d9aadb204d6ad">CodexPad::Button</a></div><div class="ttdeci">Button</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00220">codex_pad.h:220</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a7bd8e836a7d6a6945aaa8bdc30cdbca7"><div class="ttname"><a href="class_codex_pad.html#a7bd8e836a7d6a6945aaa8bdc30cdbca7">CodexPad::axis_value</a></div><div class="ttdeci">uint8_t axis_value(const Axis axis) const</div><div class="ttdoc">Get axis value.</div><div class="ttdef"><b>Definition</b> <a href="#l00171">codex_pad.cpp:171</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a903bc8ee07301914b7cceed3db80f422"><div class="ttname"><a href="class_codex_pad.html#a903bc8ee07301914b7cceed3db80f422">CodexPad::~CodexPad</a></div><div class="ttdeci">~CodexPad()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00032">codex_pad.cpp:32</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a96196750b082f04f0fc5e95cf0374f5a"><div class="ttname"><a href="class_codex_pad.html#a96196750b082f04f0fc5e95cf0374f5a">CodexPad::HasAxisValueChanged</a></div><div class="ttdeci">bool HasAxisValueChanged(const Axis axis, const uint8_t threshold) const</div><div class="ttdoc">check if an axis value has changed</div><div class="ttdef"><b>Definition</b> <a href="#l00181">codex_pad.cpp:181</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_a96b17edc141e27c50b1756c8d6146f1d"><div class="ttname"><a href="class_codex_pad.html#a96b17edc141e27c50b1756c8d6146f1d">CodexPad::kAxisCenter</a></div><div class="ttdeci">static constexpr uint8_t kAxisCenter</div><div class="ttdoc">Axis center value.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00066">codex_pad.h:66</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_aa3900f0c5e4f1b9a9b43749346915e5b"><div class="ttname"><a href="class_codex_pad.html#aa3900f0c5e4f1b9a9b43749346915e5b">CodexPad::CodexPad</a></div><div class="ttdeci">CodexPad()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00030">codex_pad.cpp:30</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_ab3468c41c92e45374a320ea23783dd9c"><div class="ttname"><a href="class_codex_pad.html#ab3468c41c92e45374a320ea23783dd9c">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(const TxPower power)</div><div class="ttdoc">Set transmission power, only effective when connected, immediately effective for current connection,...</div><div class="ttdef"><b>Definition</b> <a href="#l00133">codex_pad.cpp:133</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_abedfa1ef2c7d3f8ca163a59bc1ef764c"><div class="ttname"><a href="class_codex_pad.html#abedfa1ef2c7d3f8ca163a59bc1ef764c">CodexPad::is_connected</a></div><div class="ttdeci">bool is_connected() const</div><div class="ttdoc">Is connected.</div><div class="ttdef"><b>Definition</b> <a href="#l00131">codex_pad.cpp:131</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_ac6321fe07bf29f0233e7840925ff10fa"><div class="ttname"><a href="class_codex_pad.html#ac6321fe07bf29f0233e7840925ff10fa">CodexPad::released</a></div><div class="ttdeci">bool released(const Button button) const</div><div class="ttdoc">check if a button is released</div><div class="ttdef"><b>Definition</b> <a href="#l00159">codex_pad.cpp:159</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_ad43f40b07f3491c349726b267d9ec530"><div class="ttname"><a href="class_codex_pad.html#ad43f40b07f3491c349726b267d9ec530">CodexPad::axis_values</a></div><div class="ttdeci">std::array&lt; uint8_t, kAxisValueNum &gt; axis_values() const</div><div class="ttdoc">Get current values of all analog axes.</div><div class="ttdef"><b>Definition</b> <a href="#l00173">codex_pad.cpp:173</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_ad9688edc73671e22fcdc7d5a5dd854d0"><div class="ttname"><a href="class_codex_pad.html#ad9688edc73671e22fcdc7d5a5dd854d0">CodexPad::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">Initialize.</div><div class="ttdef"><b>Definition</b> <a href="#l00034">codex_pad.cpp:34</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_add2a85d4d2df117adb74c05604e86354"><div class="ttname"><a href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354">CodexPad::TxPower</a></div><div class="ttdeci">TxPower</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00078">codex_pad.h:78</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_ae46edc79a0e38e9fbc0e513d035cf0eb"><div class="ttname"><a href="class_codex_pad.html#ae46edc79a0e38e9fbc0e513d035cf0eb">CodexPad::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdoc">Update, need to be called in Loop.</div><div class="ttdef"><b>Definition</b> <a href="#l00110">codex_pad.cpp:110</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_af865f995e67eaf8b61a003958f535c5e"><div class="ttname"><a href="class_codex_pad.html#af865f995e67eaf8b61a003958f535c5e">CodexPad::button_state</a></div><div class="ttdeci">bool button_state(const Button button) const</div><div class="ttdoc">check if a button is pressed or held</div><div class="ttdef"><b>Definition</b> <a href="#l00167">codex_pad.cpp:167</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_af9d8841efbc17966feec5db6dbe247c4"><div class="ttname"><a href="class_codex_pad.html#af9d8841efbc17966feec5db6dbe247c4">CodexPad::holding</a></div><div class="ttdeci">bool holding(const Button button) const</div><div class="ttdoc">check if a button is held</div><div class="ttdef"><b>Definition</b> <a href="#l00163">codex_pad.cpp:163</a></div></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    inputs_queue_.emplace(gamepad::input::State::FromBytes(data));</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  }</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>}</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="keywordtype">void</span> CodexPad::Reset() {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>  <span class="keywordflow">if</span> (ble_client_ != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    ble_client_-&gt;cancelConnect();</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    ble_client_-&gt;disconnect();</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    NimBLEDevice::deleteClient(ble_client_);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    ble_client_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  remote_device_name_.clear();</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  remote_model_number_.clear();</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  remote_firmware_version_.fill(0);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  input_tracker_.Reset();</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  std::lock_guard&lt;std::mutex&gt; l(mutex_);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  inputs_queue_ = {};</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>}</div>
+<div class="ttc" id="aclass_codex_pad_html_a00f7e633f836a4f63cd426e95e6f93a6"><div class="ttname"><a href="class_codex_pad.html#a00f7e633f836a4f63cd426e95e6f93a6">CodexPad::~CodexPad</a></div><div class="ttdeci">~CodexPad() noexcept</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">codex_pad.cpp:28</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a37dcdea7d4246977d3731128fe3d56e1"><div class="ttname"><a href="class_codex_pad.html#a37dcdea7d4246977d3731128fe3d56e1">CodexPad::CodexPad</a></div><div class="ttdeci">CodexPad() noexcept</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00026">codex_pad.cpp:26</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a38e33a7bb5447c7af64c0e02e44ac780"><div class="ttname"><a href="class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780">CodexPad::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;bluetooth_device_address, uint32_t timeout_ms=5000) noexcept</div><div class="ttdoc">Connect.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">codex_pad.cpp:36</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a445d190577d3dca675578faa22a38428"><div class="ttname"><a href="class_codex_pad.html#a445d190577d3dca675578faa22a38428">CodexPad::is_connected</a></div><div class="ttdeci">bool is_connected() const noexcept</div><div class="ttdoc">Is connected.</div><div class="ttdef"><b>Definition</b> <a href="#l00131">codex_pad.cpp:131</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a539b79e6f5073ebebec51b2fedc8fe5a"><div class="ttname"><a href="class_codex_pad.html#a539b79e6f5073ebebec51b2fedc8fe5a">CodexPad::Update</a></div><div class="ttdeci">const gamepad::input::Tracker &amp; Update() noexcept</div><div class="ttdoc">Update, need to be called in Loop.</div><div class="ttdef"><b>Definition</b> <a href="#l00106">codex_pad.cpp:106</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_a6272051c8665fba0b7026219bcbf926c"><div class="ttname"><a href="class_codex_pad.html#a6272051c8665fba0b7026219bcbf926c">CodexPad::Init</a></div><div class="ttdeci">void Init() noexcept</div><div class="ttdoc">Initialize.</div><div class="ttdef"><b>Definition</b> <a href="#l00030">codex_pad.cpp:30</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_aa6500b221c537c93c8f7f218297d946b"><div class="ttname"><a href="class_codex_pad.html#aa6500b221c537c93c8f7f218297d946b">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(TxPower power) noexcept</div><div class="ttdoc">Set transmission power, only effective when connected, immediately effective for current connection,...</div><div class="ttdef"><b>Definition</b> <a href="#l00133">codex_pad.cpp:133</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_add2a85d4d2df117adb74c05604e86354"><div class="ttname"><a href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354">CodexPad::TxPower</a></div><div class="ttdeci">TxPower</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00035">codex_pad.h:35</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_aebd69c1a6b8d633a75b350e94df582f3"><div class="ttname"><a href="class_codex_pad.html#aebd69c1a6b8d633a75b350e94df582f3">CodexPad::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(gamepad::input::Button buttons) noexcept</div><div class="ttdoc">Scans for nearby CodexPad devices and automatically connects to a device whose button state matches t...</div><div class="ttdef"><b>Definition</b> <a href="#l00047">codex_pad.cpp:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

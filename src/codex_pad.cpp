@@ -21,23 +21,19 @@ constexpr uint16_t kModelNumberCharacteristicUuid{0x2A24};
 constexpr uint16_t kSerialNumberCharacteristicUuid{0x2A25};
 constexpr uint16_t kFirmwareRevisionCharacteristicUuid{0x2A26};
 constexpr uint16_t kManufacturerNameCharacteristicUuid{0x2A29};
-
-bool HasAxisValueChangedSignificantly(const int16_t prev_value, const int16_t current_value, const uint8_t threshold) {
-  return prev_value != current_value && (current_value == 0 || current_value == 255 || std::abs(current_value - prev_value) >= threshold);
-}
 }  // namespace
 
-CodexPad::CodexPad() {}
+CodexPad::CodexPad() noexcept {}
 
-CodexPad::~CodexPad() { Reset(); }
+CodexPad::~CodexPad() noexcept { Reset(); }
 
-void CodexPad::Init() {
+void CodexPad::Init() noexcept {
   if (!NimBLEDevice::isInitialized()) {
     NimBLEDevice::init("CodexPadClient");
   }
 }
 
-bool CodexPad::Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms) {
+bool CodexPad::Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms) noexcept {
   // check mac address is valid
   if (bluetooth_device_address.length() != 17 || bluetooth_device_address[2] != ':' || bluetooth_device_address[5] != ':' ||
       bluetooth_device_address[8] != ':' || bluetooth_device_address[11] != ':' || bluetooth_device_address[14] != ':') {
@@ -48,7 +44,7 @@ bool CodexPad::Connect(const std::string& bluetooth_device_address, const uint32
   return Connect(NimBLEAddress(bluetooth_device_address, 0), false, timeout_ms);
 }
 
-bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
+bool CodexPad::ScanAndConnect(const gamepad::input::Button buttons) noexcept {
   auto scanner = NimBLEDevice::getScan();
   scanner->setActiveScan(true);  // active scan uses more power, but get results faster
   scanner->setInterval(1000);
@@ -90,7 +86,7 @@ bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
         const auto data = reinterpret_cast<const ManufacturerSpecificData*>(manufacturer_data.c_str());
         if (data->company_id == 0xFFFF                                                 // company id
             && memcmp(data->header, "CodexPad", 8) == 0                                // header
-            && data->button_state == button_mask                                       // button mask
+            && data->button_state == static_cast<uint32_t>(buttons)                    // button mask
             && device->getRSSI() > rssi                                                // rssi
             && (data->version_major < 2 || data->button_states_duration_seconds >= 1)  // button states duration
         ) {
@@ -107,30 +103,34 @@ bool CodexPad::ScanAndConnect(const uint32_t button_mask) {
   return address.isNull() ? false : Connect(address, 2000);
 }
 
-void CodexPad::Update() {
+const gamepad::input::Tracker& CodexPad::Update() noexcept {
   if (ble_client_ == nullptr) {
-    return;
+    return input_tracker_;
   }
 
   if (!ble_client_->isConnected()) {
     Reset();
-    return;
+    return input_tracker_;
   }
 
-  prev_inputs_ = current_inputs_;
+  input_tracker_.Tick();
+
   do {
     std::lock_guard<std::mutex> l(mutex_);
     if (inputs_queue_.empty()) {
       break;
     }
-    current_inputs_ = std::move(inputs_queue_.front());
+
+    input_tracker_.Update(inputs_queue_.front());
     inputs_queue_.pop();
   } while (false);
+
+  return input_tracker_;
 }
 
-bool CodexPad::is_connected() const { return ble_client_ != nullptr && ble_client_->isConnected(); }
+bool CodexPad::is_connected() const noexcept { return ble_client_ != nullptr && ble_client_->isConnected(); }
 
-bool CodexPad::set_remote_tx_power(const CodexPad::TxPower tx_power) {
+bool CodexPad::set_remote_tx_power(const CodexPad::TxPower tx_power) noexcept {
   if (ble_client_ == nullptr) {
     return false;
   }
@@ -152,37 +152,6 @@ bool CodexPad::set_remote_tx_power(const CodexPad::TxPower tx_power) {
   return remote_characteristic->writeValue(static_cast<uint8_t>(tx_power));
 }
 
-bool CodexPad::pressed(const Button button) const {
-  return (prev_inputs_.button_states & static_cast<uint32_t>(button)) == 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
-}
-
-bool CodexPad::released(const Button button) const {
-  return (prev_inputs_.button_states & static_cast<uint32_t>(button)) != 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) == 0;
-}
-
-bool CodexPad::holding(const Button button) const {
-  return (prev_inputs_.button_states & static_cast<uint32_t>(button)) != 0 && (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0;
-}
-
-bool CodexPad::button_state(const Button button) const { return (current_inputs_.button_states & static_cast<uint32_t>(button)) != 0; }
-
-uint32_t CodexPad::button_states() const { return current_inputs_.button_states; }
-
-uint8_t CodexPad::axis_value(const Axis axis) const { return current_inputs_.axis_values[static_cast<size_t>(axis)]; }
-
-std::array<uint8_t, CodexPad::kAxisValueNum> CodexPad::axis_values() const {
-  std::array<uint8_t, kAxisValueNum> axis_values = {kAxisCenter, kAxisCenter, kAxisCenter, kAxisCenter};
-  for (size_t i = 0; i < kAxisValueNum; i++) {
-    axis_values[i] = current_inputs_.axis_values[i];
-  }
-  return axis_values;
-}
-
-bool CodexPad::HasAxisValueChanged(const Axis axis, const uint8_t threshold) const {
-  return HasAxisValueChangedSignificantly(prev_inputs_.axis_values[static_cast<size_t>(axis)], current_inputs_.axis_values[static_cast<size_t>(axis)],
-                                          threshold);
-}
-
 bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms) {
   Reset();
   assert(ble_client_ == nullptr);
@@ -198,7 +167,7 @@ bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const u
   remote_model_number_ = ble_client_->getValue(kDeviceInfoServiceUuid, kModelNumberCharacteristicUuid);
   {
     auto firmware_revision = ble_client_->getValue(kDeviceInfoServiceUuid, kFirmwareRevisionCharacteristicUuid);
-    if (firmware_revision.length() == sizeof(remote_firmware_version_)) {
+    if (firmware_revision.length() == remote_firmware_version_.size()) {
       memcpy(remote_firmware_version_.data(), firmware_revision.data(), firmware_revision.length());
     }
   }
@@ -219,7 +188,8 @@ bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const u
     }
 
     if (!remote_characteristic->subscribe(
-            true, std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4))) {
+            true, std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3,
+                            std::placeholders::_4))) {
       goto FAILED;
     }
   }
@@ -231,9 +201,10 @@ FAILED:
   return false;
 }
 
-void CodexPad::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length, const bool is_notify) {
+void CodexPad::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length,
+                        const bool is_notify) {
   if (remote_characteristic != nullptr && remote_characteristic->getUUID().equals(kInputsCharacteristicUuid)) {
-    if (length != sizeof(Inputs)) {
+    if (length != sizeof(gamepad::input::State)) {
       printf("WARNING: length != sizeof(Inputs)\n");
       return;
     }
@@ -242,9 +213,7 @@ void CodexPad::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic,
     if (inputs_queue_.size() > kInputsQueueMax) {
       inputs_queue_.pop();
     }
-    Inputs inputs;
-    memcpy(&inputs, data, sizeof(inputs));
-    inputs_queue_.emplace(std::move(inputs));
+    inputs_queue_.emplace(gamepad::input::State::FromBytes(data));
   }
 }
 
@@ -259,8 +228,7 @@ void CodexPad::Reset() {
   remote_device_name_.clear();
   remote_model_number_.clear();
   remote_firmware_version_.fill(0);
-  prev_inputs_ = {};
-  current_inputs_ = {};
+  input_tracker_.Reset();
   std::lock_guard<std::mutex> l(mutex_);
   inputs_queue_ = {};
 }
