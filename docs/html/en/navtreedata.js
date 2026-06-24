@@ -31,7 +31,6 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
@@ -40,7 +39,7 @@ var NAVTREE =
     ] ],
     [ "Examples", "examples.html", "examples" ],
     [ "Downloads", "usergroup0.html", [
-      [ "CodexPad_v2.2.1.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.2.1.zip", "^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.2.1.zip", null ]
+      [ "CodexPad_v3.0.0.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip", "^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip", null ]
     ] ]
   ] ]
 ];

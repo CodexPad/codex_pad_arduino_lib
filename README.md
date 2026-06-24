@@ -98,11 +98,12 @@ Power on the controller. After powering on, the controller will automatically en
 >
 > - `CodexPad` library
 > - `NimBLE-Arduino` dependency
+> - `GamepadInput` dependency
 >
-> If you skipped the dependency installation, install the latest `NimBLE-Arduino` manually:
+> If you skipped the dependency installation, install the latest `NimBLE-Arduino` and `GamepadInput` manually:
 >
 > 1. Open the Library Manager again
-> 2. Search for `NimBLE-Arduino`
+> 2. Search for `NimBLE-Arduino` or `GamepadInput`
 > 3. **Select the latest version** from the dropdown
 > 4. Install it
 

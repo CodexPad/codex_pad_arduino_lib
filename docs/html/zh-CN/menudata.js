@@ -30,10 +30,9 @@ var menudata={children:[
 {text:"类成员",url:"functions.html",children:[
 {text:"全部",url:"functions.html"},
 {text:"函数",url:"functions_func.html"},
-{text:"变量",url:"functions_vars.html"},
 {text:"枚举",url:"functions_enum.html"}]}]},
 {text:"文件",url:"files.html",children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"},
 {text:"下载",url:"usergroup0.html",children:[
-{text:"CodexPad_v2.2.1.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.2.1.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v2.2.1.zip"}]}]}
+{text:"CodexPad_v3.0.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip"}]}]}

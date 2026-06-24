@@ -107,11 +107,12 @@
 >
 > - `CodexPad` 库
 > - `NimBLE-Arduino` 依赖库
+> - `GamepadInput` 依赖库
 >
-> 如果您跳过了依赖库安装，请手动安装最新版 `NimBLE-Arduino`：
+> 如果您跳过了依赖库安装，请手动安装最新版 `NimBLE-Arduino`和 `GamepadInput` 库：
 >
 > 1. 再次打开库管理器
-> 2. 搜索 `NimBLE-Arduino`
+> 2. 搜索 `NimBLE-Arduino` 或者 `GamepadInput`
 > 3. 在下拉菜单中**选择最新版本**
 > 4. 点击安装
 

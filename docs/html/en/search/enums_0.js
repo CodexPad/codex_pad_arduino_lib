@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['axis_0',['Axis',['../class_codex_pad.html#a25cd7b0da32cb23953ce3703cf23a8e0',1,'CodexPad']]]
+  ['txpower_0',['TxPower',['../class_codex_pad.html#add2a85d4d2df117adb74c05604e86354',1,'CodexPad']]]
 ];
