@@ -27,6 +27,7 @@ var menudata={children:[
 {text:"类",url:"annotated.html",children:[
 {text:"类列表",url:"annotated.html"},
 {text:"类索引",url:"classes.html"},
+{text:"类继承关系",url:"hierarchy.html"},
 {text:"类成员",url:"functions.html",children:[
 {text:"全部",url:"functions.html"},
 {text:"函数",url:"functions_func.html"},
@@ -35,4 +36,4 @@ var menudata={children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"},
 {text:"下载",url:"usergroup0.html",children:[
-{text:"CodexPad_v3.0.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip"}]}]}
+{text:"CodexPad_v3.1.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.1.0.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.1.0.zip"}]}]}

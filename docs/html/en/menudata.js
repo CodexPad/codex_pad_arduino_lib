@@ -27,6 +27,7 @@ var menudata={children:[
 {text:"Classes",url:"annotated.html",children:[
 {text:"Class List",url:"annotated.html"},
 {text:"Class Index",url:"classes.html"},
+{text:"Class Hierarchy",url:"hierarchy.html"},
 {text:"Class Members",url:"functions.html",children:[
 {text:"All",url:"functions.html"},
 {text:"Functions",url:"functions_func.html"},
@@ -35,4 +36,4 @@ var menudata={children:[
 {text:"File List",url:"files.html"}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"CodexPad_v3.0.0.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip"}]}]}
+{text:"CodexPad_v3.1.0.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.1.0.zip",url:"^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.1.0.zip"}]}]}

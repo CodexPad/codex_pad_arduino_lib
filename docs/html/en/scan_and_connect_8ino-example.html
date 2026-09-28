@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;3.0.0</span>
+   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;3.1.0</span>
    </div>
   </td>
  </tr>
@@ -236,10 +236,10 @@ $(function(){initNavTree('scan_and_connect_8ino-example.html',''); initResizable
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> Connect() {</div>
-<div class="line">  printf(<span class="stringliteral">&quot;Start to scan and connect, button mask: 0x%08X\n&quot;</span>, kExpectedButtonMask);</div>
+<div class="line">  printf(<span class="stringliteral">&quot;Start to scan and connect, button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;\n&quot;</span>, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(kExpectedButtonMask));</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">while</span> (!g_codex_pad.<a id="a1" name="a1"></a><a class="code hl_function" href="class_codex_pad.html#aebd69c1a6b8d633a75b350e94df582f3">ScanAndConnect</a>(kExpectedButtonMask)) {</div>
-<div class="line">    printf(<span class="stringliteral">&quot;Retry to scan and connect, button mask: 0x%08X\n&quot;</span>, kExpectedButtonMask);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Retry to scan and connect, button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;\n&quot;</span>, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(kExpectedButtonMask));</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  printf(<span class="stringliteral">&quot;Remote device name: %s\n&quot;</span>, g_codex_pad.<a id="a2" name="a2"></a><a class="code hl_function" href="class_codex_pad.html#a7944e98376efef3a8674c34ac7ea6694">remote_device_name</a>().c_str());</div>
@@ -362,7 +362,8 @@ $(function(){initNavTree('scan_and_connect_8ino-example.html',''); initResizable
 <div class="line">  <span class="comment">// ==========================================================================</span></div>
 <div class="line">  <span class="keyword">constexpr</span> uint8_t kAxisValueChangeThreshold = 2;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordflow">if</span> (it.AxisChanged(Axis::kLeftStickX, kAxisValueChangeThreshold) || it.AxisChanged(Axis::kLeftStickY, kAxisValueChangeThreshold) ||</div>
+<div class="line">  <span class="keywordflow">if</span> (it.AxisChanged(Axis::kLeftStickX, kAxisValueChangeThreshold) ||</div>
+<div class="line">      it.AxisChanged(Axis::kLeftStickY, kAxisValueChangeThreshold) ||</div>
 <div class="line">      it.AxisChanged(Axis::kRightStickX, kAxisValueChangeThreshold) ||</div>
 <div class="line">      it.AxisChanged(Axis::kRightStickY, kAxisValueChangeThreshold)) {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;L(X: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;, Y:%3&quot;</span> PRIu8 <span class="stringliteral">&quot;), R(X: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;, Y: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;)\n&quot;</span>, it[Axis::kLeftStickX],</div>
@@ -374,9 +375,9 @@ $(function(){initNavTree('scan_and_connect_8ino-example.html',''); initResizable
 <div class="ttc" id="aclass_codex_pad_html_a5aa668bc50e04ba10ff32cc3f20e4b0d"><div class="ttname"><a href="class_codex_pad.html#a5aa668bc50e04ba10ff32cc3f20e4b0d">CodexPad::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const noexcept</div><div class="ttdoc">Get model number of the CodexPad.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00342">codex_pad.h:342</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_a65ac4cf32b665b2a378bd984346bf930"><div class="ttname"><a href="class_codex_pad.html#a65ac4cf32b665b2a378bd984346bf930">CodexPad::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">Get the BLE client object.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00383">codex_pad.h:383</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_a7944e98376efef3a8674c34ac7ea6694"><div class="ttname"><a href="class_codex_pad.html#a7944e98376efef3a8674c34ac7ea6694">CodexPad::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const noexcept</div><div class="ttdoc">Get model number of the CodexPad.</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00330">codex_pad.h:330</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_aa6500b221c537c93c8f7f218297d946b"><div class="ttname"><a href="class_codex_pad.html#aa6500b221c537c93c8f7f218297d946b">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(TxPower power) noexcept</div><div class="ttdoc">Set transmission power, only effective when connected, immediately effective for current connection,...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00133">codex_pad.cpp:133</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_aa6500b221c537c93c8f7f218297d946b"><div class="ttname"><a href="class_codex_pad.html#aa6500b221c537c93c8f7f218297d946b">CodexPad::set_remote_tx_power</a></div><div class="ttdeci">bool set_remote_tx_power(TxPower power) noexcept</div><div class="ttdoc">Set transmission power, only effective when connected, immediately effective for current connection,...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00138">codex_pad.cpp:138</a></div></div>
 <div class="ttc" id="aclass_codex_pad_html_add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b"><div class="ttname"><a href="class_codex_pad.html#add2a85d4d2df117adb74c05604e86354aaa423916e29159d7ee79ddb9b7e4491b">CodexPad::TxPower::k0dBm</a></div><div class="ttdeci">@ k0dBm</div><div class="ttdoc">0 dBm</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8h_source.html#l00104">codex_pad.h:104</a></div></div>
-<div class="ttc" id="aclass_codex_pad_html_aebd69c1a6b8d633a75b350e94df582f3"><div class="ttname"><a href="class_codex_pad.html#aebd69c1a6b8d633a75b350e94df582f3">CodexPad::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(gamepad::input::Button buttons) noexcept</div><div class="ttdoc">Scans for nearby CodexPad devices and automatically connects to a device whose button state matches t...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00047">codex_pad.cpp:47</a></div></div>
+<div class="ttc" id="aclass_codex_pad_html_aebd69c1a6b8d633a75b350e94df582f3"><div class="ttname"><a href="class_codex_pad.html#aebd69c1a6b8d633a75b350e94df582f3">CodexPad::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(gamepad::input::Button buttons) noexcept</div><div class="ttdoc">Scans for nearby CodexPad devices and automatically connects to a device whose button state matches t...</div><div class="ttdef"><b>Definition</b> <a href="codex__pad_8cpp_source.html#l00052">codex_pad.cpp:52</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

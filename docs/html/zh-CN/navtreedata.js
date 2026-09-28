@@ -28,6 +28,7 @@ var NAVTREE =
     [ "类", "annotated.html", [
       [ "类列表", "annotated.html", "annotated_dup" ],
       [ "类索引", "classes.html", null ],
+      [ "类继承关系", "hierarchy.html", "hierarchy" ],
       [ "类成员", "functions.html", [
         [ "全部", "functions.html", null ],
         [ "函数", "functions_func.html", null ],
@@ -39,7 +40,7 @@ var NAVTREE =
     ] ],
     [ "示例", "examples.html", "examples" ],
     [ "下载", "usergroup0.html", [
-      [ "CodexPad_v3.0.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip", "^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.0.0.zip", null ]
+      [ "CodexPad_v3.1.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.1.0.zip", "^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v3.1.0.zip", null ]
     ] ]
   ] ]
 ];
