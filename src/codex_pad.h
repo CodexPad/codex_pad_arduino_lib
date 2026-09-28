@@ -20,7 +20,7 @@
  * @class CodexPad
  * @brief CodexPad主类
  */
-class CodexPad {
+class CodexPad : public NimBLEClientCallbacks {
  public:
   /**
    * @~English
@@ -384,6 +384,9 @@ class CodexPad {
 
  private:
   static constexpr size_t kInputsQueueMax = 10;
+  bool onConnParamsUpdateRequest(NimBLEClient*, const ble_gap_upd_params*) override {
+    return false;  // update our own connection parameters, so we reject the request
+  }
 
   bool Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms);
   void OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length,

@@ -132,10 +132,10 @@ std::string ButtonToString(Button button) {
 }
 
 void Connect() {
-  printf("Start to scan and connect, button mask: 0x%08X\n", kExpectedButtonMask);
+  printf("Start to scan and connect, button mask: 0x%08" PRIX32 "\n", static_cast<uint32_t>(kExpectedButtonMask));
 
   while (!g_codex_pad.ScanAndConnect(kExpectedButtonMask)) {
-    printf("Retry to scan and connect, button mask: 0x%08X\n", kExpectedButtonMask);
+    printf("Retry to scan and connect, button mask: 0x%08" PRIX32 "\n", static_cast<uint32_t>(kExpectedButtonMask));
   }
 
   printf("Remote device name: %s\n", g_codex_pad.remote_device_name().c_str());
@@ -258,7 +258,8 @@ void loop() {
   // ==========================================================================
   constexpr uint8_t kAxisValueChangeThreshold = 2;
 
-  if (it.AxisChanged(Axis::kLeftStickX, kAxisValueChangeThreshold) || it.AxisChanged(Axis::kLeftStickY, kAxisValueChangeThreshold) ||
+  if (it.AxisChanged(Axis::kLeftStickX, kAxisValueChangeThreshold) ||
+      it.AxisChanged(Axis::kLeftStickY, kAxisValueChangeThreshold) ||
       it.AxisChanged(Axis::kRightStickX, kAxisValueChangeThreshold) ||
       it.AxisChanged(Axis::kRightStickY, kAxisValueChangeThreshold)) {
     printf("L(X: %3" PRIu8 ", Y:%3" PRIu8 "), R(X: %3" PRIu8 ", Y: %3" PRIu8 ")\n", it[Axis::kLeftStickX],

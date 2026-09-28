@@ -21,6 +21,11 @@ constexpr uint16_t kModelNumberCharacteristicUuid{0x2A24};
 constexpr uint16_t kSerialNumberCharacteristicUuid{0x2A25};
 constexpr uint16_t kFirmwareRevisionCharacteristicUuid{0x2A26};
 constexpr uint16_t kManufacturerNameCharacteristicUuid{0x2A29};
+
+constexpr uint16_t kConnectionParamMinInterval{6};
+constexpr uint16_t kConnectionParamMaxInterval{8};
+constexpr uint16_t kConnectionParamLatency{0};
+constexpr uint16_t kConnectionParamSupervisionTimeout{15};
 }  // namespace
 
 CodexPad::CodexPad() noexcept {}
@@ -157,6 +162,9 @@ bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const u
   assert(ble_client_ == nullptr);
   ble_client_ = NimBLEDevice::createClient(address);
   ble_client_->setConnectTimeout(timeout_ms);
+  ble_client_->setConnectionParams(kConnectionParamMinInterval, kConnectionParamMaxInterval, kConnectionParamLatency,
+                                   kConnectionParamSupervisionTimeout);
+  ble_client_->setClientCallbacks(this, false);
   auto ret = ble_client_->connect(true, async_connect, true);
 
   if (!ret || !ble_client_->isConnected()) {
