@@ -107,6 +107,16 @@ Power on the controller. After powering on, the controller will automatically en
 > 3. **Select the latest version** from the dropdown
 > 4. Install it
 
+## Safety Tips
+
+### Monitor Connection Status in Real-Time
+
+💡 **It is highly recommended to call `is_connected()` continuously in your main loop to detect the controller's status in real time.**
+
+If a disconnection is detected (e.g., the controller is powered off, goes out of range, or suffers from interference), **stop all actions of the controlled device immediately** (e.g., apply brakes on a robot car, lock a robotic arm, etc.).
+
+Since this update optimizes disconnection detection latency, the system can detect link loss much faster. Without prompt handling, moving devices like robot cars or robots may retain their last command and continue operating unexpectedly, leading to a loss of control and potential safety hazards.
+
 ## Example Descriptions
 
 - Basic Polling Example (`basic_polling`)
