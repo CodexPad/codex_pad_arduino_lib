@@ -1,6 +1,6 @@
 var hierarchy =
 [
     [ "NimBLEClientCallbacks", null, [
-      [ "CodexPad", "class_codex_pad.html", null ]
+      [ "codex_pad::Client", "classcodex__pad_1_1_client.html", null ]
     ] ]
 ];

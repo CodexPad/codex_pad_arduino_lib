@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ecodexpad_0',['~CodexPad',['../class_codex_pad.html#a00f7e633f836a4f63cd426e95e6f93a6',1,'CodexPad']]]
+  ['_7eclient_0',['~Client',['../classcodex__pad_1_1_client.html#af1d769e94df1bca106112e5a234facea',1,'codex_pad::Client']]]
 ];

@@ -1,11 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "bcdikrstu~",
+  0: "bcdirsu~",
   1: "c",
   2: "bis",
-  3: "bcdirsu~",
-  4: "t",
-  5: "k"
+  3: "bcdirsu~"
 };
 
 var indexSectionNames =
@@ -13,9 +11,7 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "functions",
-  4: "enums",
-  5: "enumvalues"
+  3: "functions"
 };
 
 var indexSectionLabels =
@@ -23,8 +19,6 @@ var indexSectionLabels =
   0: "All",
   1: "Classes",
   2: "Files",
-  3: "Functions",
-  4: "Enumerations",
-  5: "Enumerator"
+  3: "Functions"
 };
 

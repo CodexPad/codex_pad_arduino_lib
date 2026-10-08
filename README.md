@@ -4,7 +4,7 @@
 
 ## Overview
 
-This library is the **dedicated Arduino platform library** for the **CodexPad** series controllers. It supports ESP32 series development boards in connecting to and reading the input status of all buttons and joysticks on a CodexPad controller via Bluetooth. For detailed information about CodexPad products, please refer to the product documentation below.
+This library is an Arduino library for **CodexPad** series gamepads, enabling ESP32 series development boards to connect via Bluetooth and read all button and joystick input states from the gamepad. For detailed information about the gamepad products, please refer to the following product documentation.
 
 | CodexPad Model | Details |
 | :--- | :--- |
@@ -27,123 +27,116 @@ This library is the **dedicated Arduino platform library** for the **CodexPad** 
 ## Features
 
 - **Flexible Dual-Mode Connection**:
+  - **Direct Connection by Address**: Quickly establish a stable connection with a specific gamepad using its known address.
+  - **Button Mask Connection**: No need to know the address in advance. Scan and match a user-defined button combination (i.e., "button mask") held on the target gamepad, then automatically connect to the device with the strongest signal (maximum RSSI) for fast and flexible pairing.
+- **Real-time Button Event Detection**: Read the input status of all buttons in real time, distinguishing between **press**, **release**, and **hold** events.
+- **High-Precision Joystick Data**: Obtain analog values for the X and Y axes of the left and right joysticks, ranging from 0 to 255, providing precise control input.
 
-  - **Direct Connection via Bluetooth Device Address**: Quickly establish a stable connection with a specific controller using a known Bluetooth Device Address.
+## Button Mask Connection Explained
 
-  - **Button Mask Scan Connection**: Connect without knowing the Bluetooth Device Address in advance. By scanning for and matching a specific combination of buttons held down on the target controller (defined as a "button mask" in your code), the library automatically connects to the device with the strongest signal (highest RSSI), enabling fast and flexible pairing.
-
-- **Real-time Button Event Detection**: Reads the input status of all buttons in real time, distinguishing between **Pressed**, **Released**, and **Holding** events.
-
-- **High-Precision Joystick Data**: Retrieves analog values for the X and Y axes of the left and right joysticks, ranging from 0 to 255, providing precise control input.
-
-- **Adjustable Transmit Power**: Allows dynamic adjustment of the Bluetooth transmit power within a range of **-16 dBm to +6 dBm** based on the application scenario (e.g., distance, power requirements).
-
-## Detailed Explanation of Button Mask Scan Connection
-
-**Button Mask Scan Connection** is a distinctive feature of CodexPad, allowing the host to connect by scanning for and matching a specific combination of buttons held down on the device. This method establishes a physical "handshake" protocol between the device and the host, offering significant advantages in multi-device environments and flexible pairing scenarios.
+**Button Mask Connection** is a unique feature of the gamepad that allows the host to connect by scanning and matching a specific combination of buttons held on the device. By establishing a physical "handshake" protocol between the device and the host, this method offers significant advantages in multi-device environments and flexible pairing scenarios.
 
 ### Design Intent and Advantages
 
-1. **Preventing Accidental Connections and Interference**: When multiple connectable devices of the same type (e.g., multiple controllers) are nearby, while their unique **Bluetooth Device Address** can be used for precise connection, this typically requires "hardcoding" the address in the code. This approach binds the program to a specific device, lacking flexibility. By requiring the target device to hold a specific button combination while being discovered, a dynamic, condition-based connection rule is defined. Your connection code is not bound to any device's physical address; as long as a device satisfies this "handshake protocol" (holding the correct buttons), it will be connected. This effectively prevents the host from accidentally connecting to the wrong device among multiple devices, while enabling the convenience of **connect on press, with the ability to switch devices at any time**.
-
-2. **Creating Exclusive Connection Conditions**: You can think of this button mask as a simple "password" or "connection token." It creates an exclusive connection channel between your application and the device, allowing only devices that meet this specific physical interaction condition (pressing the designated buttons) to join, enhancing the intentionality and control of the connection.
-
-3. **Improving Code Flexibility, Supporting On-the-Fly Device Switching**: Unlike hardcoding a specific device's Bluetooth Device Address, the connection logic using a button mask is oriented towards a "condition" rather than a "specific device." This means your same set of connection code, without modification, can be used to connect to any controller that is discoverable and correctly triggers the preset button condition. This offers two major conveniences:
-
-    - **No Need to Bind to a Specific Device**: You don't need to specify a controller's address in the code, nor maintain different connection configurations for different controllers.
-
-    - **Connect on Press, Flexible Switching**: In practical use, you can pick up another controller at any time. As long as it is powered on and holding the correct button combination, your program can automatically connect to it, enabling seamless switching between different controllers.
+1. **Prevent Accidental Connections and Interference**: When multiple connectable devices of the same type (e.g., multiple gamepads) are nearby, although you can connect precisely using their unique addresses, this usually requires "hard-coding" the address in the code. This approach binds the program to a specific device, lacking flexibility. By requiring the target device to hold a specific button combination while being discovered, you define a dynamic, condition-based connection rule. Your connection code does not need to bind to any device's physical address; as long as the device meets this "handshake protocol" (holding the correct buttons), it will be connected. This effectively prevents the host from accidentally connecting to the wrong device among many, while also enabling the convenience of **plug-and-play connection and on-the-fly device switching**.
+2. **Create Exclusive Connection Conditions**: You can treat this button mask as a simple "password" or "connection token." It builds an exclusive connection channel between your application and the device, allowing only devices that meet this specific physical interaction condition (pressing the designated buttons) to join, thereby enhancing the intentionality and controllability of the connection.
+3. **Improve Code Flexibility and Support On-the-Fly Device Switching**: Unlike hard-coding a specific device's address in the code, the connection logic using a button mask is oriented toward "conditions" rather than "specific devices." This means your same connection code, without modification, can be used to connect to any gamepad that is in a discoverable state and correctly triggers the preset button condition. This brings two major benefits:
+    - **No Need to Bind to a Specific Device**: You don't need to specify a particular gamepad's address in the code, nor maintain different connection configurations for different gamepads.
+    - **Plug-and-Play and Flexible Switching**: In practice, you can pick up another gamepad at any time, as long as it is powered on and the correct button combination is held, your program will automatically connect to it, enabling seamless switching between different gamepads.
 
 ## Usage Instructions
 
-### Preparations
+### Preparation
 
-Before starting to program, complete the following preparations to ensure a smooth development process.
+Before starting programming, complete the following preparation steps to ensure a smooth development process.
 
-### Familiarize Yourself with the Product Documentation
+#### Familiarize Yourself with the Product Documentation
 
-Read the CodexPad product manual in detail to fully understand the hardware features, familiarize yourself with the controller's button/joystick layout, function definitions, indicator light statuses, and power on/off operations.
+- Read the gamepad product manual thoroughly to fully understand the hardware features, familiarize yourself with the button and joystick layout, function definitions, LED indicator status, and power on/off operations.
 
-### Obtain and Record the Controller's Bluetooth Device Address (BD_ADDR)
+#### Obtain and Record the Gamepad Address
 
-> ⚠️ Important Note: The direct connection example in this library connects using the Bluetooth Device Address (BD_ADDR). When programming, you must explicitly specify your controller's Bluetooth Device Address (BD_ADDR) in the code.
+> **⚠️ Important Note**: The direct connection examples in this library connect via address. **When programming, you must explicitly specify your gamepad's address in the code.**
 
-Please refer to the method provided in the product manual to obtain your controller's **Bluetooth Device Address (BD_ADDR)**. It is typically in the format "`E4:66:E5:A2:24:5D`"(consisting of characters 0-9, A-F, with colons as half-width symbols). Record this information properly, as you will need to input your controller's actual **Bluetooth Device Address (BD_ADDR)** in the code later.
+Refer to the method provided in the product manual to obtain your gamepad's address. Its format is typically `"E4:66:E5:A2:24:5D"` (composed of characters 0-9, A-F, with a half-width colon). Please record this information properly, as you will need to replace it with the actual address of your own gamepad in the code later.
 
-### Power On the Controller and Enter Pairing Mode
+#### Power On the Gamepad and Enter the Connectable State
 
-Power on the controller. After powering on, the controller will automatically enter the **pairing mode** where it is discoverable via Bluetooth. At this time, the controller's indicator light should be in a **slow blinking state (approximately once per second)**.
+- Turn on the gamepad. After powering on, it will automatically enter a Bluetooth discoverable **connectable state**, and the LED indicator should blink **slowly (about once per second)**.
 
-### Install CodexPad Library
+### Install ESP32 Board Manager
+
+1. In Arduino IDE, open **Tools** > **Board** > **Boards Manager...**.
+2. In the search box, type `esp32`, find and install **ESP32 by Espressif Systems**.
+3. After installation, select the specific ESP32 board model you are using (e.g., `ESP32 Dev Module`) from the **Tools** > **Board** list.
+4. Connect the board to your computer via a USB cable, and select the correct serial port from the **Tools** > **Port** menu.
+
+### Install the CodexPad Library
 
 1. **Open Arduino IDE Library Manager**
    - Menu: **Tools** → **Manage Libraries...**
-   - Keyboard shortcut: `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (Mac)
-
+   - Shortcut: `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (Mac)
 2. **Search and Install**
    - In the search box, type: `CodexPad`
-   - Locate the CodexPad library
-   - **Ensure the latest version is selected** in the version dropdown
-   - Click the **INSTALL** button
+   - Find the CodexPad library
+   - **Make sure to select the latest version from the dropdown menu**
+   - Click the **Install** button
 
-   ![Search for CodexPad in Library Manager](assets/images/en/install_codexpad_library.png)
+   ![Search for CodexPad in Library Manager](assets/images/zh-CN/install_codexpad_library.png)
 
+   > **📌 Note:** The screenshot is for reference only. Be sure to install the latest available version.
 3. **Install Dependencies**
-   - When the dependency dialog appears, select **INSTALL ALL**
+   - When the dependency installation dialog appears, select **Install All**
 
-   ![Confirm dependency installation dialog](assets/images/en/install_dependencies_dialog.png)
+   ![Dependency installation confirmation dialog](assets/images/zh-CN/install_dependencies_dialog.png)
 
 > **⚠️ Important Version Note**  
-> The screenshots in this guide may show older versions. **Always install the latest versions** of both:
+> The screenshots in this document may show older versions. **Always install the latest versions of the following:**
 >
 > - `CodexPad` library
 > - `NimBLE-Arduino` dependency
 > - `GamepadInput` dependency
+> - `cyfney-cpp` dependency
 >
-> If you skipped the dependency installation, install the latest `NimBLE-Arduino` and `GamepadInput` manually:
+> If you skipped the dependency installation, manually install the latest versions of `NimBLE-Arduino`, `GamepadInput`, and `cyfney-cpp` libraries:
 >
 > 1. Open the Library Manager again
-> 2. Search for `NimBLE-Arduino` or `GamepadInput`
-> 3. **Select the latest version** from the dropdown
-> 4. Install it
+> 2. Search for `NimBLE-Arduino`, `GamepadInput`, or `cyfney-cpp`
+> 3. **Select the latest version** from the dropdown menu
+> 4. Click Install
 
 ## Safety Tips
 
-### Monitor Connection Status in Real-Time
+### Real-time Connection Status Detection
 
-💡 **It is highly recommended to call `is_connected()` continuously in your main loop to detect the controller's status in real time.**
+💡 **It is recommended to continuously call `is_connected()` in the main loop to monitor the gamepad connection status in real time.**
 
-If a disconnection is detected (e.g., the controller is powered off, goes out of range, or suffers from interference), **stop all actions of the controlled device immediately** (e.g., apply brakes on a robot car, lock a robotic arm, etc.).
+When a disconnection is detected (e.g., gamepad powered off, out of range, or Bluetooth interference), **be sure to immediately stop the controlled device** (e.g., brake a car, lock a robotic arm, etc.).
 
-Since this update optimizes disconnection detection latency, the system can detect link loss much faster. Without prompt handling, moving devices like robot cars or robots may retain their last command and continue operating unexpectedly, leading to a loss of control and potential safety hazards.
+Due to optimizations in disconnection detection delay in this update, the system can detect connection loss faster. If not handled promptly, moving devices such as cars or robots may remain in their previous state due to not receiving new control commands, leading to loss of control and potential safety hazards.
 
 ## Example Descriptions
 
-- Basic Polling Example (`basic_polling`)
+### Basic Polling Example (`basic_polling`)
 
-  - **Example Location**: In Arduino IDE, find this example via **File** → **Examples** → **CodexPad** → **basic_polling**.
+- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **basic_polling** to find this example.
+- **Description**: Connect to a CodexPad via Bluetooth Device Address, poll and print all button states and joystick values in real time.
 
-  - **Description**: Connects to a CodexPad via Bluetooth Device Address and continuously queries/prints the status of all its buttons and joystick values.
+### Input State Detection Example (`inputs_detection`)
 
-- Input State Detection Example (`inputs_detection`)
+- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **inputs_detection** to find this example.
+- **Description**: Connect to a CodexPad via Bluetooth Device Address, detect changes in button states and joystick values, and print them.
 
-  - **Example Location**: In Arduino IDE, find this example via **File** → **Examples** → **CodexPad** → **inputs_detection**.
+### Scan and Connect Example (`scan_and_connect`)
 
-  - **Description**: Connects to a CodexPad via Bluetooth Device Address and prints information when changes in button states or joystick values are detected.
+- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **scan_and_connect** to find this example.
+- **Core Function**: Scan and automatically connect to nearby CodexPad devices by matching a specific, user-defined **button** or **button combination**, detect joystick and button changes, and print them.
+- **Operation Steps**: After the code starts, it enters scanning and connection mode. When the gamepad is powered on, its blue LED blinks. At this point, hold the button mask (button combination) specified in your code on the gamepad until the host connects to it. Then operate the gamepad normally and observe the log output in the console.
+- **Important Note**: When setting the button mask, **do not use the `Home` button alone**. Long-pressing the `Home` button will cause the gamepad to power off, interrupting the connection. If you must use the `Home` button, be sure to use it in combination with other buttons (e.g., `Home` + `Cross`).
 
-- Scan and Connect Example (`scan_and_connect`)
+## API Documentation
 
-  - **Example Location**: In Arduino IDE, find this example via **File** → **Examples** → **CodexPad** → **scan_and_connect**.
-
-  - **Core Functionality**: Scans for and automatically connects to nearby CodexPad devices by matching a specific, user-defined **button** or **button combination**, then detects and prints joystick and button changes.
-
-  - **Operation Steps**: After the code starts, it enters the scanning and connection state. Turn on the CodexPad, and the blue light will blink. Press and hold the button mask (button combination) specified in your code on the CodexPad until the host connects to the CodexPad. Then, operate the CodexPad normally and observe the console log output.
-
-  - **Important Note**: Do not use the `Home` key alone in the button mask. Holding the `Home` key will cause the CodexPad to shut down, thereby interrupting the connection. If you need to use the Home key, use it in combination with other buttons (e.g., `Home` + `Cross`).
-
-## API Reference
-
-Details Link: <https://codexpad.github.io/codex_pad_arduino_lib/html/en/index.html>
+Details: <https://codexpad.github.io/codex_pad_arduino_lib/html/annotated.html>
 
 ## License
 

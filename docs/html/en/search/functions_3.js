@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['init_0',['Init',['../class_codex_pad.html#a6272051c8665fba0b7026219bcbf926c',1,'CodexPad']]],
-  ['input_5ftracker_1',['input_tracker',['../class_codex_pad.html#a4677f8f8c7b5aa50909b5d48e0bc5f0c',1,'CodexPad']]],
-  ['is_5fconnected_2',['is_connected',['../class_codex_pad.html#a445d190577d3dca675578faa22a38428',1,'CodexPad']]]
+  ['init_0',['Init',['../classcodex__pad_1_1_client.html#ac5da2f735a8d820504270d7271a4f78b',1,'codex_pad::Client']]],
+  ['input_5ftracker_1',['input_tracker',['../classcodex__pad_1_1_client.html#aebfbe997689262afe735e6ef6f6fd087',1,'codex_pad::Client']]],
+  ['is_5fconnected_2',['is_connected',['../classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305',1,'codex_pad::Client']]]
 ];

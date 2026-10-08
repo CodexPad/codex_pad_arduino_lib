@@ -1,4 +1,6 @@
 var annotated_dup =
 [
-    [ "CodexPad", "class_codex_pad.html", "class_codex_pad" ]
+    [ "codex_pad", null, [
+      [ "Client", "classcodex__pad_1_1_client.html", "classcodex__pad_1_1_client" ]
+    ] ]
 ];

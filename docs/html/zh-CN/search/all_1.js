@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['codexpad_0',['CodexPad',['../class_codex_pad.html',1,'CodexPad'],['../class_codex_pad.html#a37dcdea7d4246977d3731128fe3d56e1',1,'CodexPad::CodexPad() noexcept']]],
-  ['connect_1',['Connect',['../class_codex_pad.html#a38e33a7bb5447c7af64c0e02e44ac780',1,'CodexPad']]]
+  ['client_0',['Client',['../classcodex__pad_1_1_client.html',1,'codex_pad::Client'],['../classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a',1,'codex_pad::Client::Client() noexcept']]],
+  ['connect_1',['Connect',['../classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7',1,'codex_pad::Client']]]
 ];

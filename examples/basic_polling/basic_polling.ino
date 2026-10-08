@@ -4,30 +4,34 @@
  * @example basic_polling.ino
  * @brief Demonstrates the basic polling method to periodically query and print all CodexPad button states and joystick values.
  * @details This example establishes a connection to a specific CodexPad device (by Bluetooth Device Address) and implements a
- *          simple polling loop. Every 30 milliseconds, it queries and prints the current state (pressed/released) of all
+ *          simple polling loop. Every 50 milliseconds, it queries and prints the current state (pressed/released) of all
  *          buttons and the raw analog values (0-255) of both joysticks. It showcases the fundamental usage of
  *          `gamepad::input::Tracker[Button]` for discrete button queries and `gamepad::input::Tracker[Axis]` for continuous
  *          joystick readings.
  * @note This example uses a simple timing mechanism (`millis()`) to print at a fixed interval, which is suitable for
  *       monitoring or logging. For real-time control, ensure `Update()` is called as frequently as possible without blocking
  *       delays.
- * @see CodexPad::Update
+ * @see codex_pad::Client::Update
  */
 /**
  * @~Chinese
  * @file basic_polling.ino
  * @example basic_polling.ino
- * @brief 演示通过基本轮询方式定期查询并打印 CodexPad 所有按钮状态与摇杆值。
- * @details 本示例通过Bluetooth Device Address连接到指定的 CodexPad 设备，并实现了一个简单的轮询循环。
- *          每隔 30 毫秒，它会查询并打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0-255）。
+ * @brief 演示通过基本轮询方式定期查询并打印手柄所有按钮状态与摇杆值。
+ * @details 本示例通过地址连接到指定的手柄，并实现了一个简单的轮询循环。
+ *          每隔 50 毫秒，它会查询并打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0-255）。
  *          它展示了 `gamepad::input::Tracker[Button]` 用于离散按钮查询和 `gamepad::input::Tracker[Axis]`
  *          用于连续摇杆读取的基本用法。
  * @note 本示例使用简单的定时机制（`millis()`）以固定间隔打印，适用于状态监控或日志记录。
  *       对于实时控制应用，请确保尽可能频繁地调用 `Update()` 且无阻塞延时。
- * @see CodexPad::Update
+ * @see codex_pad::Client::Update
  */
 
+#include <string>
+
 #include "codex_pad.h"
+#include "cyf.h"
+#include "cyf/log.h"
 
 /**
  * IMPORTANT:
@@ -50,41 +54,30 @@ using namespace gamepad::input;  // ⚠️ DO NOT REMOVE THIS LINE ⚠️
 namespace {
 // Replace with your CodexPad device's Bluetooth device address
 // 替换为你的 CodexPad 的 Bluetooth device address
-const std::string kBluetoothDeviceAddress = "16:00:00:00:03:27";
+const std::string kBluetoothDeviceAddress = "E4:66:E5:A2:17:06";
 
-CodexPad g_codex_pad;
+codex_pad::Client g_codex_pad_client;
 
 void Connect() {
-  printf("Start to connect %s\n", kBluetoothDeviceAddress.c_str());
+  CLOGI("Start to connect %s", kBluetoothDeviceAddress.c_str());
   // Connect to the CodexPad with specified Bluetooth device address
   // 连接到指定蓝牙设备地址的手柄
-  while (!g_codex_pad.Connect(kBluetoothDeviceAddress, 5000)) {
-    printf("Retry to connect %s\n", kBluetoothDeviceAddress.c_str());
+  while (!g_codex_pad_client.Connect(kBluetoothDeviceAddress, 5000)) {
+    CLOGI("Retry to connect %s", kBluetoothDeviceAddress.c_str());
   }
 
-  printf("Remote device name: %s\n", g_codex_pad.remote_device_name().c_str());
-  printf("Remote model number: %s\n", g_codex_pad.remote_model_number().c_str());
-  printf("Remote firmware revision: %u.%u.%u\n", g_codex_pad.remote_firmware_version()[0],
-         g_codex_pad.remote_firmware_version()[1], g_codex_pad.remote_firmware_version()[2]);
+  CLOGI("Remote device name: %s", g_codex_pad_client.remote_device_name().c_str());
+  CLOGI("Remote model number: %s", g_codex_pad_client.remote_model_number().c_str());
+  CLOGI("Remote firmware revision: %u.%u.%u", g_codex_pad_client.remote_firmware_version()[0],
+        g_codex_pad_client.remote_firmware_version()[1], g_codex_pad_client.remote_firmware_version()[2]);
 
-  if (const auto ble_client = g_codex_pad.ble_client(); ble_client != nullptr) {
-    printf("Remote Bluetooth Device Address: %s\n", ble_client->getPeerAddress().toString().c_str());
+  if (const auto ble_client = g_codex_pad_client.ble_client(); ble_client != nullptr) {
+    CLOGI("Remote Bluetooth Device Address: %s", ble_client->getPeerAddress().toString().c_str());
   } else {
-    printf("Remote Bluetooth Device Address: unknown\n");
+    CLOGI("Remote Bluetooth Device Address: unknown");
   }
 
-  // Set transmission power to 0 dBm
-  // Transmission power affects communication range and power consumption:
-  // Higher power provides longer range but consumes more battery
-  // Choose appropriate power level based on your application to balance range and battery life
-  // 设置发射功率为 0 dBm
-  // 发射功率影响通信距离和功耗：功率越高，通信距离越远，但功耗也越大
-  // 建议根据实际应用场景选择合适的功率等级以平衡距离和电池寿命
-  if (g_codex_pad.set_remote_tx_power(CodexPad::TxPower::k0dBm)) {
-    printf("Set remote tx power to 0 dBm successfully\n");
-  }
-
-  printf("Connected\n");
+  CLOGI("Connected");
 }
 }  // namespace
 
@@ -92,7 +85,7 @@ void setup() {
   Serial.begin(115200);
 
   printf("Init\n");
-  g_codex_pad.Init();
+  g_codex_pad_client.Init();
 
   Connect();
 }
@@ -119,7 +112,7 @@ void loop() {
   //
   // • 实时控制应用中，必须每轮循环都调用 Update()，不可阻塞
   // ==========================================================================
-  const gamepad::input::Tracker& it = g_codex_pad.Update();
+  const gamepad::input::Tracker& it = g_codex_pad_client.Update();
   // ==========================================================================
   // Tracker: Access button and joystick states
   // ==========================================================================
@@ -138,46 +131,115 @@ void loop() {
   // https://codexpad.github.io/gamepad_input_arduino_lib/
   // ==========================================================================
 
-  if (!g_codex_pad.is_connected()) {
-    printf("Disconnected, start to reconnect\n");
+  if (!g_codex_pad_client.is_connected()) {
+    CLOGW("Disconnected, start to reconnect\n");
     Connect();
     return;
   }
 
   static uint32_t s_print_time = 0;
-  if (s_print_time != 0 && s_print_time + 30 > millis()) {
+  if (s_print_time != 0 && s_print_time + 50 > millis()) {
     return;
   }
 
   s_print_time = millis();
 
-  printf(
-      "Up:%u, Down:%u, Left:%u, Right:%u, Square(X):%u, Triangle(Y):%u, Cross(A):%u, Circle(B):%u, L1:%u, L2:%u, L3:%u, R1:%u, "
-      "R2:%u, R3:%u, Select:%u, Start:%u, Home:%u, L(X:%3u, Y:%3u), R(X:%3u, Y:%3u)\n",
+  std::string log;
 
-      // ------------------------------------------------------------------
-      // Button states (boolean -> uint)
-      // operator[] returns bool:
-      //   true  = pressed
-      //   false = released
-      //
-      // 按钮状态（bool 类型，打印时被隐式转换为 1 / 0）
-      // true  : 按下
-      // false : 弹起
-      // ------------------------------------------------------------------
-      it[Button::kUp], it[Button::kDown], it[Button::kLeft], it[Button::kRight], it[Button::kSquareX], it[Button::kTriangleY],
-      it[Button::kCrossA], it[Button::kCircleB], it[Button::kL1], it[Button::kL2], it[Button::kL3], it[Button::kR1],
-      it[Button::kR2], it[Button::kR3], it[Button::kSelect], it[Button::kStart], it[Button::kHome],
+  char buffer[512] = {0};
+  size_t length = snprintf(buffer, sizeof(buffer), "Button mask: 0x%08" PRIX32, static_cast<uint32_t>(it.raw().buttons));
+  log.append(buffer, length);
 
-      // ------------------------------------------------------------------
-      // Joystick axis values (0–255)
-      // Center position ≈ 128
-      // Smaller → left / down
-      // Larger  → right / up
-      //
-      // 摇杆轴数据（0～255）
-      // 中间值约 128
-      // 越小越左 / 下，越大越右 / 上
-      // ------------------------------------------------------------------
-      it[Axis::kLeftStickX], it[Axis::kLeftStickY], it[Axis::kRightStickX], it[Axis::kRightStickY]);
+  // ------------------------------------------------------------------
+  // Joystick axis values (0–255)
+  // Center position ≈ 128
+  // Smaller → left / down
+  // Larger  → right / up
+  //
+  // 摇杆轴数据（0～255）
+  // 中间值约 128
+  // 越小越左 / 下，越大越右 / 上
+  // ------------------------------------------------------------------
+  length = snprintf(buffer, sizeof(buffer), ", L(%3u, %3u), R(%3u, %3u)", it[Axis::kLeftStickX], it[Axis::kLeftStickY],
+                    it[Axis::kRightStickX], it[Axis::kRightStickY]);
+  log.append(buffer, length);
+
+  // ------------------------------------------------------------------
+  // Button states (boolean -> uint)
+  // operator[] returns bool:
+  //   true  = pressed
+  //   false = released
+  //
+  // 按钮状态（bool 类型，打印时被隐式转换为 1 / 0）
+  // true  : 按下
+  // false : 弹起
+  if (it[Button::kUp]) {
+    log.append(", Up");
+  }
+
+  if (it[Button::kDown]) {
+    log.append(", Down");
+  }
+
+  if (it[Button::kLeft]) {
+    log.append(", Left");
+  }
+
+  if (it[Button::kRight]) {
+    log.append(", Right");
+  }
+
+  if (it[Button::kSquareX]) {
+    log.append(", Square(X)");
+  }
+
+  if (it[Button::kTriangleY]) {
+    log.append(", Triangle(Y)");
+  }
+
+  if (it[Button::kCrossA]) {
+    log.append(", Cross(A)");
+  }
+
+  if (it[Button::kCircleB]) {
+    log.append(", Circle(B)");
+  }
+
+  if (it[Button::kL1]) {
+    log.append(", L1");
+  }
+
+  if (it[Button::kL2]) {
+    log.append(", L2");
+  }
+
+  if (it[Button::kL3]) {
+    log.append(", L3");
+  }
+
+  if (it[Button::kR1]) {
+    log.append(", R1");
+  }
+
+  if (it[Button::kR2]) {
+    log.append(", R2");
+  }
+
+  if (it[Button::kR3]) {
+    log.append(", R3");
+  }
+
+  if (it[Button::kSelect]) {
+    log.append(", Select");
+  }
+
+  if (it[Button::kStart]) {
+    log.append(", Start");
+  }
+
+  if (it[Button::kHome]) {
+    log.append(", Home");
+  }
+
+  CLOGI("%s", log.c_str());
 }

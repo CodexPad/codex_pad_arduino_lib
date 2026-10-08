@@ -1,11 +1,14 @@
-#include "codex_pad.h"
+#include "client.h"
 
 #include <Arduino.h>
 
 #include <memory>
 
 #include "WString.h"
+// #include "cyf.h"
+// #include "cyf/log.h"
 
+namespace codex_pad {
 namespace {
 constexpr uint16_t kGapServiceUuid{0x1800};
 constexpr uint16_t kGapDeviceNameUuid{0x2A00};
@@ -25,23 +28,23 @@ constexpr uint16_t kManufacturerNameCharacteristicUuid{0x2A29};
 constexpr uint16_t kConnectionParamMinInterval{6};
 constexpr uint16_t kConnectionParamMaxInterval{8};
 constexpr uint16_t kConnectionParamLatency{5};
-constexpr uint16_t kConnectionParamSupervisionTimeout{100};
+constexpr uint16_t kConnectionParamSupervisionTimeout{30};
 
 static_assert(kConnectionParamSupervisionTimeout * 10.0 >
-              (1 + kConnectionParamLatency) * kConnectionParamMaxInterval * 2 * 1.25);
+              (1 + kConnectionParamLatency) * kConnectionParamMaxInterval * 4 * 1.25);
 }  // namespace
 
-CodexPad::CodexPad() noexcept {}
+Client::Client() noexcept {}
 
-CodexPad::~CodexPad() noexcept { Reset(); }
+Client::~Client() noexcept { Reset(); }
 
-void CodexPad::Init() noexcept {
+void Client::Init() noexcept {
   if (!NimBLEDevice::isInitialized()) {
-    NimBLEDevice::init("CodexPadClient");
+    NimBLEDevice::init("Client");
   }
 }
 
-bool CodexPad::Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms) noexcept {
+bool Client::Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms) noexcept {
   // check mac address is valid
   if (bluetooth_device_address.length() != 17 || bluetooth_device_address[2] != ':' || bluetooth_device_address[5] != ':' ||
       bluetooth_device_address[8] != ':' || bluetooth_device_address[11] != ':' || bluetooth_device_address[14] != ':') {
@@ -52,7 +55,7 @@ bool CodexPad::Connect(const std::string& bluetooth_device_address, const uint32
   return Connect(NimBLEAddress(bluetooth_device_address, 0), false, timeout_ms);
 }
 
-bool CodexPad::ScanAndConnect(const gamepad::input::Button buttons) noexcept {
+bool Client::ScanAndConnect(const gamepad::input::Button buttons) noexcept {
   auto scanner = NimBLEDevice::getScan();
   scanner->setActiveScan(true);  // active scan uses more power, but get results faster
   scanner->setInterval(1000);
@@ -111,7 +114,7 @@ bool CodexPad::ScanAndConnect(const gamepad::input::Button buttons) noexcept {
   return address.isNull() ? false : Connect(address, 2000);
 }
 
-const gamepad::input::Tracker& CodexPad::Update() noexcept {
+const gamepad::input::Tracker& Client::Update() noexcept {
   if (ble_client_ == nullptr) {
     return input_tracker_;
   }
@@ -136,31 +139,9 @@ const gamepad::input::Tracker& CodexPad::Update() noexcept {
   return input_tracker_;
 }
 
-bool CodexPad::is_connected() const noexcept { return ble_client_ != nullptr && ble_client_->isConnected(); }
+bool Client::is_connected() const noexcept { return ble_client_ != nullptr && ble_client_->isConnected(); }
 
-bool CodexPad::set_remote_tx_power(const CodexPad::TxPower tx_power) noexcept {
-  if (ble_client_ == nullptr) {
-    return false;
-  }
-
-  if (!ble_client_->isConnected()) {
-    return false;
-  }
-
-  auto remote_service = ble_client_->getService(uint16_t{0x1804});
-  if (remote_service == nullptr) {
-    return false;
-  }
-
-  auto remote_characteristic = remote_service->getCharacteristic(uint16_t{0x2A07});
-  if (remote_characteristic == nullptr) {
-    return false;
-  }
-
-  return remote_characteristic->writeValue(static_cast<uint8_t>(tx_power));
-}
-
-bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms) {
+bool Client::Connect(const NimBLEAddress& address, bool async_connect, const uint32_t timeout_ms) {
   Reset();
   assert(ble_client_ == nullptr);
   ble_client_ = NimBLEDevice::createClient(address);
@@ -198,12 +179,13 @@ bool CodexPad::Connect(const NimBLEAddress& address, bool async_connect, const u
       goto FAILED;
     }
 
-    if (!remote_characteristic->subscribe(
-            true, std::bind(&CodexPad::OnNotify, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3,
-                            std::placeholders::_4))) {
+    if (!remote_characteristic->subscribe(true, std::bind(&Client::OnNotify, this, std::placeholders::_1, std::placeholders::_2,
+                                                          std::placeholders::_3, std::placeholders::_4))) {
       goto FAILED;
     }
   }
+
+  ble_client_->updatePhy(BLE_GAP_LE_PHY_CODED_MASK, BLE_GAP_LE_PHY_CODED_MASK, BLE_GAP_LE_PHY_CODED_S8);
 
   return ret;
 
@@ -212,8 +194,8 @@ FAILED:
   return false;
 }
 
-void CodexPad::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length,
-                        const bool is_notify) {
+void Client::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length,
+                      const bool is_notify) {
   if (remote_characteristic != nullptr && remote_characteristic->getUUID().equals(kInputsCharacteristicUuid)) {
     if (length != sizeof(gamepad::input::State)) {
       printf("WARNING: length != sizeof(Inputs)\n");
@@ -228,7 +210,7 @@ void CodexPad::OnNotify(const NimBLERemoteCharacteristic* remote_characteristic,
   }
 }
 
-void CodexPad::Reset() {
+void Client::Reset() {
   if (ble_client_ != nullptr) {
     ble_client_->cancelConnect();
     ble_client_->disconnect();
@@ -243,3 +225,10 @@ void CodexPad::Reset() {
   std::lock_guard<std::mutex> l(mutex_);
   inputs_queue_ = {};
 }
+
+int32_t Client::rssi() const noexcept { return ble_client_ == nullptr ? 0 : ble_client_->getRssi(); }
+
+void Client::onPhyUpdate(NimBLEClient*, [[maybe_unused]] uint8_t tx_phy, [[maybe_unused]] uint8_t rx_phy) {
+  // CLOGI("tx_phy: %d, rx_phy: %d", tx_phy, rx_phy);
+}
+}  // namespace codex_pad

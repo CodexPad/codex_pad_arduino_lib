@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['codexpad_0',['CodexPad',['../class_codex_pad.html',1,'']]]
+  ['client_0',['Client',['../classcodex__pad_1_1_client.html',1,'codex_pad']]]
 ];
