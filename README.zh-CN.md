@@ -1,5 +1,12 @@
 # CodexPad Arduino Lib
 
+[![Arduino ESP32 Build](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32_build.yml/badge.svg)](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32_build.yml)
+[![Arduino ESP32-C3 Build](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32c3_build.yml/badge.svg)](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32c3_build.yml)
+[![Arduino ESP32-C5 Build](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32c5_build.yml/badge.svg)](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32c5_build.yml)
+[![Arduino ESP32-C6 Build](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32c6_build.yml/badge.svg)](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32c6_build.yml)
+[![Arduino ESP32-H2 Build](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32h2_build.yml/badge.svg)](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32h2_build.yml)
+[![Arduino ESP32-S3 Build](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32s3_build.yml/badge.svg)](https://github.com/CodexPad/codex_pad_arduino_lib/actions/workflows/arduino_esp32s3_build.yml)
+
 [English](README.md)
 
 ## 概述
