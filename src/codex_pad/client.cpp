@@ -38,9 +38,10 @@ Client::Client() noexcept {}
 
 Client::~Client() noexcept { Reset(); }
 
-void Client::Init() noexcept {
+void Client::Init(const int8_t local_tx_power) noexcept {
   if (!NimBLEDevice::isInitialized()) {
-    NimBLEDevice::init("Client");
+    NimBLEDevice::init("CodexPadClient");
+    NimBLEDevice::setPower(local_tx_power, NimBLETxPowerType::All);
   }
 }
 

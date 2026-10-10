@@ -47,12 +47,14 @@ class Client : public NimBLEClientCallbacks {
   /**
    * @~English
    * @brief Initialize
+   * @param[in] local_tx_power The local device TX power in dBm
    */
   /**
    * @~Chinese
    * @brief 初始化
+   * @param[in] local_tx_power 本地设备TX功率，单位dBm
    */
-  void Init() noexcept;
+  void Init(int8_t local_tx_power = 3) noexcept;
 
   /**
    * @~English

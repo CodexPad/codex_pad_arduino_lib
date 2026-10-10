@@ -143,7 +143,12 @@ void setup() {
   Serial.begin(115200);
 
   CLOGI("Init");
-  g_codex_pad_client.Init();
+
+  // Set the TX power for the local BLE device (e.g., ESP32) in dBm.
+  // 9dBm is the maximum TX power for ESP32 in BLE mode, which helps improve signal coverage.
+  // NimBLETxPowerType::All applies this power level to both advertising and connection channels.
+  const int8_t tx_power = 9;  // Local device TX power in dBm
+  g_codex_pad_client.Init(tx_power);
 
   Connect();
 }

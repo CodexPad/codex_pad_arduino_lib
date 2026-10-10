@@ -84,8 +84,13 @@ void Connect() {
 void setup() {
   Serial.begin(115200);
 
-  printf("Init\n");
-  g_codex_pad_client.Init();
+  CLOGI("Init");
+
+  // Set the TX power for the local BLE device (e.g., ESP32) in dBm.
+  // 9dBm is the maximum TX power for ESP32 in BLE mode, which helps improve signal coverage.
+  // NimBLETxPowerType::All applies this power level to both advertising and connection channels.
+  const int8_t local_tx_power = 9;  // Local device TX power in dBm
+  g_codex_pad_client.Init(local_tx_power);
 
   Connect();
 }
@@ -170,7 +175,7 @@ void loop() {
   //   true  = pressed
   //   false = released
   //
-  // 按钮状态（bool 类型，打印时被隐式转换为 1 / 0）
+  // 按钮状态（bool 类型）
   // true  : 按下
   // false : 弹起
   if (it[Button::kUp]) {
