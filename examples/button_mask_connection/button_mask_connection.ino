@@ -1,28 +1,28 @@
 /**
  * @~English
- * @file scan_and_connect.ino
- * @example scan_and_connect.ino
+ * @file button_mask_connection.ino
+ * @example button_mask_connection.ino
  * @brief Demonstrates how to scan for and connect to a CodexPad device by matching specific button presses.
- * @details This example shows the usage of the `ScanAndConnect()` function. The device will scan for nearby CodexPad devices
+ * @details This example shows the usage of the `Connect()` function. The device will scan for nearby CodexPad devices
  *          and automatically connect to one where the operator is holding down the predefined combination of buttons (the
  *          *button mask*). The button mask is defined by the `kExpectedButtonMask` constant. You must physically press and hold
  *          the corresponding button(s) on the target CodexPad for the connection to succeed.
  * @warning **Important:** When setting the button mask, **do not use the `Home` button alone**. Long-pressing the `Home` button
  * will cause the gamepad to power off, interrupting the connection. If you must use the `Home` button, be sure to use it in
  * combination with other buttons (e.g., `Home` + `Cross`).
- * @see codex_pad::Client::ScanAndConnect
+ * @see codex_pad::Client::Connect
  */
 /**
  * @~Chinese
- * @file scan_and_connect.ino
- * @example scan_and_connect.ino
+ * @file button_mask_connection.ino
+ * @example button_mask_connection.ino
  * @brief 演示如何通过匹配特定按键按压来扫描并连接 CodexPad 设备。
- * @details 本示例展示了 `ScanAndConnect()` 函数的使用方法。设备将扫描附近的 CodexPad
+ * @details 本示例展示了 `Connect()` 函数的使用方法。设备将扫描附近的 CodexPad
  *          设备，并自动连接到操作者正按住预定义按键组合（*按钮掩码*）的那一个。 按钮掩码由常量 `kExpectedButtonMask`
  *          定义。您必须在目标手柄上物理按住对应的按键，连接才能成功。
  * @warning **重要：** 设置按钮掩码时， 请勿单独使用 `Home` 键。长按 `Home` 键会导致手柄关机，从而中断连接。如确需使用 `Home`
  * 键，请务必采用组合按键（如 `Home` + `Cross`）。.
- * @see codex_pad::Client::ScanAndConnect
+ * @see codex_pad::Client::Connect
  */
 
 #include <map>
@@ -97,7 +97,7 @@ codex_pad::Client g_codex_pad_client;
 void Connect() {
   CLOGI("Start to scan and connect, button mask: 0x%08" PRIX32, static_cast<uint32_t>(kExpectedButtonMask));
 
-  while (!g_codex_pad_client.ScanAndConnect(kExpectedButtonMask)) {
+  while (!g_codex_pad_client.Connect(kExpectedButtonMask)) {
     CLOGI("Retry to scan and connect, button mask: 0x%08" PRIX32, static_cast<uint32_t>(kExpectedButtonMask));
   }
 

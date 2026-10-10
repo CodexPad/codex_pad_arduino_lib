@@ -127,7 +127,7 @@ class Client : public NimBLEClientCallbacks {
    *   Serial.println("CodexPad 连接成功！");
    * @endcode
    */
-  bool ScanAndConnect(gamepad::input::Button buttons) noexcept;
+  bool Connect(gamepad::input::Button buttons) noexcept;
 
   /**
    * @~English

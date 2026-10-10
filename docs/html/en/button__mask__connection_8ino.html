@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CodexPad Arduino Lib: Class Members - Functions</title>
+<title>CodexPad Arduino Lib: examples/button_mask_connection/button_mask_connection.ino File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('functions_func.html',''); initResizable(true); });
+$(function(){initNavTree('button__mask__connection_8ino.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,27 +95,71 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 </div>
 </div>
 
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">button_mask_connection.ino File Reference</div></div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented functions with links to the class documentation for each member:</div><ul>
-<li>ble_client()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client</a></li>
-<li>Client()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">codex_pad::Client</a></li>
-<li>Connect()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">codex_pad::Client</a></li>
-<li>Disconnect()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#ac844ec861d28d664d7b815213b9d3e52">codex_pad::Client</a></li>
-<li>Init()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#a871d3a0515f57c74e059aab89bcd869c">codex_pad::Client</a></li>
-<li>input_tracker()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#aebfbe997689262afe735e6ef6f6fd087">codex_pad::Client</a></li>
-<li>is_connected()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">codex_pad::Client</a></li>
-<li>remote_device_name()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01">codex_pad::Client</a></li>
-<li>remote_firmware_version()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#a902f7246b163b251559a6c79f48cd1f9">codex_pad::Client</a></li>
-<li>remote_model_number()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#ad4daf7fc9d33da0c07987eb0f7a40ea6">codex_pad::Client</a></li>
-<li>rssi()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client</a></li>
-<li>Update()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">codex_pad::Client</a></li>
-<li>~Client()&#160;:&#160;<a class="el" href="classcodex__pad_1_1_client.html#af1d769e94df1bca106112e5a234facea">codex_pad::Client</a></li>
-</ul>
+<div class="textblock"><code>#include &lt;map&gt;</code><br />
+<code>#include &quot;codex_pad.h&quot;</code><br />
+<code>#include &quot;cyf.h&quot;</code><br />
+<code>#include &quot;cyf/log.h&quot;</code><br />
+</div>
+<p><a href="button__mask__connection_8ino_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="button__mask__connection_8ino_source.html#l00156">156</a> of file <a class="el" href="button__mask__connection_8ino_source.html">button_mask_connection.ino</a>.</p>
+
+</div>
+</div>
+<a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="button__mask__connection_8ino_source.html#l00142">142</a> of file <a class="el" href="button__mask__connection_8ino_source.html">button_mask_connection.ino</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="dir_614c1df2956665c0d436702d0f984798.html">button_mask_connection</a></li><li class="navelem"><a class="el" href="button__mask__connection_8ino.html">button_mask_connection.ino</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.0 </li>
   </ul>
 </div>

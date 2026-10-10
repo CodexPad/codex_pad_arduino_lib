@@ -39,7 +39,7 @@ var NAVTREE =
     ] ],
     [ "Examples", "examples.html", "examples" ],
     [ "Downloads", "usergroup0.html", [
-      [ "CodexPad_v4.1.0.zip: https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v4.1.0.zip", "^https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v4.1.0.zip", null ]
+      [ "CodexPad_v4.1.0.zip: https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v4.1.0.zip", "^https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v4.1.0.zip", null ]
     ] ]
   ] ]
 ];

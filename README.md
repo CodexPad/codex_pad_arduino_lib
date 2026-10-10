@@ -37,18 +37,6 @@ This library is an Arduino library for **CodexPad** series gamepads, enabling ES
 - **Real-time Button Event Detection**: Read the input status of all buttons in real time, distinguishing between **press**, **release**, and **hold** events.
 - **High-Precision Joystick Data**: Obtain analog values for the X and Y axes of the left and right joysticks, ranging from 0 to 255, providing precise control input.
 
-## Button Mask Connection Explained
-
-**Button Mask Connection** is a unique feature of the gamepad that allows the host to connect by scanning and matching a specific combination of buttons held on the device. By establishing a physical "handshake" protocol between the device and the host, this method offers significant advantages in multi-device environments and flexible pairing scenarios.
-
-### Design Intent and Advantages
-
-1. **Prevent Accidental Connections and Interference**: When multiple connectable devices of the same type (e.g., multiple gamepads) are nearby, although you can connect precisely using their unique addresses, this usually requires "hard-coding" the address in the code. This approach binds the program to a specific device, lacking flexibility. By requiring the target device to hold a specific button combination while being discovered, you define a dynamic, condition-based connection rule. Your connection code does not need to bind to any device's physical address; as long as the device meets this "handshake protocol" (holding the correct buttons), it will be connected. This effectively prevents the host from accidentally connecting to the wrong device among many, while also enabling the convenience of **plug-and-play connection and on-the-fly device switching**.
-2. **Create Exclusive Connection Conditions**: You can treat this button mask as a simple "password" or "connection token." It builds an exclusive connection channel between your application and the device, allowing only devices that meet this specific physical interaction condition (pressing the designated buttons) to join, thereby enhancing the intentionality and controllability of the connection.
-3. **Improve Code Flexibility and Support On-the-Fly Device Switching**: Unlike hard-coding a specific device's address in the code, the connection logic using a button mask is oriented toward "conditions" rather than "specific devices." This means your same connection code, without modification, can be used to connect to any gamepad that is in a discoverable state and correctly triggers the preset button condition. This brings two major benefits:
-    - **No Need to Bind to a Specific Device**: You don't need to specify a particular gamepad's address in the code, nor maintain different connection configurations for different gamepads.
-    - **Plug-and-Play and Flexible Switching**: In practice, you can pick up another gamepad at any time, as long as it is powered on and the correct button combination is held, your program will automatically connect to it, enabling seamless switching between different gamepads.
-
 ## Usage Instructions
 
 ### Preparation
@@ -110,6 +98,27 @@ Refer to the method provided in the product manual to obtain your gamepad's addr
 > 3. **Select the latest version** from the dropdown menu
 > 4. Click Install
 
+## Example Descriptions
+
+### Basic Polling Example (`basic_polling`)
+
+- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **basic_polling** to find this example.
+- **Description**: Connect to a CodexPad via the Bluetooth device address, poll and print all button states and joystick values in real time.
+
+### Input State Detection Example (`inputs_detection`)
+
+- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **inputs_detection** to find this example.
+- **Description**: Connect to a CodexPad via the Bluetooth device address, detect changes in button states and joystick values, and print them.
+
+### Button Mask Connection Example (`button_mask_connection`)
+
+- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **button_mask_connection** to find this example.
+- **Operation Steps**: After the code starts, it enters scanning and connection mode. When the gamepad is powered on, its blue LED blinks. At this point, hold the button mask (button combination) specified in your code on the gamepad (default is `Start` + `Cross(A)`) until the host connects to it. Then operate the gamepad normally and observe the log output in the console.
+
+## Button Mask Connection Explained
+
+Details: [Button Mask Connection Explained](../../../codex_pad_guide/blob/main/button_mask_connection_explained.md#button-mask-connection-explained)
+
 ## Safety Tips
 
 ### Real-time Connection Status Detection
@@ -119,25 +128,6 @@ Refer to the method provided in the product manual to obtain your gamepad's addr
 When a disconnection is detected (e.g., gamepad powered off, out of range, or Bluetooth interference), **be sure to immediately stop the controlled device** (e.g., brake a car, lock a robotic arm, etc.).
 
 Due to optimizations in disconnection detection delay in this update, the system can detect connection loss faster. If not handled promptly, moving devices such as cars or robots may remain in their previous state due to not receiving new control commands, leading to loss of control and potential safety hazards.
-
-## Example Descriptions
-
-### Basic Polling Example (`basic_polling`)
-
-- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **basic_polling** to find this example.
-- **Description**: Connect to a CodexPad via Bluetooth Device Address, poll and print all button states and joystick values in real time.
-
-### Input State Detection Example (`inputs_detection`)
-
-- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **inputs_detection** to find this example.
-- **Description**: Connect to a CodexPad via Bluetooth Device Address, detect changes in button states and joystick values, and print them.
-
-### Scan and Connect Example (`scan_and_connect`)
-
-- **Example Location**: In Arduino IDE, go to **File** → **Examples** → **CodexPad** → **scan_and_connect** to find this example.
-- **Core Function**: Scan and automatically connect to nearby CodexPad devices by matching a specific, user-defined **button** or **button combination**, detect joystick and button changes, and print them.
-- **Operation Steps**: After the code starts, it enters scanning and connection mode. When the gamepad is powered on, its blue LED blinks. At this point, hold the button mask (button combination) specified in your code on the gamepad until the host connects to it. Then operate the gamepad normally and observe the log output in the console.
-- **Important Note**: When setting the button mask, **do not use the `Home` button alone**. Long-pressing the `Home` button will cause the gamepad to power off, interrupting the connection. If you must use the `Home` button, be sure to use it in combination with other buttons (e.g., `Home` + `Cross`).
 
 ## API Documentation
 

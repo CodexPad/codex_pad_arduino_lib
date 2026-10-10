@@ -35,4 +35,4 @@ var menudata={children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"},
 {text:"下载",url:"usergroup0.html",children:[
-{text:"CodexPad_v4.1.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v4.1.0.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codexpad_arduino_lib/archive/refs/tags/v4.1.0.zip"}]}]}
+{text:"CodexPad_v4.1.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v4.1.0.zip",url:"^https://gh-proxy.com/https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v4.1.0.zip"}]}]}

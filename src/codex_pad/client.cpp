@@ -56,7 +56,7 @@ bool Client::Connect(const std::string& bluetooth_device_address, const uint32_t
   return Connect(NimBLEAddress(bluetooth_device_address, 0), false, timeout_ms);
 }
 
-bool Client::ScanAndConnect(const gamepad::input::Button buttons) noexcept {
+bool Client::Connect(const gamepad::input::Button buttons) noexcept {
   auto scanner = NimBLEDevice::getScan();
   scanner->setActiveScan(true);  // active scan uses more power, but get results faster
   scanner->setInterval(1000);

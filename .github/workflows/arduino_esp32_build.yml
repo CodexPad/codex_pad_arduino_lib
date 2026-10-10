@@ -18,7 +18,7 @@ jobs:
           [
             "basic_polling/basic_polling.ino",
             "inputs_detection/inputs_detection.ino",
-            "scan_and_connect/scan_and_connect.ino",
+            "button_mask_connection/button_mask_connection.ino",
           ]
         core_version: ["3.3.10", "2.0.7"]
         fqbn: ["esp32:esp32:esp32"]
