@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.0.0</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.1.0</span>
    </div>
   </td>
  </tr>
@@ -232,6 +232,12 @@ $(function(){initNavTree('inputs_detection_8ino-example.html',''); initResizable
 <div class="line">  CLOGI(<span class="stringliteral">&quot;Init&quot;</span>);</div>
 <div class="line">  g_codex_pad_client.Init();</div>
 <div class="line"> </div>
+<div class="line">  <span class="comment">// Set the TX power for the local BLE device (e.g., ESP32) in dBm.</span></div>
+<div class="line">  <span class="comment">// 9dBm is the maximum TX power for ESP32 in BLE mode, which helps improve signal coverage.</span></div>
+<div class="line">  <span class="comment">// NimBLETxPowerType::All applies this power level to both advertising and connection channels.</span></div>
+<div class="line">  <span class="keyword">const</span> int8_t tx_power = 9;  <span class="comment">// Local device TX power in dBm</span></div>
+<div class="line">  g_codex_pad_client.Init(tx_power);</div>
+<div class="line"> </div>
 <div class="line">  Connect();</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -338,12 +344,12 @@ $(function(){initNavTree('inputs_detection_8ino-example.html',''); initResizable
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html"><div class="ttname"><a href="classcodex__pad_1_1_client.html">codex_pad::Client</a></div><div class="ttdoc">Client主类</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00025">client.h:25</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a6cd1ba975adc918c4526ac467c180f01"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01">codex_pad::Client::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00174">client.h:174</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a902f7246b163b251559a6c79f48cd1f9"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a902f7246b163b251559a6c79f48cd1f9">codex_pad::Client::remote_firmware_version</a></div><div class="ttdeci">const std::array&lt; uint8_t, 3 &gt; &amp; remote_firmware_version() const noexcept</div><div class="ttdoc">获取CodexPad的固件版本</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00198">client.h:198</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_abdba8cddb913960dadab68193d020c17"><div class="ttname"><a href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00239">client.h:239</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aca345c98287cc756357e4ca2870846f7"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">codex_pad::Client::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;bluetooth_device_address, uint32_t timeout_ms=5000) noexcept</div><div class="ttdoc">连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00047">client.cpp:47</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_ad4daf7fc9d33da0c07987eb0f7a40ea6"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ad4daf7fc9d33da0c07987eb0f7a40ea6">codex_pad::Client::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00186">client.h:186</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aec9691bf4aea48374a4538d4ff96d073"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client::rssi</a></div><div class="ttdeci">int32_t rssi() const noexcept</div><div class="ttdoc">获取CodexPad的RSSI</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00229">client.cpp:229</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a6cd1ba975adc918c4526ac467c180f01"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01">codex_pad::Client::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00176">client.h:176</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a902f7246b163b251559a6c79f48cd1f9"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a902f7246b163b251559a6c79f48cd1f9">codex_pad::Client::remote_firmware_version</a></div><div class="ttdeci">const std::array&lt; uint8_t, 3 &gt; &amp; remote_firmware_version() const noexcept</div><div class="ttdoc">获取CodexPad的固件版本</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00200">client.h:200</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_abdba8cddb913960dadab68193d020c17"><div class="ttname"><a href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00241">client.h:241</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aca345c98287cc756357e4ca2870846f7"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">codex_pad::Client::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;bluetooth_device_address, uint32_t timeout_ms=5000) noexcept</div><div class="ttdoc">连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00048">client.cpp:48</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_ad4daf7fc9d33da0c07987eb0f7a40ea6"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ad4daf7fc9d33da0c07987eb0f7a40ea6">codex_pad::Client::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00188">client.h:188</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aec9691bf4aea48374a4538d4ff96d073"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client::rssi</a></div><div class="ttdeci">int32_t rssi() const noexcept</div><div class="ttdoc">获取CodexPad的RSSI</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00230">client.cpp:230</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

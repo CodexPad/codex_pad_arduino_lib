@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.0.0</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.1.0</span>
    </div>
   </td>
  </tr>
@@ -244,122 +244,127 @@ $(function(){initNavTree('scan__and__connect_8ino_source.html',''); initResizabl
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  Serial.begin(115200);</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  CLOGI(<span class="stringliteral">&quot;Init&quot;</span>);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  g_codex_pad_client.<a class="code hl_function" href="classcodex__pad_1_1_client.html#ac5da2f735a8d820504270d7271a4f78b">Init</a>();</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  Connect();</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keywordtype">void</span> loop() {</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="comment">// 🔴 CRITICAL: Call Update() as frequently as possible in loop()</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  <span class="comment">// • Update() processes incoming Bluetooth packets from the CodexPad</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="comment">// • Any delay(...) or long blocking code WILL cause:</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="comment">//     - Packet loss</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="comment">//     - Input lag</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="comment">//     - Unstable connection</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="comment">// • For real-time control, call Update() every loop iteration</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="comment">//   without any blocking operations</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="comment">// 🔴【重要】Update() 必须在 loop() 中尽可能高频调用</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="comment">// • Update() 负责处理来自 CodexPad 的蓝牙数据包</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="comment">// • 任何形式的 delay 或阻塞代码都会导致：</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <span class="comment">//     - 数据丢失</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  <span class="comment">//     - 响应延迟</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="comment">//     - 连接不稳定</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="comment">// • 实时控制应用中，必须每轮循环都调用 Update()，不可阻塞</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="keyword">const</span> gamepad::input::Tracker&amp; it = g_codex_pad_client.<a class="code hl_function" href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">Update</a>();</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="comment">// Tracker: Gamepad Input Snapshot &amp; Change Engine</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="comment">// • Returned by Update()</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="comment">// • Maintains previous and current input snapshots</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <span class="comment">// • Enables edge detection and delta detection</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  <span class="comment">// Tracker 由 Update() 返回</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="comment">// 内部保存上一帧和当前帧的输入数据</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="comment">// 支持边沿检测和差值检测</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  <span class="comment">// 📚 https://codexpad.github.io/gamepad_input_arduino_lib/</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  <span class="keywordflow">if</span> (!g_codex_pad_client.<a class="code hl_function" href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">is_connected</a>()) {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    CLOGW(<span class="stringliteral">&quot;Disconnected, start to reconnect&quot;</span>);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    Connect();</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  }</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  RssiMonitor();</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="comment">// 🟢 Button State Change Detection (Edge-Based)</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="comment">// • pressed()  → button was just pressed (released → pressed)</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="comment">// • released() → button was just released (pressed → released)</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="comment">// • holding()  → button remains pressed across frames</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="comment">// These APIs are *frame-differential* and rely on Update() frequency.</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="comment">// Ideal for UI navigation, action triggers, and avoiding repeat firing.</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="comment">// • pressed()  → 按钮刚被按下（弹起 → 按下）</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="comment">// • released() → 按钮刚被释放（按下 → 弹起）</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  <span class="comment">// • holding()  → 按钮在两帧之间持续按下</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="comment">// 这些接口是“帧间差分”的，依赖于 Update() 的高频调用</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <span class="comment">// 非常适合 UI 导航、动作触发和防止长按连发</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <span class="keyword">static</span> std::map&lt;Button, uint64_t&gt; s_button_last_time;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [button, name] : kButtonNames) {</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordflow">if</span> (it.pressed(button)) {  <span class="comment">// button was just pressed</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: pressed&quot;</span>, it.raw().buttons, name.c_str());</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>      s_button_last_time[button] = millis();</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it.released(button)) {  <span class="comment">// button was just released</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: released&quot;</span>, it.raw().buttons, name.c_str());</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>      s_button_last_time[button] = millis();</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it.holding(button)) {  <span class="comment">// button remains pressed</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>      <span class="keywordflow">if</span> (s_button_last_time.find(button) == s_button_last_time.end() || s_button_last_time[button] == 0 ||</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>          millis() - s_button_last_time[button] &gt; 100) {</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: holding&quot;</span>, it.raw().buttons, name.c_str());</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        s_button_last_time[button] = millis();</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>      }</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    }</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  }</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  <span class="comment">// 🟢 Joystick Axis Change Detection (Threshold-Based Filtering)</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  <span class="comment">// • AxisChanged() detects significant changes between frames</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>  <span class="comment">// • Uses a threshold to filter out noise and minor jitter</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  <span class="comment">// • Only reports movement when change ≥ threshold</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  <span class="comment">// • AxisChanged() 用于检测摇杆轴值的有效变化</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <span class="comment">// • 使用阈值过滤微小抖动和噪声</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>  <span class="comment">// • 只有当变化幅度 ≥ 阈值时才视为有效移动</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="comment">// ==========================================================================</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  <span class="keyword">constexpr</span> uint8_t kAxisValueChangeThreshold = 5;</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="keywordflow">if</span> (it.AxisChanged(Axis::kLeftStickX, kAxisValueChangeThreshold) ||</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>      it.AxisChanged(Axis::kLeftStickY, kAxisValueChangeThreshold) ||</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>      it.AxisChanged(Axis::kRightStickX, kAxisValueChangeThreshold) ||</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>      it.AxisChanged(Axis::kRightStickY, kAxisValueChangeThreshold)) {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    CLOGI(<span class="stringliteral">&quot;L(X: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;, Y:%3&quot;</span> PRIu8 <span class="stringliteral">&quot;), R(X: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;, Y: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;)&quot;</span>, it[Axis::kLeftStickX], it[Axis::kLeftStickY],</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>          it[Axis::kRightStickX], it[Axis::kRightStickY]);</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>  }</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>}</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="comment">// Set the TX power for the local BLE device (e.g., ESP32) in dBm.</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="comment">// 9dBm is the maximum TX power for ESP32 in BLE mode, which helps improve signal coverage.</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  <span class="comment">// NimBLETxPowerType::All applies this power level to both advertising and connection channels.</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="keyword">const</span> int8_t tx_power = 9;  <span class="comment">// Local device TX power in dBm</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  g_codex_pad_client.<a class="code hl_function" href="classcodex__pad_1_1_client.html#a871d3a0515f57c74e059aab89bcd869c">Init</a>(tx_power);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  Connect();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="keywordtype">void</span> loop() {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="comment">// 🔴 CRITICAL: Call Update() as frequently as possible in loop()</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="comment">// • Update() processes incoming Bluetooth packets from the CodexPad</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="comment">// • Any delay(...) or long blocking code WILL cause:</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="comment">//     - Packet loss</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="comment">//     - Input lag</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="comment">//     - Unstable connection</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="comment">// • For real-time control, call Update() every loop iteration</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <span class="comment">//   without any blocking operations</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="comment">// 🔴【重要】Update() 必须在 loop() 中尽可能高频调用</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="comment">// • Update() 负责处理来自 CodexPad 的蓝牙数据包</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="comment">// • 任何形式的 delay 或阻塞代码都会导致：</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="comment">//     - 数据丢失</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="comment">//     - 响应延迟</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="comment">//     - 连接不稳定</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="comment">// • 实时控制应用中，必须每轮循环都调用 Update()，不可阻塞</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="keyword">const</span> gamepad::input::Tracker&amp; it = g_codex_pad_client.<a class="code hl_function" href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">Update</a>();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="comment">// Tracker: Gamepad Input Snapshot &amp; Change Engine</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="comment">// • Returned by Update()</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="comment">// • Maintains previous and current input snapshots</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  <span class="comment">// • Enables edge detection and delta detection</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  <span class="comment">// Tracker 由 Update() 返回</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  <span class="comment">// 内部保存上一帧和当前帧的输入数据</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  <span class="comment">// 支持边沿检测和差值检测</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  <span class="comment">// 📚 https://codexpad.github.io/gamepad_input_arduino_lib/</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keywordflow">if</span> (!g_codex_pad_client.<a class="code hl_function" href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">is_connected</a>()) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    CLOGW(<span class="stringliteral">&quot;Disconnected, start to reconnect&quot;</span>);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    Connect();</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  RssiMonitor();</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// 🟢 Button State Change Detection (Edge-Based)</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="comment">// • pressed()  → button was just pressed (released → pressed)</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="comment">// • released() → button was just released (pressed → released)</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="comment">// • holding()  → button remains pressed across frames</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  <span class="comment">// These APIs are *frame-differential* and rely on Update() frequency.</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="comment">// Ideal for UI navigation, action triggers, and avoiding repeat firing.</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <span class="comment">// • pressed()  → 按钮刚被按下（弹起 → 按下）</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="comment">// • released() → 按钮刚被释放（按下 → 弹起）</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <span class="comment">// • holding()  → 按钮在两帧之间持续按下</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <span class="comment">// 这些接口是“帧间差分”的，依赖于 Update() 的高频调用</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  <span class="comment">// 非常适合 UI 导航、动作触发和防止长按连发</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  <span class="keyword">static</span> std::map&lt;Button, uint64_t&gt; s_button_last_time;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [button, name] : kButtonNames) {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">if</span> (it.pressed(button)) {  <span class="comment">// button was just pressed</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: pressed&quot;</span>, it.raw().buttons, name.c_str());</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>      s_button_last_time[button] = millis();</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it.released(button)) {  <span class="comment">// button was just released</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: released&quot;</span>, it.raw().buttons, name.c_str());</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>      s_button_last_time[button] = millis();</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it.holding(button)) {  <span class="comment">// button remains pressed</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>      <span class="keywordflow">if</span> (s_button_last_time.find(button) == s_button_last_time.end() || s_button_last_time[button] == 0 ||</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>          millis() - s_button_last_time[button] &gt; 100) {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: holding&quot;</span>, it.raw().buttons, name.c_str());</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        s_button_last_time[button] = millis();</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>      }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    }</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  }</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  <span class="comment">// 🟢 Joystick Axis Change Detection (Threshold-Based Filtering)</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <span class="comment">// • AxisChanged() detects significant changes between frames</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>  <span class="comment">// • Uses a threshold to filter out noise and minor jitter</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="comment">// • Only reports movement when change ≥ threshold</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  <span class="comment">// • AxisChanged() 用于检测摇杆轴值的有效变化</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="comment">// • 使用阈值过滤微小抖动和噪声</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>  <span class="comment">// • 只有当变化幅度 ≥ 阈值时才视为有效移动</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  <span class="comment">// ==========================================================================</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>  <span class="keyword">constexpr</span> uint8_t kAxisValueChangeThreshold = 5;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  <span class="keywordflow">if</span> (it.AxisChanged(Axis::kLeftStickX, kAxisValueChangeThreshold) ||</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>      it.AxisChanged(Axis::kLeftStickY, kAxisValueChangeThreshold) ||</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      it.AxisChanged(Axis::kRightStickX, kAxisValueChangeThreshold) ||</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>      it.AxisChanged(Axis::kRightStickY, kAxisValueChangeThreshold)) {</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    CLOGI(<span class="stringliteral">&quot;L(X: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;, Y:%3&quot;</span> PRIu8 <span class="stringliteral">&quot;), R(X: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;, Y: %3&quot;</span> PRIu8 <span class="stringliteral">&quot;)&quot;</span>, it[Axis::kLeftStickX], it[Axis::kLeftStickY],</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>          it[Axis::kRightStickX], it[Axis::kRightStickY]);</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>  }</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>}</div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html"><div class="ttname"><a href="classcodex__pad_1_1_client.html">codex_pad::Client</a></div><div class="ttdoc">Client主类</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00025">client.h:25</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a633aa3c44ea5b6d1424a4cfb692ea45b"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">codex_pad::Client::Update</a></div><div class="ttdeci">const gamepad::input::Tracker &amp; Update() noexcept</div><div class="ttdoc">更新，需要在Loop中不断调用</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00117">client.cpp:117</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a6cd1ba975adc918c4526ac467c180f01"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01">codex_pad::Client::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00174">client.h:174</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a902f7246b163b251559a6c79f48cd1f9"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a902f7246b163b251559a6c79f48cd1f9">codex_pad::Client::remote_firmware_version</a></div><div class="ttdeci">const std::array&lt; uint8_t, 3 &gt; &amp; remote_firmware_version() const noexcept</div><div class="ttdoc">获取CodexPad的固件版本</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00198">client.h:198</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aa392d43bd2b8bebaa328951ac2233305"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">codex_pad::Client::is_connected</a></div><div class="ttdeci">bool is_connected() const noexcept</div><div class="ttdoc">是否连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00142">client.cpp:142</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_abdba8cddb913960dadab68193d020c17"><div class="ttname"><a href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00239">client.h:239</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_ac5da2f735a8d820504270d7271a4f78b"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ac5da2f735a8d820504270d7271a4f78b">codex_pad::Client::Init</a></div><div class="ttdeci">void Init() noexcept</div><div class="ttdoc">初始化</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00041">client.cpp:41</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_ac8aa993eb92436faa2049443a267b01e"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ac8aa993eb92436faa2049443a267b01e">codex_pad::Client::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(gamepad::input::Button buttons) noexcept</div><div class="ttdoc">扫描附近的 CodexPad 设备，并自动连接到一个按键状态与指定掩码匹配的设备。</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00058">client.cpp:58</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_ad4daf7fc9d33da0c07987eb0f7a40ea6"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ad4daf7fc9d33da0c07987eb0f7a40ea6">codex_pad::Client::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00186">client.h:186</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aec9691bf4aea48374a4538d4ff96d073"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client::rssi</a></div><div class="ttdeci">int32_t rssi() const noexcept</div><div class="ttdoc">获取CodexPad的RSSI</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00229">client.cpp:229</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a633aa3c44ea5b6d1424a4cfb692ea45b"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">codex_pad::Client::Update</a></div><div class="ttdeci">const gamepad::input::Tracker &amp; Update() noexcept</div><div class="ttdoc">更新，需要在Loop中不断调用</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00118">client.cpp:118</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a6cd1ba975adc918c4526ac467c180f01"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01">codex_pad::Client::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00176">client.h:176</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a871d3a0515f57c74e059aab89bcd869c"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a871d3a0515f57c74e059aab89bcd869c">codex_pad::Client::Init</a></div><div class="ttdeci">void Init(int8_t local_tx_power=3) noexcept</div><div class="ttdoc">初始化</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00041">client.cpp:41</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a902f7246b163b251559a6c79f48cd1f9"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a902f7246b163b251559a6c79f48cd1f9">codex_pad::Client::remote_firmware_version</a></div><div class="ttdeci">const std::array&lt; uint8_t, 3 &gt; &amp; remote_firmware_version() const noexcept</div><div class="ttdoc">获取CodexPad的固件版本</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00200">client.h:200</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aa392d43bd2b8bebaa328951ac2233305"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">codex_pad::Client::is_connected</a></div><div class="ttdeci">bool is_connected() const noexcept</div><div class="ttdoc">是否连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00143">client.cpp:143</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_abdba8cddb913960dadab68193d020c17"><div class="ttname"><a href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00241">client.h:241</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_ac8aa993eb92436faa2049443a267b01e"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ac8aa993eb92436faa2049443a267b01e">codex_pad::Client::ScanAndConnect</a></div><div class="ttdeci">bool ScanAndConnect(gamepad::input::Button buttons) noexcept</div><div class="ttdoc">扫描附近的 CodexPad 设备，并自动连接到一个按键状态与指定掩码匹配的设备。</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00059">client.cpp:59</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_ad4daf7fc9d33da0c07987eb0f7a40ea6"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ad4daf7fc9d33da0c07987eb0f7a40ea6">codex_pad::Client::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="client_8h_source.html#l00188">client.h:188</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aec9691bf4aea48374a4538d4ff96d073"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client::rssi</a></div><div class="ttdeci">int32_t rssi() const noexcept</div><div class="ttdoc">获取CodexPad的RSSI</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00230">client.cpp:230</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -5,7 +5,7 @@ var classcodex__pad_1_1_client =
     [ "ble_client", "classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17", null ],
     [ "Connect", "classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7", null ],
     [ "Disconnect", "classcodex__pad_1_1_client.html#ac844ec861d28d664d7b815213b9d3e52", null ],
-    [ "Init", "classcodex__pad_1_1_client.html#ac5da2f735a8d820504270d7271a4f78b", null ],
+    [ "Init", "classcodex__pad_1_1_client.html#a871d3a0515f57c74e059aab89bcd869c", null ],
     [ "input_tracker", "classcodex__pad_1_1_client.html#aebfbe997689262afe735e6ef6f6fd087", null ],
     [ "is_connected", "classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305", null ],
     [ "remote_device_name", "classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01", null ],

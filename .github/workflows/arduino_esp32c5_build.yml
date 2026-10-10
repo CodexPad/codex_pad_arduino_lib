@@ -1,0 +1,54 @@
+name: Arduino ESP32-C5 Build
+
+on:
+  push:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ARDUINO_CLI_DIR: ${{ github.workspace }}/arduino_cli
+      ARDUINO_CLI_CONFIG_DIR: ${{ github.workspace }}/arduino_cli_config
+      ARDUINO_USER_DIR: ${{ github.workspace }}/arduino_user
+    strategy:
+      matrix:
+        example:
+          [
+            "basic_polling/basic_polling.ino",
+            "inputs_detection/inputs_detection.ino",
+            "scan_and_connect/scan_and_connect.ino",
+          ]
+        core_version: ["3.3.10"]
+        fqbn: ["esp32:esp32:esp32c5"]
+
+    steps:
+      - name: Download arduino cli
+        run: curl -L -o arduino-cli.tar.gz https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_64bit.tar.gz
+      - name: Install arduino cli
+        run: |
+          mkdir -p ${ARDUINO_CLI_DIR}
+          tar -zxvf arduino-cli.tar.gz -C ${ARDUINO_CLI_DIR}
+      - name: Test arduino cli
+        run: ${ARDUINO_CLI_DIR}/arduino-cli -v
+      - name: Setup arduino-cli
+        run: |
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config init
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config set directories.user ${ARDUINO_USER_DIR}
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config set library.enable_unsafe_install true
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config dump
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} core install esp32:esp32@${{ matrix.core_version }}
+      - name: Install lib
+        uses: actions/checkout@v4
+        with:
+          path: ${{ github.event.repository.name }}
+      - name: Install dependencies
+        run: |
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} lib install NimBLE-Arduino
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} lib install GamepadInput
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} lib install cyfney-cpp
+      - name: Compile
+        run: |
+          echo "compile ${{ github.event.repository.name }}/examples/${{ matrix.example }}"
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} compile --fqbn ${{ matrix.fqbn }} "${{ github.event.repository.name }}/examples/${{ matrix.example }}" --library "${{ github.event.repository.name }}" --log --jobs 0 --clean -v
