@@ -106,7 +106,7 @@
     ![安装依赖确认对话框](assets/images/zh-CN/install_dependencies_dialog.png)
 
 > **⚠️ 重要版本说明**  
-> 本文档中的截图可能显示较旧版本。**请始终安装以下两者的最新版本**：
+> 本文档中的截图可能显示较旧版本。**请始终安装以下库的最新版本**：
 >
 > - `CodexPad` 库
 > - `NimBLE-Arduino` 依赖库
