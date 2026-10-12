@@ -152,7 +152,7 @@ void loop() {
   std::string log;
 
   char buffer[512] = {0};
-  size_t length = snprintf(buffer, sizeof(buffer), "Button mask: 0x%08" PRIX32, static_cast<uint32_t>(it.raw().buttons));
+  size_t length = snprintf(buffer, sizeof(buffer), "Button mask: 0x%08" PRIX32, static_cast<uint32_t>(it.button_mask()));
   log.append(buffer, length);
 
   // ------------------------------------------------------------------
