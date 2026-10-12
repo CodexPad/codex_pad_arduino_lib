@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.1.0</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.2.0</span>
    </div>
   </td>
  </tr>
@@ -308,15 +308,15 @@ $(function(){initNavTree('inputs_detection_8ino-example.html',''); initResizable
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [button, name] : kButtonNames) {</div>
 <div class="line">    <span class="keywordflow">if</span> (it.pressed(button)) {  <span class="comment">// button was just pressed</span></div>
-<div class="line">      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: pressed&quot;</span>, it.raw().buttons, name.c_str());</div>
+<div class="line">      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: pressed&quot;</span>, it.button_mask(), name.c_str());</div>
 <div class="line">      s_button_last_time[button] = millis();</div>
 <div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it.released(button)) {  <span class="comment">// button was just released</span></div>
-<div class="line">      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: released&quot;</span>, it.raw().buttons, name.c_str());</div>
+<div class="line">      CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: released&quot;</span>, it.button_mask(), name.c_str());</div>
 <div class="line">      s_button_last_time[button] = millis();</div>
 <div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it.holding(button)) {  <span class="comment">// button remains pressed</span></div>
 <div class="line">      <span class="keywordflow">if</span> (s_button_last_time.find(button) == s_button_last_time.end() || s_button_last_time[button] == 0 ||</div>
 <div class="line">          millis() - s_button_last_time[button] &gt; 100) {</div>
-<div class="line">        CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: holding&quot;</span>, it.raw().buttons, name.c_str());</div>
+<div class="line">        CLOGI(<span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32 <span class="stringliteral">&quot;, button %s: holding&quot;</span>, it.button_mask(), name.c_str());</div>
 <div class="line">        s_button_last_time[button] = millis();</div>
 <div class="line">      }</div>
 <div class="line">    }</div>

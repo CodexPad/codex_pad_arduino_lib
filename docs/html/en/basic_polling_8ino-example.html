@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;4.1.0</span>
+   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;4.2.0</span>
    </div>
   </td>
  </tr>
@@ -256,7 +256,7 @@ $(function(){initNavTree('basic_polling_8ino-example.html',''); initResizable(tr
 <div class="line">  std::string log;</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordtype">char</span> buffer[512] = {0};</div>
-<div class="line">  <span class="keywordtype">size_t</span> length = snprintf(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(it.raw().buttons));</div>
+<div class="line">  <span class="keywordtype">size_t</span> length = snprintf(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;Button mask: 0x%08&quot;</span> PRIX32, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(it.button_mask()));</div>
 <div class="line">  log.append(buffer, length);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// ------------------------------------------------------------------</span></div>

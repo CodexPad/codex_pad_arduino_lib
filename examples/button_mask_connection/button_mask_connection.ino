@@ -219,15 +219,15 @@ void loop() {
 
   for (const auto& [button, name] : kButtonNames) {
     if (it.pressed(button)) {  // button was just pressed
-      CLOGI("Button mask: 0x%08" PRIX32 ", button %s: pressed", it.raw().buttons, name.c_str());
+      CLOGI("Button mask: 0x%08" PRIX32 ", button %s: pressed", it.button_mask(), name.c_str());
       s_button_last_time[button] = millis();
     } else if (it.released(button)) {  // button was just released
-      CLOGI("Button mask: 0x%08" PRIX32 ", button %s: released", it.raw().buttons, name.c_str());
+      CLOGI("Button mask: 0x%08" PRIX32 ", button %s: released", it.button_mask(), name.c_str());
       s_button_last_time[button] = millis();
     } else if (it.holding(button)) {  // button remains pressed
       if (s_button_last_time.find(button) == s_button_last_time.end() || s_button_last_time[button] == 0 ||
           millis() - s_button_last_time[button] > 100) {
-        CLOGI("Button mask: 0x%08" PRIX32 ", button %s: holding", it.raw().buttons, name.c_str());
+        CLOGI("Button mask: 0x%08" PRIX32 ", button %s: holding", it.button_mask(), name.c_str());
         s_button_last_time[button] = millis();
       }
     }
