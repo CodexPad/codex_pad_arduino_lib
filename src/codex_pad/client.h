@@ -8,6 +8,8 @@
 #include <vector>
 
 #include "NimBLEDevice.h"
+#include "cyf.h"
+#include "cyf/hysteresis_quantizer.h"
 #include "gamepad_input_tracker.h"
 
 namespace codex_pad {
@@ -47,19 +49,17 @@ class Client : public NimBLEClientCallbacks {
   /**
    * @~English
    * @brief Initialize
-   * @param[in] local_tx_power The local device TX power in dBm
    */
   /**
    * @~Chinese
    * @brief 初始化
-   * @param[in] local_tx_power 本地设备TX功率，单位dBm
    */
-  void Init(int8_t local_tx_power = 3) noexcept;
+  void Init() noexcept;
 
   /**
    * @~English
    * @brief Connect
-   * @param[in] bluetooth_device_address The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as
+   * @param[in] address The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as
    * "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated
    * @param[in] timeout_ms Timeout in milliseconds
    * @retval true if connected successfully
@@ -68,13 +68,13 @@ class Client : public NimBLEClientCallbacks {
   /**
    * @~Chinese
    * @brief 连接
-   * @param[in] bluetooth_device_address CodexPad的蓝牙设备地址（BD_ADDR），格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母,
+   * @param[in] address CodexPad的蓝牙设备地址，格式为"XX:XX:XX:XX:XX:XX"，X为数字或者大写字母,
    * 半角冒号分隔
    * @param[in] timeout_ms 超时时间，单位毫秒
    * @retval true 连接成功
    * @retval false 连接失败
    */
-  bool Connect(const std::string& bluetooth_device_address, uint32_t timeout_ms = 5000) noexcept;
+  bool Connect(const std::string& address, uint32_t timeout_ms = 5000) noexcept;
 
   /**
    * @~English
@@ -215,16 +215,103 @@ class Client : public NimBLEClientCallbacks {
 
   /**
    * @~English
-   * @brief Get the RSSI of the CodexPad
-   * @return RSSI of the CodexPad
+   * @brief Get the RSSI of the connected CodexPad.
+   * @details This function retrieves the current Received Signal Strength Indication (RSSI) from the
+   *          underlying NimBLE client.
+   *          **Note:** On ESP32 Arduino Core versions older than 3.1.0, RSSI readings suffer from severe
+   *          fluctuation (drift) and are highly unreliable. Relying on this return value for logic or
+   *          display purposes in those older versions is **not recommended**. For accurate RSSI measurements,
+   *          please upgrade to ESP32 Arduino Core 3.1.0 or later.
+   * @return The current RSSI value in dBm. Returns 0 if the BLE client is not initialized or not connected.
    */
   /**
    * @~Chinese
-   * @brief 获取CodexPad的RSSI
-   * @return CodexPad的RSSI
+   * @brief 获取已连接 CodexPad 的 RSSI（接收信号强度指示）。
+   * @details 该函数从底层 NimBLE 客户端获取当前的接收信号强度指示（RSSI）值。
+   *          **注意：** 在低于 3.1.0 的 ESP32 Arduino Core 版本中，RSSI 读数存在严重漂移（不准确）。
+   *          不推荐在旧版本中依赖此返回值进行逻辑判断或界面显示。如需准确的 RSSI 测量，
+   *          请将 ESP32 Arduino Core 升级至 3.1.0 或更高版本。
+   * @return 当前 RSSI 值，单位为 dBm。如果 BLE 客户端未初始化或未连接，则返回 0。
    */
   int32_t rssi() const noexcept;
 
+  /**
+   * @~English
+   * @brief Set the local BLE TX power (manual mode).
+   * @details This function stores the desired TX power level. However, **if dynamic TX power adjustment is enabled**
+   *          (which is the default, see @ref set_dynamic_tx_power_enabled), this value will be ignored and overwritten
+   *          by the dynamic adjustment logic during @ref Update().
+   *          To ensure this manual setting takes effect persistently, you must first call
+   *          `set_dynamic_tx_power_enabled(false)`. On ESP32 Arduino Core versions older than 3.1.0, where dynamic
+   *          adjustment is internally disabled due to RSSI drift, this setting will apply normally.
+   * @param tx_power Local BLE TX power in dBm.
+   */
+  /**
+   * @~Chinese
+   * @brief 设置本地 BLE 发射功率（手动模式）。
+   * @details 该函数用于保存期望的发射功率值。但是，**如果动态发射功率调节处于开启状态**（默认开启，
+   *          参见 @ref set_dynamic_tx_power_enabled），该值将被忽略，并在 @ref Update() 中被动态调节逻辑覆盖。
+   *          如需使该手动设置持续生效，必须先调用 `set_dynamic_tx_power_enabled(false)` 关闭动态调节功能。
+   *          在低于 3.1.0 的 ESP32 Arduino Core 版本中，由于内部因 RSSI 漂移已禁用动态调节，此设置可正常生效。
+   * @param tx_power 本地 BLE 发射功率，单位 dBm。
+   */
+  void set_local_tx_power(int32_t tx_power) noexcept { local_tx_power_ = tx_power; }
+
+  /**
+   * @~English
+   * @brief Get the manually configured local BLE TX power value.
+   * @details This function returns the value previously stored by @ref set_local_tx_power() (or its default).
+   *          **Note:** When dynamic TX power adjustment is enabled (which is the default, see
+   *          @ref set_dynamic_tx_power_enabled), the actual TX power is controlled automatically by the
+   *          RSSI-based hysteresis quantizer. In that case, the value returned by this function **does not
+   *          reflect the real-time TX power** being used; it only reflects the stored manual setting.
+   * @return The stored local BLE TX power setting in dBm.
+   */
+  /**
+   * @~Chinese
+   * @brief 获取用户设定的本地 BLE 发射功率值。
+   * @details 该函数返回之前通过 @ref set_local_tx_power() 保存的值（或其默认值）。
+   *          **注意：** 当动态发射功率调节处于开启状态（默认开启，参见 @ref set_dynamic_tx_power_enabled）
+   *          时，实际发射功率由基于 RSSI 的滞环量化器自动控制。此时，该函数返回的值**不能代表当前实时
+   *          使用的发射功率**，它仅代表内部存储的手动设定值。
+   * @return 存储的本地 BLE 发射功率设定值，单位 dBm。
+   */
+  int32_t local_tx_power() const noexcept { return local_tx_power_; }
+
+  /**
+   * @~English
+   * @brief Enable or disable dynamic TX power adjustment based on RSSI.
+   * @details This feature is **enabled by default** and **highly recommended** to keep enabled.
+   *          When enabled, the client periodically reads the peer's RSSI during @ref Update() and adjusts
+   *          the local BLE transmit power using a hysteresis quantizer:
+   *          - Strong signal (high RSSI) → Lower TX power to save energy and reduce interference.
+   *          - Weak signal (low RSSI)   → Higher TX power to maintain connection stability.
+   *          **Conflict with manual power:** When dynamic adjustment is enabled, any value set via
+   *          @ref set_local_tx_power() will be **overwritten** and not take effect. To use a fixed manual
+   *          TX power, you must first disable this feature by calling `set_dynamic_tx_power_enabled(false)`.
+   * @note On ESP32, this feature relies on @ref NimBLEClient::getRssi(). Due to severe RSSI fluctuation (drift)
+   *       in ESP32 Arduino Core versions **older than 3.1.0**, the actual adjustment is only compiled and
+   *       executed when `ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 1, 0)`. In earlier versions,
+   *       the logic is disabled via preprocessor macros, allowing @ref set_local_tx_power() to work as a fallback.
+   * @param enabled true to enable (recommended), false to disable and switch to manual control.
+   */
+  /**
+   * @~Chinese
+   * @brief 使能或禁用以 RSSI 为基础的动态发射功率调节。
+   * @details 该功能**默认开启**，且**强烈建议保持开启**。启用后，客户端会在 @ref Update() 中周期性读取对端设备的
+   *          RSSI，并通过滞环量化器（Hysteresis Quantizer）动态调整本地 BLE 发射功率：
+   *          - 信号较好（RSSI 较高）时，降低发射功率以节省能耗并减少无线干扰；
+   *          - 信号较差（RSSI 较低）时，提高发射功率以维持连接稳定性。
+   *          **与手动功率的冲突：** 当动态调节开启时，通过 @ref set_local_tx_power() 设置的任何功率值都会被
+   *          **覆盖**，无法生效。如果需要使用固定的手动发射功率，必须先调用
+   *          `set_dynamic_tx_power_enabled(false)` 关闭此功能。
+   * @note 在 ESP32 平台上，该功能依赖 @ref NimBLEClient::getRssi()。由于在 **3.1.0 之前**的 ESP32 Arduino Core
+   *       版本中 RSSI 读数存在严重漂移（不准确），实际调节逻辑仅在 `ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 1, 0)`
+   *       时才会编译和执行。在更早的版本中，内部已通过预处理器宏禁用动态调节，此时 @ref set_local_tx_power()
+   *       可以正常生效作为回退方案。
+   * @param enabled true 表示开启（推荐），false 表示关闭并切换为手动控制模式。
+   */
+  void set_dynamic_tx_power_enabled(bool enabled) noexcept { dynamic_tx_power_enabled_ = enabled; }
   /**
    * @~English
    * @brief Get the BLE client object
@@ -251,6 +338,7 @@ class Client : public NimBLEClientCallbacks {
   void OnNotify(const NimBLERemoteCharacteristic* remote_characteristic, const uint8_t* data, const size_t length,
                 const bool is_notify);
   void Reset();
+  void UpdateTxPower();
 
   mutable std::mutex mutex_;
   NimBLEClient* ble_client_{nullptr};
@@ -259,5 +347,9 @@ class Client : public NimBLEClientCallbacks {
   std::array<uint8_t, 3> remote_firmware_version_{0, 0, 0};
   std::queue<gamepad::input::State> inputs_queue_;
   gamepad::input::Tracker input_tracker_;
+  cyf::HysteresisQuantizer<int32_t> rssi_quantizer_;
+  uint64_t last_update_tx_power_ms_{0};
+  bool dynamic_tx_power_enabled_ = true;
+  int32_t local_tx_power_{0};
 };
 }  // namespace codex_pad

@@ -11,12 +11,7 @@
 
 ## Overview
 
-This library is an Arduino library for **CodexPad** series gamepads, enabling ESP32 series development boards to connect via Bluetooth and read all button and joystick input states from the gamepad. For detailed information about the gamepad products, please refer to the following product documentation.
-
-| CodexPad Model | Details |
-| :--- | :--- |
-| CodexPad-C10 | [Product Details](../../../codex_pad_c10/blob/main/README.md#codexpad-c10) |
-| CodexPad-S10 | [Product Details](../../../codex_pad_s10/blob/main/README.md#codexpad-s10) |
+This library is an Arduino library for **CodexPad** series gamepads, enabling ESP32 series development boards to connect via Bluetooth and read all button and joystick input states from the gamepad.
 
 ## Supported Hardware Platforms
 
@@ -36,6 +31,13 @@ This library is an Arduino library for **CodexPad** series gamepads, enabling ES
   - **Button Mask Connection**: No need to know the address in advance. Scan and match a user-defined button combination (i.e., "button mask") held on the target gamepad, then automatically connect to the device with the strongest signal (maximum RSSI) for fast and flexible pairing.
 - **Real-time Button Event Detection**: Read the input status of all buttons in real time, distinguishing between **press**, **release**, and **hold** events.
 - **High-Precision Joystick Data**: Obtain analog values for the X and Y axes of the left and right joysticks, ranging from 0 to 255, providing precise control input.
+- **Dual-Layer Dynamic TX Power Adjustment**: Automatically balances power consumption, transmission stability, and connection range.
+  - **Gamepad Side**: The gamepad has built-in dynamic TX power adjustment that automatically optimizes its own transmit power based on actual communication conditions.
+  - **Host Side**: The host (ESP32) also supports RSSI-based dynamic TX power adjustment. During the connection, the client periodically reads the peer's (gamepad) RSSI and automatically adjusts the local BLE transmit power:
+    - **Strong signal (high RSSI)**: Automatically lowers TX power to save energy, reduce wireless interference, and lower heat.
+    - **Weak signal (low RSSI)**: Automatically raises TX power to maintain connection stability and extend the effective communication range.
+  - This feature is **enabled by default** and **highly recommended** to keep enabled. When disabled, you can use `set_local_tx_power()` to set a fixed manual TX power; note that the two modes are **mutually exclusive** — the manual setting is overridden when dynamic adjustment is enabled.
+  - **Version requirement**: This feature relies on stable RSSI readings and only takes effect when `ESP32 Arduino Core >= 3.1.0` (older versions suffer from RSSI drift, so dynamic adjustment is automatically disabled internally).
 
 ## Usage Instructions
 
@@ -63,6 +65,8 @@ Refer to the method provided in the product manual to obtain your gamepad's addr
 2. In the search box, type `esp32`, find and install **ESP32 by Espressif Systems**.
 3. After installation, select the specific ESP32 board model you are using (e.g., `ESP32 Dev Module`) from the **Tools** > **Board** list.
 4. Connect the board to your computer via a USB cable, and select the correct serial port from the **Tools** > **Port** menu.
+
+> **💡 Tip**: To make full use of the host's dynamic TX power adjustment feature, it is recommended to upgrade the ESP32 Arduino Core to **version 3.1.0 or later**.
 
 ### Install the CodexPad Library
 
