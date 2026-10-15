@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;4.2.0</span>
+   <div id="projectname">CodexPad Arduino Lib<span id="projectnumber">&#160;5.0.0</span>
    </div>
   </td>
  </tr>
@@ -122,12 +122,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af1d769e94df1bca106112e5a234facea" id="r_af1d769e94df1bca106112e5a234facea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1d769e94df1bca106112e5a234facea">~Client</a> () noexcept</td></tr>
 <tr class="memdesc:af1d769e94df1bca106112e5a234facea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <br /></td></tr>
 <tr class="separator:af1d769e94df1bca106112e5a234facea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a871d3a0515f57c74e059aab89bcd869c" id="r_a871d3a0515f57c74e059aab89bcd869c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a871d3a0515f57c74e059aab89bcd869c">Init</a> (int8_t local_tx_power=3) noexcept</td></tr>
-<tr class="memdesc:a871d3a0515f57c74e059aab89bcd869c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize.  <br /></td></tr>
-<tr class="separator:a871d3a0515f57c74e059aab89bcd869c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca345c98287cc756357e4ca2870846f7" id="r_aca345c98287cc756357e4ca2870846f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca345c98287cc756357e4ca2870846f7">Connect</a> (const std::string &amp;bluetooth_device_address, uint32_t timeout_ms=5000) noexcept</td></tr>
-<tr class="memdesc:aca345c98287cc756357e4ca2870846f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect.  <br /></td></tr>
-<tr class="separator:aca345c98287cc756357e4ca2870846f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5da2f735a8d820504270d7271a4f78b" id="r_ac5da2f735a8d820504270d7271a4f78b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5da2f735a8d820504270d7271a4f78b">Init</a> () noexcept</td></tr>
+<tr class="memdesc:ac5da2f735a8d820504270d7271a4f78b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize.  <br /></td></tr>
+<tr class="separator:ac5da2f735a8d820504270d7271a4f78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9a41143de509520489e958e67d5b9c" id="r_aff9a41143de509520489e958e67d5b9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff9a41143de509520489e958e67d5b9c">Connect</a> (const std::string &amp;address, uint32_t timeout_ms=5000) noexcept</td></tr>
+<tr class="memdesc:aff9a41143de509520489e958e67d5b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect.  <br /></td></tr>
+<tr class="separator:aff9a41143de509520489e958e67d5b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fbe8c63dd153b68b05abf1b73accddd" id="r_a4fbe8c63dd153b68b05abf1b73accddd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fbe8c63dd153b68b05abf1b73accddd">Connect</a> (gamepad::input::Button buttons) noexcept</td></tr>
 <tr class="memdesc:a4fbe8c63dd153b68b05abf1b73accddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans for nearby CodexPad devices and automatically connects to a device whose button state matches the specified mask.  <br /></td></tr>
 <tr class="separator:a4fbe8c63dd153b68b05abf1b73accddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,8 +153,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aebfbe997689262afe735e6ef6f6fd087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the input tracker object.  <br /></td></tr>
 <tr class="separator:aebfbe997689262afe735e6ef6f6fd087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec9691bf4aea48374a4538d4ff96d073" id="r_aec9691bf4aea48374a4538d4ff96d073"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec9691bf4aea48374a4538d4ff96d073">rssi</a> () const noexcept</td></tr>
-<tr class="memdesc:aec9691bf4aea48374a4538d4ff96d073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the RSSI of the CodexPad.  <br /></td></tr>
+<tr class="memdesc:aec9691bf4aea48374a4538d4ff96d073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the RSSI of the connected CodexPad.  <br /></td></tr>
 <tr class="separator:aec9691bf4aea48374a4538d4ff96d073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a892f44c0ff75f76be56c812b9458026c" id="r_a892f44c0ff75f76be56c812b9458026c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a892f44c0ff75f76be56c812b9458026c">set_local_tx_power</a> (int32_t tx_power) noexcept</td></tr>
+<tr class="memdesc:a892f44c0ff75f76be56c812b9458026c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the local BLE TX power (manual mode).  <br /></td></tr>
+<tr class="separator:a892f44c0ff75f76be56c812b9458026c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83b3a6a6fb677606cec5d98214c6b81" id="r_af83b3a6a6fb677606cec5d98214c6b81"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af83b3a6a6fb677606cec5d98214c6b81">local_tx_power</a> () const noexcept</td></tr>
+<tr class="memdesc:af83b3a6a6fb677606cec5d98214c6b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the manually configured local BLE TX power value.  <br /></td></tr>
+<tr class="separator:af83b3a6a6fb677606cec5d98214c6b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3ddf6cbe376fe215910698de9e4c2bf" id="r_ab3ddf6cbe376fe215910698de9e4c2bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3ddf6cbe376fe215910698de9e4c2bf">set_dynamic_tx_power_enabled</a> (bool enabled) noexcept</td></tr>
+<tr class="memdesc:ab3ddf6cbe376fe215910698de9e4c2bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable dynamic TX power adjustment based on RSSI.  <br /></td></tr>
+<tr class="separator:ab3ddf6cbe376fe215910698de9e4c2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdba8cddb913960dadab68193d020c17" id="r_abdba8cddb913960dadab68193d020c17"><td class="memItemLeft" align="right" valign="top">NimBLEClient *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdba8cddb913960dadab68193d020c17">ble_client</a> () const noexcept</td></tr>
 <tr class="memdesc:abdba8cddb913960dadab68193d020c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the BLE client object.  <br /></td></tr>
 <tr class="separator:abdba8cddb913960dadab68193d020c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,7 +173,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="basic_polling_8ino-example.html#_a0">basic_polling.ino</a>, <a class="el" href="button_mask_connection_8ino-example.html#_a0">button_mask_connection.ino</a>, and <a class="el" href="inputs_detection_8ino-example.html#_a0">inputs_detection.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00025">25</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00027">27</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2ea3fb6ebd6282a298e26d33cfdc510a" name="a2ea3fb6ebd6282a298e26d33cfdc510a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ea3fb6ebd6282a298e26d33cfdc510a">&#9670;&#160;</a></span>Client()</h2>
@@ -191,7 +200,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00037">37</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00046">46</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>
@@ -220,7 +229,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00039">39</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00049">49</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>
@@ -253,12 +262,12 @@ Public Member Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="basic_polling_8ino-example.html#a5">basic_polling.ino</a>, <a class="el" href="button_mask_connection_8ino-example.html#a5">button_mask_connection.ino</a>, and <a class="el" href="inputs_detection_8ino-example.html#a5">inputs_detection.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00241">241</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00328">328</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
 
 </div>
 </div>
-<a id="aca345c98287cc756357e4ca2870846f7" name="aca345c98287cc756357e4ca2870846f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca345c98287cc756357e4ca2870846f7">&#9670;&#160;</a></span>Connect() <span class="overload">[1/2]</span></h2>
+<a id="aff9a41143de509520489e958e67d5b9c" name="aff9a41143de509520489e958e67d5b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9a41143de509520489e958e67d5b9c">&#9670;&#160;</a></span>Connect() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,7 +278,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool codex_pad::Client::Connect </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>bluetooth_device_address</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -287,7 +296,7 @@ Public Member Functions</h2></td></tr>
 <p>Connect. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">bluetooth_device_address</td><td>The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as "XX:XX:XX:XX:XX:XX", X is a number or uppercase letter, colon separated </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">timeout_ms</td><td>Timeout in milliseconds </td></tr>
   </table>
   </dd>
@@ -302,7 +311,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="basic_polling_8ino-example.html#a1">basic_polling.ino</a>, <a class="el" href="button_mask_connection_8ino-example.html#a1">button_mask_connection.ino</a>, and <a class="el" href="inputs_detection_8ino-example.html#a1">inputs_detection.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00048">48</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00057">57</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +354,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This is a blocking call. It will continuously scan until a matching device is found, a connection is established, or the internal timeout is reached. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd><b>DO NOT</b> include <code>Button::kHome</code> in the button mask. Holding the Home button triggers a device reboot, which will interrupt the connection process. Example: <div class="fragment"><div class="line"><a class="code hl_class" href="classcodex__pad_1_1_client.html">codex_pad::Client</a> g_codex_pad_client;</div>
-<div class="line">g_codex_pad_client.<a class="code hl_function" href="#a871d3a0515f57c74e059aab89bcd869c">Init</a>();</div>
+<div class="line">g_codex_pad_client.<a class="code hl_function" href="#ac5da2f735a8d820504270d7271a4f78b">Init</a>();</div>
 <div class="line"><span class="comment">// Continuously try to connect to a device where the Start and Cross/A buttons are pressed.</span></div>
 <div class="line"><span class="keywordflow">while</span> (!g_codex_pad_client.ScanAndConnect(gamepad::input::Button::kStart | gamepad::input::Button::kStart)) {</div>
 <div class="line">  <span class="comment">// Optional: Add a small delay or other operations between attempts.</span></div>
@@ -353,11 +362,11 @@ Public Member Functions</h2></td></tr>
 <div class="line">}</div>
 <div class="line"><span class="comment">// Once the loop exits, connection is successful.</span></div>
 <div class="line">Serial.println(<span class="stringliteral">&quot;CodexPad connected!&quot;</span>);</div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html"><div class="ttname"><a href="classcodex__pad_1_1_client.html">codex_pad::Client</a></div><div class="ttdoc">Client main class.</div><div class="ttdef"><b>Definition</b> <a href="client_8h_source.html#l00025">client.h:25</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a871d3a0515f57c74e059aab89bcd869c"><div class="ttname"><a href="#a871d3a0515f57c74e059aab89bcd869c">codex_pad::Client::Init</a></div><div class="ttdeci">void Init(int8_t local_tx_power=3) noexcept</div><div class="ttdoc">Initialize.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00041">client.cpp:41</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html"><div class="ttname"><a href="classcodex__pad_1_1_client.html">codex_pad::Client</a></div><div class="ttdoc">Client main class.</div><div class="ttdef"><b>Definition</b> <a href="client_8h_source.html#l00027">client.h:27</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_ac5da2f735a8d820504270d7271a4f78b"><div class="ttname"><a href="#ac5da2f735a8d820504270d7271a4f78b">codex_pad::Client::Init</a></div><div class="ttdeci">void Init() noexcept</div><div class="ttdoc">Initialize.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00051">client.cpp:51</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00059">59</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00068">68</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>
@@ -390,8 +399,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a871d3a0515f57c74e059aab89bcd869c" name="a871d3a0515f57c74e059aab89bcd869c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a871d3a0515f57c74e059aab89bcd869c">&#9670;&#160;</a></span>Init()</h2>
+<a id="ac5da2f735a8d820504270d7271a4f78b" name="ac5da2f735a8d820504270d7271a4f78b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5da2f735a8d820504270d7271a4f78b">&#9670;&#160;</a></span>Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -402,7 +411,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void codex_pad::Client::Init </td>
           <td>(</td>
-          <td class="paramtype">int8_t</td>          <td class="paramname"><span class="paramname"><em>local_tx_power</em></span><span class="paramdefsep"> = </span><span class="paramdefval">3</span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -414,14 +423,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialize. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">local_tx_power</td><td>The local device TX power in dBm </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00041">41</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00051">51</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>
@@ -487,7 +490,37 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00143">143</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00158">158</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af83b3a6a6fb677606cec5d98214c6b81" name="af83b3a6a6fb677606cec5d98214c6b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83b3a6a6fb677606cec5d98214c6b81">&#9670;&#160;</a></span>local_tx_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t codex_pad::Client::local_tx_power </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the manually configured local BLE TX power value. </p>
+<p>This function returns the value previously stored by <a class="el" href="#a892f44c0ff75f76be56c812b9458026c">set_local_tx_power()</a> (or its default). <b>Note:</b> When dynamic TX power adjustment is enabled (which is the default, see <a class="el" href="#ab3ddf6cbe376fe215910698de9e4c2bf">set_dynamic_tx_power_enabled</a>), the actual TX power is controlled automatically by the RSSI-based hysteresis quantizer. In that case, the value returned by this function <b>does not reflect the real-time TX power</b> being used; it only reflects the stored manual setting. </p><dl class="section return"><dt>Returns</dt><dd>The stored local BLE TX power setting in dBm. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00279">279</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
 
 </div>
 </div>
@@ -610,12 +643,87 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the RSSI of the CodexPad. </p>
-<dl class="section return"><dt>Returns</dt><dd>RSSI of the CodexPad </dd></dl>
+<p>Get the RSSI of the connected CodexPad. </p>
+<p>This function retrieves the current Received Signal Strength Indication (RSSI) from the underlying NimBLE client. <b>Note:</b> On ESP32 Arduino Core versions older than 3.1.0, RSSI readings suffer from severe fluctuation (drift) and are highly unreliable. Relying on this return value for logic or display purposes in those older versions is <b>not recommended</b>. For accurate RSSI measurements, please upgrade to ESP32 Arduino Core 3.1.0 or later. </p><dl class="section return"><dt>Returns</dt><dd>The current RSSI value in dBm. Returns 0 if the BLE client is not initialized or not connected. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="button_mask_connection_8ino-example.html#a6">button_mask_connection.ino</a>, and <a class="el" href="inputs_detection_8ino-example.html#a6">inputs_detection.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00230">230</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00275">275</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab3ddf6cbe376fe215910698de9e4c2bf" name="ab3ddf6cbe376fe215910698de9e4c2bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3ddf6cbe376fe215910698de9e4c2bf">&#9670;&#160;</a></span>set_dynamic_tx_power_enabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void codex_pad::Client::set_dynamic_tx_power_enabled </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enable or disable dynamic TX power adjustment based on RSSI. </p>
+<p>This feature is <b>enabled by default</b> and <b>highly recommended</b> to keep enabled. When enabled, the client periodically reads the peer's RSSI during <a class="el" href="#a633aa3c44ea5b6d1424a4cfb692ea45b">Update()</a> and adjusts the local BLE transmit power using a hysteresis quantizer:</p><ul>
+<li>Strong signal (high RSSI) → Lower TX power to save energy and reduce interference.</li>
+<li>Weak signal (low RSSI) → Higher TX power to maintain connection stability. <b>Conflict with manual power:</b> When dynamic adjustment is enabled, any value set via <a class="el" href="#a892f44c0ff75f76be56c812b9458026c">set_local_tx_power()</a> will be <b>overwritten</b> and not take effect. To use a fixed manual TX power, you must first disable this feature by calling <code>set_dynamic_tx_power_enabled(false)</code>. <dl class="section note"><dt>Note</dt><dd>On ESP32, this feature relies on NimBLEClient::getRssi(). Due to severe RSSI fluctuation (drift) in ESP32 Arduino Core versions <b>older than 3.1.0</b>, the actual adjustment is only compiled and executed when <code>ESP_ARDUINO_VERSION &gt;= ESP_ARDUINO_VERSION_VAL(3, 1, 0)</code>. In earlier versions, the logic is disabled via preprocessor macros, allowing <a class="el" href="#a892f44c0ff75f76be56c812b9458026c">set_local_tx_power()</a> to work as a fallback. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>true to enable (recommended), false to disable and switch to manual control. </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00314">314</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+</div>
+</div>
+<a id="a892f44c0ff75f76be56c812b9458026c" name="a892f44c0ff75f76be56c812b9458026c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a892f44c0ff75f76be56c812b9458026c">&#9670;&#160;</a></span>set_local_tx_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void codex_pad::Client::set_local_tx_power </td>
+          <td>(</td>
+          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>tx_power</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the local BLE TX power (manual mode). </p>
+<p>This function stores the desired TX power level. However, <b>if dynamic TX power adjustment is enabled</b> (which is the default, see <a class="el" href="#ab3ddf6cbe376fe215910698de9e4c2bf">set_dynamic_tx_power_enabled</a>), this value will be ignored and overwritten by the dynamic adjustment logic during <a class="el" href="#a633aa3c44ea5b6d1424a4cfb692ea45b">Update()</a>. To ensure this manual setting takes effect persistently, you must first call <code>set_dynamic_tx_power_enabled(false)</code>. On ESP32 Arduino Core versions older than 3.1.0, where dynamic adjustment is internally disabled due to RSSI drift, this setting will apply normally. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tx_power</td><td>Local BLE TX power in dBm. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="client_8h_source.html#l00258">258</a> of file <a class="el" href="client_8h_source.html">client.h</a>.</p>
 
 </div>
 </div>
@@ -644,7 +752,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Update, need to be called in Loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00118">118</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00127">127</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>

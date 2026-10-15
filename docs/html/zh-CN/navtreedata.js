@@ -39,7 +39,7 @@ var NAVTREE =
     ] ],
     [ "示例", "examples.html", "examples" ],
     [ "下载", "usergroup0.html", [
-      [ "CodexPad_v4.2.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v4.2.0.zip", "^https://gh-proxy.com/https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v4.2.0.zip", null ]
+      [ "CodexPad_v5.0.0.zip: https://gh-proxy.com/https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v5.0.0.zip", "^https://gh-proxy.com/https://github.com/CodexPad/codex_pad_arduino_lib/archive/refs/tags/v5.0.0.zip", null ]
     ] ]
   ] ]
 ];
