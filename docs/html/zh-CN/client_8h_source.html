@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;4.2.0</span>
+   <div id="projectname">CodexPad Arduino 库<span id="projectnumber">&#160;5.0.0</span>
    </div>
   </td>
  </tr>
@@ -109,59 +109,59 @@ $(function(){initNavTree('client_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;NimBLEDevice.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;gamepad_input_tracker.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span>codex_pad {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"></span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * @~English</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * @class Client</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * @brief Client main class</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> */</span><span class="comment"></span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * @~Chinese</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * @class Client</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * @brief Client主类</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> */</span></div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html">   25</a></span><span class="keyword">class </span><a class="code hl_function" href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">Client</a> : <span class="keyword">public</span> NimBLEClientCallbacks {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">   * @brief Constructor</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">   * @brief 构造函数</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <a class="code hl_function" href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">Client</a>() <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">   * @brief Destructor</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">   * @brief 析构函数</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <a class="code hl_function" href="classcodex__pad_1_1_client.html#af1d769e94df1bca106112e5a234facea">~Client</a>() <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"></span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">   * @brief Initialize</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">   * @param[in] local_tx_power The local device TX power in dBm</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">   * @brief 初始化</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">   * @param[in] local_tx_power 本地设备TX功率，单位dBm</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;cyf.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;cyf/hysteresis_quantizer.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;gamepad_input_tracker.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span>codex_pad {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"></span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * @~English</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * @class Client</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * @brief Client main class</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> */</span><span class="comment"></span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * @~Chinese</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @class Client</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @brief Client主类</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html">   27</a></span><span class="keyword">class </span><a class="code hl_function" href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">Client</a> : <span class="keyword">public</span> NimBLEClientCallbacks {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">   * @brief Constructor</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">   * @brief 构造函数</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <a class="code hl_function" href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">Client</a>() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"></span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">   * @brief Destructor</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">   * @brief 析构函数</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_function" href="classcodex__pad_1_1_client.html#af1d769e94df1bca106112e5a234facea">~Client</a>() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">   * @brief Initialize</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">   * @brief 初始化</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#a871d3a0515f57c74e059aab89bcd869c">Init</a>(int8_t local_tx_power = 3) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#ac5da2f735a8d820504270d7271a4f78b">Init</a>() <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"></span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">  /**</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">   * @~English</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">   * @brief Connect</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">   * @param[in] bluetooth_device_address The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">   * @param[in] address The Bluetooth device address(BD_ADDR) of the CodexPad, formatted as</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">   * &quot;XX:XX:XX:XX:XX:XX&quot;, X is a number or uppercase letter, colon separated</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">   * @param[in] timeout_ms Timeout in milliseconds</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">   * @retval true if connected successfully</span></div>
@@ -170,13 +170,13 @@ $(function(){initNavTree('client_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">  /**</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">   * @~Chinese</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">   * @brief 连接</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">   * @param[in] bluetooth_device_address CodexPad的蓝牙设备地址（BD_ADDR），格式为&quot;XX:XX:XX:XX:XX:XX&quot;，X为数字或者大写字母,</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">   * @param[in] address CodexPad的蓝牙设备地址，格式为&quot;XX:XX:XX:XX:XX:XX&quot;，X为数字或者大写字母,</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">   * 半角冒号分隔</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">   * @param[in] timeout_ms 超时时间，单位毫秒</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">   * @retval true 连接成功</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">   * @retval false 连接失败</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">Connect</a>(<span class="keyword">const</span> std::string&amp; bluetooth_device_address, uint32_t timeout_ms = 5000) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#aff9a41143de509520489e958e67d5b9c">Connect</a>(<span class="keyword">const</span> std::string&amp; address, uint32_t timeout_ms = 5000) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"></span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">  /**</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">   * @~English</span></div>
@@ -229,7 +229,7 @@ $(function(){initNavTree('client_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">   *   Serial.println(&quot;CodexPad 连接成功！&quot;);</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">   * @endcode</span></div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">Connect</a>(gamepad::input::Button buttons) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#aff9a41143de509520489e958e67d5b9c">Connect</a>(gamepad::input::Button buttons) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"></span> </div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">  /**</span></div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">   * @~English</span></div>
@@ -317,66 +317,161 @@ $(function(){initNavTree('client_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment"></span> </div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">  /**</span></div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">   * @brief Get the RSSI of the CodexPad</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">   * @return RSSI of the CodexPad</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">   * @brief 获取CodexPad的RSSI</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">   * @return CodexPad的RSSI</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  int32_t <a class="code hl_function" href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">rssi</a>() const noexcept;</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment"></span> </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">   * @brief Get the BLE client object</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment">   * @details This function returns a pointer to the internal BLE client object. The caller should not try and release/delete</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">   * it.</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">   * @return BLE client object</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">   * @brief 获取 BLE 客户端对象</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">   * @details 此函数返回内部 BLE 客户端对象的指针。调用者不应尝试释放/删除它。</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">   * @return BLE 客户端对象</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">  241</a></span>  NimBLEClient* <a class="code hl_function" href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">ble_client</a>() const noexcept { <span class="keywordflow">return</span> ble_client_; }</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> kInputsQueueMax = 10;</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>  <span class="keywordtype">bool</span> onConnParamsUpdateRequest(NimBLEClient*, <span class="keyword">const</span> ble_gap_upd_params*)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;  <span class="comment">// update our own connection parameters, so we reject the request</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>  }</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  <span class="keywordtype">void</span> onPhyUpdate(NimBLEClient*, uint8_t tx_phy, uint8_t rx_phy) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">Connect</a>(<span class="keyword">const</span> NimBLEAddress&amp; address, <span class="keywordtype">bool</span> async_connect, <span class="keyword">const</span> uint32_t timeout_ms);</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>  <span class="keywordtype">void</span> OnNotify(<span class="keyword">const</span> NimBLERemoteCharacteristic* remote_characteristic, <span class="keyword">const</span> uint8_t* data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> length,</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                <span class="keyword">const</span> <span class="keywordtype">bool</span> is_notify);</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>  <span class="keywordtype">void</span> Reset();</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>  <span class="keyword">mutable</span> std::mutex mutex_;</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  NimBLEClient* ble_client_{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  std::string remote_device_name_;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  std::string remote_model_number_;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>  std::array&lt;uint8_t, 3&gt; remote_firmware_version_{0, 0, 0};</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  std::queue&lt;gamepad::input::State&gt; inputs_queue_;</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  gamepad::input::Tracker input_tracker_;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>};</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">   * @brief Get the RSSI of the connected CodexPad.</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">   * @details This function retrieves the current Received Signal Strength Indication (RSSI) from the</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">   *          underlying NimBLE client.</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">   *          **Note:** On ESP32 Arduino Core versions older than 3.1.0, RSSI readings suffer from severe</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">   *          fluctuation (drift) and are highly unreliable. Relying on this return value for logic or</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">   *          display purposes in those older versions is **not recommended**. For accurate RSSI measurements,</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">   *          please upgrade to ESP32 Arduino Core 3.1.0 or later.</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">   * @return The current RSSI value in dBm. Returns 0 if the BLE client is not initialized or not connected.</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">   * @brief 获取已连接 CodexPad 的 RSSI（接收信号强度指示）。</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">   * @details 该函数从底层 NimBLE 客户端获取当前的接收信号强度指示（RSSI）值。</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment">   *          **注意：** 在低于 3.1.0 的 ESP32 Arduino Core 版本中，RSSI 读数存在严重漂移（不准确）。</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">   *          不推荐在旧版本中依赖此返回值进行逻辑判断或界面显示。如需准确的 RSSI 测量，</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">   *          请将 ESP32 Arduino Core 升级至 3.1.0 或更高版本。</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">   * @return 当前 RSSI 值，单位为 dBm。如果 BLE 客户端未初始化或未连接，则返回 0。</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  int32_t <a class="code hl_function" href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">rssi</a>() const noexcept;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment"></span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">   * @brief Set the local BLE TX power (manual mode).</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment">   * @details This function stores the desired TX power level. However, **if dynamic TX power adjustment is enabled**</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">   *          (which is the default, see @ref set_dynamic_tx_power_enabled), this value will be ignored and overwritten</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">   *          by the dynamic adjustment logic during @ref Update().</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">   *          To ensure this manual setting takes effect persistently, you must first call</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">   *          `set_dynamic_tx_power_enabled(false)`. On ESP32 Arduino Core versions older than 3.1.0, where dynamic</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">   *          adjustment is internally disabled due to RSSI drift, this setting will apply normally.</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="comment">   * @param tx_power Local BLE TX power in dBm.</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">   * @brief 设置本地 BLE 发射功率（手动模式）。</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">   * @details 该函数用于保存期望的发射功率值。但是，**如果动态发射功率调节处于开启状态**（默认开启，</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">   *          参见 @ref set_dynamic_tx_power_enabled），该值将被忽略，并在 @ref Update() 中被动态调节逻辑覆盖。</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">   *          如需使该手动设置持续生效，必须先调用 `set_dynamic_tx_power_enabled(false)` 关闭动态调节功能。</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="comment">   *          在低于 3.1.0 的 ESP32 Arduino Core 版本中，由于内部因 RSSI 漂移已禁用动态调节，此设置可正常生效。</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment">   * @param tx_power 本地 BLE 发射功率，单位 dBm。</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html#a892f44c0ff75f76be56c812b9458026c">  258</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#a892f44c0ff75f76be56c812b9458026c">set_local_tx_power</a>(int32_t tx_power) noexcept { local_tx_power_ = tx_power; }</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment"></span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment">   * @brief Get the manually configured local BLE TX power value.</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">   * @details This function returns the value previously stored by @ref set_local_tx_power() (or its default).</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment">   *          **Note:** When dynamic TX power adjustment is enabled (which is the default, see</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">   *          @ref set_dynamic_tx_power_enabled), the actual TX power is controlled automatically by the</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">   *          RSSI-based hysteresis quantizer. In that case, the value returned by this function **does not</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">   *          reflect the real-time TX power** being used; it only reflects the stored manual setting.</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">   * @return The stored local BLE TX power setting in dBm.</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">   * @brief 获取用户设定的本地 BLE 发射功率值。</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment">   * @details 该函数返回之前通过 @ref set_local_tx_power() 保存的值（或其默认值）。</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment">   *          **注意：** 当动态发射功率调节处于开启状态（默认开启，参见 @ref set_dynamic_tx_power_enabled）</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment">   *          时，实际发射功率由基于 RSSI 的滞环量化器自动控制。此时，该函数返回的值**不能代表当前实时</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment">   *          使用的发射功率**，它仅代表内部存储的手动设定值。</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment">   * @return 存储的本地 BLE 发射功率设定值，单位 dBm。</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html#af83b3a6a6fb677606cec5d98214c6b81">  279</a></span>  int32_t <a class="code hl_function" href="classcodex__pad_1_1_client.html#af83b3a6a6fb677606cec5d98214c6b81">local_tx_power</a>() const noexcept { <span class="keywordflow">return</span> local_tx_power_; }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="comment"></span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment">   * @brief Enable or disable dynamic TX power adjustment based on RSSI.</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="comment">   * @details This feature is **enabled by default** and **highly recommended** to keep enabled.</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="comment">   *          When enabled, the client periodically reads the peer&#39;s RSSI during @ref Update() and adjusts</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="comment">   *          the local BLE transmit power using a hysteresis quantizer:</span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment">   *          - Strong signal (high RSSI) → Lower TX power to save energy and reduce interference.</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="comment">   *          - Weak signal (low RSSI)   → Higher TX power to maintain connection stability.</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="comment">   *          **Conflict with manual power:** When dynamic adjustment is enabled, any value set via</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">   *          @ref set_local_tx_power() will be **overwritten** and not take effect. To use a fixed manual</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">   *          TX power, you must first disable this feature by calling `set_dynamic_tx_power_enabled(false)`.</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment">   * @note On ESP32, this feature relies on @ref NimBLEClient::getRssi(). Due to severe RSSI fluctuation (drift)</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="comment">   *       in ESP32 Arduino Core versions **older than 3.1.0**, the actual adjustment is only compiled and</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="comment">   *       executed when `ESP_ARDUINO_VERSION &gt;= ESP_ARDUINO_VERSION_VAL(3, 1, 0)`. In earlier versions,</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="comment">   *       the logic is disabled via preprocessor macros, allowing @ref set_local_tx_power() to work as a fallback.</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment">   * @param enabled true to enable (recommended), false to disable and switch to manual control.</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment">   * @brief 使能或禁用以 RSSI 为基础的动态发射功率调节。</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment">   * @details 该功能**默认开启**，且**强烈建议保持开启**。启用后，客户端会在 @ref Update() 中周期性读取对端设备的</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">   *          RSSI，并通过滞环量化器（Hysteresis Quantizer）动态调整本地 BLE 发射功率：</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">   *          - 信号较好（RSSI 较高）时，降低发射功率以节省能耗并减少无线干扰；</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment">   *          - 信号较差（RSSI 较低）时，提高发射功率以维持连接稳定性。</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment">   *          **与手动功率的冲突：** 当动态调节开启时，通过 @ref set_local_tx_power() 设置的任何功率值都会被</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="comment">   *          **覆盖**，无法生效。如果需要使用固定的手动发射功率，必须先调用</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="comment">   *          `set_dynamic_tx_power_enabled(false)` 关闭此功能。</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="comment">   * @note 在 ESP32 平台上，该功能依赖 @ref NimBLEClient::getRssi()。由于在 **3.1.0 之前**的 ESP32 Arduino Core</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="comment">   *       版本中 RSSI 读数存在严重漂移（不准确），实际调节逻辑仅在 `ESP_ARDUINO_VERSION &gt;= ESP_ARDUINO_VERSION_VAL(3, 1, 0)`</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="comment">   *       时才会编译和执行。在更早的版本中，内部已通过预处理器宏禁用动态调节，此时 @ref set_local_tx_power()</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="comment">   *       可以正常生效作为回退方案。</span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="comment">   * @param enabled true 表示开启（推荐），false 表示关闭并切换为手动控制模式。</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html#ab3ddf6cbe376fe215910698de9e4c2bf">  314</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#ab3ddf6cbe376fe215910698de9e4c2bf">set_dynamic_tx_power_enabled</a>(<span class="keywordtype">bool</span> enabled) <span class="keyword">noexcept</span> { dynamic_tx_power_enabled_ = enabled; }<span class="comment"></span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="comment">   * @brief Get the BLE client object</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="comment">   * @details This function returns a pointer to the internal BLE client object. The caller should not try and release/delete</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="comment">   * it.</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="comment">   * @return BLE client object</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="comment">   * @brief 获取 BLE 客户端对象</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="comment">   * @details 此函数返回内部 BLE 客户端对象的指针。调用者不应尝试释放/删除它。</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="comment">   * @return BLE 客户端对象</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno"><a class="line" href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">  328</a></span>  NimBLEClient* <a class="code hl_function" href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">ble_client</a>() const noexcept { <span class="keywordflow">return</span> ble_client_; }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> kInputsQueueMax = 10;</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>  <span class="keywordtype">bool</span> onConnParamsUpdateRequest(NimBLEClient*, <span class="keyword">const</span> ble_gap_upd_params*)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;  <span class="comment">// update our own connection parameters, so we reject the request</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>  }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>  <span class="keywordtype">void</span> onPhyUpdate(NimBLEClient*, uint8_t tx_phy, uint8_t rx_phy) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classcodex__pad_1_1_client.html#aff9a41143de509520489e958e67d5b9c">Connect</a>(<span class="keyword">const</span> NimBLEAddress&amp; address, <span class="keywordtype">bool</span> async_connect, <span class="keyword">const</span> uint32_t timeout_ms);</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>  <span class="keywordtype">void</span> OnNotify(<span class="keyword">const</span> NimBLERemoteCharacteristic* remote_characteristic, <span class="keyword">const</span> uint8_t* data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> length,</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>                <span class="keyword">const</span> <span class="keywordtype">bool</span> is_notify);</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>  <span class="keywordtype">void</span> Reset();</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>  <span class="keywordtype">void</span> UpdateTxPower();</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>  <span class="keyword">mutable</span> std::mutex mutex_;</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  NimBLEClient* ble_client_{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  std::string remote_device_name_;</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  std::string remote_model_number_;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>  std::array&lt;uint8_t, 3&gt; remote_firmware_version_{0, 0, 0};</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>  std::queue&lt;gamepad::input::State&gt; inputs_queue_;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>  gamepad::input::Tracker input_tracker_;</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>  cyf::HysteresisQuantizer&lt;int32_t&gt; rssi_quantizer_;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>  uint64_t last_update_tx_power_ms_{0};</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>  <span class="keywordtype">bool</span> dynamic_tx_power_enabled_ = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  int32_t local_tx_power_{0};</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>};</div>
 </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>}  <span class="comment">// namespace codex_pad</span></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a2ea3fb6ebd6282a298e26d33cfdc510a"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">codex_pad::Client::Client</a></div><div class="ttdeci">Client() noexcept</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00037">client.cpp:37</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a633aa3c44ea5b6d1424a4cfb692ea45b"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">codex_pad::Client::Update</a></div><div class="ttdeci">const gamepad::input::Tracker &amp; Update() noexcept</div><div class="ttdoc">更新，需要在Loop中不断调用</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00118">client.cpp:118</a></div></div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>}  <span class="comment">// namespace codex_pad</span></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a2ea3fb6ebd6282a298e26d33cfdc510a"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a2ea3fb6ebd6282a298e26d33cfdc510a">codex_pad::Client::Client</a></div><div class="ttdeci">Client() noexcept</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00046">client.cpp:46</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a633aa3c44ea5b6d1424a4cfb692ea45b"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a633aa3c44ea5b6d1424a4cfb692ea45b">codex_pad::Client::Update</a></div><div class="ttdeci">const gamepad::input::Tracker &amp; Update() noexcept</div><div class="ttdoc">更新，需要在Loop中不断调用</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00127">client.cpp:127</a></div></div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html_a6cd1ba975adc918c4526ac467c180f01"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a6cd1ba975adc918c4526ac467c180f01">codex_pad::Client::remote_device_name</a></div><div class="ttdeci">const std::string &amp; remote_device_name() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="#l00176">client.h:176</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_a871d3a0515f57c74e059aab89bcd869c"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a871d3a0515f57c74e059aab89bcd869c">codex_pad::Client::Init</a></div><div class="ttdeci">void Init(int8_t local_tx_power=3) noexcept</div><div class="ttdoc">初始化</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00041">client.cpp:41</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_a892f44c0ff75f76be56c812b9458026c"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a892f44c0ff75f76be56c812b9458026c">codex_pad::Client::set_local_tx_power</a></div><div class="ttdeci">void set_local_tx_power(int32_t tx_power) noexcept</div><div class="ttdoc">设置本地 BLE 发射功率（手动模式）。</div><div class="ttdef"><b>定义</b> <a href="#l00258">client.h:258</a></div></div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html_a902f7246b163b251559a6c79f48cd1f9"><div class="ttname"><a href="classcodex__pad_1_1_client.html#a902f7246b163b251559a6c79f48cd1f9">codex_pad::Client::remote_firmware_version</a></div><div class="ttdeci">const std::array&lt; uint8_t, 3 &gt; &amp; remote_firmware_version() const noexcept</div><div class="ttdoc">获取CodexPad的固件版本</div><div class="ttdef"><b>定义</b> <a href="#l00200">client.h:200</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aa392d43bd2b8bebaa328951ac2233305"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">codex_pad::Client::is_connected</a></div><div class="ttdeci">bool is_connected() const noexcept</div><div class="ttdoc">是否连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00143">client.cpp:143</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_abdba8cddb913960dadab68193d020c17"><div class="ttname"><a href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="#l00241">client.h:241</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aa392d43bd2b8bebaa328951ac2233305"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aa392d43bd2b8bebaa328951ac2233305">codex_pad::Client::is_connected</a></div><div class="ttdeci">bool is_connected() const noexcept</div><div class="ttdoc">是否连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00158">client.cpp:158</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_ab3ddf6cbe376fe215910698de9e4c2bf"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ab3ddf6cbe376fe215910698de9e4c2bf">codex_pad::Client::set_dynamic_tx_power_enabled</a></div><div class="ttdeci">void set_dynamic_tx_power_enabled(bool enabled) noexcept</div><div class="ttdoc">使能或禁用以 RSSI 为基础的动态发射功率调节。</div><div class="ttdef"><b>定义</b> <a href="#l00314">client.h:314</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_abdba8cddb913960dadab68193d020c17"><div class="ttname"><a href="classcodex__pad_1_1_client.html#abdba8cddb913960dadab68193d020c17">codex_pad::Client::ble_client</a></div><div class="ttdeci">NimBLEClient * ble_client() const noexcept</div><div class="ttdoc">获取 BLE 客户端对象</div><div class="ttdef"><b>定义</b> <a href="#l00328">client.h:328</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_ac5da2f735a8d820504270d7271a4f78b"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ac5da2f735a8d820504270d7271a4f78b">codex_pad::Client::Init</a></div><div class="ttdeci">void Init() noexcept</div><div class="ttdoc">初始化</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00051">client.cpp:51</a></div></div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html_ac844ec861d28d664d7b815213b9d3e52"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ac844ec861d28d664d7b815213b9d3e52">codex_pad::Client::Disconnect</a></div><div class="ttdeci">void Disconnect() noexcept</div><div class="ttdoc">断开连接</div><div class="ttdef"><b>定义</b> <a href="#l00140">client.h:140</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aca345c98287cc756357e4ca2870846f7"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aca345c98287cc756357e4ca2870846f7">codex_pad::Client::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;bluetooth_device_address, uint32_t timeout_ms=5000) noexcept</div><div class="ttdoc">连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00048">client.cpp:48</a></div></div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html_ad4daf7fc9d33da0c07987eb0f7a40ea6"><div class="ttname"><a href="classcodex__pad_1_1_client.html#ad4daf7fc9d33da0c07987eb0f7a40ea6">codex_pad::Client::remote_model_number</a></div><div class="ttdeci">const std::string &amp; remote_model_number() const noexcept</div><div class="ttdoc">获取CodexPad的型号</div><div class="ttdef"><b>定义</b> <a href="#l00188">client.h:188</a></div></div>
 <div class="ttc" id="aclasscodex__pad_1_1_client_html_aebfbe997689262afe735e6ef6f6fd087"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aebfbe997689262afe735e6ef6f6fd087">codex_pad::Client::input_tracker</a></div><div class="ttdeci">const gamepad::input::Tracker &amp; input_tracker() const noexcept</div><div class="ttdoc">获取输入跟踪器对象</div><div class="ttdef"><b>定义</b> <a href="#l00214">client.h:214</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_aec9691bf4aea48374a4538d4ff96d073"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client::rssi</a></div><div class="ttdeci">int32_t rssi() const noexcept</div><div class="ttdoc">获取CodexPad的RSSI</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00230">client.cpp:230</a></div></div>
-<div class="ttc" id="aclasscodex__pad_1_1_client_html_af1d769e94df1bca106112e5a234facea"><div class="ttname"><a href="classcodex__pad_1_1_client.html#af1d769e94df1bca106112e5a234facea">codex_pad::Client::~Client</a></div><div class="ttdeci">~Client() noexcept</div><div class="ttdoc">析构函数</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00039">client.cpp:39</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aec9691bf4aea48374a4538d4ff96d073"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aec9691bf4aea48374a4538d4ff96d073">codex_pad::Client::rssi</a></div><div class="ttdeci">int32_t rssi() const noexcept</div><div class="ttdoc">获取已连接 CodexPad 的 RSSI（接收信号强度指示）。</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00275">client.cpp:275</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_af1d769e94df1bca106112e5a234facea"><div class="ttname"><a href="classcodex__pad_1_1_client.html#af1d769e94df1bca106112e5a234facea">codex_pad::Client::~Client</a></div><div class="ttdeci">~Client() noexcept</div><div class="ttdoc">析构函数</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00049">client.cpp:49</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_af83b3a6a6fb677606cec5d98214c6b81"><div class="ttname"><a href="classcodex__pad_1_1_client.html#af83b3a6a6fb677606cec5d98214c6b81">codex_pad::Client::local_tx_power</a></div><div class="ttdeci">int32_t local_tx_power() const noexcept</div><div class="ttdoc">获取用户设定的本地 BLE 发射功率值。</div><div class="ttdef"><b>定义</b> <a href="#l00279">client.h:279</a></div></div>
+<div class="ttc" id="aclasscodex__pad_1_1_client_html_aff9a41143de509520489e958e67d5b9c"><div class="ttname"><a href="classcodex__pad_1_1_client.html#aff9a41143de509520489e958e67d5b9c">codex_pad::Client::Connect</a></div><div class="ttdeci">bool Connect(const std::string &amp;address, uint32_t timeout_ms=5000) noexcept</div><div class="ttdoc">连接</div><div class="ttdef"><b>定义</b> <a href="client_8cpp_source.html#l00057">client.cpp:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

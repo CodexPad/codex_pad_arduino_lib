@@ -5,8 +5,6 @@
 #include <memory>
 
 #include "WString.h"
-// #include "cyf.h"
-// #include "cyf/log.h"
 
 namespace codex_pad {
 namespace {
@@ -32,28 +30,39 @@ constexpr uint16_t kConnectionParamSupervisionTimeout{30};
 
 static_assert(kConnectionParamSupervisionTimeout * 10.0 >
               (1 + kConnectionParamLatency) * kConnectionParamMaxInterval * 4 * 1.25);
+
+constexpr uint64_t kUpdateTxPowerIntervalMs{1000};
+
+// RSSI 滞环量化器 (HysteresisQuantizer) 参数
+constexpr int32_t kRssiQuantizerMin = -90;    // RSSI 最小值（信号最差）
+constexpr int32_t kRssiQuantizerMax = -40;    // RSSI 最大值（信号最好）
+constexpr uint32_t kRssiQuantizerLevels = 4;  // 量化级别数量（0 ~ 3）
+constexpr int32_t kRssiQuantizerDivisor = 3;  // 滞环大小除数
+
+constexpr uint32_t kRssiQuantizerMaxLevel = kRssiQuantizerLevels - 1;
+constexpr int32_t kTxPowerLevelMultiplier = 3;  // 功率等级到实际 dBm（或单位）的乘数
 }  // namespace
 
-Client::Client() noexcept {}
+Client::Client() noexcept
+    : rssi_quantizer_(kRssiQuantizerMin, kRssiQuantizerMax, kRssiQuantizerLevels, kRssiQuantizerDivisor) {}
 
 Client::~Client() noexcept { Reset(); }
 
-void Client::Init(const int8_t local_tx_power) noexcept {
+void Client::Init() noexcept {
   if (!NimBLEDevice::isInitialized()) {
     NimBLEDevice::init("CodexPadClient");
-    NimBLEDevice::setPower(local_tx_power, NimBLETxPowerType::All);
   }
 }
 
-bool Client::Connect(const std::string& bluetooth_device_address, const uint32_t timeout_ms) noexcept {
+bool Client::Connect(const std::string& address, const uint32_t timeout_ms) noexcept {
   // check mac address is valid
-  if (bluetooth_device_address.length() != 17 || bluetooth_device_address[2] != ':' || bluetooth_device_address[5] != ':' ||
-      bluetooth_device_address[8] != ':' || bluetooth_device_address[11] != ':' || bluetooth_device_address[14] != ':') {
+  if (address.length() != 17 || address[2] != ':' || address[5] != ':' || address[8] != ':' || address[11] != ':' ||
+      address[14] != ':') {
     abort();
     return false;
   }
 
-  return Connect(NimBLEAddress(bluetooth_device_address, 0), false, timeout_ms);
+  return Connect(NimBLEAddress(address, 0), false, timeout_ms);
 }
 
 bool Client::Connect(const gamepad::input::Button buttons) noexcept {
@@ -137,6 +146,12 @@ const gamepad::input::Tracker& Client::Update() noexcept {
     inputs_queue_.pop();
   } while (false);
 
+  // Dynamic TX power adjustment is only reliable on ESP32 Arduino Core >= 3.1.0
+  // because older versions have unstable (drifting) RSSI readings.
+#if !defined(ESP_ARDUINO_VERSION) || ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 1, 0)
+  UpdateTxPower();
+#endif
+
   return input_tracker_;
 }
 
@@ -188,6 +203,10 @@ bool Client::Connect(const NimBLEAddress& address, bool async_connect, const uin
 
   ble_client_->updatePhy(BLE_GAP_LE_PHY_CODED_MASK, BLE_GAP_LE_PHY_CODED_MASK, BLE_GAP_LE_PHY_CODED_S8);
 
+  if (local_tx_power_ != INT32_MIN) {
+    NimBLEDevice::setPower(local_tx_power_, NimBLETxPowerType::All);
+  }
+
   return ret;
 
 FAILED:
@@ -225,6 +244,32 @@ void Client::Reset() {
   input_tracker_.Reset();
   std::lock_guard<std::mutex> l(mutex_);
   inputs_queue_ = {};
+  rssi_quantizer_.Reset();
+  last_update_tx_power_ms_ = 0;
+}
+
+void Client::UpdateTxPower() {
+  if (!dynamic_tx_power_enabled_) {
+    return;
+  }
+
+  if (ble_client_ == nullptr) {
+    return;
+  }
+
+  if (!ble_client_->isConnected()) {
+    return;
+  }
+
+  if (last_update_tx_power_ms_ != 0 && last_update_tx_power_ms_ + kUpdateTxPowerIntervalMs > millis()) {
+    return;
+  }
+
+  last_update_tx_power_ms_ = millis();
+
+  const int32_t rssi = ble_client_->getRssi();
+  const uint32_t tx_power_level = kRssiQuantizerMaxLevel - rssi_quantizer_.Update(rssi);
+  NimBLEDevice::setPower(tx_power_level * kTxPowerLevelMultiplier, NimBLETxPowerType::All);
 }
 
 int32_t Client::rssi() const noexcept { return ble_client_ == nullptr ? 0 : ble_client_->getRssi(); }
