@@ -25,7 +25,7 @@ constexpr uint16_t kManufacturerNameCharacteristicUuid{0x2A29};
 
 constexpr uint16_t kConnectionParamMinInterval{6};
 constexpr uint16_t kConnectionParamMaxInterval{8};
-constexpr uint16_t kConnectionParamLatency{5};
+constexpr uint16_t kConnectionParamLatency{0};
 constexpr uint16_t kConnectionParamSupervisionTimeout{30};
 
 static_assert(kConnectionParamSupervisionTimeout * 10.0 >
