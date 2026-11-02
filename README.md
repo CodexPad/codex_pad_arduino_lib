@@ -135,7 +135,7 @@ Due to optimizations in disconnection detection delay in this update, the system
 
 ## API Documentation
 
-Details: <https://codexpad.github.io/codex_pad_arduino_lib/html/annotated.html>
+Details: <[https://codexpad.github.io/codex_pad_arduino_lib/html/annotated.html](https://codexpad.github.io/codex_pad_arduino_lib/html/en/annotated.html)>
 
 ## License
 
